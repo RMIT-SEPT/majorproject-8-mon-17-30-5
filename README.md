@@ -6,7 +6,7 @@
 * MASON, Evan (s3688949)
 * Baker, Allan (s3718362)
 * Ropkhop, Chiraporn (s3781279)
-* SURNAME, GivenName (sXXXX)
+* Do, Ngoc (s3698200)
 * SURNAME, GivenName (sXXXX)
 
 ## Records
