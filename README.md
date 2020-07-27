@@ -4,7 +4,7 @@
 
 ## Members
 * MASON, Evan (s3688949)
-* SURNAME, GivenName (sXXXX)
+* Baker, Allan (s3718362)
 * SURNAME, GivenName (sXXXX)
 * SURNAME, GivenName (sXXXX)
 * SURNAME, GivenName (sXXXX)
