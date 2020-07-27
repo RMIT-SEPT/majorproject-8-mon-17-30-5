@@ -3,7 +3,7 @@
 # Group 05
 
 ## Members
-* SURNAME, GivenName (sXXXX)
+* MASON, Evan (s3688949)
 * SURNAME, GivenName (sXXXX)
 * SURNAME, GivenName (sXXXX)
 * SURNAME, GivenName (sXXXX)
