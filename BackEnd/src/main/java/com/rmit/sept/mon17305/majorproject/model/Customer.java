@@ -5,7 +5,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-public class Customer extends User{
+public class Customer extends User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Customer extends User{
     private Date created_At;
     private Date updated_At;
 
-    public Customer (){
+    public Customer() {
         super();
     }
 
