@@ -32,4 +32,9 @@ public class AdminService {
         return adminRepository.findById(id);
     }
 
+    public void deleteAdminById(Long id){
+
+        adminRepository.deleteById(id);
+    }
+
 }
