@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
+import javax.validation.constraints.NotBlank;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,13 +10,13 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@NotBlank (message = "Admins first name is required")
+    @NotBlank (message = "Admins first name is required")
     private String firstName;
-    //@NotBlank (message = "Admins last name is required")
+    @NotBlank (message = "Admins last name is required")
     private String lastName;
     private Date created_At;
     private Date updated_At;
-    //@NotBlank(message = "Admins company Id is required")
+    @NotBlank(message = "Admins company Id is required")
     private Long companyId;
 
     public Admin(){}
