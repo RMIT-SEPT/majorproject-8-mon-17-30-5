@@ -1,7 +1,10 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.validation.constraints.NotBlank;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -10,14 +13,18 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 3, max = 20, message = "First Name must be within 3 to 20 characters long")
     @NotBlank (message = "Admins first name is required")
     private String firstName;
+    @Size(min = 3, max = 20, message = "Last Name must be within 3 to 20 characters long")
     @NotBlank (message = "Admins last name is required")
     private String lastName;
+    @JsonFormat(pattern = "yyy-mm-dd")
     private Date created_At;
+    @JsonFormat(pattern = "yyy-mm-dd")
     private Date updated_At;
-    @NotBlank(message = "Admins company Id is required")
-    private Long companyId;
+    //@NotBlank(message = "Admins company Id is required")
+    //private Long companyId;
 
     public Admin(){}
 
@@ -71,16 +78,16 @@ public class Admin{
         return id;
     }
 
-    public Long getCompanyId() {
-        return companyId;
-    }
+//    public Long getCompanyId() {
+//        return companyId;
+//    }
 
     public void setUserId(Long userId) {
         this.id = id;
     }
 
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
+//    public void setCompanyId(Long companyId) {
+//        this.companyId = companyId;
+//    }
 
 }
