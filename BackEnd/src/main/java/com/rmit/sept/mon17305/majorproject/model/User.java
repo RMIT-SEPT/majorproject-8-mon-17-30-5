@@ -7,12 +7,10 @@ import java.util.Date;
 public abstract class User {
 
     //@NotBlank - add dependency
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long userId;
+    protected Long id;
     protected String firstName;
     protected String lastName;
-    protected String type;
     protected Date created_At;
     protected Date updated_At;
 
@@ -20,7 +18,7 @@ public abstract class User {
     }
 
     public Long getUserId() {
-        return userId;
+        return id;
     }
 
     public String getFirstName() {
@@ -31,10 +29,6 @@ public abstract class User {
         return lastName;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public Date getCreated_At() {
         return created_At;
     }
@@ -43,8 +37,8 @@ public abstract class User {
         return updated_At;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setFirstName(String fName) {
@@ -53,10 +47,6 @@ public abstract class User {
 
     public void setLastName(String lName) {
         this.lastName = lName;
-    }
-
-    public void setType(String type1) {
-        this.type = type1;
     }
 
     public void setUpdated_At(Date date1) {

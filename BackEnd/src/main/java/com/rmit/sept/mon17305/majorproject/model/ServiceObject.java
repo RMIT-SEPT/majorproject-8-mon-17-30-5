@@ -6,18 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Service {
+public class ServiceObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long serviceId;
+    private Long id;
     private String description;
 
-    public Service(){
+    public ServiceObject(){
 
     }
 
     public Long getId() {
-        return serviceId;
+        return id;
     }
 
     public String getDescription() {

@@ -7,7 +7,7 @@ import java.util.Date;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingId;
+    private Long id;
     private Long customerId;
     private Long workerId;
     private Long serviceId;
@@ -19,12 +19,12 @@ public class Booking {
 
     }
 
-    public Long getBookingId() {
-        return bookingId;
+    public Long getId() {
+        return id;
     }
 
-    public void setBookingId(Long bookingId) {
-        this.bookingId = bookingId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getCustomerId() {

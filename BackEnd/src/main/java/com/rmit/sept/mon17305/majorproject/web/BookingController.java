@@ -1,7 +1,7 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
-import com.rmit.sept.mon17305.majorproject.model.Worker;
-import com.rmit.sept.mon17305.majorproject.service.WorkerService;
+import com.rmit.sept.mon17305.majorproject.model.Booking;
+import com.rmit.sept.mon17305.majorproject.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/worker")
-public class WorkerController {
+@RequestMapping("/api/booking")
+public class BookingController {
 
     @Autowired
-    private WorkerService workerService;
+    private BookingService bookingService;
 
     @PostMapping("")
-    public ResponseEntity<Worker> createNewWorker(@RequestBody Worker worker){
+    public ResponseEntity<Booking> createNewBooking(@RequestBody Booking booking){
 
-        Worker worker1 = workerService.saveOrUpdateWorker(worker);
-        return new ResponseEntity<Worker>(worker, HttpStatus.CREATED);
+        Booking booking1 = bookingService.saveOrUpdateBooking(booking);
+        return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
 
     }
 
