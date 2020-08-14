@@ -9,18 +9,22 @@ import javax.persistence.Id;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long companyId;
     private String companyName;
 
     public Company(){
 
     }
-    public Long getId() {
-        return id;
+    public Long getCompanyId() {
+        return companyId;
     }
 
     public String getCompanyName() {
         return companyName;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
     public void setCompanyName(String companyName) {

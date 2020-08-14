@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long serviceId;
     private String description;
 
     public Service(){
@@ -17,7 +17,7 @@ public class Service {
     }
 
     public Long getId() {
-        return id;
+        return serviceId;
     }
 
     public String getDescription() {
