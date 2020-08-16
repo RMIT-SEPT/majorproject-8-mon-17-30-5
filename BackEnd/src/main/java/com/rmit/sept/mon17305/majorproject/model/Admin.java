@@ -23,8 +23,8 @@ public class Admin{
     private Date created_At;
     @JsonFormat(pattern = "yyy-mm-dd")
     private Date updated_At;
-    //@NotBlank(message = "Admins company Id is required")
-    //private Long companyId;
+    @NotBlank(message = "Admins company Id is required")
+    private Long companyId;
 
     public Admin(){}
 
@@ -78,16 +78,16 @@ public class Admin{
         return id;
     }
 
-//    public Long getCompanyId() {
-//        return companyId;
-//    }
+    public Long getCompanyId() {
+        return companyId;
+    }
 
     public void setUserId(Long userId) {
         this.id = id;
     }
 
-//    public void setCompanyId(Long companyId) {
-//        this.companyId = companyId;
-//    }
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
 
 }

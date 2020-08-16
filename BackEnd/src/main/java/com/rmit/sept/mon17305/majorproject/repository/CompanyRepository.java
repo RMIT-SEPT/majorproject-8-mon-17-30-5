@@ -14,5 +14,7 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
     Iterable<Company> findAllById(Iterable<Long> iterable);
     List<Company> findAll();
     Optional<Company> findById(Long id);
+    @Override
+    void deleteById(Long id);
 
 }

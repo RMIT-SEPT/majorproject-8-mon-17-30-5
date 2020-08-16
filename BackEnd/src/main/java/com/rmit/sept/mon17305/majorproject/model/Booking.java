@@ -1,6 +1,7 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -8,8 +9,11 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Customers ID is required")
     private Long customerId;
+    @NotBlank (message = "Workers ID is required")
     private Long workerId;
+    @NotBlank (message = "Service ID is required")
     private Long serviceId;
     private String type;
     private Date startTime;

@@ -33,4 +33,9 @@ public class WorkerService {
         return workerRepository.findById(id);
     }
 
+    public void deleteWorkerById(Long id){
+
+        workerRepository.deleteById(id);
+    }
+
 }
