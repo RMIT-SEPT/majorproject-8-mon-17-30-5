@@ -38,4 +38,7 @@ public class WorkerService {
         workerRepository.deleteById(id);
     }
 
+    public void setWorkerRepository(WorkerRepository workerRepository) {
+        this.workerRepository = workerRepository;
+    }
 }

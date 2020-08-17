@@ -1,7 +1,5 @@
 package com.rmit.sept.mon17305.majorproject;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -10,8 +8,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import com.rmit.sept.mon17305.majorproject.web.WorkerController;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,32 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Date;
+
 @WebMvcTest(WorkerController.class)
 public class MajorprojectApplicationTests {
-
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private WorkerService service;
+    private WorkerService service1;
 
+
+    public void setUp_worker() {
+        Worker worker1 = new Worker();
+        worker1.setId((long)1);
+        worker1.setFirstName("Daniel");
+        worker1.setLastName("Sample");
+        worker1.setWorkingDays("Mon/Tue/Wed");
+        worker1.setCompanyId((long) 001);
+        worker1.setServiceId((long) 001);
+        worker1.setFinishTime(new Date());
+        worker1.setFinishTime(new Date(1));
+
+        service1.saveOrUpdateWorker(worker1);
+    }
+
+    //no exception should be thrown when given information are all valid
     @Test
     public void test_create_worker() throws Exception {
 
@@ -97,4 +115,5 @@ public class MajorprojectApplicationTests {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.firstName").value("Tom"));
     }
+
 }
