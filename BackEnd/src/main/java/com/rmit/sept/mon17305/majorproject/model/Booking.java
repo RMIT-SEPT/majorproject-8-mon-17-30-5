@@ -15,6 +15,7 @@ public class Booking {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
     private Long bookingId;
@@ -28,6 +29,9 @@ public class Booking {
 =======
     @NotNull(message = "Customers ID is required")
 >>>>>>> 031b9db... /username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
+=======
+    @NotNull(message = "Customers ID is required")
+>>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
     private Long customerId;
     @NotNull (message = "Workers ID is required")
     private Long workerId;
@@ -96,5 +100,8 @@ public class Booking {
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
     }
+<<<<<<< HEAD
 >>>>>>> 12ba313... finish model skeleton
+=======
+>>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
 }
