@@ -1,80 +1,49 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 @Entity
 public class Customer extends User{
 =======
+=======
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+>>>>>>> 12ba313... finish model skeleton
 public class Customer extends User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@NotBlank - add dependency
-    private String firstName;
-    private String lastName;
-    private String type;
-    private Date created_At;
-    private Date updated_At;
+    private String billingAddress;
+    private String shippingAddress;
 
     public Customer() {
         super();
     }
 
-    @Override
     public Long getId() {
         return id;
     }
 
-    @Override
-    public String getFirstName() {
-        return firstName;
+    public String getBillingAddress() {
+        return billingAddress;
     }
 
-    @Override
-    public String getLastName() {
-        return lastName;
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
-    @Override
-    public String getType() {
-        return type;
+    public String getShippingAddress() {
+        return shippingAddress;
     }
 
-    @Override
-    public Date getCreated_At() {
-        return created_At;
-    }
-
-    @Override
-    public Date getUpdated_At() {
-        return updated_At;
-    }
-
-    @Override
-    public void setId(Long id1) {
-        this.id = id1;
-    }
-
-    @Override
-    public void setFirstName(String fName) {
-        this.firstName = fName;
-    }
-
-    @Override
-    public void setLastName(String lName) {
-        this.lastName = lName;
-    }
-
-    @Override
-    public void setType(String type1) {
-        this.type = type1;
-    }
-
-    @Override
-    public void setUpdated_At(Date date1) {
-        this.updated_At = date1;
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 >>>>>>> f4884a3... Merged with model
 }

@@ -1,31 +1,22 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
-<<<<<<< HEAD
-public class Admin extends User {
-=======
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Admin extends User{
+public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String companyName;
-    private Long companyId;
 
-   public Admin(){
-       super();
-   }
+    public Company(){
 
-    public Long getCompanyId() {
-        return companyId;
     }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
+    public Long getId() {
+        return id;
     }
 
     public String getCompanyName() {
@@ -35,10 +26,4 @@ public class Admin extends User{
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
-    public Long getId() {
-        return id;
-    }
-
->>>>>>> 12ba313... finish model skeleton
 }
