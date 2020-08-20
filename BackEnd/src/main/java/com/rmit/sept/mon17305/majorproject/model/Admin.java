@@ -2,10 +2,14 @@ package com.rmit.sept.mon17305.majorproject.model;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Admin extends User {
 =======
 import javax.persistence.Entity;
 =======
+=======
+import javax.validation.constraints.NotBlank;
+>>>>>>> 1c962aa... Not Blank import added to Admin
 import javax.persistence.*;
 import java.util.Date;
 >>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
@@ -16,13 +20,13 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@NotBlank (message = "Admins first name is required")
+    @NotBlank (message = "Admins first name is required")
     private String firstName;
-    //@NotBlank (message = "Admins last name is required")
+    @NotBlank (message = "Admins last name is required")
     private String lastName;
     private Date created_At;
     private Date updated_At;
-    //@NotBlank(message = "Admins company Id is required")
+    @NotBlank(message = "Admins company Id is required")
     private Long companyId;
 
     public Admin(){}
