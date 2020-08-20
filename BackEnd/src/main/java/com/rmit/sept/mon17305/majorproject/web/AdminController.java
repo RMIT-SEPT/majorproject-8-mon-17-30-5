@@ -1,7 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Admin;
-import com.rmit.sept.mon17305.majorproject.repository.AdminRepository;
 import com.rmit.sept.mon17305.majorproject.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,5 +45,25 @@ public class AdminController {
         return adminService.getAdmin(id);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> replaceAdmin(@RequestBody Admin newAdmin, @PathVariable Long id) {
 
+                adminService.getAdmin(id)
+                .map(admin -> {
+                    admin.setFirstName(newAdmin.getFirstName());
+                    admin.setLastName(newAdmin.getFirstName());
+                    return new ResponseEntity<Admin> (adminService.saveOrUpdateAdmin(admin),HttpStatus.ACCEPTED);
+                })
+                .orElseGet(() -> {
+                    Admin Admin1 = adminService.saveOrUpdateAdmin(newAdmin);
+                    return new ResponseEntity<Admin>(newAdmin, HttpStatus.CREATED);
+                });
+
+                return new ResponseEntity<String>("Couldn't find Admin", HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("/{id}")
+    void deleteAdmin(@PathVariable Long id) {
+        adminService.deleteAdminById(id);
+    }
 }
