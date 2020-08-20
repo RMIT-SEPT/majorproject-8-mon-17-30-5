@@ -16,9 +16,6 @@ import javax.persistence.Id;
 >>>>>>> 12ba313... finish model skeleton
 public class Customer extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String billingAddress;
     private String shippingAddress;
 
@@ -27,7 +24,7 @@ public class Customer extends User {
     }
 
     public Long getId() {
-        return id;
+        return userId;
     }
 
     public String getBillingAddress() {

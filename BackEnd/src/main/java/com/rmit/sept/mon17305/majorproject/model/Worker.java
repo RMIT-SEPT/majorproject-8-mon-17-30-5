@@ -12,9 +12,7 @@ import java.util.List;
 
 @Entity
 public class Worker extends User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private Long companyId;
     private Long serviceId;
     private Date startTime;
@@ -34,8 +32,8 @@ public class Worker extends User{
         this.companyId = companyId;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
     public Long getServiceId() {

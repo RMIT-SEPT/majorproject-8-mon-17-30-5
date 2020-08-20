@@ -7,9 +7,13 @@ import java.util.Date;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
     private Long id;
 <<<<<<< HEAD
 =======
+=======
+    private Long bookingId;
+>>>>>>> 694a53d... Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
     private Long customerId;
     private Long workerId;
     private Long serviceId;
@@ -21,8 +25,12 @@ public class Booking {
 
     }
 
-    public Long getId() {
-        return id;
+    public Long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(Long bookingId) {
+        this.bookingId = bookingId;
     }
 
     public Long getCustomerId() {

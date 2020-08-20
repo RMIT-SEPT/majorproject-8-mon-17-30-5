@@ -2,6 +2,7 @@ package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.*;
 
+@MappedSuperclass
 public abstract class User {
 <<<<<<< HEAD
     @Id
@@ -13,6 +14,9 @@ public abstract class User {
 
 >>>>>>> 12ba313... finish model skeleton
     //@NotBlank - add dependency
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long userId;
     protected String firstName;
     protected String lastName;
     protected String type;
@@ -20,6 +24,10 @@ public abstract class User {
     protected Date updated_At;
 
     public User() {
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 
     public String getFirstName() {
@@ -40,6 +48,10 @@ public abstract class User {
 
     public Date getUpdated_At() {
         return updated_At;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public void setFirstName(String fName) {
