@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
+import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
@@ -39,6 +40,11 @@ public class WorkerController {
     public List<Worker> getWorkers() {
 
         return workerService.getWorkers();
+    }
+
+    @GetMapping("/username/{username}")
+    public Worker getWorkerByUsername(@PathVariable String username) {
+        return workerService.getWorkerByUsername(username);
     }
 
     @GetMapping("/{id}")

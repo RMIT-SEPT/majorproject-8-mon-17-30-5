@@ -2,6 +2,7 @@ package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -11,6 +12,7 @@ public class Booking {
 <<<<<<< HEAD
 <<<<<<< HEAD
     private Long id;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -23,10 +25,13 @@ public class Booking {
 =======
     @NotBlank(message = "Customers ID is required")
 >>>>>>> 2377f3a... Updated the API to work for all object models
+=======
+    @NotNull(message = "Customers ID is required")
+>>>>>>> 031b9db... /username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
     private Long customerId;
-    @NotBlank (message = "Workers ID is required")
+    @NotNull (message = "Workers ID is required")
     private Long workerId;
-    @NotBlank (message = "Service ID is required")
+    @NotNull (message = "Service ID is required")
     private Long serviceId;
     private String type;
     private Date startTime;
