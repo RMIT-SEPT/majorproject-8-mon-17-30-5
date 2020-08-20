@@ -1,13 +1,13 @@
 package com.rmit.sept.mon17305.majorproject.repository;
 
-import com.rmit.sept.mon17305.majorproject.model.Worker;
+import com.rmit.sept.mon17305.majorproject.model.Booking;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WorkerRepository extends CrudRepository<Worker, Long> {
+public interface BookingRepository extends CrudRepository<Booking, Long> {
 
     @Override
-    Iterable<Worker> findAllById(Iterable<Long> iterable);
+    Iterable<Booking> findAllById(Iterable<Long> iterable);
 
 }

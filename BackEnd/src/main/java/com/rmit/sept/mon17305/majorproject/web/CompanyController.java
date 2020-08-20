@@ -1,7 +1,7 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
-import com.rmit.sept.mon17305.majorproject.model.Worker;
-import com.rmit.sept.mon17305.majorproject.service.WorkerService;
+import com.rmit.sept.mon17305.majorproject.model.Company;
+import com.rmit.sept.mon17305.majorproject.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/worker")
-public class WorkerController {
+@RequestMapping("/api/company")
+public class CompanyController {
 
     @Autowired
-    private WorkerService workerService;
+    private CompanyService companyService;
 
     @PostMapping("")
-    public ResponseEntity<Worker> createNewWorker(@RequestBody Worker worker){
+    public ResponseEntity<Company> createNewCustomer(@RequestBody Company company){
 
-        Worker worker1 = workerService.saveOrUpdateWorker(worker);
-        return new ResponseEntity<Worker>(worker, HttpStatus.CREATED);
+        Company company1 = companyService.saveOrUpdateCompany(company);
+        return new ResponseEntity<Company>(company, HttpStatus.CREATED);
 
     }
 

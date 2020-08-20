@@ -8,12 +8,16 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 <<<<<<< HEAD
+<<<<<<< HEAD
     private Long id;
 <<<<<<< HEAD
 =======
 =======
     private Long bookingId;
 >>>>>>> 694a53d... Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
+=======
+    private Long id;
+>>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
     private Long customerId;
     private Long workerId;
     private Long serviceId;
@@ -25,12 +29,12 @@ public class Booking {
 
     }
 
-    public Long getBookingId() {
-        return bookingId;
+    public Long getId() {
+        return id;
     }
 
-    public void setBookingId(Long bookingId) {
-        this.bookingId = bookingId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getCustomerId() {
