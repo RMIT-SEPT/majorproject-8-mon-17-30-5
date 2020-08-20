@@ -1,6 +1,7 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -11,6 +12,7 @@ public class Booking {
 <<<<<<< HEAD
     private Long id;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
     private Long bookingId;
@@ -18,8 +20,13 @@ public class Booking {
 =======
     private Long id;
 >>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
+=======
+    @NotBlank(message = "Customers ID is required")
+>>>>>>> 2377f3a... Updated the API to work for all object models
     private Long customerId;
+    @NotBlank (message = "Workers ID is required")
     private Long workerId;
+    @NotBlank (message = "Service ID is required")
     private Long serviceId;
     private String type;
     private Date startTime;

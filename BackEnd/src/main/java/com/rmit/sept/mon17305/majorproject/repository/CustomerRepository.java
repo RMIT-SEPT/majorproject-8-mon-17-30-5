@@ -14,6 +14,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
     Iterable<Customer> findAllById(Iterable<Long> iterable);
     List<Customer> findAll();
     Optional<Customer> findById(Long id);
+    @Override
+    void deleteById(Long id);
 
 
 

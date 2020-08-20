@@ -6,6 +6,8 @@ import com.rmit.sept.mon17305.majorproject.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +21,13 @@ public class CompanyController {
     private CompanyService companyService;
 
     @PostMapping("")
-    public ResponseEntity<Company> createNewCustomer(@RequestBody Company company){
+    public ResponseEntity<?> createNewCompany(@RequestBody Company company, BindingResult result){
+
+        if (result.hasErrors()){
+            for(FieldError error: result.getFieldErrors()) {
+                return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
+            }
+        }
 
         Company company1 = companyService.saveOrUpdateCompany(company);
         return new ResponseEntity<Company>(company, HttpStatus.CREATED);
@@ -35,6 +43,27 @@ public class CompanyController {
     @GetMapping("/{id}")
     public Optional<Company> getCompany(@PathVariable Long id) {
         return companyService.getCompany(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> replaceCompany(@RequestBody Company newCompany, @PathVariable Long id) {
+
+        companyService.getCompany(id)
+                .map(company -> {
+                    company.setCompanyName(newCompany.getCompanyName());
+                    return new ResponseEntity<Company> (companyService.saveOrUpdateCompany(company),HttpStatus.ACCEPTED);
+                })
+                .orElseGet(() -> {
+                    Company customer1 = companyService.saveOrUpdateCompany(newCompany);
+                    return new ResponseEntity<Company>(newCompany, HttpStatus.CREATED);
+                });
+
+        return new ResponseEntity<String>("Couldn't find Company", HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("/{id}")
+    void deleteCustomer(@PathVariable Long id) {
+        companyService.deleteCompanyById(id);
     }
 
 }

@@ -33,4 +33,9 @@ public class ServiceObjectService {
         return serviceObjectRepository.findById(id);
     }
 
+    public void deleteServiceObjectById(Long id){
+
+        serviceObjectRepository.deleteById(id);
+    }
+
 }

@@ -55,7 +55,7 @@ public class AdminController {
                     return new ResponseEntity<Admin> (adminService.saveOrUpdateAdmin(admin),HttpStatus.ACCEPTED);
                 })
                 .orElseGet(() -> {
-                    Admin Admin1 = adminService.saveOrUpdateAdmin(newAdmin);
+                    Admin admin1 = adminService.saveOrUpdateAdmin(newAdmin);
                     return new ResponseEntity<Admin>(newAdmin, HttpStatus.CREATED);
                 });
 

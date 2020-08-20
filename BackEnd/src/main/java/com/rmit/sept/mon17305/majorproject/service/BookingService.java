@@ -33,4 +33,9 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
+    public void deleteBookingById(Long id){
+
+        bookingRepository.deleteById(id);
+    }
+
 }

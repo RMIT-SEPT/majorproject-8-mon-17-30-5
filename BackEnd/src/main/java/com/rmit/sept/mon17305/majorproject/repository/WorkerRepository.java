@@ -14,5 +14,7 @@ public interface WorkerRepository extends CrudRepository<Worker, Long> {
     Iterable<Worker> findAllById(Iterable<Long> iterable);
     List<Worker> findAll();
     Optional<Worker> findById(Long id);
+    @Override
+    void deleteById(Long id);
 
 }

@@ -14,5 +14,7 @@ public interface ServiceObjectRepository extends CrudRepository<ServiceObject, L
     Iterable<ServiceObject> findAllById(Iterable<Long> iterable);
     List<ServiceObject> findAll();
     Optional<ServiceObject> findById(Long id);
+    @Override
+    void deleteById(Long id);
 
 }
