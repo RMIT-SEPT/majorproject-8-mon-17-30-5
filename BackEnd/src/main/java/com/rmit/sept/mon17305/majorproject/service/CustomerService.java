@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.service;
 
+import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Customer;
 import com.rmit.sept.mon17305.majorproject.model.Customer;
 import com.rmit.sept.mon17305.majorproject.repository.CustomerRepository;
@@ -31,6 +32,11 @@ public class CustomerService {
     public Optional<Customer> getCustomer(Long id){
 
         return customerRepository.findById(id);
+    }
+
+    public Customer getCustomerByUsername(String username){
+
+        return customerRepository.findByUsername(username);
     }
 
     public void deleteCustomerById(Long id){

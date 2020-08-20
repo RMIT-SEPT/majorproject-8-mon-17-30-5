@@ -14,6 +14,9 @@ public class Worker{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 3, max = 20, message = "username must be within 3 to 20 characters long")
+    @NotBlank (message = "Workers username is required")
+    private String username;
     @Size(min = 3, max = 20, message = "First Name must be within 3 to 20 characters long")
     @NotBlank(message = "Workers first name is required")
     private String firstName;
@@ -36,6 +39,10 @@ public class Worker{
         return id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -54,6 +61,10 @@ public class Worker{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setFirstName(String fName) {

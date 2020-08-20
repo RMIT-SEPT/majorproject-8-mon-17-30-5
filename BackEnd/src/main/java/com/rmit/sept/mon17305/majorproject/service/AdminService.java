@@ -32,6 +32,11 @@ public class AdminService {
         return adminRepository.findById(id);
     }
 
+    public Admin getAdminByUsername(String username){
+
+        return adminRepository.findByUsername(username);
+    }
+
     public void deleteAdminById(Long id){
 
         adminRepository.deleteById(id);

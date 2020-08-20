@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -13,6 +14,9 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 3, max = 20, message = "username must be within 3 to 20 characters long")
+    @NotBlank (message = "Admins username is required")
+    private String username;
     @Size(min = 3, max = 20, message = "First Name must be within 3 to 20 characters long")
     @NotBlank (message = "Admins first name is required")
     private String firstName;
@@ -23,13 +27,17 @@ public class Admin{
     private Date created_At;
     @JsonFormat(pattern = "yyy-mm-dd")
     private Date updated_At;
-    @NotBlank(message = "Admins company Id is required")
+    @NotNull(message = "Admins company Id is required")
     private Long companyId;
 
     public Admin(){}
 
     public Long getUserId() {
         return id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getFirstName() {
@@ -50,6 +58,10 @@ public class Admin{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setFirstName(String fName) {
