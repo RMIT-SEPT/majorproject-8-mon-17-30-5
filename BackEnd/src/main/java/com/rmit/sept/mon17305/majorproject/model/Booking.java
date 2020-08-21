@@ -13,13 +13,13 @@ public class Booking {
     private Long id;
 
     private Long bookingId;
+
 //Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
 
 //POSTMAN can now post to every object and it comes up in the database. All files for API now created.
 
     @NotBlank(message = "Customers ID is required")
 //Updated the API to work for all object models
-
     @NotNull(message = "Customers ID is required")
 //username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
 
@@ -93,5 +93,4 @@ public class Booking {
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
     }
-
 }

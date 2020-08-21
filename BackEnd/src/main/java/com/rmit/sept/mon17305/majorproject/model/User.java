@@ -9,10 +9,6 @@ public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //@NotBlank - add dependency
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    protected Long id;
     protected String firstName;
     protected String lastName;
     protected Date created_At;
@@ -66,5 +62,4 @@ public abstract class User {
     protected void onUpdate() {
         this.updated_At = new Date();
     }
-
 }

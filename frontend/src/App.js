@@ -6,6 +6,7 @@ import NavigationBar from './Components/NavigationBar'
 import CustomerDashboard from './Components/CustomerDashboard'
 import AboutUs from './Components/AboutUs'
 import ContactUs from './Components/ContactUs'
+import SingleCustomer from './Components/SingleCustomer'
 
 function App() {
   return (
@@ -13,12 +14,14 @@ function App() {
     <div className="App">
         <LoginForm/>
 
-        <switch>
+        <Switch>
           <Route path = "/login" exact component = {CustomerDashboard}></Route>
           <Route path = "/about-us" exact component = {AboutUs}></Route>
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
-        </switch>
+        </Switch>
     </div>
+        {//<SingleCustomer/>
+        }
     </Router>
  
   );

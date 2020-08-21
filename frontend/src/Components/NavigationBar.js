@@ -8,10 +8,10 @@ function NavigationBar(){
         <div>
             <ul>
                 <LinkRouter to= "/about-us">
-                <li><a>About Us </a></li>
+                <li>About Us </li>
                 </LinkRouter>
                 <LinkRouter to="/contact-us">
-                <li><a>Contact Us</a></li>
+                <li>Contact Us</li>
                 </LinkRouter>
             </ul>
         </div>

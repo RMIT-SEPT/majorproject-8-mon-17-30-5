@@ -1,25 +1,14 @@
 package com.rmit.sept.mon17305.majorproject.model;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
-
-//public class Worker extends User{
-
-//can now post to every object and it comes up in the database. All files for API now created.
-
-//Updated the API to work for all object models
-
-
-
 @Entity
 public class Worker{
 
@@ -144,5 +133,4 @@ public class Worker{
     public void setWorkingDays(String workingDays) {
         this.workingDays = workingDays;
     }
-
 }

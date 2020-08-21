@@ -10,16 +10,10 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.util.Date;
 
 //@Entity
+
 //public class Customer extends User{
 //
 //Updated the API to work for all object models
@@ -27,10 +21,6 @@ import java.util.Date;
 @Entity
 public class Customer{
 //POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-//=======
-//public class Customer{
-//>>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
