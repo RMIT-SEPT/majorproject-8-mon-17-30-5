@@ -1,30 +1,23 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-public class Worker extends User{
-=======
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-=======
+
 import javax.persistence.*;
->>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-=======
-=======
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
+//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-<<<<<<< HEAD
->>>>>>> 2377f3a... Updated the API to work for all object models
-=======
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
+//Updated the API to work for all object models
+
 import java.util.Date;
 import java.util.List;
 
@@ -152,8 +145,6 @@ public class Worker{
     public void setWorkingDays(String workingDays) {
         this.workingDays = workingDays;
     }
-<<<<<<< HEAD
->>>>>>> 12ba313... finish model skeleton
-=======
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
+//finish model skeleton
+
 }

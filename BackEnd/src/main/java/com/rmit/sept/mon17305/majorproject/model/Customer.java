@@ -1,49 +1,37 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javax.persistence.Entity;
-<<<<<<< HEAD
-=======
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
-
-<<<<<<< HEAD
-@Entity
-<<<<<<< HEAD
-public class Customer extends User{
-=======
-=======
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-@Entity
->>>>>>> 12ba313... finish model skeleton
-public class Customer extends User {
-=======
-=======
 import com.fasterxml.jackson.annotation.JsonFormat;
 
->>>>>>> 2377f3a... Updated the API to work for all object models
+//Updated the API to work for all object models
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+//@Entity
+//
+//public class Customer extends User{
+
+//@Entity
+//finish model skeleton
+//public class Customer extends User {
+
+
+
 @Entity
 public class Customer{
->>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-=======
-public class Customer{
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
-
+//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -138,8 +126,6 @@ public class Customer{
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
-<<<<<<< HEAD
->>>>>>> f4884a3... Merged with model
-=======
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
+// Merged with model
+
 }

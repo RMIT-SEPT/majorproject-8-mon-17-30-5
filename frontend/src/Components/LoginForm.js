@@ -10,21 +10,21 @@ function LoginForm(){
             <br></br>
             <br></br>
             <br></br>
-            <form class = "entry" id = "loginForm">
+            <form className = "entry" id = "loginForm">
             <h1>Welcome!</h1>
             <label id = "enjoy">Login to enjoy a wide range of services!</label>
             <br></br>
             <br></br>
             <label id = "emailLabel">Email/Username</label><br></br>
-            <input type = "text" id = "username" class = "loginInput" placeholder = "Email/Username" required></input>
+            <input type = "text" id = "username" className = "loginInput" placeholder = "Email/Username" required></input>
             <br></br>
             <br></br>
             <label id = "passwordLabel">Password</label><br></br>
-            <input type = "password" id = "password" class = "loginInput" placeholder = "Enter Password" required></input>
+            <input type = "password" id = "password" className = "loginInput" placeholder = "Enter Password" required></input>
             <br></br>
             <br></br>
             <LinkRouter to = "/login">
-            <div class = "buttonholder">
+            <div className = "buttonholder">
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
             </LinkRouter>
