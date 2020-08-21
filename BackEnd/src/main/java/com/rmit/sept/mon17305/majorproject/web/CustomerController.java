@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
+import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Customer;
 import com.rmit.sept.mon17305.majorproject.model.Customer;
 import com.rmit.sept.mon17305.majorproject.service.CustomerService;
@@ -38,6 +39,11 @@ public class CustomerController {
     public List<Customer> getCustomers() {
 
         return customerService.getCustomers();
+    }
+
+    @GetMapping("/username/{username}")
+    public Customer getCustomerByUsername(@PathVariable String username) {
+        return customerService.getCustomerByUsername(username);
     }
 
     @GetMapping("/{id}")

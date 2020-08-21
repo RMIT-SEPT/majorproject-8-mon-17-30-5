@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.service;
 
+import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.repository.WorkerRepository;
@@ -26,6 +27,11 @@ public class WorkerService {
 
         return workerRepository.findAll();
 
+    }
+
+    public Worker getWorkerByUsername(String username){
+
+        return workerRepository.findByUsername(username);
     }
 
     public Optional<Worker> getWorker(Long id){

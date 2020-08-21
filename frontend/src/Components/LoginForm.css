@@ -1,0 +1,79 @@
+body
+{
+    text-align:center;
+    background-image: url("./hiclipart.com.png");
+    background-repeat: round;
+}
+
+form.entry
+{
+    background-color: white;
+    display: inline-block;
+    border-color: rgb(39, 141, 237);
+    border-style: solid;
+    display: inline-block;
+    align-items: center;
+    box-shadow: 0px 0px 18px 4px #696969; 
+}
+
+input
+{
+  padding: 12px 200px;
+  margin: 8px 20px;
+  box-sizing: content-box;
+  display: inline-block;
+  width: 100px;
+}
+
+h1{
+    font-weight: bold;
+    color: rgb(39, 141, 237);
+    text-align: center;
+}
+
+.buttonholder #loginBtn
+{
+  background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
+  border: none;
+  color: white;
+  padding: 16px 200px;
+  margin: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.buttonholder #loginBtn:hover
+{
+    color:rgb(39, 141, 237);
+    background-image: none;
+    border: 2px solid rgb(39, 141, 237);
+    box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+ul 
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0px;
+    overflow: hidden;
+    background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
+}
+  
+li 
+{
+    float: left;
+}
+  
+li a 
+{
+    display: block;
+    padding: 8px;
+    color: white;
+}
+
+li a:hover 
+{
+    background-color: white;
+    color: rgb(39, 141, 237);
+}

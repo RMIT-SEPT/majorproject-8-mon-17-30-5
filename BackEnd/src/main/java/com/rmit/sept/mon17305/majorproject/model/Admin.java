@@ -1,11 +1,34 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+public class Admin extends User {
+=======
+import javax.persistence.Entity;
+=======
+=======
+=======
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+>>>>>>> cad61ed... API Post with validation, Get all and getbyid added to Admin, needs to cover the rest which i will do tomorrow.
+import javax.validation.constraints.NotBlank;
+>>>>>>> 1c962aa... Not Blank import added to Admin
+=======
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotBlank;
+>>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+<<<<<<< HEAD
+>>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
+=======
+>>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
 
 @Entity
 public class Admin{
@@ -13,6 +36,9 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 3, max = 20, message = "username must be within 3 to 20 characters long")
+    @NotBlank (message = "Admins username is required")
+    private String username;
     @Size(min = 3, max = 20, message = "First Name must be within 3 to 20 characters long")
     @NotBlank (message = "Admins first name is required")
     private String firstName;
@@ -23,13 +49,17 @@ public class Admin{
     private Date created_At;
     @JsonFormat(pattern = "yyy-mm-dd")
     private Date updated_At;
-    @NotBlank(message = "Admins company Id is required")
+    @NotNull(message = "Admins company Id is required")
     private Long companyId;
 
     public Admin(){}
 
     public Long getUserId() {
         return id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getFirstName() {
@@ -50,6 +80,10 @@ public class Admin{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setFirstName(String fName) {
@@ -90,4 +124,8 @@ public class Admin{
         this.companyId = companyId;
     }
 
+<<<<<<< HEAD
+>>>>>>> 12ba313... finish model skeleton
+=======
+>>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
 }

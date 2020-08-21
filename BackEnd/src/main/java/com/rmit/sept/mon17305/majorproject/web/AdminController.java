@@ -45,6 +45,11 @@ public class AdminController {
         return adminService.getAdmin(id);
     }
 
+    @GetMapping("/username/{username}")
+    public Admin getAdminByUsername(@PathVariable String username) {
+        return adminService.getAdminByUsername(username);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceAdmin(@RequestBody Admin newAdmin, @PathVariable Long id) {
 
