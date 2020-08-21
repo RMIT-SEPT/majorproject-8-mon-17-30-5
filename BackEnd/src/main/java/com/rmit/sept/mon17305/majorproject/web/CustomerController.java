@@ -46,6 +46,7 @@ public class CustomerController {
         return customerService.getCustomerByUsername(username);
     }
 
+    //username/password
     @GetMapping("/{id}")
     public Optional<Customer> getCustomer(@PathVariable Long id) {
         return customerService.getCustomer(id);

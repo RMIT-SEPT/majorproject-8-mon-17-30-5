@@ -1,9 +1,11 @@
 import React from 'react';
+import SingleCustomer from './SingleCustomer';
 
 function CustomerDashBoard(){
     return(
         <div>
-        Hello World!
+            <SingleCustomer/>
+            <p></p>
         </div>
 
     );

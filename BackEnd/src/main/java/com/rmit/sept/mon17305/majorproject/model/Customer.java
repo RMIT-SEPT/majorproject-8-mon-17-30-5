@@ -115,4 +115,8 @@ public class Customer{
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
+
+    public String getType(){
+        return "Customer";
+    }
 }

@@ -117,4 +117,7 @@ public class Admin{
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
     }
+    public String getType(){
+        return "Admin";
+    }
 }

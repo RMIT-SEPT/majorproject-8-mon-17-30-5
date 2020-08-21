@@ -12,16 +12,14 @@ function App() {
   return (
   <Router>
     <div className="App">
-        <LoginForm/>
-
         <Switch>
+          <Route path = "/" exact component = {LoginForm}></Route>
           <Route path = "/login" exact component = {CustomerDashboard}></Route>
           <Route path = "/about-us" exact component = {AboutUs}></Route>
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
         </Switch>
     </div>
-        {//<SingleCustomer/>
-        }
+       
     </Router>
  
   );

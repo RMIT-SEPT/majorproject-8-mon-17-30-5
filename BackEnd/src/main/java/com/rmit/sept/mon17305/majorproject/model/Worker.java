@@ -133,4 +133,8 @@ public class Worker{
     public void setWorkingDays(String workingDays) {
         this.workingDays = workingDays;
     }
+
+    public String getType(){
+        return "Worker";
+    }
 }
