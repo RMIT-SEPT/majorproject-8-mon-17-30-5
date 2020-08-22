@@ -39,9 +39,16 @@ public class CustomerService {
         return customerRepository.findByUsername(username);
     }
 
+    public Customer getCustomerByUsernameAndPassword(String username, String password){
+
+        return customerRepository.findByUsernameAndPassword(username, password);
+    }
+
     public void deleteCustomerById(Long id){
 
         customerRepository.deleteById(id);
     }
+
+
 
 }

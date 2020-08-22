@@ -46,6 +46,17 @@ public class CustomerController {
         return customerService.getCustomerByUsername(username);
     }
 
+    @GetMapping("/username/{username}/password/{password}")
+    public Customer getCustomerByUsername(@PathVariable String username, @PathVariable String password) {
+
+        Customer customer = customerService.getCustomerByUsernameAndPassword(username, password);
+        if(customer == null){
+            throw new NullPointerException("Wrong user details");
+        }
+
+        return customer;
+    }
+
     //username/password
     @GetMapping("/{id}")
     public Optional<Customer> getCustomer(@PathVariable Long id) {

@@ -25,6 +25,7 @@ public class MajorprojectApplication {
             austin.setBillingAddress("Address");
             austin.setShippingAddress("Address Shipping");
             austin.setUsername("Austin");
+            austin.setPassword("Lay");
 
             customerRepository.save(austin);
         };

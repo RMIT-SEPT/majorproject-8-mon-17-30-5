@@ -39,6 +39,7 @@ public class Customer{
     private Date updated_At;
     private String billingAddress;
     private String shippingAddress;
+    private String password;
 
     public Customer() {}
 
@@ -118,5 +119,13 @@ public class Customer{
 
     public String getType(){
         return "Customer";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
