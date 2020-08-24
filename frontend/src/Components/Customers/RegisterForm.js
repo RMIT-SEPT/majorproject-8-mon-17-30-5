@@ -10,7 +10,7 @@ function RegisterForm(){
             <br></br>
             <br></br>
             <br></br>
-            <form className = "entryRegister" id = "registerForm">
+            <form className = "entryRegister" id = "registerForm" onSubmit="">
             <h1 className = "regoHead">Join Us!</h1>
             <label className = "regoLabel">Join us today to have a wide range of services, right at your fingertips!</label>
             <br></br>
