@@ -112,7 +112,7 @@ function LoginForm(props){
             </div>
             {//</LinkRouter>
             }
-            <p>Don't have an account yet? <a href = "#signUp">Sign Up</a> here!</p>
+            <p>Don't have an account yet? <LinkRouter to = "/signupform"></LinkRouter>Sign Up here!</p>
             </form>
         </div>
     );
