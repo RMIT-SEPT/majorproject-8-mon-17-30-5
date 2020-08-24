@@ -6,11 +6,12 @@ export default class AddWorker extends Component {
   };
 
   render() {
+    
     return (
-      <div className="modal">
-        <div className="modal_content">
+      <div>
+        <div>
           <span className="close" onClick={this.handleClick}>
-            &times;
+            X
           </span>
           <form>
             <h3>Register!</h3>
