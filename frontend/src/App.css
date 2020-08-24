@@ -55,6 +55,18 @@ form.entry
     box-shadow: 0px 0px 18px 4px #696969; 
 }
 
+form.entryRegister
+{
+  background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
+  display: inline-block;
+  border-color: white;
+  color:white;
+  border-style: solid;
+  display: inline-block;
+  align-items: center;
+  box-shadow: 0px 0px 18px 4px #696969; 
+}
+
 input
 {
   padding: 12px 200px;
@@ -88,6 +100,26 @@ h1{
     background-image: none;
     border: 2px solid rgb(39, 141, 237);
     box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+.buttonholder #registerBtn
+{
+  background-color: white;
+  border: none;
+  color: rgb(39, 141, 237);
+  padding: 16px 200px;
+  margin: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.buttonholder #registerBtn:hover{
+  background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
+  color:white;
+  background-image: none;
+  border: 2px solid white;
+  box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
 }
 
 ul 
