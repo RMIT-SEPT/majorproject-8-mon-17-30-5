@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import {BrowserRouter as Router, Route, Link as LinkRouter, Switch} from "react-router-dom";
-import LoginForm from './Components/LoginForm';
-import NavigationBar from './Components/NavigationBar'
+import LoginForm from './Components/Layout/LoginForm';
+import NavigationBar from './Components/Layout/NavigationBar'
 import CustomerDashboard from './Components/Dashboard/CustomerDashboard'
 import AboutUs from './Components/AboutUs'
 import ContactUs from './Components/ContactUs'

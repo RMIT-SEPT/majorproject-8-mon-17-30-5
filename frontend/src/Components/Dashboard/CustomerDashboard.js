@@ -12,7 +12,7 @@ export default class CustomerDashboard extends Component {
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-3">
-                            <button type="button" class="btn btn-info btn-block">
+                            <button type="button" class="btn btn-success btn-block">
                                 <h4>Service 1</h4>
                                 <li>Company:</li><br></br>
                                 <li>ServiceType</li><br></br>

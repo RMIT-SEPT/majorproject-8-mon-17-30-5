@@ -1,7 +1,7 @@
 import React from 'react';
 import './LoginForm.css';
 import {Link as LinkRouter} from "react-router-dom";
-import AboutUs from  "./AboutUs";
+import AboutUs from  "../AboutUs";
 
 function NavigationBar(){
     return(
