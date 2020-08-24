@@ -3,10 +3,11 @@ import logo from './logo.svg';
 import {BrowserRouter as Router, Route, Link as LinkRouter, Switch} from "react-router-dom";
 import LoginForm from './Components/LoginForm';
 import NavigationBar from './Components/NavigationBar'
-import CustomerDashboard from './Components/CustomerDashboard'
+import CustomerDashboard from './Components/Dashboard/CustomerDashboard'
 import AboutUs from './Components/AboutUs'
 import ContactUs from './Components/ContactUs'
 import SingleCustomer from './Components/SingleCustomer'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

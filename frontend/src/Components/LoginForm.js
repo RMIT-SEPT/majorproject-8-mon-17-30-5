@@ -33,7 +33,8 @@ function LoginForm(props){
         //     }
 
         // });
-
+        
+        //const {evernt.target.name, event.target.value};
         const {name, value} = event.target;
 
         setUserDetails(prevValue => {
@@ -57,8 +58,14 @@ function LoginForm(props){
         .then(function(response){
           // code when login is successfull
 
-            console.log(response.data);
+            //console.log(response.data);
+            
 
+            
+
+            sessionStorage.setItem("username", response.data.username);
+            console.log(sessionStorage.getItem("username"));
+            // sessionStorage.removeItem("username");
 
             props.history.push("/login");
         })
