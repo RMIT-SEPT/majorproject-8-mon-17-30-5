@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './LoginForm.css'
+import '../../Style.css'
 import NavigationBar from './NavigationBar';
 import {Link as LinkRouter} from "react-router-dom";
 import axios from "axios";

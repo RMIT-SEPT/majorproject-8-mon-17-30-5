@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoginForm.css';
+import '../../Style.css';
 import {Link as LinkRouter} from "react-router-dom";
 import AboutUs from  "../AboutUs";
 
