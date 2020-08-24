@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import {BrowserRouter as Router, Route, Link as LinkRouter, Switch} from "react-router-dom";
 import LoginForm from './Components/Layout/LoginForm';
 import NavigationBar from './Components/Layout/NavigationBar'
-import CustomerDashboard from './Components/Dashboard/CustomerDashboard'
+import CustomerDashboard from './Components/Customers/CustomerDashboard'
 import AboutUs from './Components/AboutUs'
 import ContactUs from './Components/ContactUs'
 import SingleCustomer from './Components/SingleCustomer'
