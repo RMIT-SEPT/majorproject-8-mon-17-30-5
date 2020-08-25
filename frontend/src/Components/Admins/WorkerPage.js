@@ -7,6 +7,7 @@ export default class WorkerPage extends React.Component {
   };
 
   togglePop = () => {
+    console.log('Toggle pressed')
     this.setState({
       seen: !this.state.seen
     });
