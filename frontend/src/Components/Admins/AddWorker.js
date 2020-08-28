@@ -1,55 +1,110 @@
-import React, { Component } from "react";
+import React, { Component, useState} from "react";
 import Dropdown from 'react-dropdown';
+import {Link as LinkRouter} from "react-router-dom";
+import axios from "axios";
 
-const options = ['Female', 'Male'];
 
-export default class AddWorker extends Component {
-  handleClick = () => {
+
+
+function AddWorker(props) {
+  const options = ['Female', 'Male'];
+  const[userDetails, setUserDetails] = useState({
+    username: "",
+    firstname:"",
+    lastname: "",
+    password: "",
+    starttime:"",
+    finishtime:"",
+    hasLoginFailed: false
+  });
+     //export default class AddWorker extends Component {
+  function handleClick() {
     this.props.toggle();
   };
 
-  render() {
+  function handleChange(event){
+    const{name, value} = event.target;
+    setUserDetails(prevValue =>{
+      return {
+        ...prevValue,
+        [name] : value
+      }
+    })
+  }
+
+  async function createPer(type, person, history){
+    try {
+      console.log("after try");
+        if(type==="customer"){
+          const res = await axios.post("http://localhost:8080/api/customer", person);
+          history.push("/");
+        }else if(type==="worker"){
+          console.log("creating a worker");
+          const res = await axios.post("http://localhost:8080/api/worker/create", person);
+          history.push("/about-us")
+        }else if(type==="admin"){
+          const res = await axios.post("http://localhost:8080/api/admin", person);
+        }
+      } catch (err) {
+       console.log(err);
+      }
+    
+  }
+
+  function handleSubmit(event) {
+    console.log("handleSubmit");
+    event.preventDefault();
+    const person = {
+      username: userDetails.username,
+      firstName: userDetails.finishtime,
+      lastName:userDetails.lastname,
+      password:userDetails.password,
+      startTime:userDetails.starttime,
+      finishTime:userDetails.finishtime
+    }
+    createPer("worker", person, props);
+  }
+
+  //render() {
     return (
       <div>
-        <span className="close" onClick={this.handleClick}> X </span>
-        <form>
+        <span className="close" onClick={handleClick}> X </span>
+        <form onSubmit={handleSubmit}>
           <h3>Worker Details</h3>
           <label>
             First Name:
-            <input type="text"/>
+            <input type="text" name="firstname" onChange={handleChange}/>
           </label>
           <label>
             Last Name:
-            <input type="text"/>
-          </label>
-          <label>
-            Occupation:
-            <input type="text"/>
-          </label>
-          <label>
-            Gender:
-            <Dropdown options={options} onChange={this._onSelect} placeholder='Select' />;
+            <input type="text" name="lastname" onChange={handleChange}/>
           </label>
           <label>
             Username:
-            <input type="text"/>
+            <input type="text" name="username" onChange={handleChange}/>
           </label>
           <label>
             Password:
-            <input type="text"/>
+            <input type="text" name="password" onChange={handleChange}/>
           </label>
           <label>
-            Working Hours:
-            <input type="text"/>
+            Working start Hours:
+            <input type="text" name="starttime" onChange={handleChange}/>
+          </label>
+          <label>
+            Working finish Hours:
+            <input type="text" name="finishtime" onChange={handleChange}/>
           </label>
           <label>
             Working Dates:
             <input type="text"/>
           </label>
           <br />
-          <input type="submit" value= "Add worker"/>
+          <button type="submit" value= "Add worker"/>
         </form>
       </div>
     );
-  }
+  //}
 }
+
+export default AddWorker;

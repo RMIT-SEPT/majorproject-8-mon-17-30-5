@@ -17,11 +17,11 @@ function App() {
     <div className="App">
         <Switch>
           <Route path = "/" exact component = {LoginForm}></Route>
-          <Route path = "/login" exact component = {CustomerDashboard}></Route>
+          <Route path = "/customer" exact component = {CustomerDashboard}></Route>
           <Route path = "/about-us" exact component = {AboutUs}></Route>
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
           <Route path = "/admin" exact component = {AdminDashboard}></Route>
-          <Route path = "/worker" exact component = {WorkerPage}></Route>
+          <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
         </Switch>
     </div>
        

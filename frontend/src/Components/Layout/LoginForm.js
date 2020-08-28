@@ -58,7 +58,7 @@ function LoginForm(props){
         .then(function(response){
           // code when login is successfull
 
-            //console.log(response.data);
+            console.log(response.data);
             
 
             
@@ -66,8 +66,10 @@ function LoginForm(props){
             sessionStorage.setItem("username", response.data.username);
             console.log(sessionStorage.getItem("username"));
             // sessionStorage.removeItem("username");
-
-            props.history.push("/login");
+            // if(response.data){
+            //     props.history.push("/login");
+            // }
+            
         })
         .catch(function(){
             // code when un

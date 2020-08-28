@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/worker")
 public class WorkerController {
@@ -22,9 +23,10 @@ public class WorkerController {
     @Autowired
     private WorkerService workerService;
 
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
-
+        
+    //add validations
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
                 return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
@@ -33,6 +35,12 @@ public class WorkerController {
 
         Worker worker1 = workerService.saveOrUpdateWorker(worker);
         return new ResponseEntity<Worker>(worker, HttpStatus.CREATED);
+
+    }
+
+    @PostMapping("/username/{username}/")
+    public void addNewWorker(){
+
 
     }
 

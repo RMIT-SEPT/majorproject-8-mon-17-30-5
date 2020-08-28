@@ -8,6 +8,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 public class Worker{
@@ -30,7 +31,9 @@ public class Worker{
     private Date updated_At;
     private Long companyId;
     private Long serviceId;
+    @JsonFormat(pattern = "HH:mm")
     private Date startTime;
+    @JsonFormat(pattern = "HH:mm")
     private Date finishTime;
     private String workingDays;
 
