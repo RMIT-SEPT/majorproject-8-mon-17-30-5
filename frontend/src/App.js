@@ -10,6 +10,7 @@ import SingleCustomer from './Components/SingleCustomer'
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminDashboard from './Components/Admins/AdminDashboard';
 import WorkerPage from './Components/Admins/WorkerPage';
+import RegisterForm from "./Components/Customers/RegisterForm";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
     <div className="App">
         <Switch>
           <Route path = "/" exact component = {LoginForm}></Route>
-          <Route path = "/customer" exact component = {CustomerDashboard}></Route>
+          <Route path ="/signup" exact component={RegisterForm}></Route>
+          <Route path = "/customerDashBoard" exact component = {CustomerDashboard}></Route>
           <Route path = "/about-us" exact component = {AboutUs}></Route>
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
           <Route path = "/admin" exact component = {AdminDashboard}></Route>

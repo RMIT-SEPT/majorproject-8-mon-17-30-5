@@ -1,14 +1,15 @@
-import React from 'react';
-import './LoginForm.css'
-import NavigationBar from './NavigationBar';
+import React, {useState} from 'react';
+//import './LoginForm.css'
+import NavigationBar from '../Layout/NavigationBar';
 import {Link as LinkRouter, useHistory} from "react-router-dom";
+import axios from "axios";
 
 function RegisterForm(props){
     const history = useHistory();
     const[userDetails, setUserDetails] = useState({
         username: "",
-        firstname:"",
-        lastname: "",
+        firstName:"",
+        lastName: "",
         password: "",
         billingAdd:"",
         shipppingAdd:""
@@ -26,11 +27,11 @@ function RegisterForm(props){
 
     async function createCustomer(user){
         try {
-        const res = await axios.post("http://localhost:8080/api/customer", person);
-            props.history.push("/");
+            console.log("creating customer");
+        const res = await axios.post("http://localhost:8080/api/customer/create", user);
+        props.history.push("/");
          } catch (err) {
         console.log(err);
-
        }
     }
 
@@ -39,13 +40,14 @@ function RegisterForm(props){
         event.preventDefault();
         const person = {
           username: userDetails.username,
-          firstName: userDetails.finishtime,
-          lastName:userDetails.lastname,
+          firstName: userDetails.firstName,
+          lastName:userDetails.lastName,
           password:userDetails.password,
           billingAdd: userDetails.billingAdd,
           shipppingAdd: userDetails.shipppingAdd
         }
         createCustomer(person);
+        console.log(person);
     }
     
     return(
@@ -60,11 +62,11 @@ function RegisterForm(props){
             <br></br>
             <br></br>
             <label className = "regoLabel">First Name</label><br></br>
-            <input type = "text" id = "firstname" onChange={handleChange} name="firstname" className = "loginInput" placeholder = "Enter First Name" required></input>
+            <input type = "text" id = "firstname" name="firstName" onChange={handleChange}  className = "loginInput" placeholder = "Enter First Name" required></input>
             <br></br>
             <br></br>
             <label className = "regoLabel">Last Name</label><br></br>
-            <input type = "text" id = "lastname" onChange={handleChange} name="lastname" className = "loginInput" placeholder = "Enter Last Name" required></input>
+            <input type = "text" id = "lastname" onChange={handleChange} name="lastName" className = "loginInput" placeholder = "Enter Last Name" required></input>
             <br></br>
             <br></br>
             <label className = "regoLabel">Username</label><br></br>
@@ -75,15 +77,14 @@ function RegisterForm(props){
             <input type = "password" id = "password" onChange={handleChange} name="password" className = "loginInput" placeholder = "Enter Password" required></input>
             <br></br>
             <br></br>
-           {//<LinkRouter to = "/signup">
-           // </LinkRouter>
-    }
+           
             <div className = "buttonholder">
-                <input id = "registerBtn" type="submit" value="Sign Up"></input>
+          
+                <button id = "registerBtn" type="submit" value="Sign Up">Sign up</button>
             </div>
             <br>
             </br>
-           
+            
             <label className = "regoLabel">Already have an account? <LinkRouter to = "/loginform">Log In </LinkRouter> here!</label>
             <br></br>
             <br></br>

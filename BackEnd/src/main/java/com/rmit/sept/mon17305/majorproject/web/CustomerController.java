@@ -22,7 +22,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createNewCustomer(@RequestBody Customer customer, BindingResult result){
 
         if (result.hasErrors()){

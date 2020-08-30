@@ -19,7 +19,9 @@ import java.util.Date;
 public class MajorprojectApplication {
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
     private WorkerRepository workerRepository;
+    @Autowired
     private AdminRepository adminRepository;
 
     public static void main(String[] args) {
@@ -54,6 +56,7 @@ public class MajorprojectApplication {
             cathy.setLastName("Ropkhop");
             cathy.setUsername("cathy");
             cathy.setPassword("1234");
+            cathy.setCompanyId((long)1);
 
             adminRepository.save(cathy);
 

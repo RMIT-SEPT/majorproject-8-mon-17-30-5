@@ -2,8 +2,7 @@ import React, { Component, useState} from "react";
 import Dropdown from 'react-dropdown';
 import {Link as LinkRouter, useHistory} from "react-router-dom";
 import axios from "axios";
-//import createPerson from "../Actions/createPersonTesting"
-
+//TODO delete useHistory if not needed
 function AddWorker() {
  
   const history = useHistory();
@@ -31,23 +30,11 @@ function AddWorker() {
     })
   }
 
-  async function createPer(type, person){
+  async function createPerson(person){
     try {
-        if(type==="customer"){
-          const res = await axios.post("http://localhost:8080/api/customer", person);
-         // history.push("/");
-        }else if(type==="worker"){
-          console.log("creating a worker");
-          const res = await axios.post("http://localhost:8080/api/worker/create", person);
-          history.push("/");
-          //<Redirect push to="/about-us"/>
-          //.then(function(){
-           // this.props.router.push("/about-us");
-          //});
-         // history.push("/about-us")
-        }else if(type==="admin"){
-          const res = await axios.post("http://localhost:8080/api/admin", person);
-        }
+        console.log("creating a worker");
+        const res = await axios.post("http://localhost:8080/api/worker/create", person);
+        history.push("/");
       } catch (err) {
        console.log(err);
       }
@@ -67,7 +54,7 @@ function AddWorker() {
     }
     console.log(person);
    // console.log(this.props.history);
-   createPer("worker", person);
+   createPerson(person);
   }
 
   //render() {

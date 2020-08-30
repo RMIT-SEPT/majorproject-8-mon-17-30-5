@@ -67,7 +67,7 @@ function LoginForm(props){
             console.log(sessionStorage.getItem("username"));
             // sessionStorage.removeItem("username");
             // if(response.data){
-            //     props.history.push("/login");
+                props.history.push("/customerDashboard");
             // }
             
         })
@@ -107,14 +107,15 @@ function LoginForm(props){
             <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Enter Password" required></input>
             <br></br>
             <br></br>
-            {//<LinkRouter to = "/login">}
-        }
+            
+        
             <div className = "buttonholder">
+           
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
-            {//</LinkRouter>
-            }
-            <p>Don't have an account yet? <LinkRouter to = "/signupform"></LinkRouter>Sign Up here!</p>
+           
+            
+            <p>Don't have an account yet? <LinkRouter to = "/signup">Sign Up here!</LinkRouter></p>
             </form>
         </div>
     );
