@@ -36,6 +36,7 @@ public class Worker{
     @JsonFormat(pattern = "HH:mm")
     private Date finishTime;
     private String workingDays;
+    private String password;
 
     public Worker(){}
 
@@ -139,5 +140,13 @@ public class Worker{
 
     public String getType(){
         return "Worker";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -45,6 +45,7 @@ public class Admin{
     private Date updated_At;
     @NotNull(message = "Admins company Id is required")
     private Long companyId;
+    private String password;
 
     public Admin(){}
 
@@ -119,5 +120,13 @@ public class Admin{
     }
     public String getType(){
         return "Admin";
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
