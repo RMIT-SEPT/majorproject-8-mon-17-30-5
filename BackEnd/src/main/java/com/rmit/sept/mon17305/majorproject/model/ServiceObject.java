@@ -13,6 +13,8 @@ public class ServiceObject {
     private Long id;
     @NotBlank(message = "Service Description is required")
     private String description;
+    private Long workerId;
+    private String workerName;
 
     public ServiceObject(){
 
@@ -28,5 +30,21 @@ public class ServiceObject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getWorkerId() {
+        return workerId;
+    }
+
+    public void setWorkerId(Long workerId) {
+        this.workerId = workerId;
+    }
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
     }
 }

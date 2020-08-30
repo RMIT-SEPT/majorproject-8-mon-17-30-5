@@ -18,16 +18,16 @@ public class Booking {
 
 //POSTMAN can now post to every object and it comes up in the database. All files for API now created.
 
-    @NotBlank(message = "Customers ID is required")
+//    @NotBlank(message = "Customers ID is required")
 //Updated the API to work for all object models
-    @NotNull(message = "Customers ID is required")
+ //   @NotNull(message = "Customers ID is required")
 //username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
 
     @NotNull(message = "Customers ID is required")
-
     private Long customerId;
     @NotNull (message = "Workers ID is required")
     private Long workerId;
+    private String workerName;
     @NotNull (message = "Service ID is required")
     private Long serviceId;
     private String type;
@@ -92,5 +92,13 @@ public class Booking {
 
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
+    }
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
     }
 }

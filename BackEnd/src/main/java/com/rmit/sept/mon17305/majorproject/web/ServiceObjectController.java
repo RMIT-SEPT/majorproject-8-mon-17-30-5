@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/serviceObject")
 public class ServiceObjectController {
@@ -35,7 +35,7 @@ public class ServiceObjectController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping("/getAll")
     public List<ServiceObject> getServiceObjects() {
 
         return serviceObjectService.getServiceObjects();

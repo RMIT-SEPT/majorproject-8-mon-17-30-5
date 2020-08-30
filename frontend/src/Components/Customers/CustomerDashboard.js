@@ -1,15 +1,43 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import DisplayAService from "../Services/DisplayAService";
+
+//TODO display all available services
+//TODO able to make booking
+//TODO display history bookings
 
 export default class CustomerDashboard extends Component {
+    constructor(){
+        super();
+        this.state={
+            serviceExist: false,
+            res: []
+        }
+    }
+    componentDidMount(){
+        axios.get("http://localhost:8080/api/serviceObject/getAll")
+        .then((response)=>{
+            this.state.serviceExist = true;
+            console.log(response.data);
+            this.state.res = response.data;
+            console.log(this.state.res);
+        })
+        .catch()
+        .finally();
+    }
+    
     render() {
+        let list = this.state.res.map((s)=> <DisplayAService service={s}/>);
         return (
             <div>
                 <div className="jumbotron text-center">
                     <h1>Customer Dashboard</h1>
                     <p>This should show them any searched or available services</p>
                 </div>
-        
+                <div>{list}                
+                </div>
+                
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-3">
@@ -93,5 +121,6 @@ export default class CustomerDashboard extends Component {
                 </div>
             </div>
         )
-    }
+    
+   }
 }
