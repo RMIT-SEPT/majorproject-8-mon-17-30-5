@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 import React, {useState} from 'react';
 //import './LoginForm.css'
 import NavigationBar from '../Layout/NavigationBar';
 import {Link as LinkRouter, useHistory} from "react-router-dom";
 import axios from "axios";
+=======
+import React from 'react';
+import '../../App.css'
+import NavigationBar from '../Layout/NavigationBar';
+import {Link as LinkRouter} from "react-router-dom";
+>>>>>>> Stashed changes
 
 function RegisterForm(props){
     const history = useHistory();
@@ -71,6 +78,14 @@ function RegisterForm(props){
             <br></br>
             <label className = "regoLabel">Username</label><br></br>
             <input type = "text" id = "username" onChange={handleChange} name="username" className = "loginInput" placeholder = "Enter Username" required></input>
+            <br></br>
+            <br></br>
+            <label className = "regoLabel">Billing Address</label><br></br>
+            <input type = "text" id = "billingAddr" className = "loginInput" placeholder = "Enter Billing Address" required></input>
+            <br></br>
+            <br></br>
+            <label className = "regoLabel">User Address</label><br></br>
+            <input type = "text" id = "userAddr" className = "loginInput" placeholder = "Enter User Address" required></input>
             <br></br>
             <br></br>
             <label className = "regoLabel">Password</label><br></br>
