@@ -9,26 +9,20 @@ export default class WorkerPage extends React.Component {
     editWorkerToggle: false
   };
 
-  addWorkerToggle = () => {
+  formToggle = (stateName) => {
     this.setState({
-      addWorkerToggle: !this.state.addWorkerToggle
+     [stateName]: !this.state[stateName]
     });
-  };
-
-  editWorkerToggle = () => {
-    this.setState({
-      editWorkerToggle: !this.state.editWorkerToggle
-    });
-  };
+  }
 
   render() {
     return (
       <div>
-        <div className="btn" onClick={this.addWorkerToggle}>
+        <div className="btn" onClick={() => this.formToggle("addWorkerToggle")}>
           <button>Add</button>
           {this.state.addWorkerToggle ? <AddWorker/> : null}
         </div>
-        <div className="btn" onClick={this.editWorkerToggle}>
+        <div className="btn" onClick={() => this.formToggle("editWorkerToggle")}>
           <button>Edit</button>
           {this.state.editWorkerToggle ? <EditWorker/> : null}
         </div>
