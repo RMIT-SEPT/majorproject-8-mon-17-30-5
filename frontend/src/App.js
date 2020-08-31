@@ -10,6 +10,7 @@ import SingleCustomer from './Components/SingleCustomer'
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminDashboard from './Components/Admins/AdminDashboard';
 import WorkerPage from './Components/Admins/WorkerPage';
+import BookingPage from './Components/Admins/BookingPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
           <Route path = "/admin" exact component = {AdminDashboard}></Route>
           <Route path = "/worker" exact component = {WorkerPage}></Route>
+          <Route path = "/booking" exact component = {BookingPage}></Route>
         </Switch>
     </div>
        

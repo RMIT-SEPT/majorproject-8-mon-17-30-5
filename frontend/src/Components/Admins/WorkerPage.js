@@ -1,25 +1,37 @@
 import React from "react";
 import AddWorker from "./AddWorker";
+import EditWorker from "./EditWorker";
 
 export default class WorkerPage extends React.Component {
   state = {
-    seen: false
+    seen: false,
+    addWorkerToggle: false,
+    editWorkerToggle: false
   };
 
-  togglePop = () => {
-    console.log('Toggle pressed')
+  addWorkerToggle = () => {
     this.setState({
-      seen: !this.state.seen
+      addWorkerToggle: !this.state.addWorkerToggle
+    });
+  };
+
+  editWorkerToggle = () => {
+    this.setState({
+      editWorkerToggle: !this.state.editWorkerToggle
     });
   };
 
   render() {
     return (
       <div>
-        <div className="btn" onClick={this.togglePop}>
+        <div className="btn" onClick={this.addWorkerToggle}>
           <button>Add</button>
+          {this.state.addWorkerToggle ? <AddWorker/> : null}
         </div>
-        {this.state.seen ? <AddWorker toggle={this.togglePop} /> : null}
+        <div className="btn" onClick={this.editWorkerToggle}>
+          <button>Edit</button>
+          {this.state.editWorkerToggle ? <EditWorker/> : null}
+        </div>
       </div>
     );
   }
