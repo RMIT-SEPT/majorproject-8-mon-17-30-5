@@ -16,7 +16,8 @@ function LoginForm(props){
         // console.log(event.target);
         // const inputName = event.target.name;
         // const newValue = event.target.value;
-
+        //window.sessionStorage.setItem("key", "value");
+        //window.sessionStorage.getItem("key");
     
 
         // setUserDetails((prevValue) => {
@@ -59,17 +60,15 @@ function LoginForm(props){
           // code when login is successfull
 
             console.log(response.data);
-            
-
-            
-
+           // console.log(sessionStorage.getItem("username"));
             sessionStorage.setItem("username", response.data.username);
-            console.log(sessionStorage.getItem("username"));
-            // sessionStorage.removeItem("username");
-            // if(response.data){
-                props.history.push("/customerDashboard");
-            // }
-            
+            sessionStorage.setItem("firstname", response.data.firstName);
+            sessionStorage.setItem("lastname", response.data.lastName);
+            sessionStorage.setItem("billingAddress", response.data.billingAddress);
+            sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
+            //sessionStorage.removeItem("username");
+            //sessionStorage.getItem("username");
+            props.history.push("/customerDashboard");
         })
         .catch(function(){
             // code when un
@@ -86,7 +85,7 @@ function LoginForm(props){
 
         event.preventDefault();
     }
-
+   // console.log(sessionStorage.getItem("username"));
     return(
         <div>
             <NavigationBar/>

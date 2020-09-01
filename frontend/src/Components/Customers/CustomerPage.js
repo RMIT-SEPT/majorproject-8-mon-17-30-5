@@ -2,7 +2,7 @@ import React from 'react';
 import '../../App.css'
 import {Link as LinkRouter} from "react-router-dom";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
-
+//TODO display current user information
 function CustomerPage(){
     return(
         <div>
@@ -19,16 +19,16 @@ function CustomerPage(){
             <h2>User Details</h2>
             <br></br>
             <br></br>
-            <label>Username : username</label>
+            <label>Username : {sessionStorage.getItem("username")}</label>
             <br></br>
-            <label>First Name : firstname</label>
+            <label>First Name : {sessionStorage.getItem("firstname")}</label>
             <br></br>
-            <label>Last Name : lastname</label>
+            <label>Last Name : {sessionStorage.getItem("lastname")}</label>
             <br></br>
-            <label>Billing Address : billingAddress</label>
+            <label>Billing Address : {sessionStorage.getItem("billingAddress")}</label>
             <br></br>
             <br></br>
-            <label>User Address : billingAddress</label>
+            <label>User Address : {sessionStorage.getItem("shippingAddress")}</label>
         </form>
         </div>
     );

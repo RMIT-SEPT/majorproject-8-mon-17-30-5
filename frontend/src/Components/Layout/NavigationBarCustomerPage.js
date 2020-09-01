@@ -4,6 +4,14 @@ import {Link as LinkRouter} from "react-router-dom";
 import AboutUs from  "../AboutUs";
 
 function NavigationBarCustomerPage(){
+    function handleLogout(){
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("firstname");
+        sessionStorage.removeItem("lastname");
+        sessionStorage.removeItem("billingAddress");
+        sessionStorage.removeItem("shippingAddress");
+    }
+
     return(
         <div>
             <ul>
@@ -14,7 +22,7 @@ function NavigationBarCustomerPage(){
                 <li>Contact Us</li>
                 </LinkRouter>
                 <LinkRouter to  = "/loginForm">
-                <li id = "logout">Log Out</li>
+                <li id = "logout" onClick={handleLogout}>Log Out</li>
                 </LinkRouter>
             </ul>
         </div>
