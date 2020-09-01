@@ -113,15 +113,8 @@ function LoginForm(props){
            
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
-<<<<<<< Updated upstream
            
-            
-            <p>Don't have an account yet? <LinkRouter to = "/signup">Sign Up here!</LinkRouter></p>
-=======
-            {//</LinkRouter>
-            }
             <p>Don't have an account yet? <LinkRouter to = "/signupform">Sign Up</LinkRouter> here!</p>
->>>>>>> Stashed changes
             </form>
         </div>
     );

@@ -1,18 +1,13 @@
-<<<<<<< Updated upstream
 import React, { Component} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import DisplayAService from "../Services/DisplayAService";
+import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
+import {Link as LinkRouter} from "react-router-dom";
 
 //TODO display all available services
 //TODO able to make booking
 //TODO display history bookings
-
-=======
-import React, { Component } from 'react'
-import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
-import {Link as LinkRouter} from "react-router-dom";
->>>>>>> Stashed changes
 
 export default class CustomerDashboard extends Component {
     constructor(){
@@ -38,12 +33,8 @@ export default class CustomerDashboard extends Component {
         const list = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
         return (
             <div>
-<<<<<<< Updated upstream
-                <div className="jumbotron text-center">
-=======
             <NavigationBarCustomerPage/>
-                <div class="jumbotron text-center">
->>>>>>> Stashed changes
+                <div className="jumbotron text-center">
                     <h1>Customer Dashboard</h1>
                     <LinkRouter to = "/custDetails">
                     <li id = "custDetails">View User Details</li>

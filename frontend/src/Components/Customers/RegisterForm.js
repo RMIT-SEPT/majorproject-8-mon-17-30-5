@@ -1,15 +1,9 @@
-<<<<<<< Updated upstream
 import React, {useState} from 'react';
-//import './LoginForm.css'
 import NavigationBar from '../Layout/NavigationBar';
 import {Link as LinkRouter, useHistory} from "react-router-dom";
 import axios from "axios";
-=======
-import React from 'react';
-import '../../App.css'
-import NavigationBar from '../Layout/NavigationBar';
-import {Link as LinkRouter} from "react-router-dom";
->>>>>>> Stashed changes
+import '../../App.css';
+
 
 function RegisterForm(props){
     const history = useHistory();
