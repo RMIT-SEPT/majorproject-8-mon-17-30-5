@@ -5,6 +5,7 @@ import AboutUs from  "../AboutUs";
 
 function NavigationBarCustomerPage(){
     function handleLogout(){
+        sessionStorage.removeItem("id");
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("firstname");
         sessionStorage.removeItem("lastname");

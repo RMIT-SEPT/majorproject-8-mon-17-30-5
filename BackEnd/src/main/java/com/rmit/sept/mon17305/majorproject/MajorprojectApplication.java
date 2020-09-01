@@ -1,9 +1,6 @@
 package com.rmit.sept.mon17305.majorproject;
 
-import com.rmit.sept.mon17305.majorproject.model.Admin;
-import com.rmit.sept.mon17305.majorproject.model.Customer;
-import com.rmit.sept.mon17305.majorproject.model.ServiceObject;
-import com.rmit.sept.mon17305.majorproject.model.Worker;
+import com.rmit.sept.mon17305.majorproject.model.*;
 import com.rmit.sept.mon17305.majorproject.repository.*;
 import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.InitializingBean;
@@ -81,8 +78,24 @@ public class MajorprojectApplication {
             serviceObjectRepository.save(service1);
             serviceObjectRepository.save(service2);
 
+            Booking book1 = new Booking();
+            book1.setCustomerId(austin.getId());
+            book1.setServiceId(service.getId());
+            book1.setWorkerId(john.getId());
 
+            Booking book2 = new Booking();
+            book2.setCustomerId(austin.getId());
+            book2.setServiceId(service1.getId());
+            book2.setWorkerId(john.getId());
 
+            Booking book3 = new Booking();
+            book3.setCustomerId(austin.getId());
+            book3.setServiceId(service2.getId());
+            book3.setWorkerId(john.getId());
+
+            bookingRepository.save(book1);
+            bookingRepository.save(book2);
+            bookingRepository.save(book3);
         };
     }
 

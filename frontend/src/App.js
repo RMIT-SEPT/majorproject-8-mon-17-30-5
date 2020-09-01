@@ -1,17 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import {BrowserRouter as Router, Route, Link as LinkRouter, Switch} from "react-router-dom";
 import LoginForm from './Components/Layout/LoginForm';
-import NavigationBar from './Components/Layout/NavigationBar';
 import CustomerDashboard from './Components/Customers/CustomerDashboard';
 import AboutUs from './Components/AboutUs';
 import ContactUs from './Components/ContactUs';
-import SingleCustomer from './Components/SingleCustomer';
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminDashboard from './Components/Admins/AdminDashboard';
 import WorkerPage from './Components/Admins/WorkerPage';
-import RegisterForm from "./Components/Customers/RegisterForm";
+import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
+import CustomerBooking from './Components/Customers/CustomerBooking';
 
 function App() {
   return (
@@ -28,6 +26,7 @@ function App() {
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
+          <Route path = "/booking-page" exact component = {CustomerBooking}></Route>
         </Switch>
     </div>
        

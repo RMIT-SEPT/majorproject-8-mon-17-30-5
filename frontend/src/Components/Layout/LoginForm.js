@@ -58,16 +58,13 @@ function LoginForm(props){
         "/password/"+userDetails.password)
         .then(function(response){
           // code when login is successfull
-
             console.log(response.data);
-           // console.log(sessionStorage.getItem("username"));
+            sessionStorage.setItem("id", response.data.id);
             sessionStorage.setItem("username", response.data.username);
             sessionStorage.setItem("firstname", response.data.firstName);
             sessionStorage.setItem("lastname", response.data.lastName);
             sessionStorage.setItem("billingAddress", response.data.billingAddress);
             sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
-            //sessionStorage.removeItem("username");
-            //sessionStorage.getItem("username");
             props.history.push("/customerDashboard");
         })
         .catch(function(){

@@ -5,9 +5,9 @@ import DisplayAService from "../Services/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
 
-//TODO display all available services
+//TODO display all available services -- done -- teach how to recall
 //TODO able to make booking
-//TODO display history bookings
+//TODO display history bookings -- from button click
 
 export default class CustomerDashboard extends Component {
     constructor(){

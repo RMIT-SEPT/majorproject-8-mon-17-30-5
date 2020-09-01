@@ -40,6 +40,12 @@ public class BookingController {
         return bookingService.getBookings();
     }
 
+    @GetMapping("/customer/{id}")
+    public List<Booking> getBookingsByCustomerId(@PathVariable Long id) {
+
+        return bookingService.getBookingsByCustomerId(id);
+    }
+
     @GetMapping("/{id}")
     public Optional<Booking> getBooking(@PathVariable Long id) {
         return bookingService.getBooking(id);
