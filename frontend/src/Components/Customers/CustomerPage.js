@@ -2,7 +2,7 @@ import React from 'react';
 import '../../App.css'
 import {Link as LinkRouter} from "react-router-dom";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
-//TODO display current user information
+
 function CustomerPage(){
     return(
         <div>
