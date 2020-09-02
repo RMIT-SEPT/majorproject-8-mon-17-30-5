@@ -7,7 +7,7 @@ import {Link as LinkRouter} from "react-router-dom";
 
 //TODO display all available services -- done -- teach how to recall
 //TODO able to make booking
-//TODO display history bookings -- from button click
+//TODO display history bookings -- from button click -- done
 
 export default class CustomerDashboard extends Component {
     constructor(){
@@ -41,9 +41,12 @@ export default class CustomerDashboard extends Component {
                     </LinkRouter>
                     <p>This should show them any searched or available services</p>
                 </div>
-                <div>{list}                
+                <div className="container">
+                <div className="row">
                 </div>
-                
+                {list}                
+                </div>
+                {/*
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-3">
@@ -125,7 +128,9 @@ export default class CustomerDashboard extends Component {
                     </div>
                     </div>
                 </div>
+                 */}
             </div>
+               
         )
     
    }

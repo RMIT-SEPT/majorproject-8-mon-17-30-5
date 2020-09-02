@@ -111,6 +111,8 @@ function LoginForm(props){
             </div>
            
             <p>Don't have an account yet? <LinkRouter to = "/signupform">Sign Up</LinkRouter> here!</p>
+            <p>Or</p>
+            <p>Log in as  <LinkRouter to = "/signupform">Admin</LinkRouter> or <LinkRouter to="">Employee</LinkRouter></p>
             </form>
         </div>
     );

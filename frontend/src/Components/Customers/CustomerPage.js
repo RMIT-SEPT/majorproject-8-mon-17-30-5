@@ -12,7 +12,7 @@ function CustomerPage(){
         <br></br>
 
         <form className = "custDetails" id = "custDetails">
-            <h1> Welcome #username</h1>
+            <h1> Welcome {sessionStorage.getItem("username")}</h1>
             <LinkRouter to = "/booking-page">
             <button id = "booking" className = "booking">View Booking History</button>
             </LinkRouter>

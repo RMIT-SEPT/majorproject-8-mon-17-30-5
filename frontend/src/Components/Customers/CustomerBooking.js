@@ -49,6 +49,7 @@ export default class CustomerBooking extends Component {
 
                {this.state.bookingExist && 
                 <div><p>booking exist</p>{list}</div>}
+                
                {!this.state.bookingExist && <p>You currently have n booking in the system</p>}
             </div>
         )
