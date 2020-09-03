@@ -2,7 +2,7 @@
 //possibly filter but not urgent
 import React, { Component} from 'react';
 import axios from 'axios';
-import DisplayABooking from './DisplayABooking';
+import DisplayABooking from '../Layout/DisplayABooking';
 
 export default class CustomerBooking extends Component {
     constructor(){

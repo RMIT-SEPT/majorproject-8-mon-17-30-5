@@ -11,6 +11,7 @@ import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
+import TestDropdown from './Components/Layout/TestDropdown';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
           <Route path = "/booking-page" exact component = {CustomerBooking}></Route>
           <Route path ="/workerDashboard" exact component = {workerDashBoard}></Route>
+          <Route path = "/testing" exact component ={TestDropdown}></Route>
         </Switch>
     </div>
        

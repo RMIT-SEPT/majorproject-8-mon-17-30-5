@@ -1,9 +1,10 @@
 import React, { Component} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import DisplayAService from "../Services/DisplayAService";
+import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
+//import Dropdown from 'react-dropdown';
 
 //TODO display all available services -- done -- teach how to recall
 //TODO able to make booking
@@ -14,7 +15,8 @@ export default class CustomerDashboard extends Component {
         super();
         this.state={
             serviceExist: false,
-            res: []
+            res: [], 
+            workers: []
         }
     }
     componentDidMount(){
@@ -27,10 +29,23 @@ export default class CustomerDashboard extends Component {
         })
         .catch()
         .finally();
+
+        //this will get all the workers
+        axios.get("http://localhost:8080/api/worker/")
+        .then((response)=>{
+            this.setState({["workers"]:response.data});
+            console.log("Workers");
+            console.log(this.state.workers);
+        })
+        .catch()
+        .finally();
+
     }
-    
+
+    //TODO test if mapping workers work!!
     render() {
         const list = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const workers = this.state.workers.map((w)=> <option key={w.id} defaultValue={w.username}>{w.firstname}</option>);
         return (
             <div>
             <NavigationBarCustomerPage/>
@@ -41,12 +56,30 @@ export default class CustomerDashboard extends Component {
                     </LinkRouter>
                     <p>This should show them any searched or available services</p>
                 </div>
+                {/*
+                    <div className="dropdown" >
+                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button className="dropdown-item" type="button">Action</button>
+                            <button className="dropdown-item" type="button">Another action</button>
+                            <button className="dropdown-item" type="button">Something else here</button>
+                        </div>
+                    </div>
+                */}
+                
+               <div>
+                <select name="workers" id="workerFilter">
+                {workers}
+                </select>
+               </div>
                 <div className="container">
                 <div className="row">
                 </div>
                 {list}                
                 </div>
-                {/*
+                 {/*
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-3">
