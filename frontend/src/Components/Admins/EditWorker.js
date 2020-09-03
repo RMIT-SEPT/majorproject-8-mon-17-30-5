@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Dropdown from 'react-dropdown';
+import WorkerForm from "./WorkerForm"
 
 const options = ['Female', 'Male'];
 
@@ -8,48 +8,27 @@ export default class EditWorker extends Component {
     this.props.toggle();
   };
 
+  submitAddWorker = (workerInfo) => {
+    // TODO: submit to backend
+    console.log("edit worker form submitted");
+    console.log(workerInfo)
+  }
+
   render() {
+    let exampleWorker = {
+      firstname: "Sara",
+      lastname: "Tran",
+      occupation: "Gym trainer",
+      email: "sara.tran@gmail.com",
+      username: "sara.tran123",
+      password: "0123456789",
+      workinghours: "4pm",
+      workingdates: "Weekdays"
+    }
     return (
-      <div>
-        <span className="close" onClick={this.handleClick}> X </span>
-        <form>
-          <h3>Worker Details</h3>
-          <label>
-            First Name:
-            <input type="text"/>
-          </label>
-          <label>
-            Last Name:
-            <input type="text"/>
-          </label>
-          <label>
-            Occupation:
-            <input type="text"/>
-          </label>
-          <label>
-            Gender:
-            <Dropdown options={options} onChange={this._onSelect} placeholder='Select' />;
-          </label>
-          <label>
-            Username:
-            <input type="text"/>
-          </label>
-          <label>
-            Password:
-            <input type="text"/>
-          </label>
-          <label>
-            Working Hours:
-            <input type="text"/>
-          </label>
-          <label>
-            Working Dates:
-            <input type="text"/>
-          </label>
-          <br />
-          <input type="submit" value= "Save changes"/>
-        </form>
-      </div>
+      <div>       
+        <WorkerForm onSubmit={this.submitAddWorker} workerInfo={exampleWorker}/>
+      </div >
     );
   }
 }
