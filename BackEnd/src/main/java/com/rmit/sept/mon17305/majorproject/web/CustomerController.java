@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
+import com.rmit.sept.mon17305.majorproject.CustomedException.CustomerException;
 import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Customer;
 import com.rmit.sept.mon17305.majorproject.model.Customer;
@@ -21,7 +22,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createNewCustomer(@RequestBody Customer customer, BindingResult result){
 
         if (result.hasErrors()){
@@ -46,9 +47,18 @@ public class CustomerController {
         return customerService.getCustomerByUsername(username);
     }
 
+    //not sure if want to have a minimum size for password
     @GetMapping("/username/{username}/password/{password}")
-    public Customer getCustomerByUsername(@PathVariable String username, @PathVariable String password) {
-
+    public Customer getCustomerByUsername(@PathVariable String username, @PathVariable String password) throws CustomerException {
+        if(username.isEmpty()){
+            throw new CustomerException("Username cannot be empty");
+        }
+        else if(username.length() < 3){
+            throw new CustomerException("Username must contain at least 3 characters");
+        }
+        else if(password.isEmpty()){
+            throw new CustomerException("Password cannot be empty");
+        }
         Customer customer = customerService.getCustomerByUsernameAndPassword(username, password);
         if(customer == null){
             throw new NullPointerException("Wrong user details");

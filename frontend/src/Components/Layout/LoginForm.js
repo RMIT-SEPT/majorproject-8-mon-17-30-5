@@ -16,7 +16,8 @@ function LoginForm(props){
         // console.log(event.target);
         // const inputName = event.target.name;
         // const newValue = event.target.value;
-
+        //window.sessionStorage.setItem("key", "value");
+        //window.sessionStorage.getItem("key");
     
 
         // setUserDetails((prevValue) => {
@@ -57,17 +58,14 @@ function LoginForm(props){
         "/password/"+userDetails.password)
         .then(function(response){
           // code when login is successfull
-
-            //console.log(response.data);
-            
-
-            
-
+            console.log(response.data);
+            sessionStorage.setItem("id", response.data.id);
             sessionStorage.setItem("username", response.data.username);
-            console.log(sessionStorage.getItem("username"));
-            // sessionStorage.removeItem("username");
-
-            props.history.push("/login");
+            sessionStorage.setItem("firstname", response.data.firstName);
+            sessionStorage.setItem("lastname", response.data.lastName);
+            sessionStorage.setItem("billingAddress", response.data.billingAddress);
+            sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
+            props.history.push("/customerDashboard");
         })
         .catch(function(){
             // code when un
@@ -84,7 +82,7 @@ function LoginForm(props){
 
         event.preventDefault();
     }
-
+   // console.log(sessionStorage.getItem("username"));
     return(
         <div>
             <NavigationBar/>
@@ -105,14 +103,16 @@ function LoginForm(props){
             <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Enter Password" required></input>
             <br></br>
             <br></br>
-            {//<LinkRouter to = "/login">}
-        }
+            
+        
             <div className = "buttonholder">
+           
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
-            {//</LinkRouter>
-            }
-            <p>Don't have an account yet? <LinkRouter to = "/signupform"></LinkRouter>Sign Up here!</p>
+           
+            <p>Don't have an account yet? <LinkRouter to = "/signupform">Sign Up</LinkRouter> here!</p>
+            <p>Or</p>
+            <p>Log in as  <LinkRouter to = "/signupform">Admin</LinkRouter> or <LinkRouter to="">Employee</LinkRouter></p>
             </form>
         </div>
     );

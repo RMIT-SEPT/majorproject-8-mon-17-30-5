@@ -5,6 +5,7 @@ import com.rmit.sept.mon17305.majorproject.model.Booking;
 import com.rmit.sept.mon17305.majorproject.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,11 @@ public class BookingService {
 
         return bookingRepository.findAll();
 
+    }
+
+    public List<Booking> getBookingsByCustomerId(Long id) {
+
+        return bookingRepository.findByCustomerId(id);
     }
 
     public Optional<Booking> getBooking(Long id){
