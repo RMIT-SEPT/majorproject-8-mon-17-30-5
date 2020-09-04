@@ -42,6 +42,17 @@ export default class WorkerForm extends Component {
         })
     }
 
+    //TODO link to back end
+    // createPerson(person){
+    //     try {
+    //         console.log("creating a worker");
+    //         const res = await axios.post("http://localhost:8080/api/worker/create", person);
+    //         history.push("/");
+    //       } catch (err) {
+    //        console.log(err);
+    //       }
+    //  }
+
     render() {
 
         return (
