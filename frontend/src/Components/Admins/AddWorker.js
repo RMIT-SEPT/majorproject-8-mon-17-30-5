@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import WorkerForm from "./WorkerForm"
-
+import React, { Component, useState} from "react";
+import Dropdown from 'react-dropdown';
+import {Link as LinkRouter, useHistory} from "react-router-dom";
+import axios from "axios";
 const options = ['Female', 'Male'];
 
 export default class AddWorker extends Component {
@@ -14,17 +17,9 @@ export default class AddWorker extends Component {
     console.log(workerInfo)
   }
 
-  render() {
-    return (
-      <div>       
-        <WorkerForm onSubmit={this.submitAddWorker} workerInfo/>
-      </div >
-import React, { Component, useState} from "react";
-import Dropdown from 'react-dropdown';
-import {Link as LinkRouter, useHistory} from "react-router-dom";
-import axios from "axios";
+  
 //TODO delete useHistory if not needed
-function AddWorker() {
+AddWorker() {
  
   const history = useHistory();
   const[userDetails, setUserDetails] = useState({
@@ -60,7 +55,7 @@ function AddWorker() {
        console.log(err);
       }
     
-  }
+ }
 
   function handleSubmit(event) {
     console.log("handleSubmit");
@@ -77,47 +72,17 @@ function AddWorker() {
    // console.log(this.props.history);
    createPerson(person);
   }
+}
 
   //render() {
-    return (
-      <div>
-        <span className="close" onClick={handleClick}> X </span>
-        <form onSubmit={handleSubmit}>
-          <h3>Worker Details</h3>
-          <label>
-            First Name:
-            <input type="text" name="firstname" onChange={handleChange}/>
-          </label>
-          <label>
-            Last Name:
-            <input type="text" name="lastname" onChange={handleChange}/>
-          </label>
-          <label>
-            Username:
-            <input type="text" name="username" onChange={handleChange}/>
-          </label>
-          <label>
-            Password:
-            <input type="text" name="password" onChange={handleChange}/>
-          </label>
-          <label>
-            Working start Hours:
-            <input type="text" name="starttime" onChange={handleChange}/>
-          </label>
-          <label>
-            Working finish Hours:
-            <input type="text" name="finishtime" onChange={handleChange}/>
-          </label>
-          <label>
-            Working Dates:
-            <input type="text"/>
-          </label>
-          <br />
-          <button type="submit" value= "Add worker"/>
-        </form>
-      </div>
+    render() {
+
+      return (
+        <div> 
+        <WorkerForm onSubmit={this.submitAddWorker} workerInfo/>
+        </div>      
     );
-  //}
+  }
 }
 
 export default AddWorker;
