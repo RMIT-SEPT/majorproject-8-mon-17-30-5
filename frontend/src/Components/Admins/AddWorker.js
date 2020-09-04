@@ -11,11 +11,11 @@ export default class AddWorker extends Component {
     this.props.toggle();
   };
 
-  submitAddWorker = (workerInfo) => {
-    // TODO: submit to backend
-    console.log("Add worker form submitted");
-    console.log(workerInfo)
-  }
+  // submitAddWorker = (workerInfo) => {
+  //   // TODO: submit to backend
+  //   console.log("Add worker form submitted");
+  //   console.log(workerInfo)
+  // }
 
   
 //TODO delete useHistory if not needed
@@ -32,32 +32,8 @@ AddWorker() {
     hasLoginFailed: false
   });
      //export default class AddWorker extends Component {
-  function handleClick() {
-    this.props.toggle();
-  };
-
-  function handleChange(event){
-    const{name, value} = event.target;
-    setUserDetails(prevValue =>{
-      return {
-        ...prevValue,
-        [name] : value
-      }
-    })
-  }
-
-  async function createPerson(person){
-    try {
-        console.log("creating a worker");
-        const res = await axios.post("http://localhost:8080/api/worker/create", person);
-        history.push("/");
-      } catch (err) {
-       console.log(err);
-      }
-    
- }
-
-  function handleSubmit(event) {
+}
+  handleSubmit(event) {
     console.log("handleSubmit");
     event.preventDefault();
     const person = {
@@ -69,17 +45,15 @@ AddWorker() {
       finishTime:userDetails.finishtime
     }
     console.log(person);
-   // console.log(this.props.history);
-   createPerson(person);
+    createPerson(person);
   }
-}
 
   //render() {
     render() {
 
       return (
         <div> 
-        <WorkerForm onSubmit={this.submitAddWorker} workerInfo/>
+        <WorkerForm onSubmit={this.handleSubmit} workerInfo/>
         </div>      
     );
   }
