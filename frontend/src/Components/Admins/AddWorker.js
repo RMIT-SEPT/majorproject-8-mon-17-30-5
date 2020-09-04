@@ -1,10 +1,7 @@
-import React, { Component } from "react";
 import WorkerForm from "./WorkerForm"
 import React, { Component, useState} from "react";
-import Dropdown from 'react-dropdown';
 import {Link as LinkRouter, useHistory} from "react-router-dom";
 import axios from "axios";
-const options = ['Female', 'Male'];
 
 export default class AddWorker extends Component {
   handleClick = () => {
@@ -79,10 +76,8 @@ AddWorker() {
 
       return (
         <div> 
-        <WorkerForm onSubmit={this.submitAddWorker} workerInfo/>
+        <WorkerForm onSubmit={this.submitAddWorker}/>
         </div>      
     );
   }
 }
-
-export default AddWorker;

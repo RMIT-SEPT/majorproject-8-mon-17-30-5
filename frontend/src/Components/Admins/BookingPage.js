@@ -3,23 +3,23 @@ import ViewBooking from "./ViewBooking";
 
 export default class BookingPage extends React.Component {
   state = {
-    seen: false
+    seen: false,
+    viewBookingToggle: false,
   };
 
-  togglePop = () => {
+  formToggle = (stateName) => {
     this.setState({
-      seen: !this.state.seen
+      [stateName]: !this.state[stateName]
     });
-  };
+  }
 
   render() {
     return (
-      <div>
-        <div className="btn" onClick={this.togglePop}>
-          <button>View</button>
-        </div>
-        {this.state.seen ? <ViewBooking toggle={this.togglePop} /> : null}
-      </div>
+      <>
+        <div onClick={() => this.formToggle("viewBookingToggle")}>Add</div>
+        {this.state.viewBookingToggle ? <ViewBooking /> : null}
+        <br/>
+      </>
     );
   }
 }
