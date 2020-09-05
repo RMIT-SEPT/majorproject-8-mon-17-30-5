@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import Dropdown from 'react-dropdown';
-
-
-const options = ['Female', 'Male'];
-
+import axios from "axios";
+import history from '../../history';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class WorkerForm extends Component {
+
+    
     constructor(props) {
         super(props);
-
+        
         this.state = {
             value: '',
-            firstname: props.workerInfo ? props.workerInfo.firstname : 'enter name',
-            lastname: props.workerInfo ? props.workerInfo.lastname : 'enter name',
+            firstName: props.workerInfo ? props.workerInfo.firstName : 'enter name',
+            lastName: props.workerInfo ? props.workerInfo.lastName : 'enter name',
             occupation: props.workerInfo ? props.workerInfo.occupation : 'enter occupation',
             email: props.workerInfo ? props.workerInfo.email : 'enter email',
             username: props.workerInfo ? props.workerInfo.username : 'enter username',
@@ -24,16 +24,15 @@ export default class WorkerForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    handleClick = () => {
-        this.props.toggle();
-    };
 
     handleSubmit(event) {
         // TODO: extract information from form
-        let { firstname, lastname, occupation, email, username, password, workinghours, workingdates } = this.state
-        let workerInfo = { firstname, lastname, occupation, email, username, password, workinghours, workingdates }
-        this.props.onSubmit(workerInfo);
+        
         event.preventDefault();
+        let { firstName, lastName, occupation, email, username, password, workinghours, workingdates } = this.state
+        let workerInfo = { firstName, lastName, username, password};
+       console.log(workerInfo);
+        this.createPerson(workerInfo);
     }
 
     handleChange(event) {
@@ -42,64 +41,77 @@ export default class WorkerForm extends Component {
         })
     }
 
-    //TODO link to back end
-    // createPerson(person){
-    //     try {
-    //         console.log("creating a worker");
-    //         const res = await axios.post("http://localhost:8080/api/worker/create", person);
-    //         history.push("/");
-    //       } catch (err) {
-    //        console.log(err);
-    //       }
-    //  }
+    createPerson(person){
+        
+        try {
+            //let history = useHistory();
+            console.log("creating a worker");
+            axios.post("http://localhost:8080/api/worker/create", person)
+            .then(()=>{
+                history.push("/admin/workers");
+                window.location.reload();
+            })
+            .finally();
+            
+          } catch (err) {
+           console.log(err);
+          }
+    }
+
+    backToWorkerPage(){
+        history.push("/admin/workers");
+        window.location.reload();
+    }
 
     render() {
 
         return (
             <div>
-                <span className="close" onClick={this.handleClick}> X </span>
+               {/* <LinkRouter to="/admin/workers">
+                <a> X </a>
+                </LinkRouter>
+        */}
+               
                 <form onSubmit={this.handleSubmit}>
                     <h3>Worker Details</h3>
                     <label>
                         First Name:
-            <input type="text" value={this.state.firstname} name="firstname" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Last Name:
-            <input type="text" value={this.state.lastname} name="lastname" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Occupation:
-            <input type="text" value={this.state.occupation} name="occupation" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Gender:
-            <Dropdown options={options} name="gender" onChange={this.handleChange} placeholder='Select' />;
-          </label>
-                    <label>
-                        Email:
-            <input type="text" value={this.state.email} name="email" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Username:
-            <input type="text" value={this.state.username} name="username" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Password:
-            <input type="text" value={this.state.password} name="password" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Working Hours:
-            <input type="text" value={this.state.workinghours} name="workinghours" onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Working Dates:
-            <input type="text" value={this.state.workingdates} name="workingdates" onChange={this.handleChange} />
-                    </label>
-                    <br />
-                    <input type="submit" value="Submit" />
+                    <input type="text" placeholder={this.state.firstName} name="firstName" onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                Last Name:
+                    <input type="text" placeholder={this.state.lastName} name="lastName" onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                Occupation:
+                    <input type="text" placeholder={this.state.occupation} name="occupation" onChange={this.handleChange} />
+                            </label>
+                            
+                            <label>
+                                Email:
+                    <input type="text" placeholder={this.state.email} name="email" onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                Username:
+                    <input type="text" placeholder={this.state.username} name="username" onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                Password:
+                    <input type="text" placeholder={this.state.password} name="password" onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                Working Hours:
+                    <input type="text" placeholder={this.state.workinghours} name="workinghours" onChange={this.handleChange} />
+                            </label>
+                            <label>
+                                Working Dates:
+                    <input type="text" placeholder={this.state.workingdates} name="workingdates" onChange={this.handleChange} />
+                            </label>
+                            <br />
+                            <input type="submit" value="Submit" />
                 </form>
-            </div >
+                <button type="button" className="btn btn-secondary" onClick={this.backToWorkerPage}>Cancle / Close</button>
+            </div>
         );
     }
 }
