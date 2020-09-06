@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import NavigationBar from '../Layout/NavigationBar';
-import {Link as LinkRouter, useHistory} from "react-router-dom";
+import {Link as LinkRouter} from "react-router-dom";
 import axios from "axios";
 import '../../App.css';
 
 
 function RegisterForm(props){
-    const history = useHistory();
     const[userDetails, setUserDetails] = useState({
         username: "",
         firstName:"",
@@ -30,6 +29,7 @@ function RegisterForm(props){
         try {
             console.log("creating customer");
         const res = await axios.post("http://localhost:8080/api/customer/create", user);
+        console.log(res);
         props.history.push("/");
          } catch (err) {
         console.log(err);

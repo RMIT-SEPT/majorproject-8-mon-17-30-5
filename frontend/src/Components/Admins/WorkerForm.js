@@ -29,7 +29,7 @@ export default class WorkerForm extends Component {
         // TODO: extract information from form
         
         event.preventDefault();
-        let { firstName, lastName, occupation, email, username, password, workinghours, workingdates } = this.state
+        let { firstName, lastName, username, password, workinghours, workingdates } = this.state
         let workerInfo = { firstName, lastName, username, password};
        console.log(workerInfo);
         this.createPerson(workerInfo);

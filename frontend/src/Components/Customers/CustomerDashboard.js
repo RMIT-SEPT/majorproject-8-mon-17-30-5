@@ -22,9 +22,9 @@ export default class CustomerDashboard extends Component {
     componentDidMount(){
         axios.get("http://localhost:8080/api/serviceObject/getAll")
         .then((response)=>{
-            this.setState({["serviceExist"]: true});
+            this.setState({"serviceExist": true});
             console.log(response.data);
-            this.setState({["res"]: response.data});
+            this.setState({"res": response.data});
             console.log(this.state.res);
         })
         .catch()
@@ -33,7 +33,7 @@ export default class CustomerDashboard extends Component {
         //this will get all the workers
         axios.get("http://localhost:8080/api/worker/")
         .then((response)=>{
-            this.setState({["workers"]:response.data});
+            this.setState({"workers":response.data});
             console.log("Workers");
             console.log(this.state.workers);
         })

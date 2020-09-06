@@ -11,11 +11,7 @@ function DisplayABooking(props) {
     });
 
     useEffect(() => {
-       getDescription();
-    }, []);
-
-    function getDescription(){
-        
+       async function getDescription(){
         axios.get("http://localhost:8080/api/serviceObject/"+props.booking.serviceId)
         .then((response)=>{
             console.log(response.data);
@@ -29,7 +25,9 @@ function DisplayABooking(props) {
         })
         .catch()
         .finally();
-    }
+       };
+       getDescription();
+    }, [props]);
 
     return (
         <div>
