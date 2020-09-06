@@ -20,6 +20,36 @@ export default class AddWorker extends Component {
   //  this.createPerson(workerInfo);
   // }
 
+  
+//TODO delete useHistory if not needed
+AddWorker() {
+ 
+  const history = useHistory();
+  const[userDetails, setUserDetails] = useState({
+    username: "",
+    firstname:"",
+    lastname: "",
+    password: "",
+    starttime:"",
+    finishtime:"",
+    hasLoginFailed: false
+  });
+     //export default class AddWorker extends Component {
+}
+ /* handleSubmit(event) {
+    console.log("handleSubmit");
+    event.preventDefault();
+    const person = {
+      username: userDetails.username,
+      firstName: userDetails.finishtime,
+      lastName:userDetails.lastname,
+      password:userDetails.password,
+      startTime:userDetails.starttime,
+      finishTime:userDetails.finishtime
+    }
+    console.log(person);
+    createPerson(person);
+  }*/
   // async createPerson(person){
   //   try {
   //       console.log("creating a worker");
@@ -32,7 +62,7 @@ export default class AddWorker extends Component {
   //    }
 
 
-  //render() {
+ // render() {
     render() {
 
       return (
@@ -41,4 +71,4 @@ export default class AddWorker extends Component {
         </div>      
     );
   }
-}
+//} 

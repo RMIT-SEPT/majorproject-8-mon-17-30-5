@@ -17,6 +17,7 @@ import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
 
+
 function App() {
   return (
   <Router history={history}>
@@ -35,9 +36,10 @@ function App() {
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
           <Route path = "/booking-page" exact component = {CustomerBooking}></Route>
-          <Route path ="/workerDashboard" exact component = {workerDashBoard}></Route>
+          <Route path = "/workerDashboard" exact component = {workerDashBoard}></Route>
           <Route path = "/admin/login" exact component={AdminLogin}></Route>
           <Route path = "/worker/login" exact component={WorkerLogin}></Route>
+          <Route path = "/workerDetails" exact component = {WorkerPage}></Route>
         </Switch>
     </div>
        
