@@ -18,7 +18,7 @@ export default class WorkerPage extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
       <Table striped bordered hover>
   <thead>
     <tr>
@@ -54,7 +54,7 @@ export default class WorkerPage extends React.Component {
         <div onClick={() => this.formToggle("editWorkerToggle")}>Edit</div>
         {this.state.editWorkerToggle ? <EditWorker /> : null}
         <br/>
-      </>
+      </div>
     );
   }
 }

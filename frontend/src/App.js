@@ -14,11 +14,13 @@ import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
 
 import TestDropdown from './Components/Layout/TestDropdown';
+import AddWorker from './Components/Admins/AddWorker';
+import history from './history';
 
 
 function App() {
   return (
-  <Router>
+  <Router history={history}>
     <div className="App">
         <Switch>
           <Route path = "/" exact component = {LoginForm}></Route>
@@ -27,9 +29,9 @@ function App() {
           <Route path = "/about-us" exact component = {AboutUs}></Route>
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
           <Route path = "/admin" exact component = {AdminDashboard}></Route>
-          <Route path = "/worker" exact component = {WorkerPage}></Route>
-          <Route path = "/booking" exact component = {BookingPage}></Route>
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
+          <Route path = "/booking" exact component = {BookingPage}></Route>
+          <Route path = "/admin/add-worker" exact component = {AddWorker}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
