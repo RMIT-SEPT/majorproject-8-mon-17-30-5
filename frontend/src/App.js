@@ -12,7 +12,6 @@ import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
-import AddWorker from './Components/Admins/AddWorker';
 import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
@@ -31,7 +30,6 @@ function App() {
           <Route path = "/admin" exact component = {AdminDashboard}></Route>
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
           <Route path = "/booking" exact component = {BookingPage}></Route>
-          <Route path = "/admin/add-worker" exact component = {AddWorker}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
