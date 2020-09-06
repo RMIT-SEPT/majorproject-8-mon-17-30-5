@@ -52,6 +52,17 @@ public class MajorprojectApplication {
 
             workerRepository.save(john);
 
+            Worker minta = new Worker();
+            minta.setFirstName("Minata");
+            minta.setLastName("Serta");
+            minta.setUsername("Mina");
+            minta.setPassword("1234");
+            minta.setStartTime(new Date());
+            minta.setFinishTime(new Date());
+            minta.setWorkingDays("Mon/Wed/Fri");
+
+            workerRepository.save(minta);
+
             Admin cathy = new Admin();
             cathy.setFirstName("Cathy");
             cathy.setLastName("Ropkhop");
