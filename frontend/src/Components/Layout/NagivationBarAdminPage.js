@@ -2,14 +2,14 @@ import React from 'react';
 import '../../Style.css';
 import {Link as LinkRouter} from "react-router-dom";
 
-function NavigationBarCustomerPage(){
+function NavigationBarAdminPage(){
     function handleLogout(){
         sessionStorage.removeItem("id");
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("firstname");
         sessionStorage.removeItem("lastname");
-        sessionStorage.removeItem("billingAddress");
-        sessionStorage.removeItem("shippingAddress");
+        sessionStorage.removeItem("password");
+        sessionStorage.removeItem("companyId");
     }
 
     return(
@@ -21,7 +21,7 @@ function NavigationBarCustomerPage(){
                 <LinkRouter to="/contact-us">
                 <li>Contact Us</li>
                 </LinkRouter>
-                <LinkRouter to  = "/loginForm">
+                <LinkRouter to  = "/admin/login">
                 <li id = "logout" onClick={handleLogout}>Log Out</li>
                 </LinkRouter>
             </ul>
@@ -29,4 +29,4 @@ function NavigationBarCustomerPage(){
     );
 }
 
-export default NavigationBarCustomerPage;
+export default NavigationBarAdminPage;

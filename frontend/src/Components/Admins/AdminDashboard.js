@@ -1,9 +1,12 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Link as LinkRouter, Switch} from "react-router-dom";
+import {Link as LinkRouter} from "react-router-dom";
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
+
 //TODO an admin can also make a booking
 export default function AdminDashboard() {
     return (
         <div className = "buttonholder">
+            <NavigationBarAdminPage/>
             <LinkRouter to="/admin/workers">
                 <input id = "workderBtn" type="submit" value="Worker"></input>
             </LinkRouter>

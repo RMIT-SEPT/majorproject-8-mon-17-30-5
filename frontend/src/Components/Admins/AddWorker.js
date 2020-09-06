@@ -1,13 +1,12 @@
 import WorkerForm from "./WorkerForm"
-import React, { Component, useState} from "react";
-import {Link as LinkRouter, useHistory} from "react-router-dom";
-import axios from "axios";
+import React, { Component} from "react";
+
 
 export default class AddWorker extends Component {
-  constructor(props) {
-    super(props);
-    //this.submitAddWorker = this.submitAddWorker.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   //this.submitAddWorker = this.submitAddWorker.bind(this);
+  // }
 
   handleClick = () => {
     this.props.toggle();

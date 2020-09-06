@@ -38,11 +38,11 @@ public class WorkerController {
 
     }
 
-    @PostMapping("/username/{username}/")
-    public void addNewWorker(){
-
-
-    }
+//    @PostMapping("/username/{username}/")
+//    public void addNewWorker(){
+//
+//
+//    }
 
     @GetMapping("/")
     public List<Worker> getWorkers() {
@@ -53,6 +53,11 @@ public class WorkerController {
     @GetMapping("/username/{username}")
     public Worker getWorkerByUsername(@PathVariable String username) {
         return workerService.getWorkerByUsername(username);
+    }
+
+    @GetMapping("/username/{username}/password/{password}")
+    public Worker getWorkerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+        return workerService.getWorkerByUsernameAndPassword(username, password);
     }
 
     @GetMapping("/{id}")

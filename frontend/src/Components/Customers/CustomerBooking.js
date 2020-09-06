@@ -31,13 +31,13 @@ export default class CustomerBooking extends Component {
     componentDidMount(){
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id"))
         .then((response)=>{
-            this.setState({["bookingExist"]: true});
+            this.setState({"bookingExist": true});
             console.log(response.data);
-            this.setState({["res"]: response.data});
+            this.setState({"res": response.data});
             console.log(this.state.res);
         })
         .catch(()=>{
-            this.setState({["bookingExist"]:false});
+            this.setState({"bookingExist":false});
         })
         .finally();
     }

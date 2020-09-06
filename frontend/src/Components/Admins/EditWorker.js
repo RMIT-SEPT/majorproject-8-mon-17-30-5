@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import WorkerForm from "./WorkerForm"
 
-const options = ['Female', 'Male'];
 
 export default class EditWorker extends Component {
   handleClick = () => {

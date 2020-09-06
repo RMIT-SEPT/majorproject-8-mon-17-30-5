@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import '../../Style.css'
-import NavigationBar from './NavigationBar';
-import {Link as LinkRouter} from "react-router-dom";
+import NavigationBar from '../Layout/NavigationBar';
 import axios from "axios";
 
-function LoginForm(props){
+function WorkerLogin(props){
 
     const[userDetails, setUserDetails] = useState({
         username: "",
@@ -13,31 +12,7 @@ function LoginForm(props){
     });
 
     function handleChange(event){
-        // console.log(event.target);
-        // const inputName = event.target.name;
-        // const newValue = event.target.value;
-        //window.sessionStorage.setItem("key", "value");
-        //window.sessionStorage.getItem("key");
-    
-
-        // setUserDetails((prevValue) => {
-        //     if(inputName === "username"){
-        //         return {
-        //             username: newValue,
-        //             password: prevValue.password
-        //         }
-        //     } else if(inputName === "password"){
-        //         return {
-        //             username: prevValue.username,
-        //             password: newValue
-        //         }
-        //     }
-
-        // });
-        
-        //const {evernt.target.name, event.target.value};
-       const {name, value} = event.target;
-       //const {value} = event.target;
+        const {name, value} = event.target;
 
         setUserDetails(prevValue => {
             return {
@@ -45,17 +20,11 @@ function LoginForm(props){
                 [name] : value
             }
         });
-
-
-
-        
-
     }
 
     function handleSubmit(event){
-        //console.log(userDetails);
-        
-        axios.get("http://localhost:8080/api/customer/username/"+userDetails.username+
+        console.log(userDetails.username+", "+userDetails.password);
+        axios.get("http://localhost:8080/api/worker/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
           // code when login is successfull
@@ -64,16 +33,17 @@ function LoginForm(props){
             sessionStorage.setItem("username", response.data.username);
             sessionStorage.setItem("firstname", response.data.firstName);
             sessionStorage.setItem("lastname", response.data.lastName);
-            sessionStorage.setItem("billingAddress", response.data.billingAddress);
-            sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
-            props.history.push("/customerDashboard");
+            sessionStorage.setItem("companyId", response.data.companyId);
+            sessionStorage.setItem("password", response.data.password);
+            sessionStorage.setItem("serviceId", response.data.serviceId);
+            props.history.push("/workerDashboard");
         })
         .catch(function(){
             // code when un
             setUserDetails(prevValue => {
                 return {
                     ...prevValue,
-                    "hasLoginFailed" : true
+                    "hasLoginFailed": true
                 }
             });
         })
@@ -91,9 +61,9 @@ function LoginForm(props){
             <br></br>
             <br></br>
             <form className = "entry" id = "loginForm" onSubmit={handleSubmit}>
-            {userDetails.hasLoginFailed && <h1>Error</h1>}
-            <h1>Welcome!</h1>
-            <label id = "enjoy">Login to enjoy a wide range of services!</label>
+            {userDetails.hasLoginFailed && <h1>Error invalid information provided</h1>}
+            <h1>Welcome Employee!</h1>
+            <label id = "enjoy">Login to view a wide range of services!</label>
             <br></br>
             <br></br>
             <label id = "emailLabel">Email/Username</label><br></br>
@@ -110,13 +80,9 @@ function LoginForm(props){
            
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
-           
-            <p>Don't have an account yet? <LinkRouter to = "/signupform">Sign Up</LinkRouter> here!</p>
-            <p>Or</p>
-            <p>Log in as  <LinkRouter to = "/admin/login">Admin</LinkRouter> or <LinkRouter to="/worker/login">Employee</LinkRouter></p>
             </form>
         </div>
     );
 }
 
-export default LoginForm;
+export default WorkerLogin;

@@ -1,6 +1,7 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Admin;
+import com.rmit.sept.mon17305.majorproject.model.Customer;
 import com.rmit.sept.mon17305.majorproject.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,9 +46,13 @@ public class AdminController {
         return adminService.getAdmin(id);
     }
 
-    @GetMapping("/username/{username}")
-    public Admin getAdminByUsername(@PathVariable String username) {
-        return adminService.getAdminByUsername(username);
+    @GetMapping("/username/{username}/password/{password}")
+    public Admin getAdminByUsernameAndPassword(@PathVariable String username,@PathVariable String password) {
+        Admin admin = adminService.getAdminByUsernameAndPassword(username, password);
+        if(admin == null){
+            throw new NullPointerException("Wrong user details");
+        }
+        return admin;
     }
 
     @PutMapping("/{id}")

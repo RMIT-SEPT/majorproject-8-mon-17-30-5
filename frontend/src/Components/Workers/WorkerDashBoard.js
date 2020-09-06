@@ -1,11 +1,10 @@
 import React from 'react';
-import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
-
+import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
 
 export default function WorkerDashBoard() {
     return (
         <div>
-            <NavigationBarCustomerPage/>
+            <NavigationBarWorkerPage/>
         </div>
     )
 }
