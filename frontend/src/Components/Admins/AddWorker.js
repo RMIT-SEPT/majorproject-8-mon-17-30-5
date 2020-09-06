@@ -30,7 +30,7 @@ AddWorker() {
   });
      //export default class AddWorker extends Component {
 }
-  handleSubmit(event) {
+ /* handleSubmit(event) {
     console.log("handleSubmit");
     event.preventDefault();
     const person = {
@@ -43,9 +43,9 @@ AddWorker() {
     }
     console.log(person);
     createPerson(person);
-  }
+  }*/
 
-  //render() {
+  /*render() {
     render() {
 
       return (
@@ -53,5 +53,5 @@ AddWorker() {
         <WorkerForm onSubmit={this.submitAddWorker}/>
         </div>      
     );
-  }
-}
+  }*/
+} 
