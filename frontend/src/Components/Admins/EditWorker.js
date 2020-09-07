@@ -15,8 +15,8 @@ export default class EditWorker extends Component {
 
   render() {
     let exampleWorker = {
-      firstname: "Sara",
-      lastname: "Tran",
+      firstName: "Sara",
+      lastName: "Tran",
       occupation: "Gym trainer",
       email: "sara.tran@gmail.com",
       username: "sara.tran123",
