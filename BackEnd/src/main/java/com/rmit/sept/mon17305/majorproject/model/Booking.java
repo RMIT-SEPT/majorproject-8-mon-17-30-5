@@ -9,28 +9,25 @@ import java.util.Date;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     private Long id;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
+
     private Long bookingId;
->>>>>>> 694a53d... Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
-=======
-    private Long id;
->>>>>>> dd194b9... POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-=======
-    @NotBlank(message = "Customers ID is required")
->>>>>>> 2377f3a... Updated the API to work for all object models
-=======
+
+//Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
+
+//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
+
+//    @NotBlank(message = "Customers ID is required")
+//Updated the API to work for all object models
+ //   @NotNull(message = "Customers ID is required")
+//username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
+
     @NotNull(message = "Customers ID is required")
->>>>>>> 031b9db... /username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
     private Long customerId;
     @NotNull (message = "Workers ID is required")
     private Long workerId;
+    private String workerName;
     @NotNull (message = "Service ID is required")
     private Long serviceId;
     private String type;
@@ -96,5 +93,12 @@ public class Booking {
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
     }
->>>>>>> 12ba313... finish model skeleton
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
 }

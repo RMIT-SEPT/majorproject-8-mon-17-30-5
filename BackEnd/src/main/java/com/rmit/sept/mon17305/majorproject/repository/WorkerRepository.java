@@ -16,6 +16,7 @@ public interface WorkerRepository extends CrudRepository<Worker, Long> {
     List<Worker> findAll();
     Optional<Worker> findById(Long id);
     Worker findByUsername(String username);
+    Worker findByUsernameAndPassword(String username, String password);
     @Override
     void deleteById(Long id);
 

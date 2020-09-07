@@ -15,6 +15,7 @@ public interface AdminRepository extends CrudRepository<Admin, Long> {
     List<Admin> findAll();
     Optional<Admin> findById(Long id);
     Admin findByUsername(String username);
+    Admin findByUsernameAndPassword(String username, String password);
     @Override
     void deleteById(Long id);
 }

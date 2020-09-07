@@ -1,21 +1,14 @@
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @MappedSuperclass
 public abstract class User {
-<<<<<<< HEAD
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 12ba313... finish model skeleton
-    //@NotBlank - add dependency
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
     protected String firstName;
     protected String lastName;
     protected Date created_At;
@@ -69,5 +62,4 @@ public abstract class User {
     protected void onUpdate() {
         this.updated_At = new Date();
     }
->>>>>>> f4884a3... Merged with model
 }

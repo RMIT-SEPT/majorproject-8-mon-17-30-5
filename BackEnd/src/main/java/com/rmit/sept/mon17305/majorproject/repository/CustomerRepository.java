@@ -16,6 +16,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
     List<Customer> findAll();
     Optional<Customer> findById(Long id);
     Customer findByUsername(String username);
+    Customer findByUsernameAndPassword(String username, String password);
     @Override
     void deleteById(Long id);
 

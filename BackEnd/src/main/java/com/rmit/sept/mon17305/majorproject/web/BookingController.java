@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/api/booking")
 public class BookingController {
@@ -38,6 +38,12 @@ public class BookingController {
     public List<Booking> getBookings() {
 
         return bookingService.getBookings();
+    }
+
+    @GetMapping("/customer/{id}")
+    public List<Booking> getBookingsByCustomerId(@PathVariable Long id) {
+
+        return bookingService.getBookingsByCustomerId(id);
     }
 
     @GetMapping("/{id}")

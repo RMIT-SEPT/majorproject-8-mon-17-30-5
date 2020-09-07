@@ -34,6 +34,12 @@ public class WorkerService {
         return workerRepository.findByUsername(username);
     }
 
+    public Worker getWorkerByUsernameAndPassword(String username, String password){
+
+        return workerRepository.findByUsernameAndPassword(username, password);
+    }
+
+
     public Optional<Worker> getWorker(Long id){
 
         return workerRepository.findById(id);
@@ -44,4 +50,7 @@ public class WorkerService {
         workerRepository.deleteById(id);
     }
 
+    public void setWorkerRepository(WorkerRepository workerRepository) {
+        this.workerRepository = workerRepository;
+    }
 }

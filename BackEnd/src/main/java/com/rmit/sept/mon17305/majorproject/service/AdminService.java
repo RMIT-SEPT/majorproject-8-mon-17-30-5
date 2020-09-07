@@ -32,9 +32,9 @@ public class AdminService {
         return adminRepository.findById(id);
     }
 
-    public Admin getAdminByUsername(String username){
+    public Admin getAdminByUsernameAndPassword(String username, String password){
 
-        return adminRepository.findByUsername(username);
+        return adminRepository.findByUsernameAndPassword(username, password);
     }
 
     public void deleteAdminById(Long id){
