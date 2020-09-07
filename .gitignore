@@ -4,3 +4,9 @@ creds2.sh
 terraform.tfstate
 terraform.tfstate.backup
 tmp/
+.idea/.gitignore
+.idea/Major Assessment.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.vscode/settings.json
