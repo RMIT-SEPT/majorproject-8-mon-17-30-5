@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 creds.sh
 creds2.sh
 .terraform*
 terraform.tfstate
 terraform.tfstate.backup
-tmp/
 node_modules/
-=======
-=======
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -32,13 +26,7 @@ node_modules/
 
 npm-debug.log*
 yarn-debug.log*
-<<<<<<< HEAD
-<<<<<<< HEAD
 yarn-error.log*
->>>>>>> f0b5ff0... setup the backend to ignore the frontend ignored files so it can switch easier between branches
-=======
 yarn-error.log*
->>>>>>> d66858c... oops
-=======
 yarn-error.log*
->>>>>>> 031b9db80e8f95dfe51c7badc0c72b44d6795474
+tmp/
