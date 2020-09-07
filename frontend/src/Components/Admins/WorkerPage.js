@@ -1,6 +1,7 @@
 import React from "react";
 import AddWorker from "./AddWorker";
 import EditWorker from "./EditWorker";
+import ViewWorker from "./ViewWorker";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 
@@ -48,36 +49,33 @@ export default class WorkerPage extends React.Component {
       <th>#</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Username</th>
+      <th>Occupation</th>
+      <th>Working Dates</th>
+      <th>Working Hours</th>
+      <th>Option</th>
     </tr>
   </thead>
   <tbody>
   {workers}
-    {/*<tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
+    {}
     <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+      <div onClick={() => this.formToggle("editWorkerToggle")}>Edit</div>
+        {this.state.editWorkerToggle ? <EditWorker /> : null}
+        <div onClick={() => this.formToggle("addWorkerToggle")}>View</div>
+        {this.state.addWorkerToggle ? <ViewWorker /> : null}
+      </td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>*/}
   </tbody>
 </Table>
         <div onClick={() => this.formToggle("addWorkerToggle")}>Add</div>
         {this.state.addWorkerToggle ? <AddWorker /> : null}
-        <br/>
-        <div onClick={() => this.formToggle("editWorkerToggle")}>Edit</div>
-        {this.state.editWorkerToggle ? <EditWorker /> : null}
-        <br/>
       </div>
     );
   }
