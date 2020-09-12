@@ -4,8 +4,8 @@ import axios from "axios";
 import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
-//import Dropdown from 'react-dropdown';
-
+import WorkerOption from '../Layout/WorkerOption';
+// import Select from "react-dropdown-select";
 //TODO display all available services -- done -- teach how to recall
 //TODO able to make booking
 //TODO display history bookings -- from button click -- done
@@ -16,7 +16,9 @@ export default class CustomerDashboard extends Component {
         this.state={
             serviceExist: false,
             res: [], 
-            workers: []
+            workers: [],
+            selectServiceId: "jasdk",
+            selectWorkerId: "dfsakjh"
         }
     }
     componentDidMount(){
@@ -42,10 +44,16 @@ export default class CustomerDashboard extends Component {
 
     }
 
+    handlechange(){
+        this.setState({selectServiceId: "1"});
+        console.log("selectedServiceId");
+        console.log(this.state.selectServiceId);
+    }
+
     //TODO test if mapping workers work!!
     render() {
-        const list = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
-        const workers = this.state.workers.map((w)=> <option key={w.id} defaultValue={w.username}>{w.firstname}</option>);
+        const serviceList = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
         return (
             <div>
             <NavigationBarCustomerPage/>
@@ -56,112 +64,23 @@ export default class CustomerDashboard extends Component {
                     </LinkRouter>
                     <p>This should show them any searched or available services</p>
                 </div>
-                {/*
-                    <div className="dropdown" >
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button className="dropdown-item" type="button">Action</button>
-                            <button className="dropdown-item" type="button">Another action</button>
-                            <button className="dropdown-item" type="button">Something else here</button>
-                        </div>
-                    </div>
-                */}
-                
-               <div>
-                <select name="workers" id="workerFilter">
-                {workers}
-                </select>
+                <form>
+                <div>
+                    <select name="selectServiceId" id="serviceFilter" onChange={this.handlechange.bind(this)}>
+                    <option defaultValue="">Select Service</option>
+                    {serviceList}
+                    </select>   
+                </div>
+
+
+                <div>
+                    <select name="selectWorkersId" id="workerFilter">
+                    <option defaultValue="">Select Worker</option>
+                    {workers}
+                    </select>
                </div>
-                <div className="container">
-                <div className="row">
-                </div>
-                {list}                
-                </div>
-                 {/*
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <button type="button" className="btn btn-success btn-block">
-                                <h4>Service 1</h4>
-                                <li>Company:</li><br></br>
-                                <li>ServiceType</li><br></br>
-                                <li>Worker</li><br></br>
-                                <li>Duration</li>
-                            </button>
-                        </div>
-                        <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 2</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                    </button>
-                        </div>
-                        <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 3</h4>
-                        <li>Company: </li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                    </button>
-                        </div>
-                        <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 4</h4>
-                        <li>Company:kekfjsh</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                    </button>
-                        </div>
-                    </div>
-                </div>
-                <p></p>
-                <div className="container">
-                    <div className="row">
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 5</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 6</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 7</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 8</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    </div>
-                </div>
-                 */}
+                </form>
+                
             </div>
                
         )
