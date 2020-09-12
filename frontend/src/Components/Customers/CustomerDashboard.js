@@ -5,6 +5,7 @@ import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
 import WorkerOption from '../Layout/WorkerOption';
+//import 'react-datepicker/dist/react-datepicker.css';
 // import Select from "react-dropdown-select";
 //TODO display all available services -- done -- teach how to recall
 //TODO able to make booking
@@ -13,12 +14,14 @@ import WorkerOption from '../Layout/WorkerOption';
 export default class CustomerDashboard extends Component {
     constructor(){
         super();
+        const date = new Date();
         this.state={
             serviceExist: false,
             res: [], 
             workers: [],
             selectServiceId: "jasdk",
-            selectWorkerId: "dfsakjh"
+            selectWorkerId: "dfsakjh",
+            selectDate: date
         }
     }
     componentDidMount(){
@@ -44,9 +47,9 @@ export default class CustomerDashboard extends Component {
 
     }
 
-    handlechange(){
-        this.setState({selectServiceId: "1"});
-        console.log("selectedServiceId");
+    handlechange(field, value){
+        this.setState({[field]: value});
+        // console.log("selectedServiceId");
         console.log(this.state.selectServiceId);
     }
 
@@ -54,6 +57,16 @@ export default class CustomerDashboard extends Component {
     render() {
         const serviceList = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
         const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
+        const date = new Date();
+        const day = date.getDate();
+        let month = date.getMonth();
+        const year = date.getFullYear();
+        if(month < 10){
+            month++;
+            month = "0" + month;
+        }
+        const formattedDate = year + "-" + month +"-"+day;
+        const dateMax = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
         return (
             <div>
             <NavigationBarCustomerPage/>
@@ -64,22 +77,26 @@ export default class CustomerDashboard extends Component {
                     </LinkRouter>
                     <p>This should show them any searched or available services</p>
                 </div>
-                <form>
+                
                 <div>
                     <select name="selectServiceId" id="serviceFilter" onChange={this.handlechange.bind(this)}>
                     <option defaultValue="">Select Service</option>
                     {serviceList}
                     </select>   
                 </div>
-
-
+                <div id="datePicker">
+                    <input type="date" name="selectDate" min={formattedDate}></input>
+                </div>
                 <div>
                     <select name="selectWorkersId" id="workerFilter">
                     <option defaultValue="">Select Worker</option>
                     {workers}
                     </select>
                </div>
-                </form>
+                <div>
+                
+                ---{formattedDate}---
+                </div>
                 
             </div>
                
