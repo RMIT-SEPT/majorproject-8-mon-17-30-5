@@ -31,12 +31,11 @@ public class Worker{
     private Date updated_At;
     private Long companyId;
     private Long serviceId;
-    @JsonFormat(pattern = "HH:mm")
-    private Date startTime;
-    @JsonFormat(pattern = "HH:mm")
-    private Date finishTime;
-    private String workingDays;
+    private String startTime;
+    private String finishTime;
+    //private String workingDays;
     private String password;
+    private String lunchBrTime;
 
     public Worker(){}
 
@@ -114,29 +113,29 @@ public class Worker{
         this.serviceId = serviceId;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getFinishTime() {
+    public String getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(String finishTime) {
         this.finishTime = finishTime;
     }
 
-    public String getWorkingDays() {
-        return workingDays;
-    }
-
-    public void setWorkingDays(String workingDays) {
-        this.workingDays = workingDays;
-    }
+//    public String getWorkingDays() {
+//        return workingDays;
+//    }
+//
+//    public void setWorkingDays(String workingDays) {
+//        this.workingDays = workingDays;
+//    }
 
     public String getType(){
         return "Worker";
@@ -149,4 +148,8 @@ public class Worker{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getLunchBrTime() {return lunchBrTime;}
+
+    public void setLunchBrTime(String lunchBrTime) {this.lunchBrTime = lunchBrTime;}
 }

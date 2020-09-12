@@ -31,8 +31,8 @@ public class Booking {
     @NotNull (message = "Service ID is required")
     private Long serviceId;
     private String type;
-    private Date startTime;
-    private Date finishTime;
+    private String startTime;
+    private String finishTime;
 
     public Booking() {
 
@@ -78,19 +78,19 @@ public class Booking {
         this.type = type;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getFinishTime() {
+    public String getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(String finishTime) {
         this.finishTime = finishTime;
     }
 
