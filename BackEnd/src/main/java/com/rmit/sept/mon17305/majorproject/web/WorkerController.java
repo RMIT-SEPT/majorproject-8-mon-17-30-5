@@ -1,6 +1,7 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
+import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException;
 import com.rmit.sept.mon17305.majorproject.model.Admin;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
@@ -24,25 +25,29 @@ public class WorkerController {
     private WorkerService workerService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
-        
-    //add validations
+    public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result) throws TimeFormatException {
+
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
                 return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
             }
         }
 
+        String startTime = worker.getStartTime();
+        String finishTime = worker.getFinishTime();
+        String lunchBrTime = worker.getLunchBrTime();
+        boolean validStart = checkTimeformat(startTime);
+        boolean validFinish = checkTimeformat(finishTime);
+        boolean validBreak = checkTimeformat(lunchBrTime);
+
+        if(!validStart||!validFinish||!validBreak){
+            throw new TimeFormatException("invalid time input");
+        }
+
         Worker worker1 = workerService.saveOrUpdateWorker(worker);
         return new ResponseEntity<Worker>(worker, HttpStatus.CREATED);
 
     }
-
-//    @PostMapping("/username/{username}/")
-//    public void addNewWorker(){
-//
-//
-//    }
 
     @GetMapping("/")
     public List<Worker> getWorkers() {
@@ -87,4 +92,22 @@ public class WorkerController {
         workerService.deleteWorkerById(id);
     }
 
+    private boolean checkTimeformat(String timeString){
+        boolean valid = true;
+        if(timeString.contains(":")){
+            String[] time = timeString.split(":");
+            int hr = Integer.parseInt(time[0]);
+            int min = Integer.parseInt(time[1]);
+            if(hr>24 || hr <0){
+                valid = false;
+            }
+            if(min>59|| min < 0){
+                valid = false;
+            }
+        }else{
+            valid = false;
+        }
+
+        return valid;
+    }
 }

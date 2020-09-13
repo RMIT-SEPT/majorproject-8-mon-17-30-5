@@ -34,6 +34,11 @@ public class ServiceObjectService {
         return serviceObjectRepository.findById(id);
     }
 
+    public Optional<ServiceObject> getServiceObjectDuration(Long id){
+
+        return serviceObjectRepository.findById(id);
+    }
+
     public void deleteServiceObjectById(Long id){
 
         serviceObjectRepository.deleteById(id);

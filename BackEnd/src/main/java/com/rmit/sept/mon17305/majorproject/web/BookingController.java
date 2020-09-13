@@ -1,5 +1,6 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
+import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException;
 import com.rmit.sept.mon17305.majorproject.model.Booking;
 import com.rmit.sept.mon17305.majorproject.model.Booking;
 import com.rmit.sept.mon17305.majorproject.service.BookingService;
@@ -20,13 +21,22 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @PostMapping("")
-    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result){
+    @PostMapping("/create/")
+    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result) throws TimeFormatException {
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
                 return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
             }
+        }
+
+        String startTime = booking.getStartTime();
+        String finishTime = booking.getFinishTime();
+        boolean validStart = checkTimeformat(startTime);
+        boolean validFinish = checkTimeformat(finishTime);
+
+        if(!validStart || !validFinish){
+            throw new TimeFormatException("invalid time format");
         }
 
         Booking booking1 = bookingService.saveOrUpdateBooking(booking);
@@ -49,6 +59,12 @@ public class BookingController {
     @GetMapping("/{id}")
     public Optional<Booking> getBooking(@PathVariable Long id) {
         return bookingService.getBooking(id);
+    }
+
+    @GetMapping("/{date}")
+    public List<Booking> getBookingsByDate(@PathVariable String date) {
+
+        return bookingService.getBookingsByDate(date);
     }
 
     @PutMapping("/{id}")
@@ -74,4 +90,22 @@ public class BookingController {
         bookingService.deleteBookingById(id);
     }
 
+    private boolean checkTimeformat(String timeString){
+        boolean valid = true;
+        if(timeString.contains(":")){
+            String[] time = timeString.split(":");
+            int hr = Integer.parseInt(time[0]);
+            int min = Integer.parseInt(time[1]);
+            if(hr>24 || hr <0){
+                valid = false;
+            }
+            if(min>59|| min < 0){
+                valid = false;
+            }
+        }else{
+            valid = false;
+        }
+
+        return valid;
+    }
 }

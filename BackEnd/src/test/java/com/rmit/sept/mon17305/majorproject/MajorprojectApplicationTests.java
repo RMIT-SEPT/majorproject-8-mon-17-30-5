@@ -37,11 +37,11 @@ public class MajorprojectApplicationTests {
         worker1.setId((long)1);
         worker1.setFirstName("Daniel");
         worker1.setLastName("Sample");
-        worker1.setWorkingDays("Mon/Tue/Wed");
+        //worker1.setWorkingDays("Mon/Tue/Wed");
         worker1.setCompanyId((long) 001);
         worker1.setServiceId((long) 001);
-        worker1.setFinishTime(new Date());
-        worker1.setFinishTime(new Date(1));
+        worker1.setStartTime("08:00");
+        worker1.setFinishTime("16:00");
 
         service1.saveOrUpdateWorker(worker1);
     }

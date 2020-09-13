@@ -34,6 +34,11 @@ public class BookingService {
         return bookingRepository.findByCustomerId(id);
     }
 
+    public List<Booking> getBookingsByDate(String date) {
+
+        return bookingRepository.findByDate(date);
+    }
+
     public Optional<Booking> getBooking(Long id){
 
         return bookingRepository.findById(id);
