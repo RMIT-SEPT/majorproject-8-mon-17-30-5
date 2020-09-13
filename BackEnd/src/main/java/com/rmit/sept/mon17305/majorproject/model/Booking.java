@@ -33,6 +33,8 @@ public class Booking {
     private String type;
     private String startTime;
     private String finishTime;
+    //format "dd-MM-yyyy"
+    private String date;
 
     public Booking() {
 
@@ -100,5 +102,13 @@ public class Booking {
 
     public void setWorkerName(String workerName) {
         this.workerName = workerName;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

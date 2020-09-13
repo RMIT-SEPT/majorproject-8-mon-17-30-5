@@ -61,6 +61,12 @@ public class BookingController {
         return bookingService.getBooking(id);
     }
 
+    @GetMapping("/{date}")
+    public List<Booking> getBookingsByDate(@PathVariable String date) {
+
+        return bookingService.getBookingsByDate(date);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceBooking(@RequestBody Booking newBooking, @PathVariable Long id) {
 
