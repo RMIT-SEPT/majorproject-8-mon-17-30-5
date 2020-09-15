@@ -5,6 +5,7 @@ import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
 import WorkerOption from '../Layout/WorkerOption';
+import DisplayServiceOption from '../Layout/DisplayServiceOption';
 //import 'react-datepicker/dist/react-datepicker.css';
 // import Select from "react-dropdown-select";
 //TODO display all available services -- done -- teach how to recall
@@ -78,6 +79,7 @@ export default class CustomerDashboard extends Component {
 
         axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId)
         .then((response)=>{
+            console.log(response.data);
             startTime = response.data.startTime;
             finishTime = response.data.finishTime;
             breakTime = response.data.lunchBrTime;
@@ -156,28 +158,31 @@ export default class CustomerDashboard extends Component {
     //TODO test if mapping workers work!!
     render() {
         const serviceList = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const serviceOption = this.state.res.map((s)=> <DisplayServiceOption key={s.id} service={s}/>);
         const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
         return (
             <div>
             <NavigationBarCustomerPage/>
-                <div className="jumbotron text-center">
+            <br></br>
+            <form className = "custDash">
+            <div>
                     <h1>Customer Dashboard</h1>
                     <LinkRouter to = "/custDetails">
                     <li id = "custDetails">View User Details</li>
                     </LinkRouter>
-                    <p>This should show them any searched or available services</p>
-                </div>
-                <form>
-                <div>
-                    <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)}>
-                    <option defaultValue="">Select Service</option>
-                    {serviceList}
-                    </select>   
                 </div>
                 <br></br>
+                <form className = "searchDash">
                 <div id="datePicker">
                     <input type="date" id="dateFilter" name="selectDate" min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} ></input>
                 </div>
+                <br></br>
+                <div>
+                <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)}>
+                    <option defaultValue="">Select Service</option>
+                    {serviceOption}
+                    </select> 
+                </div> 
                 <br></br>
                 <div>
                     <select name="selectWorkersId" id="workerFilter" onChange={this.selectedWorkerId.bind(this)}>
@@ -187,14 +192,22 @@ export default class CustomerDashboard extends Component {
                </div>
                <br></br>
                <button type="button" value="submit" onClick={this.handleSubmit}>Search</button>
+                <br></br>
+                <br></br>
                 </form>
                 <br></br>
                 <br></br>
                 <div>
-                
                 ---{this.getFormattedDate()}---
                 </div>
-                
+                <br></br>
+                <div className="container">
+                    <div className="row">
+                            {serviceList}
+                    </div>
+                </div>
+                <br></br>
+            </form>
             </div>
                
         )
