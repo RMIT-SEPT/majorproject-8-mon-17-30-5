@@ -107,7 +107,7 @@ export default class CustomerDashboard extends Component {
                     serviceId: this.state.selectServiceId,
                     workerId: this.state.selectWorkerId,
                     workername: response.data.firstName,
-                    date: this.state.selectDate,
+                    date: this.getFormattedDate(),
                     description: this.state.description,
                     duration: this.state.duration,
                     startTime: array[k],
@@ -157,7 +157,7 @@ export default class CustomerDashboard extends Component {
 
     //TODO test if mapping workers work!!
     render() {
-        const serviceList = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const serviceList = this.state.display.map((s)=> <DisplayAService key={s.id} service={s}/>);
         const serviceOption = this.state.res.map((s)=> <DisplayServiceOption key={s.id} service={s}/>);
         const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
         return (

@@ -9,7 +9,7 @@ function DisplayAService(props) {
             <p>{props.service.id}</p>
             <ul>
                 <li>Description: {props.service.description}</li>
-                <li>Worker Name: {props.service.workerName}</li>
+                <li>Worker Name: {props.service.workername}</li>
                 <li>Worker ID: {props.service.workerId}</li>
             </ul>
         </div>
