@@ -1,5 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Link as LinkRouter} from "react-router-dom";
 
 function DisplayAService(props) {
     return (
@@ -12,6 +13,11 @@ function DisplayAService(props) {
                 <li>Worker Name: {props.service.workername}</li>
                 <li>Worker ID: {props.service.workerId}</li>
             </ul>
+            <br></br>
+            <LinkRouter to="/customer/makeBooking">
+            <button workerId={props.service.workerId}>Book</button>
+            </LinkRouter>
+            <br></br>
         </div>
         </div>
     )

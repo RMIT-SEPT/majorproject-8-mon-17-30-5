@@ -15,6 +15,7 @@ import workerDashBoard from './Components/Workers/WorkerDashBoard';
 import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
+import MakeBooking from "./Components/Customers/MakeBooking";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
           <Route path = "/booking-page" exact component = {CustomerBooking}></Route>
+          <Route path = "/customer/makeBooking" exact component ={MakeBooking}></Route>
           <Route path = "/workerDashboard" exact component = {workerDashBoard}></Route>
           <Route path = "/admin/login" exact component={AdminLogin}></Route>
           <Route path = "/worker/login" exact component={WorkerLogin}></Route>
