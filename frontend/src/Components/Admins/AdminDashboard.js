@@ -13,6 +13,9 @@ export default function AdminDashboard() {
             <LinkRouter to="/booking">
                 <input id = "bookingBtn" type="submit" value="Booking"></input>
             </LinkRouter>
+            <div>
+                <li>{sessionStorage.getItem("username")}</li>
+            </div>
         </div>
         
     )
