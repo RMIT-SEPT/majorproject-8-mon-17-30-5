@@ -61,12 +61,13 @@ export default class CustomerDashboard extends Component {
         let description1 ="";
         //get working hrs -- worker
         //get break time -- worker
-        var startTime = "";
+        let startTime = "";
         let finishTime = "";
         let breakTime = "";
 
-        axios.get("http://localhost:8080/api/serviceObject/"+this.state.selectServiceId+"/duration")
+        axios.get("http://localhost:8080/api/serviceObject/"+this.state.selectServiceId)
         .then((response)=>{
+            // console.log(response);
             duration1 = response.data.duration;
             description1 = response.data.description;
             this.setState({duration: duration1});
@@ -78,6 +79,7 @@ export default class CustomerDashboard extends Component {
 
         axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId)
         .then((response)=>{
+            console.log(response);
             startTime = response.data.startTime;
             finishTime = response.data.finishTime;
             breakTime = response.data.lunchBrTime;
