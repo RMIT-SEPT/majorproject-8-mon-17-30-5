@@ -31,6 +31,7 @@ function MakeBooking(props){
         sessionStorage.removeItem("booking-date");
         sessionStorage.removeItem("booking-serviceDescription",);
         sessionStorage.removeItem("booking-duration");
+        props.history.push("/customerDashBoard");
     }
 
 
