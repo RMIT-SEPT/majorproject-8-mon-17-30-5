@@ -120,7 +120,8 @@ export default class CustomerDashboard extends Component {
             console.log(this.state.display);
         })
         .catch()
-        .finally();
+        .finally(checkSearchCriteria());
+        
         // 
         // console.log(startTime);
         //get already booked time based on date and workerId
@@ -166,51 +167,62 @@ export default class CustomerDashboard extends Component {
             <br></br>
             <form className = "custDash">
             <div>
+                <LinkRouter to = "/custDetails">
+                <button id = "userDetails">View User Details</button>
+                </LinkRouter>
+            </div>
+            <br></br>
+            <div>
                     <h1>Customer Dashboard</h1>
-                    <LinkRouter to = "/custDetails">
-                    <li id = "custDetails">View User Details</li>
-                    </LinkRouter>
-                </div>
-                <br></br>
-                <form className = "searchDash">
-                <div id="datePicker">
-                    <input type="date" id="dateFilter" name="selectDate" min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} ></input>
-                </div>
-                <br></br>
-                <div>
-                <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)}>
+            </div>
+            <br></br>
+            <form className = "searchDash">
+            <div id="datePicker">
+                <input type="date" id="dateFilter" name="selectDate" min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} required></input>
+            </div>
+            <br></br>
+            <div>
+                <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)} required>
                     <option defaultValue="">Select Service</option>
                     {serviceOption}
-                    </select> 
-                </div> 
-                <br></br>
-                <div>
-                    <select name="selectWorkersId" id="workerFilter" onChange={this.selectedWorkerId.bind(this)}>
+                </select> 
+            </div> 
+            <br></br>
+            <div>
+                <select name="selectWorkersId" id="workerFilter" onChange={this.selectedWorkerId.bind(this)} required>
                     <option defaultValue="">Select Worker</option>
                     {workers}
-                    </select>
-               </div>
-               <br></br>
-               <button type="button" value="submit" onClick={this.handleSubmit}>Search</button>
-                <br></br>
-                <br></br>
-                </form>
-                <br></br>
-                <br></br>
-                <div>
-                ---{this.getFormattedDate()}---
-                </div>
-                <br></br>
-                <div className="container">
-                    <div className="row">
-                            {serviceList}
-                    </div>
-                </div>
-                <br></br>
-            </form>
+                </select>
             </div>
-               
+            <br></br>
+            <div>
+            <button className = "searchService" type="button" value="submit" onClick={this.handleSubmit}>Search</button>
+            </div>
+            <br></br>
+            <br></br>
+            </form>
+            <br></br>
+            <div className="container">
+                <div className="row">
+                    {serviceList}
+                </div>
+            </div>
+            <br></br>
+            </form>
+            </div>  
         )
-    
    }
+}
+
+function checkSearchCriteria()
+{
+    var dateCheck = document.getElementById("dateFilter").value;
+    var serviceCheck = document.getElementById("serviceFilter").value;
+    var workerCheck = document.getElementById("workerFilter").value;
+
+    if(dateCheck == "dd/mm/yyyy" || serviceCheck == "Select Service" || workerCheck == "Select Worker")
+    {
+        alert("Select all search fields please!");
+    }
+    
 }

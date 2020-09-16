@@ -16,9 +16,9 @@ function CustomerPage(){
             <LinkRouter to = "/booking-page">
             <button id = "booking" className = "booking">View Booking History</button>
             </LinkRouter>
+            <br></br>
+            <br></br>
             <h2>User Details</h2>
-            <br></br>
-            <br></br>
             <label>Username : {sessionStorage.getItem("username")}</label>
             <br></br>
             <label>First Name : {sessionStorage.getItem("firstname")}</label>
@@ -27,8 +27,7 @@ function CustomerPage(){
             <br></br>
             <label>Billing Address : {sessionStorage.getItem("billingAddress")}</label>
             <br></br>
-            <br></br>
-            <label>User Address : {sessionStorage.getItem("shippingAddress")}</label>
+            <label>Shipping Address : {sessionStorage.getItem("shippingAddress")}</label>
         </form>
         </div>
     );
