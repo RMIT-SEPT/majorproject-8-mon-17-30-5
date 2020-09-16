@@ -19,6 +19,7 @@
 ## Code documentation
 
 [Quick Start](/docs/README.md) in `docs` folder
+
 To Start back end
 open intelliJ in folder Backend
 run majorprojectApplication
