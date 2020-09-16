@@ -100,7 +100,7 @@ form.searchDash
   box-shadow: 0px 0px 18px 4px #696969; 
 }
 
-form.custDash, form.adminDetails, form.aboutUs, form.contactUs, form.workerDetails
+article.custDash, form.adminDetails, form.aboutUs, form.contactUs, form.workerDetails
 {
   background-color: white;
   display: inline-block;

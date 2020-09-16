@@ -88,7 +88,7 @@ public class WorkerController {
             HashMap<String, Object> map = new HashMap<>();
             map.put("serviceId", serviceId);
             map.put("workerId", id);
-            map.put("workername", worker.getFirstName());
+            map.put("workerName", worker.getFirstName());
             map.put("date", date);
             map.put("description", description);
             map.put("duration", duration);

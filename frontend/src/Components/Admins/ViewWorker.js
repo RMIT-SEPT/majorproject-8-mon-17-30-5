@@ -29,7 +29,7 @@ export default class ViewWorker extends Component {
         // TODO: extract information from form
         
         event.preventDefault();
-        let { firstName, lastName, username, password, workinghours, workingdates } = this.state
+        let { firstName, lastName, username, password} = this.state
         let workerInfo = { firstName, lastName, username, password};
        console.log(workerInfo);
         this.createPerson(workerInfo);
