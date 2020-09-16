@@ -47,7 +47,7 @@ public class Admin{
     private Long companyId;
     private String password;
 
-    public Admin(){}
+    public Admin(){onCreate();}
 
     public Long getUserId() {
         return id;

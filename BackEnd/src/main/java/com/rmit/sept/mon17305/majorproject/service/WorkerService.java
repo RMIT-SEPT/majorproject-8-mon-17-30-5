@@ -39,6 +39,10 @@ public class WorkerService {
         return workerRepository.findByUsernameAndPassword(username, password);
     }
 
+    public Worker getWorkerByIdEquals(Long id){
+        return workerRepository.findByIdEquals(id);
+    }
+
 
     public Optional<Worker> getWorker(Long id){
 

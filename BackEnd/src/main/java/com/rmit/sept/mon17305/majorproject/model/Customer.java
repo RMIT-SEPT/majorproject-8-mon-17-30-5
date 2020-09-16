@@ -41,7 +41,7 @@ public class Customer{
     private String shippingAddress;
     private String password;
 
-    public Customer() {}
+    public Customer() {onCreate();}
 
     public Long getUserId() {
         return id;

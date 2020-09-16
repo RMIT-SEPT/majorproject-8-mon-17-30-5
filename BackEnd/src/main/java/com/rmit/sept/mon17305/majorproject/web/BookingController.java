@@ -30,14 +30,14 @@ public class BookingController {
             }
         }
 
-        String startTime = booking.getStartTime();
-        String finishTime = booking.getFinishTime();
-        boolean validStart = checkTimeformat(startTime);
-        boolean validFinish = checkTimeformat(finishTime);
-
-        if(!validStart || !validFinish){
-            throw new TimeFormatException("invalid time format");
-        }
+//        String startTime = booking.getStartTime();
+//        String finishTime = booking.getFinishTime();
+//        boolean validStart = checkTimeformat(startTime);
+//        boolean validFinish = checkTimeformat(finishTime);
+//
+//        if(!validStart || !validFinish){
+//            throw new TimeFormatException("invalid time format");
+//        }
 
         Booking booking1 = bookingService.saveOrUpdateBooking(booking);
         return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
