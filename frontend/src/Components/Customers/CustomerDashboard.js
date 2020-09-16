@@ -4,28 +4,31 @@ import axios from "axios";
 import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
-//import Dropdown from 'react-dropdown';
-
-//TODO display all available services -- done -- teach how to recall
-//TODO able to make booking
-//TODO display history bookings -- from button click -- done
+import WorkerOption from '../Layout/WorkerOption';
+import DisplayServiceOption from '../Layout/DisplayServiceOption';
 
 export default class CustomerDashboard extends Component {
     constructor(){
         super();
+       
         this.state={
             serviceExist: false,
             res: [], 
-            workers: []
+            workers: [],
+            selectServiceId: -1,
+            selectWorkerId: -1,
+            selectDate: "",
+            display:[], 
+            duration: 0,
+            description: "", 
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
         axios.get("http://localhost:8080/api/serviceObject/getAll")
         .then((response)=>{
             this.setState({"serviceExist": true});
-            console.log(response.data);
             this.setState({"res": response.data});
-            console.log(this.state.res);
         })
         .catch()
         .finally();
@@ -42,129 +45,117 @@ export default class CustomerDashboard extends Component {
 
     }
 
-    //TODO test if mapping workers work!!
+    handleSubmit = (event) => {
+        if(this.state.selectServiceId > 0 && this.state.selectWorkerId >0){
+        let duration1 = 0;
+        let description1 ="";
+
+        axios.get("http://localhost:8080/api/serviceObject/"+this.state.selectServiceId)
+        .then((response)=>{
+           
+            duration1 = response.data.duration;
+            description1 = response.data.description;
+            this.setState({duration: duration1});
+            this.setState({description: description1});
+            this.getAvailable();
+        })
+        .catch()
+        .finally();
+        }else{
+            alert("Select all search fields please!");
+        }
+
+    }
+
+     selectedServiceId(e){
+         this.setState({"selectServiceId":e.target.value});
+         console.log(this.state.selectServiceId);
+     }
+
+    selectedWorkerId(e){
+        this.setState({"selectWorkerId": e.target.value});
+    }
+
+    selectedDate(e){
+        this.setState({selectDate: e.target.value});
+    }
+
+    getAvailable(){
+        axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
+        +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
+        .then((response)=>{
+            this.setState({display: response.data});
+        })
+        .catch()
+        .finally();
+    }
+
+    getFormattedDate(){
+        const date = new Date();
+        const day = date.getDate();
+        let month = date.getMonth();
+        const year = date.getFullYear();
+        if(month < 10){
+            month++;
+            month = "0" + month;
+        }
+        return year + "-" + month +"-"+day;
+       
+    }
+
     render() {
-        const list = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
-        const workers = this.state.workers.map((w)=> <option key={w.id} defaultValue={w.username}>{w.firstname}</option>);
+        const serviceList = this.state.display.map((s)=> <DisplayAService key={"service"+s.startTime} service={s}/>);
+        const serviceOption = this.state.res.map((s)=> <DisplayServiceOption key={s.id} service={s}/>);
+        const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
         return (
             <div>
             <NavigationBarCustomerPage/>
-                <div className="jumbotron text-center">
-                    <h1>Customer Dashboard</h1>
-                    <LinkRouter to = "/custDetails">
-                    <li id = "custDetails">View User Details</li>
-                    </LinkRouter>
-                    <p>This should show them any searched or available services</p>
-                </div>
-                {/*
-                    <div className="dropdown" >
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button className="dropdown-item" type="button">Action</button>
-                            <button className="dropdown-item" type="button">Another action</button>
-                            <button className="dropdown-item" type="button">Something else here</button>
-                        </div>
-                    </div>
-                */}
-                
-               <div>
-                <select name="workers" id="workerFilter">
-                {workers}
-                </select>
-               </div>
-                <div className="container">
-                <div className="row">
-                </div>
-                {list}                
-                </div>
-                 {/*
-                <div className="container">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <button type="button" className="btn btn-success btn-block">
-                                <h4>Service 1</h4>
-                                <li>Company:</li><br></br>
-                                <li>ServiceType</li><br></br>
-                                <li>Worker</li><br></br>
-                                <li>Duration</li>
-                            </button>
-                        </div>
-                        <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 2</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                    </button>
-                        </div>
-                        <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 3</h4>
-                        <li>Company: </li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                    </button>
-                        </div>
-                        <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 4</h4>
-                        <li>Company:kekfjsh</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                    </button>
-                        </div>
-                    </div>
-                </div>
-                <p></p>
-                <div className="container">
-                    <div className="row">
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 5</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 6</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 7</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    <div className="col-sm-3">
-                        <button type="button" className="btn btn-info btn-block">
-                        <h4>Service 8</h4>
-                        <li>Company:</li><br></br>
-                        <li>ServiceType</li><br></br>
-                        <li>Worker</li><br></br>
-                        <li>Duration</li>
-                        </button>
-                    </div>
-                    </div>
-                </div>
-                 */}
+            <br></br>
+            <article className = "custDash">
+            <div>
+                <LinkRouter to = "/custDetails">
+                <button id = "userDetails">View User Details</button>
+                </LinkRouter>
             </div>
-               
+            <br></br>
+            <div>
+                    <h1>Customer Dashboard</h1>
+            </div>
+            <br></br>
+            <form className = "searchDash">
+            <div id="datePicker">
+                <input type="date" id="dateFilter" name="selectDate" min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} required></input>
+            </div>
+            <br></br>
+            <div>
+                <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)} required>
+                    <option defaultValue="">Select Service</option>
+                    {serviceOption}
+                </select> 
+            </div> 
+            <br></br>
+            <div>
+                <select name="selectWorkersId" id="workerFilter" onChange={this.selectedWorkerId.bind(this)} required>
+                    <option defaultValue="">Select Worker</option>
+                    {workers}
+                </select>
+            </div>
+            <br></br>
+            <div>
+            <button className = "searchService" type="button" value="submit" onClick={this.handleSubmit}>Search</button>
+            </div>
+            <br></br>
+            <br></br>
+            </form>
+            <br></br>
+            <div className="container">
+                <div className="row">
+                    {serviceList}
+                </div>
+            </div>
+            <br></br>
+            </article>
+            </div>  
         )
-    
    }
 }

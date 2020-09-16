@@ -9,10 +9,9 @@ import java.util.Date;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
-    private Long bookingId;
+//    private Long bookingId;
 
 //Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
 
@@ -30,12 +29,16 @@ public class Booking {
     private String workerName;
     @NotNull (message = "Service ID is required")
     private Long serviceId;
-    private String type;
-    private Date startTime;
-    private Date finishTime;
+    //private String type;
+    private int startTime;
+    private int finishTime;
+    //format "dd-MM-yyyy"
+    private String date;
+    private Date created_At;
+    private Date updated_At;
 
     public Booking() {
-
+        onCreate();
     }
 
     public Long getId() {
@@ -70,27 +73,27 @@ public class Booking {
         this.serviceId = serviceId;
     }
 
-    public String getType() {
-        return type;
-    }
+//    public String getType() {
+//        return type;
+//    }
+//
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Date getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(int startTime) {
         this.startTime = startTime;
     }
 
-    public Date getFinishTime() {
+    public int getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(int finishTime) {
         this.finishTime = finishTime;
     }
 
@@ -100,5 +103,22 @@ public class Booking {
 
     public void setWorkerName(String workerName) {
         this.workerName = workerName;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @PrePersist
+    private void onCreate() {
+        this.created_At = new Date();
+    }
+    @PreUpdate
+    private void onUpdate() {
+        this.updated_At = new Date();
     }
 }

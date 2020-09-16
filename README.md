@@ -3,21 +3,30 @@
 # Group 05
 
 ## Members
-* MASON, Evan (s3688949)
 * Baker, Allan (s3718362)
-* Ropkhop, Chiraporn (s3781279)
+* Ropkhop, Chiraporn (s3781279) - scrum master
 * Do, Ngoc (s3698200)
 * Abeysinghe, Kavin (s3756717)
 
 ## Records
 
-* Github repository : https://github.com/RMIT-SEPT/MajorProject/Groupx
-* ClickUp Workspace : https://app.clickup.com/xxxx/yyyy
+* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/
+* ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
+* ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
+
 
 
 ## Code documentation
 
 [Quick Start](/docs/README.md) in `docs` folder
+
+To Start back end
+open intelliJ in folder Backend
+run majorprojectApplication
+
+To Start front end
+ensure to be in foler frontend
+npm start
 
 ## HOW TO SET UP
 

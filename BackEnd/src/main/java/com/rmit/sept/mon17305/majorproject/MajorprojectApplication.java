@@ -46,9 +46,10 @@ public class MajorprojectApplication {
             john.setLastName("Serta");
             john.setUsername("John");
             john.setPassword("1234");
-            john.setStartTime(new Date());
-            john.setFinishTime(new Date());
-            john.setWorkingDays("Mon/Wed/Fri");
+            john.setStartTime("08:00");
+            john.setFinishTime("16:00");
+            //john.setWorkingDays("Mon/Wed/Fri");
+            john.setLunchBrTime("11:00");
 
             workerRepository.save(john);
 
@@ -57,9 +58,10 @@ public class MajorprojectApplication {
             minta.setLastName("Serta");
             minta.setUsername("Mina");
             minta.setPassword("1234");
-            minta.setStartTime(new Date());
-            minta.setFinishTime(new Date());
-            minta.setWorkingDays("Mon/Wed/Fri");
+            minta.setStartTime("09:00");
+            minta.setFinishTime("17:00");
+            //minta.setWorkingDays("Mon/Wed/Fri");
+            minta.setLunchBrTime("12:00");
 
             workerRepository.save(minta);
 
@@ -76,14 +78,17 @@ public class MajorprojectApplication {
             service.setWorkerId(john.getId());
             service.setWorkerName(john.getFirstName());
             service.setDescription("Wash outside");
+            service.setDuration(1);
             ServiceObject service1 = new ServiceObject();
             service1.setDescription("Clean inside and outside");
             service1.setWorkerName(john.getFirstName());
             service1.setWorkerId(john.getId());
+            service1.setDuration(2);
             ServiceObject service2 = new ServiceObject();
             service2.setDescription("Details inside and outside");
             service2.setWorkerId(john.getId());
             service2.setWorkerName(john.getFirstName());
+            service2.setDuration(2);
 
             serviceObjectRepository.save(service);
             serviceObjectRepository.save(service1);

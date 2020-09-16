@@ -30,17 +30,14 @@ function DisplayABooking(props) {
     }, [props]);
 
     return (
-        <div>
-            <p>Id {props.booking.id}</p>
-            <ul>
-                <li>Service Id: {props.booking.serviceId}</li>
-                <li>description:{userDetails.description}</li>
-                <li>worker Id: {props.booking.workerId}</li>
-                <li>worker name: {userDetails.workerName}</li>
-                <li>Start time: {userDetails.startTime}</li>
-                <li>Finish time: {userDetails.finishTime}</li>
-            </ul>
-        </div>
+        <tr>
+            <td>{props.booking.serviceId}</td>
+            <td>{userDetails.description}</td>
+            <td>{props.booking.workerId}</td>
+            <td>{props.booking.workerName}</td>
+            <td>{props.booking.startTime}</td>
+            <td>{props.booking.finishTime}</td>
+        </tr>
     )
 }
 
