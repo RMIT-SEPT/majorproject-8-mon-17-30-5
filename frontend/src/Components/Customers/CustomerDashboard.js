@@ -84,7 +84,6 @@ export default class CustomerDashboard extends Component {
         axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
         +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
         .then((response)=>{
-            console.log(response.data);
             this.setState({display: response.data});
         })
         .catch()
@@ -105,7 +104,7 @@ export default class CustomerDashboard extends Component {
     }
 
     render() {
-        const serviceList = this.state.display.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const serviceList = this.state.display.map((s)=> <DisplayAService key={"service"+s.startTime} service={s}/>);
         const serviceOption = this.state.res.map((s)=> <DisplayServiceOption key={s.id} service={s}/>);
         const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
         return (
