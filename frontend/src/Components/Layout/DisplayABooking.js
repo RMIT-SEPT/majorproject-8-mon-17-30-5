@@ -31,15 +31,15 @@ function DisplayABooking(props) {
 
     return (
         <div>
-            <p>Id {props.booking.id}</p>
-            <ul>
-                <li>Service Id: {props.booking.serviceId}</li>
-                <li>description:{userDetails.description}</li>
-                <li>worker Id: {props.booking.workerId}</li>
-                <li>worker name: {props.booking.workerName}</li>
-                <li>Start time: {props.booking.startTime}</li>
-                <li>Finish time: {props.booking.finishTime}</li>
-            </ul>
+        <tr>
+            <td>{props.booking.serviceId}</td>
+            <td>{userDetails.description}</td>
+            <td>{props.booking.workerId}</td>
+            <td>{props.booking.workerName}</td>
+      //if workerName doesn't work, workername
+            <td>{props.booking.startTime}</td>
+            <td>{props.booking.finishTime}</td>
+        </tr>
         </div>
     )
 }
