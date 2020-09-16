@@ -77,6 +77,28 @@ form.entryRegister
   box-shadow: 0px 0px 18px 4px #696969; 
 }
 
+form.searchDash
+{
+  background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
+  border-color: white;
+  display: -webkit-flex;
+  color:white;
+  border-style: solid;
+  align-items: center;
+  box-shadow: 0px 0px 18px 4px #696969; 
+}
+
+form.custDash
+{
+  background-color: white;
+  display: inline-block;
+  border-color: rgb(39, 141, 237);
+  border-style: solid;
+  display: inline-block;
+  align-items: center;
+  box-shadow: 0px 0px 18px 4px #696969; 
+}
+
 input
 {
   padding: 12px 200px;

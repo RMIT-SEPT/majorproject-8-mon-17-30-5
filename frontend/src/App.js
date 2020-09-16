@@ -15,7 +15,8 @@ import workerDashBoard from './Components/Workers/WorkerDashBoard';
 import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
-
+import MakeBooking from "./Components/Customers/MakeBooking";
+import ToDelete from "./Components/Layout/ToDelete";
 
 function App() {
   return (
@@ -34,10 +35,12 @@ function App() {
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
           <Route path = "/booking-page" exact component = {CustomerBooking}></Route>
+          <Route path = "/customer/makeBooking" exact component ={MakeBooking}></Route>
           <Route path = "/workerDashboard" exact component = {workerDashBoard}></Route>
           <Route path = "/admin/login" exact component={AdminLogin}></Route>
           <Route path = "/worker/login" exact component={WorkerLogin}></Route>
           <Route path = "/workerDetails" exact component = {WorkerPage}></Route>
+          <Route path = "/1/1/2002-08-21/washing/1/" exact component = {ToDelete}></Route>
         </Switch>
     </div>
        

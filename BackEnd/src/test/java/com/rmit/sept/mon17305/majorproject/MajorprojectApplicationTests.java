@@ -39,7 +39,7 @@ public class MajorprojectApplicationTests {
         worker1.setLastName("Sample");
         //worker1.setWorkingDays("Mon/Tue/Wed");
         worker1.setCompanyId((long) 001);
-        worker1.setServiceId((long) 001);
+        //worker1.setServiceId((long) 001);
         worker1.setStartTime("08:00");
         worker1.setFinishTime("16:00");
 

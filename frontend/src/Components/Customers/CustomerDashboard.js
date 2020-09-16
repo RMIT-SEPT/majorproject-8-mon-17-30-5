@@ -5,6 +5,7 @@ import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 import {Link as LinkRouter} from "react-router-dom";
 import WorkerOption from '../Layout/WorkerOption';
+import DisplayServiceOption from '../Layout/DisplayServiceOption';
 //import 'react-datepicker/dist/react-datepicker.css';
 // import Select from "react-dropdown-select";
 //TODO display all available services -- done -- teach how to recall
@@ -61,9 +62,10 @@ export default class CustomerDashboard extends Component {
         let description1 ="";
         //get working hrs -- worker
         //get break time -- worker
-        let startTime = "";
-        let finishTime = "";
-        let breakTime = "";
+
+        // var startTime = "";
+        // let finishTime = "";
+        // let breakTime = "";
 
         axios.get("http://localhost:8080/api/serviceObject/"+this.state.selectServiceId)
         .then((response)=>{
@@ -73,65 +75,75 @@ export default class CustomerDashboard extends Component {
             this.setState({duration: duration1});
             this.setState({description: description1});
             console.log(duration1);
+            console.log(this.state.duration);
+            console.log(description1);
+            console.log(this.state.description);
+            this.getAvailable();
         })
         .catch()
         .finally();
 
-        axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId)
-        .then((response)=>{
-            console.log(response);
-            startTime = response.data.startTime;
-            finishTime = response.data.finishTime;
-            breakTime = response.data.lunchBrTime;
-            startTime = startTime.replace(':', '');
-            finishTime = finishTime.replace(':', '');
-            breakTime = breakTime.replace(':', '');
-            console.log("time: "+startTime+" "+finishTime+" "+breakTime);
-            var diff = finishTime-breakTime;
-            console.log(diff);
-            var j = 100*duration1;
-            var array = [];
-            for(var i =startTime*1; i < (finishTime*1); i = i +j){
-                if(i !== breakTime*1){
-                    var temp = i +j;
-                    if(!(breakTime*1 > i && breakTime*1 < temp)){
-                        array.push(i);
-                    }
+
+        // axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
+        // +"/"+this.getFormattedDate()+"/"+this.state.description+"/"+duration1+"/")
+        // .then((response)=>{
+        //     console.log(response.data);
+        //     this.setState({display: response.data});
+        // //     startTime = response.data.startTime;
+        // //     finishTime = response.data.finishTime;
+        // //     breakTime = response.data.lunchBrTime;
+        // //     startTime = startTime.replace(':', '');
+        // //     finishTime = finishTime.replace(':', '');
+        // //     breakTime = breakTime.replace(':', '');
+        // //     console.log("time: "+startTime+" "+finishTime+" "+breakTime);
+        // //     var diff = finishTime-breakTime;
+        // //     console.log(diff);
+        // //     var j = 100*duration1;
+        // //     var array = [];
+        // //     for(var i =startTime*1; i < (finishTime*1); i = i +j){
+        // //         if(i !== breakTime*1){
+        // //             var temp = i +j;
+        // //             if(!(breakTime*1 > i && breakTime*1 < temp)){
+        // //                 array.push(i);
+        // //             }
+
                     
-                }
-            }
+        // //         }
+        // //     }
 
-            var displaying = [];
-            for(var k =0; k < array.length; k++){
-                const disc = {
-                    serviceId: this.state.selectServiceId,
-                    workerId: this.state.selectWorkerId,
-                    workername: response.data.firstName,
-                    date: this.state.selectDate,
-                    description: this.state.description,
-                    duration: this.state.duration,
-                    startTime: array[k],
-                    finishTime: array[k] + j,
-                }
-                displaying.push(disc);
-            }
+        // //     var displaying = [];
+        // //     for(var k =0; k < array.length; k++){
+        // //         const disc = {
+        // //             serviceId: this.state.selectServiceId,
+        // //             workerId: this.state.selectWorkerId,
+        // //             workername: response.data.firstName,
+        // //             date: this.getFormattedDate(),
+        // //             description: this.state.description,
+        // //             duration: this.state.duration,
+        // //             startTime: array[k],
+        // //             finishTime: array[k] + j,
+        // //         }
+        // //         displaying.push(disc);
+        // //     }
             
-            this.setState({display: displaying});
-            console.log(this.state.display);
-        })
-        .catch()
-        .finally();
+        // //     this.setState({display: displaying});
+        // //     console.log(this.state.display);
+        // })
+        // .catch()
+        // .finally();
         // 
         // console.log(startTime);
         //get already booked time based on date and workerId
-    }
+        }
+    //}
 
-    splitTime(time){
-        return time.replace(':', '');
-    }
+    // splitTime(time){
+    //     return time.replace(':', '');
+    // }
 
      selectedServiceId(e){
          this.setState({"selectServiceId":e.target.value});
+         console.log(this.state.selectServiceId);
      }
 
     selectedWorkerId(e){
@@ -140,6 +152,17 @@ export default class CustomerDashboard extends Component {
 
     selectedDate(e){
         this.setState({selectDate: e.target.value});
+    }
+
+    getAvailable(){
+        axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
+        +"/"+this.getFormattedDate()+"/"+this.state.description+"/"+this.state.duration+"/")
+        .then((response)=>{
+            console.log(response.data);
+            this.setState({display: response.data});
+        })
+        .catch()
+        .finally();
     }
 
     getFormattedDate(){
@@ -157,29 +180,32 @@ export default class CustomerDashboard extends Component {
 
     //TODO test if mapping workers work!!
     render() {
-        const serviceList = this.state.res.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const serviceList = this.state.display.map((s)=> <DisplayAService key={s.id} service={s}/>);
+        const serviceOption = this.state.res.map((s)=> <DisplayServiceOption key={s.id} service={s}/>);
         const workers = this.state.workers.map((w)=> <WorkerOption key={w.id} w={w}/>);
         return (
             <div>
             <NavigationBarCustomerPage/>
-                <div className="jumbotron text-center">
+            <br></br>
+            <form className = "custDash">
+            <div>
                     <h1>Customer Dashboard</h1>
                     <LinkRouter to = "/custDetails">
                     <li id = "custDetails">View User Details</li>
                     </LinkRouter>
-                    <p>This should show them any searched or available services</p>
-                </div>
-                <form>
-                <div>
-                    <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)}>
-                    <option defaultValue="">Select Service</option>
-                    {serviceList}
-                    </select>   
                 </div>
                 <br></br>
+                <form className = "searchDash">
                 <div id="datePicker">
                     <input type="date" id="dateFilter" name="selectDate" min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} ></input>
                 </div>
+                <br></br>
+                <div>
+                <select name="selectServiceId" id="serviceFilter" onChange={this.selectedServiceId.bind(this)}>
+                    <option defaultValue="">Select Service</option>
+                    {serviceOption}
+                    </select> 
+                </div> 
                 <br></br>
                 <div>
                     <select name="selectWorkersId" id="workerFilter" onChange={this.selectedWorkerId.bind(this)}>
@@ -189,14 +215,22 @@ export default class CustomerDashboard extends Component {
                </div>
                <br></br>
                <button type="button" value="submit" onClick={this.handleSubmit}>Search</button>
+                <br></br>
+                <br></br>
                 </form>
                 <br></br>
                 <br></br>
                 <div>
-                
                 ---{this.getFormattedDate()}---
                 </div>
-                
+                <br></br>
+                <div className="container">
+                    <div className="row">
+                            {serviceList}
+                    </div>
+                </div>
+                <br></br>
+            </form>
             </div>
                
         )

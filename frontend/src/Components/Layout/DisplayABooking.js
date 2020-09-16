@@ -36,9 +36,9 @@ function DisplayABooking(props) {
                 <li>Service Id: {props.booking.serviceId}</li>
                 <li>description:{userDetails.description}</li>
                 <li>worker Id: {props.booking.workerId}</li>
-                <li>worker name: {userDetails.workerName}</li>
-                <li>Start time: {userDetails.startTime}</li>
-                <li>Finish time: {userDetails.finishTime}</li>
+                <li>worker name: {props.booking.workerName}</li>
+                <li>Start time: {props.booking.startTime}</li>
+                <li>Finish time: {props.booking.finishTime}</li>
             </ul>
         </div>
     )
