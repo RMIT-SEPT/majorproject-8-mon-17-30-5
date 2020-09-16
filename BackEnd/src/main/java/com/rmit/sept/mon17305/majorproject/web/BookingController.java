@@ -22,22 +22,13 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping("/create/")
-    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result) throws TimeFormatException {
+    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result){
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
                 return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
             }
         }
-
-//        String startTime = booking.getStartTime();
-//        String finishTime = booking.getFinishTime();
-//        boolean validStart = checkTimeformat(startTime);
-//        boolean validFinish = checkTimeformat(finishTime);
-//
-//        if(!validStart || !validFinish){
-//            throw new TimeFormatException("invalid time format");
-//        }
 
         Booking booking1 = bookingService.saveOrUpdateBooking(booking);
         return new ResponseEntity<Booking>(booking, HttpStatus.CREATED);
