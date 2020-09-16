@@ -30,14 +30,14 @@ public class Worker{
     @JsonFormat(pattern = "yyy-mm-dd")
     private Date updated_At;
     private Long companyId;
-    private Long serviceId;
+    //private Long serviceId;
     private String startTime;
     private String finishTime;
     //private String workingDays;
     private String password;
     private String lunchBrTime;
 
-    public Worker(){}
+    public Worker(){ onCreate();}
 
     public Long getUserId() {
         return id;
@@ -105,13 +105,13 @@ public class Worker{
         return id;
     }
 
-    public Long getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
-    }
+//    public Long getServiceId() {
+//        return serviceId;
+//    }
+//
+//    public void setServiceId(Long serviceId) {
+//        this.serviceId = serviceId;
+//    }
 
     public String getStartTime() {
         return startTime;

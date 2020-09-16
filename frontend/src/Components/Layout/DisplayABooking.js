@@ -35,9 +35,10 @@ function DisplayABooking(props) {
             <td>{props.booking.serviceId}</td>
             <td>{userDetails.description}</td>
             <td>{props.booking.workerId}</td>
-            <td>{userDetails.workerName}</td>
-            <td>{userDetails.startTime}</td>
-            <td>{userDetails.finishTime}</td>
+            <td>{props.booking.workerName}</td>
+      //if workerName doesn't work, workername
+            <td>{props.booking.startTime}</td>
+            <td>{props.booking.finishTime}</td>
         </tr>
         </div>
     )

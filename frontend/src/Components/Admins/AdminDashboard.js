@@ -28,6 +28,7 @@ export default function AdminDashboard() {
             <label>Company ID: {sessionStorage.getItem("companyId")}</label>
             <br></br>
             </form>
+            
         </div>
         
     )
