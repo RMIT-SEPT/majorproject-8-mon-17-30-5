@@ -3,6 +3,8 @@
 import React, { Component} from 'react';
 import axios from 'axios';
 import DisplayABooking from '../Layout/DisplayABooking';
+import Table from 'react-bootstrap/Table';
+import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
 
 export default class CustomerBooking extends Component {
     constructor(){
@@ -46,11 +48,26 @@ export default class CustomerBooking extends Component {
         const list = this.state.res.map((s)=> <DisplayABooking key={s.id} booking={s}/>);
         return (
             <div>
-
-               {this.state.bookingExist && 
-                <div><p>booking exist</p>{list}</div>}
-                
-               {!this.state.bookingExist && <p>You currently have n booking in the system</p>}
+            <NavigationBarCustomerPage/>
+            <br></br>
+            <form className = "custDash">
+            <h1>Booking History</h1>
+            <Table striped bordered hover>
+            <thead>
+            <tr>
+                    <th>Booking ID</th>
+                    <th>Description</th>
+                    <th>Worker ID</th>
+                    <th>Worker Name</th>
+                    <th>Start Time</th>
+                    <th>Finish Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {list}
+            </tbody>
+            </Table>
+            </form>            
             </div>
         )
     }

@@ -15,11 +15,11 @@ export default class BookingPage extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
         <div onClick={() => this.formToggle("viewBookingToggle")}>Add</div>
         {this.state.viewBookingToggle ? <ViewBooking /> : null}
-        <br/>
-      </>
+        
+      </div>
     );
   }
 }

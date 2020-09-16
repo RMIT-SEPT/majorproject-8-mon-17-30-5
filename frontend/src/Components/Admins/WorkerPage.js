@@ -41,7 +41,6 @@ export default class WorkerPage extends React.Component {
     </tr>);
     return (
       <div>
-      
       <Table striped bordered hover>
   <thead>
     

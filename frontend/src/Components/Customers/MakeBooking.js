@@ -7,7 +7,7 @@ function MakeBooking(props){
         const booking = {
             "customerId": sessionStorage.getItem("id"),
             "workerId": sessionStorage.getItem("booking-workerId"),
-            "workername": sessionStorage.getItem("booking-workername"),
+            "workerName": sessionStorage.getItem("booking-workername"),
             "serviceId": sessionStorage.getItem("booking-serviceId"),
             "startTime": sessionStorage.getItem("booking-startTime"),
             "finishTime": sessionStorage.getItem("booking-finishTime"),
