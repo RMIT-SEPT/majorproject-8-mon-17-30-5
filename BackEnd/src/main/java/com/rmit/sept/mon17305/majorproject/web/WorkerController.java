@@ -28,7 +28,7 @@ public class WorkerController {
     private WorkerService workerService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result) throws TimeFormatException {
+    public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
@@ -44,7 +44,7 @@ public class WorkerController {
         boolean validBreak = checkTimeformat(lunchBrTime);
 
         if(!validStart||!validFinish||!validBreak){
-            throw new TimeFormatException("invalid time input");
+            return new ResponseEntity<String>("invalid time input", HttpStatus.BAD_REQUEST);
         }
 
         Worker worker1 = workerService.saveOrUpdateWorker(worker);
@@ -69,44 +69,46 @@ public class WorkerController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Worker> getWorker(@PathVariable Long id) {
-        return workerService.getWorker(id);
+    public ResponseEntity<?> getWorker(@PathVariable Long id) {
+        Optional<Worker> worker = workerService.getWorker(id);
+        if(worker==null){
+            return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.FOUND);
     }
 
 
     @GetMapping("/{id}/{serviceId}/{date}/{description}/{duration}/")
-    public HashMap[] getWorkerAvailability(@PathVariable Long id,
+    public ResponseEntity<?> getWorkerAvailability(@PathVariable Long id,
                                          @PathVariable Long serviceId, @PathVariable String date,
                                          @PathVariable String description, @PathVariable int duration) {
-        Worker worker = workerService.getWorkerByIdEquals(id);
-        int[] timeFree = computeAvailableTime(worker.getStartTime(), worker.getFinishTime(), worker.getLunchBrTime()
-        ,duration);
-      //  String[] ret = new String[timeFree.length];
-        HashMap[] ret = new HashMap[timeFree.length];
-        int hrCount = 100*duration;
-        for(int i =0; i < timeFree.length; i++){
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("serviceId", serviceId);
-            map.put("workerId", id);
-            map.put("workerName", worker.getFirstName());
-            map.put("date", date);
-            map.put("description", description);
-            map.put("duration", duration);
-            map.put("startTime", timeFree[i]);
-            map.put("finishTime", timeFree[i]+hrCount);
-//            StringBuilder str = new StringBuilder();
-//            str.append("{ServiceId: "+serviceId+",");
-//            str.append("workerId: "+id+",");
-//            str.append("workername: "+"\""+worker.getFirstName()+"\",");
-//            str.append("date: "+"\""+date+"\",");
-//            str.append("description: "+"\""+description+"\",");
-//            str.append("duration: "+duration+",");
-//            str.append("startTime: "+timeFree[i]+",");
-//            str.append("finishTime: "+timeFree[i]+hrCount+"}");
-           ret[i] = map;
-        }
 
-        return ret;
+        if((id<1||id ==null)||(serviceId<1||serviceId==null)||(date.equals("null"))||
+                (description.equals("null"))||(duration<1||duration>5)){
+            return new ResponseEntity<String>("invalid param",HttpStatus.BAD_REQUEST);
+        }else {
+
+            Worker worker = workerService.getWorkerByIdEquals(id);
+            int[] timeFree = computeAvailableTime(worker.getStartTime(), worker.getFinishTime(), worker.getLunchBrTime()
+                    , duration);
+            //  String[] ret = new String[timeFree.length];
+            HashMap[] ret = new HashMap[timeFree.length];
+            int hrCount = 100 * duration;
+            for (int i = 0; i < timeFree.length; i++) {
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("serviceId", serviceId);
+                map.put("workerId", id);
+                map.put("workerName", worker.getFirstName());
+                map.put("date", date);
+                map.put("description", description);
+                map.put("duration", duration);
+                map.put("startTime", timeFree[i]);
+                map.put("finishTime", timeFree[i] + hrCount);
+                ret[i] = map;
+            }
+            return new ResponseEntity<HashMap[]>(ret, HttpStatus.OK);
+        }
     }
 
     @PutMapping("/{id}")
@@ -155,11 +157,11 @@ public class WorkerController {
         startStr = startStr.substring(0,2)+startStr.substring(3);
         finishStr = finishStr.substring(0,2)+finishStr.substring(3);
         breakStr = breakStr.substring(0,2) + breakStr.substring(3);
-       // System.out.println("Str:"+startStr+","+finishStr+"<"+breakStr);
+
         int start = Integer.parseInt(startStr);
         int finish = Integer.parseInt(finishStr);
         int lunch = Integer.parseInt(breakStr);
-       // System.out.println("int: "+start+","+finish+","+lunch);
+
         int diff = finish-lunch;
         int hrCount = 100*duration;
         int num = (finish-start-100)/hrCount;
