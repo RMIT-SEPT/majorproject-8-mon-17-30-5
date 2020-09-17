@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import AdminLogin from './AdminLogin';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-13';
+
+configure({ adapter: new Adapter() });
 
 describe('Test cases for testing AdminLogin', () => {
     let wrapper;
