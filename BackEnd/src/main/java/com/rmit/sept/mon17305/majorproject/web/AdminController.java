@@ -42,8 +42,14 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Admin> getAdmin(@PathVariable Long id) {
-        return adminService.getAdmin(id);
+    public ResponseEntity<?> getAdmin(@PathVariable Long id) {
+        Optional<Admin> admin = adminService.getAdmin(id);
+        if(admin.isPresent()){
+            return new ResponseEntity<Optional<Admin>>(admin, HttpStatus.FOUND);
+
+        }else {
+            return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/username/{username}/password/{password}")
