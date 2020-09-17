@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 
 //TODO an admin can also make a booking
-export default function AdminDashboard() {
+export default function WorkerDashboard() {
     return (
         <div className = "buttonholder">
             <NavigationBarAdminPage/>
