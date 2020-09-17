@@ -8,6 +8,8 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
@@ -152,4 +154,34 @@ public class Worker{
     public String getLunchBrTime() {return lunchBrTime;}
 
     public void setLunchBrTime(String lunchBrTime) {this.lunchBrTime = lunchBrTime;}
+
+    public String toString(){
+
+        String createAt = formatDate(this.created_At.toString());
+        StringBuilder str = new StringBuilder();
+        str.append("{\"id\":"+this.id);
+        str.append(",\"username\":"+"\""+this.username+"\"");
+        str.append(",\"firstName\":"+"\""+this.firstName+"\"");
+        str.append(",\"lastName\":"+"\""+this.lastName+"\"");
+        str.append(",\"created_At\":"+"\""+createAt+"\"");
+        str.append(",\"updated_At\":"+this.updated_At);
+        str.append(",\"companyId\":"+this.companyId);
+//        str.append(",\"serviceId\":"+this.serviceId);
+        str.append(",\"startTime\":"+"\""+this.startTime+"\"");
+        str.append(",\"finishTime\":"+"\""+this.finishTime+"\"");
+        str.append(",\"password\":"+"\""+this.password+"\"");
+        str.append(",\"lunchBrTime\":"+"\""+this.lunchBrTime+"\"");
+        str.append(",\"type\":"+"\""+getType()+"\"");
+        str.append(",\"userId\":" + this.id+"}");
+        return str.toString();
+    }
+
+    public String formatDate(String today){
+        String year = today.substring(25);
+        String str = today.substring(14,16);
+        String date = today.substring(8,10);
+        int offsetDate = Integer.parseInt(date)-1;
+        String createAt = year+"-"+str+"-"+offsetDate;
+       return createAt;
+    }
 }

@@ -24,8 +24,8 @@ public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min = 3, max = 20, message = "username must be within 3 to 20 characters long")
     @NotBlank (message = "Customers username is required")
+    @Size(min = 3, max = 20, message = "username must be within 3 to 20 characters long")
     private String username;
     @Size(min = 3, max = 20, message = "First Name must be within 3 to 20 characters long")
     @NotBlank(message = "Customers first name is required")
@@ -127,5 +127,35 @@ public class Customer{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String toStringJSON(){
+
+        String createAt = formatDate(this.created_At.toString());
+        StringBuilder str = new StringBuilder();
+        str.append("{\"id\":"+this.id);
+        str.append(",\"username\":"+"\""+this.username+"\"");
+        str.append(",\"firstName\":"+"\""+this.firstName+"\"");
+        str.append(",\"lastName\":"+"\""+this.lastName+"\"");
+        str.append(",\"created_At\":"+"\""+createAt+"\"");
+        str.append(",\"updated_At\":"+this.updated_At);
+ //       str.append(",\"companyId\":"+this.companyId);
+//        str.append(",\"serviceId\":"+this.serviceId);
+        str.append(",\"billingAddress\":"+"\""+this.billingAddress+"\"");
+        str.append(",\"shippingAddress\":"+"\""+this.shippingAddress+"\"");
+        str.append(",\"password\":"+"\""+this.password+"\"");
+        //str.append(",\"lunchBrTime\":"+"\""+this.lunchBrTime+"\"");
+        str.append(",\"type\":"+"\""+getType()+"\"");
+        str.append(",\"userId\":" + this.id+"}");
+        return str.toString();
+    }
+
+    public String formatDate(String today){
+        String year = today.substring(25);
+        String str = today.substring(14,16);
+        String date = today.substring(8,10);
+        int offsetDate = Integer.parseInt(date)-1;
+        String createAt = year+"-"+str+"-"+offsetDate;
+        return createAt;
     }
 }
