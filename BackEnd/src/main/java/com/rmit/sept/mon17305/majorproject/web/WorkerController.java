@@ -64,8 +64,13 @@ public class WorkerController {
     }
 
     @GetMapping("/username/{username}/password/{password}")
-    public Worker getWorkerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
-        return workerService.getWorkerByUsernameAndPassword(username, password);
+    public ResponseEntity<?> getWorkerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) {
+        Worker worker = workerService.getWorkerByUsernameAndPassword(username, password);
+
+        if(worker==null){
+            return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<Worker>(worker, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

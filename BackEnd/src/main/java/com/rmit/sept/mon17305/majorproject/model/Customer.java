@@ -129,7 +129,7 @@ public class Customer{
         this.password = password;
     }
 
-    public String toString(){
+    public String toStringJSON(){
 
         String createAt = formatDate(this.created_At.toString());
         StringBuilder str = new StringBuilder();

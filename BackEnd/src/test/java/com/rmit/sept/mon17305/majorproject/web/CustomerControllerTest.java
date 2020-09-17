@@ -87,8 +87,8 @@ public class CustomerControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
         MvcResult result = mockMvc.perform(request).andReturn();
-        //found = 302
-        assertEquals(302, result.getResponse().getStatus());
+        //ok =200
+        assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
@@ -128,7 +128,7 @@ public class CustomerControllerTest {
         Mockito.when(customerService.saveOrUpdateCustomer(austin)).thenReturn(austin);
         RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/customer/create")
                 .accept(MediaType.APPLICATION_JSON)
-                .content(austin.toString())
+                .content(austin.toStringJSON())
                 .contentType(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request).andReturn();
@@ -142,7 +142,7 @@ public class CustomerControllerTest {
         Mockito.when(customerService.saveOrUpdateCustomer(austin)).thenReturn(austin);
         RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/customer/create")
                 .accept(MediaType.APPLICATION_JSON)
-                .content(austin.toString())
+                .content(austin.toStringJSON())
                 .contentType(MediaType.APPLICATION_JSON);
 
         //MvcResult result = mockMvc.perform(request).andReturn();
@@ -161,7 +161,7 @@ public class CustomerControllerTest {
         Mockito.when(customerService.saveOrUpdateCustomer(austin)).thenReturn(austin);
         RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/customer/create")
                 .accept(MediaType.APPLICATION_JSON)
-                .content(austin.toString())
+                .content(austin.toStringJSON())
                 .contentType(MediaType.APPLICATION_JSON);
 
         //MvcResult result = mockMvc.perform(request).andReturn();
@@ -179,7 +179,7 @@ public class CustomerControllerTest {
         Mockito.when(customerService.saveOrUpdateCustomer(austin)).thenReturn(austin);
         RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/customer/create")
                 .accept(MediaType.APPLICATION_JSON)
-                .content(austin.toString())
+                .content(austin.toStringJSON())
                 .contentType(MediaType.APPLICATION_JSON);
 
         //400 bad request

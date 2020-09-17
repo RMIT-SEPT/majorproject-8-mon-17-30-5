@@ -15,11 +15,14 @@ function NavigationBarCustomerPage(){
     return(
         <div>
             <ul>
-                <LinkRouter to= "/about-us">
-                <li>About Us </li>
+                <LinkRouter to="/customerDashBoard">
+                <li>Search for a service</li>
                 </LinkRouter>
-                <LinkRouter to="/contact-us">
-                <li>Contact Us</li>
+                <LinkRouter to="custDetails">
+                <li>My Account</li>
+                </LinkRouter>
+                <LinkRouter to="/booking-page">
+                <li>My Booking</li>
                 </LinkRouter>
                 <LinkRouter to  = "/loginForm">
                 <li id = "logout" onClick={handleLogout}>Log Out</li>

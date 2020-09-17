@@ -74,7 +74,7 @@ public class CustomerController {
             throw new NullPointerException("Wrong user details");
         }
 
-        return new ResponseEntity<Customer>(customer, HttpStatus.FOUND);
+        return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
     //username/password

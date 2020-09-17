@@ -92,7 +92,7 @@ public class WorkerControllerTest {
     }
 
     @Test
-    void getWorkerByUsernameAndPassword_returnNothing_invalidUsername() throws Exception {
+    void getWorkerByUsernameAndPassword_invalidId_invalidUsername() throws Exception {
         Mockito.when(workerService.getWorkerByUsernameAndPassword(annie.getUsername(), annie.getPassword())).thenReturn(annie);
         String url = "http://localhost:8080/api/worker/username/sam/password/"+annie.getPassword();
         RequestBuilder request = MockMvcRequestBuilders.get(url)
@@ -100,11 +100,11 @@ public class WorkerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request).andReturn();
-        assertEquals("", result.getResponse().getContentAsString());
+        assertEquals("invalid id", result.getResponse().getContentAsString());
     }
 
     @Test
-    void getWorkerByUsernameAndPassword_returnNothing_invalidPassword() throws Exception {
+    void getWorkerByUsernameAndPassword_invalidId_invalidPassword() throws Exception {
         Mockito.when(workerService.getWorkerByUsernameAndPassword(annie.getUsername(), annie.getPassword())).thenReturn(annie);
         String url = "http://localhost:8080/api/worker/username/"+annie.getUsername()+"/password/0000";
         RequestBuilder request = MockMvcRequestBuilders.get(url)
@@ -112,7 +112,7 @@ public class WorkerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON);
 
         MvcResult result = mockMvc.perform(request).andReturn();
-        assertEquals("", result.getResponse().getContentAsString());
+        assertEquals("invalid id", result.getResponse().getContentAsString());
     }
 
 

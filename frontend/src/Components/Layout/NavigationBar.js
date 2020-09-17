@@ -12,6 +12,15 @@ function NavigationBar(){
                 <LinkRouter to="/contact-us">
                 <li>Contact Us</li>
                 </LinkRouter>
+                <LinkRouter to="/">
+                <li>Customer Login</li>
+                </LinkRouter>
+                <LinkRouter to="/admin/login">
+                <li>Admin Login</li>
+                </LinkRouter>
+                <LinkRouter to="/worker/login">
+                <li>Worker Login</li>
+                </LinkRouter>
             </ul>
         </div>
     );

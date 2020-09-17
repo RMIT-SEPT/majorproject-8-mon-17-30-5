@@ -49,6 +49,7 @@ public class MajorprojectApplication {
             john.setStartTime("08:00");
             john.setFinishTime("16:00");
             john.setLunchBrTime("11:00");
+            john.setCompanyId((long)1);
 
             workerRepository.save(john);
 
@@ -60,6 +61,7 @@ public class MajorprojectApplication {
             minta.setStartTime("09:00");
             minta.setFinishTime("17:00");
             minta.setLunchBrTime("12:00");
+            minta.setCompanyId((long)1);
 
             workerRepository.save(minta);
 
