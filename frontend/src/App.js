@@ -16,7 +16,7 @@ import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
 import MakeBooking from "./Components/Customers/MakeBooking";
-import ToDelete from "./Components/Layout/ToDelete";
+import ErrorPage from "./Components/Layout/ErrorPage";
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
           <Route path = "/admin/login" exact component={AdminLogin}></Route>
           <Route path = "/worker/login" exact component={WorkerLogin}></Route>
           <Route path = "/workerDetails" exact component = {WorkerPage}></Route>
-          <Route path = "/1/1/2002-08-21/washing/1/" exact component = {ToDelete}></Route>
+          <Route path = "/" component = {ErrorPage}></Route>
         </Switch>
     </div>
        
