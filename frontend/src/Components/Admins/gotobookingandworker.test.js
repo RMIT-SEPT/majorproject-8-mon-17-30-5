@@ -5,7 +5,10 @@ import { MemoryRouter } from 'react-router';
 import BookingPage from './AdminDashboard';
 import WorkerPage from './AdminDashboard';
 import App from './src/App';
-import ErrorPage from './src/Components/Layout/ErrorPage';
+import ErrorPage from '.../Layout/ErrorPage';
+import Adapter from 'enzyme-adapter-react-13';
+
+configure({ adapter: new Adapter() });
 
   test('invalid path should redirect to error page', () => {
     const wrapper = mount(

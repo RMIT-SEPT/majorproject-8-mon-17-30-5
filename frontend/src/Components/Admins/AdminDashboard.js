@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link as LinkRouter} from "react-router-dom";
-import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
+import NavigationBarAdminPage from '../Layout/NavigationBarAdminPage';
 
 //TODO an admin can also make a booking
 export default function AdminDashboard() {
