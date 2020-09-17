@@ -27,7 +27,6 @@ function WorkerLogin(props){
         axios.get("http://localhost:8080/api/worker/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
-          // code when login is successfull
             console.log(response.data);
             sessionStorage.setItem("id", response.data.id);
             sessionStorage.setItem("username", response.data.username);
@@ -39,7 +38,6 @@ function WorkerLogin(props){
             props.history.push("/workerDashboard");
         })
         .catch(function(){
-            // code when un
             setUserDetails(prevValue => {
                 return {
                     ...prevValue,
@@ -53,7 +51,6 @@ function WorkerLogin(props){
 
         event.preventDefault();
     }
-   // console.log(sessionStorage.getItem("username"));
     return(
         <div>
             <NavigationBar/>
