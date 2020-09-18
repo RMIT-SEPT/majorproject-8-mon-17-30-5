@@ -4,9 +4,9 @@ import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import BookingPage from './AdminDashboard';
 import WorkerPage from './AdminDashboard';
-import App from '.../App';
-import ErrorPage from '.../Layout/ErrorPage';
-import Adapter from 'enzyme-adapter-react-13';
+import App from '../../App';
+import ErrorPage from '../Layout/ErrorPage';
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 

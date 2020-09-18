@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AdminLogin from './AdminLogin';
 import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-13';
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 

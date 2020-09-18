@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount } from 'enzyme';
+import { mount,configure } from 'enzyme';
 import { MemoryRouter } from 'react-router';
-import Logout from '.../Layout/NavigationBarAdminPage';
-import App from './src/App'
-import Adapter from 'enzyme-adapter-react-13';
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
+import App from '../../App';
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
@@ -14,5 +14,5 @@ test('valid path for worker page', () => {
         <App/>
       </MemoryRouter>
     );
-    expect(wrapper.find(Logout)).toHaveLength(1);
+    expect(wrapper.find(<NavigationBarAdminPage/>)).toHaveLength(0);
   });
