@@ -48,7 +48,6 @@ public class MajorprojectApplication {
             john.setPassword("1234");
             john.setStartTime("08:00");
             john.setFinishTime("16:00");
-            //john.setWorkingDays("Mon/Wed/Fri");
             john.setLunchBrTime("11:00");
 
             workerRepository.save(john);
@@ -60,7 +59,6 @@ public class MajorprojectApplication {
             minta.setPassword("1234");
             minta.setStartTime("09:00");
             minta.setFinishTime("17:00");
-            //minta.setWorkingDays("Mon/Wed/Fri");
             minta.setLunchBrTime("12:00");
 
             workerRepository.save(minta);

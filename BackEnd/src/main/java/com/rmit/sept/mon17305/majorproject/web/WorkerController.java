@@ -81,7 +81,6 @@ public class WorkerController {
         Worker worker = workerService.getWorkerByIdEquals(id);
         int[] timeFree = computeAvailableTime(worker.getStartTime(), worker.getFinishTime(), worker.getLunchBrTime()
         ,duration);
-      //  String[] ret = new String[timeFree.length];
         HashMap[] ret = new HashMap[timeFree.length];
         int hrCount = 100*duration;
         for(int i =0; i < timeFree.length; i++){
@@ -94,15 +93,6 @@ public class WorkerController {
             map.put("duration", duration);
             map.put("startTime", timeFree[i]);
             map.put("finishTime", timeFree[i]+hrCount);
-//            StringBuilder str = new StringBuilder();
-//            str.append("{ServiceId: "+serviceId+",");
-//            str.append("workerId: "+id+",");
-//            str.append("workername: "+"\""+worker.getFirstName()+"\",");
-//            str.append("date: "+"\""+date+"\",");
-//            str.append("description: "+"\""+description+"\",");
-//            str.append("duration: "+duration+",");
-//            str.append("startTime: "+timeFree[i]+",");
-//            str.append("finishTime: "+timeFree[i]+hrCount+"}");
            ret[i] = map;
         }
 
@@ -155,11 +145,9 @@ public class WorkerController {
         startStr = startStr.substring(0,2)+startStr.substring(3);
         finishStr = finishStr.substring(0,2)+finishStr.substring(3);
         breakStr = breakStr.substring(0,2) + breakStr.substring(3);
-       // System.out.println("Str:"+startStr+","+finishStr+"<"+breakStr);
         int start = Integer.parseInt(startStr);
         int finish = Integer.parseInt(finishStr);
         int lunch = Integer.parseInt(breakStr);
-       // System.out.println("int: "+start+","+finish+","+lunch);
         int diff = finish-lunch;
         int hrCount = 100*duration;
         int num = (finish-start-100)/hrCount;

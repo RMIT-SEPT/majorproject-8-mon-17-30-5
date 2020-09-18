@@ -47,7 +47,6 @@ public class CustomerController {
         return customerService.getCustomerByUsername(username);
     }
 
-    //not sure if want to have a minimum size for password
     @GetMapping("/username/{username}/password/{password}")
     public Customer getCustomerByUsername(@PathVariable String username, @PathVariable String password) throws CustomerException {
         if(username.isEmpty()){
@@ -67,7 +66,6 @@ public class CustomerController {
         return customer;
     }
 
-    //username/password
     @GetMapping("/{id}")
     public Optional<Customer> getCustomer(@PathVariable Long id) {
         return customerService.getCustomer(id);
