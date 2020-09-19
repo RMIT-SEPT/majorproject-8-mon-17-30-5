@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { mount,configure } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';

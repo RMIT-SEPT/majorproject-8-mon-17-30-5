@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { shallow } from 'enzyme';
 import AdminLogin from './AdminLogin';
+import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -23,9 +24,7 @@ describe('Test cases for testing AdminLogin', () => {
         wrapper = shallow(<AdminLogin />);
         wrapper.find('input[type="text"]').simulate('change', { target: { name: 'username', value: 'cathy' } });
         wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: '1234' } });
-        const container = wrapper.find('button');
-        expect(container.length).toEqual(1);
-        container.simulate('click');
+        wrapper.find('button').simulate('click');
         expect(wrapper.state('hasAdminLoginFailed')).toBe(true);
     })
 
@@ -33,9 +32,7 @@ describe('Test cases for testing AdminLogin', () => {
         wrapper = shallow(<AdminLogin />);
         wrapper.find('input[type="text"]').simulate('change', { target: { name: 'username', value: 'cathy' } });
         wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: '123' } });
-        const container = wrapper.find('button');
-        expect(container.length).toEqual(1);
-        container.simulate('click');
+        wrapper.find('button').simulate('click');
         expect(wrapper.state('hasAdminLoginFailed')).toBe(false);
     })
 })
