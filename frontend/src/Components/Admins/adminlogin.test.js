@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import AdminLogin from './AdminLogin';
-import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
@@ -11,20 +10,22 @@ describe('Test cases for testing AdminLogin', () => {
     test('username check', () => {
         wrapper = shallow(<AdminLogin />);
         wrapper.find('input[type="text"]').simulate('change', { target: { name: 'username', value: 'cathy' } });
-        expect(wrapper.state('username')).toEqual('cathy');
+        expect(wrapper.find('input[type="text"]').props()).toEqual('cathy');
     })
 
     it('password check', () => {
         wrapper = shallow(<AdminLogin />);
         wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: '1234' } });
-        expect(wrapper.state('password')).toEqual('1234');
+        expect(wrapper.find('input[type="password"]').props()).toEqual('1234');
     })
 
     it('AdminLogin check with correct login information', () => {
         wrapper = shallow(<AdminLogin />);
         wrapper.find('input[type="text"]').simulate('change', { target: { name: 'username', value: 'cathy' } });
         wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: '1234' } });
-        wrapper.find('button').simulate('click');
+        const container = wrapper.find('button');
+        expect(container.length).toEqual(1);
+        container.simulate('click');
         expect(wrapper.state('hasAdminLoginFailed')).toBe(true);
     })
 
@@ -32,7 +33,9 @@ describe('Test cases for testing AdminLogin', () => {
         wrapper = shallow(<AdminLogin />);
         wrapper.find('input[type="text"]').simulate('change', { target: { name: 'username', value: 'cathy' } });
         wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: '123' } });
-        wrapper.find('button').simulate('click');
+        const container = wrapper.find('button');
+        expect(container.length).toEqual(1);
+        container.simulate('click');
         expect(wrapper.state('hasAdminLoginFailed')).toBe(false);
     })
 })

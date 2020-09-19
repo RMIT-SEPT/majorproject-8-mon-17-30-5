@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { mount } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import BookingPage from './AdminDashboard';
 import WorkerPage from './AdminDashboard';
