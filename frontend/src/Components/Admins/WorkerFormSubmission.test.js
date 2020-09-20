@@ -15,7 +15,7 @@ it("render admin adding worker form correctly", () =>{
     const result = renderer.getRenderOutput();
     expect(result.type).toBe('div');
     expect(result.props.children).toHaveLength(2);
-})
+});
 
 // test('Call onSubmit props for form submission', () => {
 //     const workerInfo = {
