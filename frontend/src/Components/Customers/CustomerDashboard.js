@@ -33,7 +33,6 @@ export default class CustomerDashboard extends Component {
         .catch()
         .finally();
 
-        //this will get all the workers
         axios.get("http://localhost:8080/api/worker/")
         .then((response)=>{
             this.setState({"workers":response.data});

@@ -26,8 +26,6 @@ export default class WorkerForm extends Component {
     }
 
     handleSubmit(event) {
-        // TODO: extract information from form
-        
         event.preventDefault();
         let { firstName, lastName, username, password} = this.state
         let workerInfo = { firstName, lastName, username, password};
@@ -44,7 +42,6 @@ export default class WorkerForm extends Component {
     createPerson(person){
         
         try {
-            //let history = useHistory();
             console.log("creating a worker");
             axios.post("http://localhost:8080/api/worker/create", person)
             .then(()=>{
@@ -67,11 +64,6 @@ export default class WorkerForm extends Component {
 
         return (
             <div>
-               {/* <LinkRouter to="/admin/workers">
-                <a> X </a>
-                </LinkRouter>
-        */}
-               
                 <form onSubmit={this.handleSubmit}>
                     <h3>Worker Details</h3>
                     <label>

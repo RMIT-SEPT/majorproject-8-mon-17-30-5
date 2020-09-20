@@ -1,9 +1,7 @@
 import React from 'react'
-//import {Link as LinkRouter} from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 
-//TODO an admin can also make a booking
 export default function AdminDashboard() {
     return (
         <div className = "buttonholder">

@@ -43,7 +43,6 @@ function App() {
           <Route path = "/1/1/2002-08-21/washing/1/" exact component = {ToDelete}></Route>
         </Switch>
     </div>
-       
     </Router>
  
   );
