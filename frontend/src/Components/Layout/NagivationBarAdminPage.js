@@ -15,11 +15,9 @@ function NavigationBarAdminPage(){
     return(
         <div>
             <ul>
-                <LinkRouter to= "/about-us">
-                <li>About Us </li>
-                </LinkRouter>
-                <LinkRouter to="/contact-us">
-                <li>Contact Us</li>
+                
+                <LinkRouter to="/admin">
+                <li>Dashboard</li>
                 </LinkRouter>
                 <LinkRouter to  = "/admin/login">
                 <li id = "logout" onClick={handleLogout}>Log Out</li>
