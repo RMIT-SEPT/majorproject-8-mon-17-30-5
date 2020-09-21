@@ -2,7 +2,7 @@ version: 2
 jobs:
   backend:
     
-    working_directory: ~/SEPT-M2-Mon-5/BackEnd
+    working_directory: ~/majorproject-8-mon-17-30-5/BackEnd
     docker:
       - image: circleci/openjdk:8-jdk-stretch
       # - image: circleci/postgres:9.6.3-alpine
@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - checkout:
-          path: ~/SEPT-M2-Mon-5
+          path: ~/majorproject-8-mon-17-30-5
       - restore_cache:
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
@@ -34,13 +34,13 @@ jobs:
   
   frontend:
 
-    working_directory: ~/SEPT-M2-Mon-5/frontend
+    working_directory: ~/majorproject-8-mon-17-30-5/frontend
     docker:
       - image: cimg/node:14.8.0
 
     steps:
       - checkout:
-          path: ~/SEPT-M2-Mon-5
+          path: ~/majorproject-8-mon-17-30-5
       - restore_cache:
           keys:
             - v1-dependencies- {{ checksum "package.json"}}
