@@ -1,11 +1,12 @@
+  
 import React from 'react'
 import Table from 'react-bootstrap/Table';
-import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
+import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
 
-export default function AdminDashboard() {
+export default function WorkerDashboard() {
     return (
         <div className = "buttonholder">
-            <NavigationBarAdminPage/>
+            <NavigationBarWorkerPage/>
             <br></br>
             <br></br>
             <form className = "workerDetails">

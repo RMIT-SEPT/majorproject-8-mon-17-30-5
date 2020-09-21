@@ -35,7 +35,18 @@ function WorkerLogin(props){
             sessionStorage.setItem("companyId", response.data.companyId);
             sessionStorage.setItem("password", response.data.password);
             sessionStorage.setItem("serviceId", response.data.serviceId);
-            props.history.push("/workerDashboard");
+            if(sessionStorage.getItem("username")!==null){
+                props.history.push("/workerDashboard");
+            }
+            else{
+                setUserDetails(prevValue => {
+                    return {
+                        ...prevValue,
+                        "hasLoginFailed": true
+                    }
+                });
+            }
+           
         })
         .catch(function(){
             setUserDetails(prevValue => {

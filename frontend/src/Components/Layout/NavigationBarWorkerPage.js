@@ -16,12 +16,6 @@ function NavigationBarWorkerPage(){
     return(
         <div>
             <ul>
-                <LinkRouter to= "/about-us">
-                <li>About Us </li>
-                </LinkRouter>
-                <LinkRouter to="/contact-us">
-                <li>Contact Us</li>
-                </LinkRouter>
                 <LinkRouter to  = "/worker/login">
                 <li id = "logout" onClick={handleLogout}>Log Out</li>
                 </LinkRouter>

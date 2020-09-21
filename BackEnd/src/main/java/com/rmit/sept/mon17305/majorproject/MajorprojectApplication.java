@@ -49,6 +49,7 @@ public class MajorprojectApplication {
             john.setStartTime("08:00");
             john.setFinishTime("16:00");
             john.setLunchBrTime("11:00");
+            john.setCompanyId((long)1);
 
             workerRepository.save(john);
 
@@ -60,6 +61,7 @@ public class MajorprojectApplication {
             minta.setStartTime("09:00");
             minta.setFinishTime("17:00");
             minta.setLunchBrTime("12:00");
+            minta.setCompanyId((long)1);
 
             workerRepository.save(minta);
 
@@ -92,24 +94,24 @@ public class MajorprojectApplication {
             serviceObjectRepository.save(service1);
             serviceObjectRepository.save(service2);
 
-            Booking book1 = new Booking();
-            book1.setCustomerId(austin.getId());
-            book1.setServiceId(service.getId());
-            book1.setWorkerId(john.getId());
-
-            Booking book2 = new Booking();
-            book2.setCustomerId(austin.getId());
-            book2.setServiceId(service1.getId());
-            book2.setWorkerId(john.getId());
-
-            Booking book3 = new Booking();
-            book3.setCustomerId(austin.getId());
-            book3.setServiceId(service2.getId());
-            book3.setWorkerId(john.getId());
-
-            bookingRepository.save(book1);
-            bookingRepository.save(book2);
-            bookingRepository.save(book3);
+//            Booking book1 = new Booking();
+//            book1.setCustomerId(austin.getId());
+//            book1.setServiceId(service.getId());
+//            book1.setWorkerId(john.getId());
+//
+//            Booking book2 = new Booking();
+//            book2.setCustomerId(austin.getId());
+//            book2.setServiceId(service1.getId());
+//            book2.setWorkerId(john.getId());
+//
+//            Booking book3 = new Booking();
+//            book3.setCustomerId(austin.getId());
+//            book3.setServiceId(service2.getId());
+//            book3.setWorkerId(john.getId());
+//
+//            bookingRepository.save(book1);
+//            bookingRepository.save(book2);
+//            bookingRepository.save(book3);
         };
     }
 

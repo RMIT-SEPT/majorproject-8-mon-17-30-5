@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Dropdown from 'react-dropdown';
-
 const options = ['Female', 'Male'];
 
 export default class ViewBooking extends Component {
@@ -11,7 +10,6 @@ export default class ViewBooking extends Component {
   render() {
     return (
       <div>
-        <span className="close" onClick={this.handleClick}> X </span>
         <form>
           <h3>Worker Details</h3>
           <label>
