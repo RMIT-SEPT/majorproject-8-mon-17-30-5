@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  backend:
+  build:
     
     working_directory: ~/majorproject-8-mon-17-30-5/BackEnd
     docker:
@@ -59,7 +59,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - backend
+      - build
       - frontend
 #---------------------------------------------------------------------------------------------------
 
