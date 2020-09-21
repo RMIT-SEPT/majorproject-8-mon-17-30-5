@@ -5,7 +5,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 
 afterEach(cleanup);
 
-it("render admin login correctly", () =>{
+it("render customer login correctly", () =>{
     const renderer = new ShallowRenderer();
     renderer.render(<LoginForm/>);
     const result = renderer.getRenderOutput();

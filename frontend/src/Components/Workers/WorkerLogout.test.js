@@ -20,7 +20,7 @@ test('valid path for worker page', () => {
     expect(wrapper.find(<NavigationBarWorkerPage/>)).toHaveLength(0);
   });
 
-  it("render admin nav bar correctly", () =>{
+  it("render worker nav bar correctly", () =>{
     const renderer = new ShallowRenderer();
     renderer.render(<NavigationBarWorkerPage/>);
     const result = renderer.getRenderOutput();

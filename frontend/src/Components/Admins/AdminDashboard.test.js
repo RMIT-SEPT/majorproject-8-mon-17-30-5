@@ -30,23 +30,4 @@ it("render admin dashboard correctly", () =>{
     const result = renderer.getRenderOutput();
     expect(result.type).toBe('div');
     expect(result.props.children).toHaveLength(6);
-})
-// test('valid path for booking page', () => {
-//   const wrapper = mount(
-//     <MemoryRouter initialEntries={[ '/booking' ]}>
-//       <App/>
-//     </MemoryRouter>
-//   );
-//   expect(wrapper.find(BookingPage)).toHaveLength(1);
-//   expect(wrapper.find(ErrorPage)).toHaveLength(0);
-// });
-
-// test('valid path for worker page', () => {
-//     const wrapper = mount(
-//       <MemoryRouter initialEntries={[ '/admin/worker' ]}>
-//         <App/>
-//       </MemoryRouter>
-//     );
-//     expect(wrapper.find(WorkerPage)).toHaveLength(1);
-//     expect(wrapper.find(ErrorPage)).toHaveLength(0);
-//   });
+});
