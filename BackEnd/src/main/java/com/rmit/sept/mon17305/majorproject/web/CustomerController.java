@@ -77,7 +77,6 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
-    //username/password
     @GetMapping("/{id}")
     public Optional<Customer> getCustomer(@PathVariable Long id) {
         return customerService.getCustomer(id);

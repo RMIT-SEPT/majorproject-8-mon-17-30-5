@@ -8,7 +8,6 @@ export default class EditWorker extends Component {
   };
 
   submitAddWorker = (workerInfo) => {
-    // TODO: submit to backend
     console.log("edit worker form submitted");
     console.log(workerInfo)
   }

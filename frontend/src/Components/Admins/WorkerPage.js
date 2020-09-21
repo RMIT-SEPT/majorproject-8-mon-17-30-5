@@ -15,7 +15,6 @@ export default class WorkerPage extends React.Component {
   };
 
   componentDidMount(){
-    //this will get all the workers
     axios.get("http://localhost:8080/api/worker/")
     .then((response)=>{
         this.setState({"worker":response.data});

@@ -27,7 +27,6 @@ function AdminLogin(props){
         axios.get("http://localhost:8080/api/admin/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
-          // code when login is successfull
             console.log(response.data);
             sessionStorage.setItem("id", response.data.id);
             sessionStorage.setItem("username", response.data.username);
@@ -38,7 +37,6 @@ function AdminLogin(props){
             props.history.push("/admin");
         })
         .catch(function(){
-            // code when un
             setUserDetails(prevValue => {
                 return {
                     ...prevValue,
