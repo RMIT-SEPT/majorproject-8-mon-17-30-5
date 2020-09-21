@@ -12,15 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//@Entity
-
-//public class Customer extends User{
-//
-//Updated the API to work for all object models
-
 @Entity
 public class Customer{
-//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

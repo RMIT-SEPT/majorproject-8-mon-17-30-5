@@ -32,10 +32,8 @@ public class Worker{
     @JsonFormat(pattern = "yyy-mm-dd")
     private Date updated_At;
     private Long companyId;
-    //private Long serviceId;
     private String startTime;
     private String finishTime;
-    //private String workingDays;
     private String password;
     private String lunchBrTime;
 
@@ -107,14 +105,6 @@ public class Worker{
         return id;
     }
 
-//    public Long getServiceId() {
-//        return serviceId;
-//    }
-//
-//    public void setServiceId(Long serviceId) {
-//        this.serviceId = serviceId;
-//    }
-
     public String getStartTime() {
         return startTime;
     }
@@ -130,14 +120,6 @@ public class Worker{
     public void setFinishTime(String finishTime) {
         this.finishTime = finishTime;
     }
-
-//    public String getWorkingDays() {
-//        return workingDays;
-//    }
-//
-//    public void setWorkingDays(String workingDays) {
-//        this.workingDays = workingDays;
-//    }
 
     public String getType(){
         return "Worker";

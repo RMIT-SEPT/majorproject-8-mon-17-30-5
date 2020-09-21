@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-//import SimplePicker from 'simplepicker';
-//import 'dist/simplepicker.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Timekeeper from 'react-timekeeper';
@@ -11,7 +9,6 @@ function PickADate(){
   const [time, setTime] = useState('12:34pm')
   const date = new Date();
   const dateMax = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-  //let time ="15:30";
   function confirmBooking(){
 
   }

@@ -97,7 +97,6 @@ public class WorkerController {
             Worker worker = workerService.getWorkerByIdEquals(id);
             int[] timeFree = computeAvailableTime(worker.getStartTime(), worker.getFinishTime(), worker.getLunchBrTime()
                     , duration);
-            //  String[] ret = new String[timeFree.length];
             HashMap[] ret = new HashMap[timeFree.length];
             int hrCount = 100 * duration;
             for (int i = 0; i < timeFree.length; i++) {
@@ -162,11 +161,9 @@ public class WorkerController {
         startStr = startStr.substring(0,2)+startStr.substring(3);
         finishStr = finishStr.substring(0,2)+finishStr.substring(3);
         breakStr = breakStr.substring(0,2) + breakStr.substring(3);
-
         int start = Integer.parseInt(startStr);
         int finish = Integer.parseInt(finishStr);
         int lunch = Integer.parseInt(breakStr);
-
         int diff = finish-lunch;
         int hrCount = 100*duration;
         int num = (finish-start-100)/hrCount;

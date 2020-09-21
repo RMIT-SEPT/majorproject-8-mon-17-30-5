@@ -13,31 +13,7 @@ function LoginForm(props){
     });
 
     function handleChange(event){
-        // console.log(event.target);
-        // const inputName = event.target.name;
-        // const newValue = event.target.value;
-        //window.sessionStorage.setItem("key", "value");
-        //window.sessionStorage.getItem("key");
-    
-
-        // setUserDetails((prevValue) => {
-        //     if(inputName === "username"){
-        //         return {
-        //             username: newValue,
-        //             password: prevValue.password
-        //         }
-        //     } else if(inputName === "password"){
-        //         return {
-        //             username: prevValue.username,
-        //             password: newValue
-        //         }
-        //     }
-
-        // });
-        
-        //const {evernt.target.name, event.target.value};
        const {name, value} = event.target;
-       //const {value} = event.target;
 
         setUserDetails(prevValue => {
             return {
@@ -45,20 +21,12 @@ function LoginForm(props){
                 [name] : value
             }
         });
-
-
-
-        
-
     }
 
     function handleSubmit(event){
-        //console.log(userDetails);
-        
         axios.get("http://localhost:8080/api/customer/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
-          // code when login is successfull
             console.log(response.data);
             sessionStorage.setItem("id", response.data.id);
             sessionStorage.setItem("username", response.data.username);
@@ -69,7 +37,6 @@ function LoginForm(props){
             props.history.push("/customerDashboard");
         })
         .catch(function(){
-            // code when un
             setUserDetails(prevValue => {
                 return {
                     ...prevValue,
@@ -83,7 +50,6 @@ function LoginForm(props){
 
         event.preventDefault();
     }
-   // console.log(sessionStorage.getItem("username"));
     return(
         <div>
             <NavigationBar/>

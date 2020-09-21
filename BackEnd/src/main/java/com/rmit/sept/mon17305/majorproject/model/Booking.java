@@ -11,17 +11,6 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private Long bookingId;
-
-//Small changes to reflect UML and make it more obvious, ID is now generated via the superclass for users
-
-//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-
-//    @NotBlank(message = "Customers ID is required")
-//Updated the API to work for all object models
- //   @NotNull(message = "Customers ID is required")
-//username get method now returns the object. Setup so we can check a user object and use its data. The idea behind validating the password beginning also
-
     @NotNull(message = "Customers ID is required")
     private Long customerId;
     @NotNull (message = "Workers ID is required")
@@ -29,7 +18,6 @@ public class Booking {
     private String workerName;
     @NotNull (message = "Service ID is required")
     private Long serviceId;
-    //private String type;
     private int startTime;
     private int finishTime;
     //format "dd-MM-yyyy"
@@ -72,14 +60,6 @@ public class Booking {
     public void setServiceId(Long serviceId) {
         this.serviceId = serviceId;
     }
-
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
 
     public int getStartTime() {
         return startTime;
