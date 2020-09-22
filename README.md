@@ -21,6 +21,10 @@ This is the gitHub link for milestone2 submission
 * ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
 * ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
 
+*All documentations is in OneDrive link: https://rmiteduau-my.sharepoint.com/:f:/g/personal/s3781279_student_rmit_edu_au/Ete0uNXkXq1Pl-Np2nC1214B8Av1Hq0msrDNRKcS1_YZRw?e=xnkNFM
+
+Please access with RMIT account
+
 * AWS S3: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/
 
 This is used for deploying frontend
