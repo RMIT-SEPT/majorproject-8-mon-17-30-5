@@ -14,7 +14,20 @@
 * ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
 * ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
 
-
+## Milestone 2
+* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/tree/m2-circle-ci
+This is the gitHub link for milestone2 submission
+* ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
+* ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
+* AWS RDS Endpoint: majorproject.cricml58bpuc.us-east-1.rds.amazonaws.com
+This is using postgresql for the project tables
+* AWS Elastic Beanstalk: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/
+This is used for deploying backend
+to use this, is the beanstalk url then follow by "/api/{usertype}/" follow by query syntax.
+For example: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/
+Then result as lists of workers in the current database
+* AWS S3: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/
+This is used for deploying frontend
 
 ## Code documentation
 
