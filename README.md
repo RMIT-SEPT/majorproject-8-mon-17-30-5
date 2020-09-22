@@ -36,7 +36,13 @@ This is used for deploying backend
 
 To use this, is the beanstalk url then follow by "/api/{usertype}/" follow by query syntax.
 
-For example: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/
+For example: 
+
+To look for all workers: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/
+
+To look for all customers: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/customer/
+
+To look for all admin: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/admin/
 
 Then result as lists of workers in the current database
 
