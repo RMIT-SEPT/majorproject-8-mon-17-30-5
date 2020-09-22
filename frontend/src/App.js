@@ -20,8 +20,8 @@ import ErrorPage from "./Components/Layout/ErrorPage";
 
 function App() {
   return (
-  <Router history={history}>
     <div className="App">
+      <Router>
         <Switch>
           <Route path = "/" exact component = {LoginForm}></Route>
           <Route path ="/signup" exact component={RegisterForm}></Route>
@@ -42,8 +42,9 @@ function App() {
           <Route path = "/workerDetails" exact component = {WorkerPage}></Route>
           <Route path = "/" component = {ErrorPage}></Route>
         </Switch>
+        </Router>
     </div>
-    </Router>
+    
  
   );
 }

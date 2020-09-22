@@ -1,3 +1,4 @@
+
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.Entity;
@@ -132,12 +133,11 @@ public class Customer{
         str.append(",\"lastName\":"+"\""+this.lastName+"\"");
         str.append(",\"created_At\":"+"\""+createAt+"\"");
         str.append(",\"updated_At\":"+this.updated_At);
- //       str.append(",\"companyId\":"+this.companyId);
-//        str.append(",\"serviceId\":"+this.serviceId);
+ 
         str.append(",\"billingAddress\":"+"\""+this.billingAddress+"\"");
         str.append(",\"shippingAddress\":"+"\""+this.shippingAddress+"\"");
         str.append(",\"password\":"+"\""+this.password+"\"");
-        //str.append(",\"lunchBrTime\":"+"\""+this.lunchBrTime+"\"");
+
         str.append(",\"type\":"+"\""+getType()+"\"");
         str.append(",\"userId\":" + this.id+"}");
         return str.toString();

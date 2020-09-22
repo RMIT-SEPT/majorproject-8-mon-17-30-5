@@ -1,3 +1,4 @@
+
 package com.rmit.sept.mon17305.majorproject.model;
 
 import org.aspectj.weaver.ast.Not;
@@ -9,21 +10,13 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-//API Post with validation, Get all and getbyid added to Admin, needs to cover the rest which i will do tomorrow.
-import javax.validation.constraints.NotBlank;
-// Not Blank import added to Admin
 
+import javax.validation.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-// POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-//public class Admin extends User {
-//public class Admin extends User {
-//API Post with validation, Get all and getbyid added to Admin, needs to cover the rest which i will do tomorrow.
-//Not Blank import added to Admin
-//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
 @Entity
 public class Admin{
 

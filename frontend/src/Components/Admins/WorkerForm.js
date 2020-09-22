@@ -19,11 +19,7 @@ export default class WorkerForm extends Component {
             finishTime: props.workerInfo ? props.workerInfo.finishTime : 'enter finish Time',
             lunchBrTime: props.workerInfo ? props.workerInfo.lunchBrTime : 'enter lunch break Time',
             companyId: 1
-            // occupation: props.workerInfo ? props.workerInfo.occupation : 'enter occupation',
-            // email: props.workerInfo ? props.workerInfo.email : 'enter email',
-            
-            // ,workinghours: props.workerInfo ? props.workerInfo.workinghours : 'enter working hours'
-            // workingdates: props.workerInfo ? props.workerInfo.workingdates : 'enter working dates'
+    
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);

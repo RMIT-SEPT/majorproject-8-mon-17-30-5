@@ -1,3 +1,4 @@
+
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.Entity;
@@ -148,7 +149,7 @@ public class Worker{
         str.append(",\"created_At\":"+"\""+createAt+"\"");
         str.append(",\"updated_At\":"+this.updated_At);
         str.append(",\"companyId\":"+this.companyId);
-//        str.append(",\"serviceId\":"+this.serviceId);
+
         str.append(",\"startTime\":"+"\""+this.startTime+"\"");
         str.append(",\"finishTime\":"+"\""+this.finishTime+"\"");
         str.append(",\"password\":"+"\""+this.password+"\"");
