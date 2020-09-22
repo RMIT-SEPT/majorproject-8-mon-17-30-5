@@ -24,7 +24,7 @@ function LoginForm(props){
     }
 
     function handleSubmit(event){
-        axios.get("http://localhost:8080/api/customer/username/"+userDetails.username+
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/customer/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
             console.log(response.data);

@@ -15,7 +15,7 @@ export default class CustomerBooking extends Component {
     }
 
     componentDidMount(){
-        axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id"))
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/booking/customer/"+sessionStorage.getItem("id"))
         .then((response)=>{
             this.setState({"bookingExist": true});
             console.log(response.data);

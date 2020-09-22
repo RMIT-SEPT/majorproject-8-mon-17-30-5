@@ -43,7 +43,7 @@ export default class ViewWorker extends Component {
         
         try {
             console.log("creating a worker");
-            axios.post("http://localhost:8080/api/worker/create", person)
+            axios.post("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/create", person)
             .then(()=>{
                 history.push("/admin/workers");
                 window.location.reload();

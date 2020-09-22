@@ -19,7 +19,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
 @RestController
 @RequestMapping("/api/worker")
 public class WorkerController {
