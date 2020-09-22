@@ -56,13 +56,10 @@ Then result as lists of workers in the current database
 
 [Quick Start](/docs/README.md) in `docs` folder
 
-To Start back end
-open intelliJ in folder Backend
-run majorprojectApplication
+To Start 
 
-To Start front end
-ensure to be in foler frontend
-npm start
+Clicl on this link: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/ to view our application
+
 
 ## HOW TO SET UP
 
