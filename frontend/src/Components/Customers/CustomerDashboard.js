@@ -1,4 +1,3 @@
-import React, { Component} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import DisplayAService from "../Layout/DisplayAService";
@@ -25,7 +24,7 @@ export default class CustomerDashboard extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
-        axios.get("http://localhost:8080/api/serviceObject/getAll")
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/serviceObject/getAll")
         .then((response)=>{
             this.setState({"serviceExist": true});
             this.setState({"res": response.data});
@@ -33,8 +32,7 @@ export default class CustomerDashboard extends Component {
         .catch()
         .finally();
 
-        //this will get all the workers
-        axios.get("http://localhost:8080/api/worker/")
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/")
         .then((response)=>{
             this.setState({"workers":response.data});
             console.log("Workers");
@@ -50,7 +48,7 @@ export default class CustomerDashboard extends Component {
         let duration1 = 0;
         let description1 ="";
 
-        axios.get("http://localhost:8080/api/serviceObject/"+this.state.selectServiceId)
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/serviceObject/"+this.state.selectServiceId)
         .then((response)=>{
            
             duration1 = response.data.duration;
@@ -81,7 +79,7 @@ export default class CustomerDashboard extends Component {
     }
 
     getAvailable(){
-        axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
         +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
         .then((response)=>{
             this.setState({display: response.data});

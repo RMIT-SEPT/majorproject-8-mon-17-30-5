@@ -26,8 +26,6 @@ export default class ViewWorker extends Component {
     }
 
     handleSubmit(event) {
-        // TODO: extract information from form
-        
         event.preventDefault();
         let { firstName, lastName, username, password} = this.state
         let workerInfo = { firstName, lastName, username, password};
@@ -44,9 +42,8 @@ export default class ViewWorker extends Component {
     createPerson(person){
         
         try {
-            //let history = useHistory();
             console.log("creating a worker");
-            axios.post("http://localhost:8080/api/worker/create", person)
+            axios.post("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/create", person)
             .then(()=>{
                 history.push("/admin/workers");
                 window.location.reload();
@@ -81,7 +78,7 @@ export default class ViewWorker extends Component {
                                 Occupation:
                     <input readOnly placeholder={this.state.occupation} name="occupation" onChange={this.handleChange} />
                             </label>
-                            
+
                             <label>
                                 Email:
                     <input readOnly placeholder={this.state.email} name="email" onChange={this.handleChange} />

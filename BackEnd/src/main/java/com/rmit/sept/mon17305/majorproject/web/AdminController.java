@@ -1,3 +1,4 @@
+
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Admin;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -42,8 +43,14 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Admin> getAdmin(@PathVariable Long id) {
-        return adminService.getAdmin(id);
+    public ResponseEntity<?> getAdmin(@PathVariable Long id) {
+        Optional<Admin> admin = adminService.getAdmin(id);
+        if(admin.isPresent()){
+            return new ResponseEntity<Optional<Admin>>(admin, HttpStatus.FOUND);
+
+        }else {
+            return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/username/{username}/password/{password}")

@@ -1,3 +1,4 @@
+
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Company;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
 @RestController
 @RequestMapping("/api/company")
 public class CompanyController {

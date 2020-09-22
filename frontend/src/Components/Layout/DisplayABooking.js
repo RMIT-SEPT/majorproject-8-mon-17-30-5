@@ -12,7 +12,7 @@ function DisplayABooking(props) {
 
     useEffect(() => {
        async function getDescription(){
-        axios.get("http://localhost:8080/api/serviceObject/"+props.booking.serviceId)
+        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/serviceObject/"+props.booking.serviceId)
         .then((response)=>{
             console.log(response.data);
             setUserDetails  ((prevValue)=>{

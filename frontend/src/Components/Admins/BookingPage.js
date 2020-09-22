@@ -1,5 +1,6 @@
 import React from "react";
 import ViewBooking from "./ViewBooking";
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 
 export default class BookingPage extends React.Component {
   state = {
@@ -16,6 +17,7 @@ export default class BookingPage extends React.Component {
   render() {
     return (
       <div>
+      <NavigationBarAdminPage/>
         <div onClick={() => this.formToggle("viewBookingToggle")}>Add</div>
         {this.state.viewBookingToggle ? <ViewBooking /> : null}
         

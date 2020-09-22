@@ -2,7 +2,6 @@ import React from 'react'
 import {Link as LinkRouter} from "react-router-dom";
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 
-//TODO an admin can also make a booking
 export default function AdminDashboard() {
     return (
         <div className = "buttonholder">
@@ -28,7 +27,6 @@ export default function AdminDashboard() {
             <label>Company ID: {sessionStorage.getItem("companyId")}</label>
             <br></br>
             </form>
-            
         </div>
         
     )

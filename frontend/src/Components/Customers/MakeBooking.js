@@ -13,7 +13,7 @@ function MakeBooking(props){
             "finishTime": sessionStorage.getItem("booking-finishTime"),
             "date": sessionStorage.getItem("booking-date")
         }
-        axios.post("http://localhost:8080/api/booking/create/", booking)
+        axios.post("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/booking/create/", booking)
         .then(()=>{
             clearBookingInfo();
             props.history.push("/customerDashBoard");

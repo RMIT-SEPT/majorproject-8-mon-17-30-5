@@ -1,3 +1,4 @@
+
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.CustomedException.CustomerException;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {
@@ -23,14 +24,20 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createNewCustomer(@RequestBody Customer customer, BindingResult result){
+    public ResponseEntity<?> createNewCustomer(@RequestBody Customer customer, BindingResult result) throws CustomerException {
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
                 return new ResponseEntity<List<FieldError>>(result.getFieldErrors(), HttpStatus.BAD_REQUEST);
             }
         }
-
+        if(customer.getUsername().length() < 3){
+            throw new CustomerException("Username must contain at least 3 characters");
+        }else if(customer.getFirstName().length()<3){
+            throw new CustomerException("FirstName must contain at least 3 characters");
+        }else if(customer.getLastName().length()<3){
+            throw new CustomerException("LastName must contain at least 3 characters");
+        }
         Customer customer1 = customerService.saveOrUpdateCustomer(customer);
         return new ResponseEntity<Customer>(customer, HttpStatus.CREATED);
 
@@ -43,13 +50,17 @@ public class CustomerController {
     }
 
     @GetMapping("/username/{username}")
-    public Customer getCustomerByUsername(@PathVariable String username) {
-        return customerService.getCustomerByUsername(username);
+    public ResponseEntity<?> getCustomerByUsername(@PathVariable String username) {
+        Customer cust = customerService.getCustomerByUsername(username);
+        if(cust != null){
+            return new ResponseEntity<Customer>(cust, HttpStatus.FOUND);
+
+        }
+        return new ResponseEntity<String>("invalid username", HttpStatus.BAD_REQUEST);
     }
 
-    //not sure if want to have a minimum size for password
     @GetMapping("/username/{username}/password/{password}")
-    public Customer getCustomerByUsername(@PathVariable String username, @PathVariable String password) throws CustomerException {
+    public ResponseEntity<?> getCustomerByUsernameAndPassword(@PathVariable String username, @PathVariable String password) throws CustomerException {
         if(username.isEmpty()){
             throw new CustomerException("Username cannot be empty");
         }
@@ -64,10 +75,9 @@ public class CustomerController {
             throw new NullPointerException("Wrong user details");
         }
 
-        return customer;
+        return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
-    //username/password
     @GetMapping("/{id}")
     public Optional<Customer> getCustomer(@PathVariable Long id) {
         return customerService.getCustomer(id);
