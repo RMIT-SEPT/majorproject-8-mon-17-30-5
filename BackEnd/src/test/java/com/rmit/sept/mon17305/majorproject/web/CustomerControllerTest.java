@@ -164,7 +164,6 @@ public class CustomerControllerTest {
                 .content(austin.toStringJSON())
                 .contentType(MediaType.APPLICATION_JSON);
 
-        //MvcResult result = mockMvc.perform(request).andReturn();
         //400 bad request
         Exception e = assertThrows(Exception.class,()->{
             MvcResult result = mockMvc.perform(request).andReturn();

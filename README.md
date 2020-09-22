@@ -16,7 +16,7 @@
 * ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
 
 ## Milestone 2
-* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/tree/milestone2-submission
+* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/tree/master
 
 This is the gitHub link for milestone2 submission
 * ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
