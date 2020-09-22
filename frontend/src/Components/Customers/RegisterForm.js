@@ -28,7 +28,7 @@ function RegisterForm(props){
     async function createCustomer(user){
         try {
             console.log("creating customer");
-        const res = await axios.post("http://localhost:8080/api/customer/create", user);
+        const res = await axios.post("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/customer/create", user);
         console.log(res);
         props.history.push("/");
          } catch (err) {

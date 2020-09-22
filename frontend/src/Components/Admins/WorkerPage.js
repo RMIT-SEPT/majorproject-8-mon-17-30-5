@@ -4,6 +4,7 @@ import EditWorker from "./EditWorker";
 import ViewWorker from "./ViewWorker";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
 
 export default class WorkerPage extends React.Component {
   state = {
@@ -14,8 +15,7 @@ export default class WorkerPage extends React.Component {
   };
 
   componentDidMount(){
-    //this will get all the workers
-    axios.get("http://localhost:8080/api/worker/")
+    axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/")
     .then((response)=>{
         this.setState({"worker":response.data});
         console.log("Workers");
@@ -38,9 +38,14 @@ export default class WorkerPage extends React.Component {
       <td>{w.firstName}</td>
       <td>{w.lastName}</td>
       <td>{w.username}</td>
+      <td>{w.startTime}</td>
+      <td>{w.finishTime}</td>
+      <td>{w.lunchBrTime}</td>
     </tr>);
     return (
       <div>
+      <NavigationBarAdminPage/>
+      <br></br>
       <Table striped bordered hover>
   <thead>
     
@@ -48,10 +53,10 @@ export default class WorkerPage extends React.Component {
       <th>#</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Occupation</th>
-      <th>Working Dates</th>
-      <th>Working Hours</th>
-      <th>Option</th>
+      <th>Username</th>
+      <th>Start Time</th>
+      <th>Finish Time</th>
+      <th>Lunch Break</th>
     </tr>
   </thead>
   <tbody>
