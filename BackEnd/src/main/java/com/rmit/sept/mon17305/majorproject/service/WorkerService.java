@@ -57,4 +57,8 @@ public class WorkerService {
     public void setWorkerRepository(WorkerRepository workerRepository) {
         this.workerRepository = workerRepository;
     }
+
+    public Worker getWorkerById(Long id){
+        return workerRepository.findByIdEquals(id);
+    }
 }

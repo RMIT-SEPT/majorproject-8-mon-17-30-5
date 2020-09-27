@@ -50,5 +50,7 @@ public class CustomerService {
     }
 
 
-
+    public Customer getCustomerByIdEquals(Long id){
+        return customerRepository.findByIdEquals(id);
+    }
 }

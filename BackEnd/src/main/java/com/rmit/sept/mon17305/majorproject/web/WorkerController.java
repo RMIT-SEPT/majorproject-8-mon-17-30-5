@@ -8,6 +8,7 @@ import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.repository.ServiceObjectRepository;
 import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.CustomerService;
 import com.rmit.sept.mon17305.majorproject.service.ServiceObjectService;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class WorkerController {
     private BookingService bookingService;
     @Autowired
     private ServiceObjectService serviceObjectService;
+    @Autowired
+    private CustomerService customerService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
@@ -134,14 +137,28 @@ public class WorkerController {
     @GetMapping("/workerId/{id}/date/{date}")
     public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date){
         List<Booking> booked = bookingService.getBookingByWorkerIdAndDate(id,date);
+        Worker worker = workerService.getWorkerByIdEquals(id);
+        String start = worker.getStartTime();
+        String finish = worker.getFinishTime();
+        String lunch = worker.getLunchBrTime();
         HashMap<String, Object> map = new HashMap<>();
-        map.put("800", checkPerHr(800,booked));
+        if(start.equals("08:00")){
+            map.put("800", checkPerHr(800,booked));
+        }
         map.put("900", checkPerHr(900,booked));
         map.put("1000", checkPerHr(1000,booked));
-        map.put("1100", checkPerHr(1100,booked));
+        if(lunch.equals("12:00")){
+            map.put("1100", checkPerHr(1100,booked));
+        }
+        else if(lunch.equals("11:00")){
+            map.put("1200", checkPerHr(1200,booked));
+        }
         map.put("1300", checkPerHr(1300,booked));
         map.put("1400", checkPerHr(1400,booked));
         map.put("1500", checkPerHr(1500,booked));
+        if(finish.equals("17:00")){
+            map.put("1600", checkPerHr(1600,booked));
+        }
         return new ResponseEntity<HashMap<String, Object> >(map, HttpStatus.OK);
     }
 
@@ -218,12 +235,22 @@ public class WorkerController {
         if (booked != null) {
             for (Booking booking : booked) {
                 if (time >= booking.getStartTime() && time < booking.getFinishTime() && ret == "free") {
+                    String custName = customerService.getCustomerByIdEquals(booking.getCustomerId()).getUsername();
+                    String desc = serviceObjectService.getServiceDescriptionById(booking.getServiceId());
                     StringBuilder str = new StringBuilder();
-                    str.append("Booked/n");
-                    str.append("By .../n");
-                    str.append("Service:");
-                    str.append(serviceObjectService.getServiceDescriptionById(booking.getServiceId()));
-                    str.append("/n");
+                    str.append("ID: ");
+                    str.append(booking.getId());
+                    str.append(", ");
+                    str.append(custName);
+                    str.append(" booked to ");
+                    str.append(desc);
+                    str.append(System.getProperty("line.separator"));
+//                    str.append("By ");
+//                    str.append(custName);
+//                    str.append(System.getProperty("line.separator"));
+//                    str.append("Service: ");
+//                    str.append(desc);
+//                    str.append(System.getProperty("line.separator"));
                     ret = str.toString();
                 }
             }

@@ -31,7 +31,7 @@ function DisplayABooking(props) {
 
     return (
         <tr>
-            <td>{props.booking.serviceId}</td>
+            <td>{props.booking.id}</td>
             <td>{userDetails.description}</td>
             <td>{props.booking.workerId}</td>
             <td>{props.booking.workerName}</td>
