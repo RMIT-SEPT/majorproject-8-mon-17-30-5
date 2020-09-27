@@ -1,13 +1,59 @@
   
-import React from 'react'
+import React,{useState}  from 'react'
 import Table from 'react-bootstrap/Table';
 import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
+import axios from 'axios';
 
 export default function WorkerDashboard() {
+
+    const[userDetails, setUserDetails] = useState({
+        day1:[]
+    });
+
+    function handleChange(name, value){
+        setUserDetails(prevValue => {
+            return {
+                ...prevValue,
+                [name] : value
+            }
+        });
+    }
+
+    function setUp(){
+       // console.log("http://localhost:8080/api/worker/workerId/1/date/"+getFormattedDate());
+       getWorkingHr(getFormattedDate());
+    }
+
+    function getWorkingHr(date){
+        axios.get("http://localhost:8080/api/worker/workerId/1/date/"+date)
+        .then(function(response){
+            console.log("get working hr for today");
+            console.log(response.data);
+            handleChange("day1", response.data);
+        })
+        .catch()
+        .finally();
+    }
+
+    function getFormattedDate(){
+        const date = new Date();
+        const day = date.getDate();
+        let month = date.getMonth();
+        const year = date.getFullYear();
+        if(month < 10){
+            month++;
+            month = "0" + month;
+        }
+        return year + "-" + month +"-"+day;   
+    }
+
+   
     return (
+        
         <div className = "buttonholder">
             <NavigationBarWorkerPage/>
             <br></br>
+            <button onClick={setUp}>View working time</button>
             <br></br>
             <form className = "workerDetails">
             <h1> Welcome {sessionStorage.getItem("username")}!</h1>
@@ -72,5 +118,5 @@ export default function WorkerDashboard() {
             </form>
         </div>
         
-    )
+    );
 }

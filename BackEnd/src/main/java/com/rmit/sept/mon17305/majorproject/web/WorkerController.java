@@ -6,7 +6,9 @@ import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException
 import com.rmit.sept.mon17305.majorproject.model.*;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
+import com.rmit.sept.mon17305.majorproject.repository.ServiceObjectRepository;
 import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.ServiceObjectService;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.awt.print.Book;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +31,8 @@ public class WorkerController {
     private WorkerService workerService;
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private ServiceObjectService serviceObjectService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
@@ -126,6 +131,22 @@ public class WorkerController {
         }
     }
 
+    @GetMapping("/workerId/{id}/date/{date}")
+    public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date){
+        List<Booking> booked = bookingService.getBookingByWorkerIdAndDate(id,date);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("800", checkPerHr(800,booked));
+        map.put("900", checkPerHr(900,booked));
+        map.put("1000", checkPerHr(1000,booked));
+        map.put("1100", checkPerHr(1100,booked));
+        map.put("1300", checkPerHr(1300,booked));
+        map.put("1400", checkPerHr(1400,booked));
+        map.put("1500", checkPerHr(1500,booked));
+        return new ResponseEntity<HashMap<String, Object> >(map, HttpStatus.OK);
+    }
+
+
+
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) {
 
@@ -190,5 +211,23 @@ public class WorkerController {
             }
         }
         return array;
+    }
+
+    private String checkPerHr(int time, List<Booking> booked) {
+        String ret = "free";
+        if (booked != null) {
+            for (Booking booking : booked) {
+                if (time >= booking.getStartTime() && time < booking.getFinishTime() && ret == "free") {
+                    StringBuilder str = new StringBuilder();
+                    str.append("Booked/n");
+                    str.append("By .../n");
+                    str.append("Service:");
+                    str.append(serviceObjectService.getServiceDescriptionById(booking.getServiceId()));
+                    str.append("/n");
+                    ret = str.toString();
+                }
+            }
+        }
+        return ret;
     }
 }
