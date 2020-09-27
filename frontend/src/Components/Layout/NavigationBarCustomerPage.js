@@ -18,7 +18,7 @@ function NavigationBarCustomerPage(){
                 <LinkRouter to="/customerDashBoard">
                 <li>Search for a service</li>
                 </LinkRouter>
-                <LinkRouter to="custDetails">
+                <LinkRouter to="/custDetails">
                 <li>My Account</li>
                 </LinkRouter>
                 <LinkRouter to="/booking-page">

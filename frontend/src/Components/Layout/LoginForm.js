@@ -34,7 +34,7 @@ function LoginForm(props){
             sessionStorage.setItem("lastname", response.data.lastName);
             sessionStorage.setItem("billingAddress", response.data.billingAddress);
             sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
-            props.history.push("/customerDashboard");
+            props.history.push("/customerDashboard/");
         })
         .catch(function(){
             setUserDetails(prevValue => {

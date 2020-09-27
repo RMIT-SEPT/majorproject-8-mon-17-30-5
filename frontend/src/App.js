@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LoginForm from './Components/Layout/LoginForm';
 import CustomerDashboard from './Components/Customers/CustomerDashboard';
 import AboutUs from './Components/AboutUs';
@@ -20,15 +20,16 @@ import ErrorPage from "./Components/Layout/ErrorPage";
 
 function App() {
   return (
-  <Router history={history}>
+  <Router>
     <div className="App">
         <Switch>
           <Route path = "/" exact component = {LoginForm}></Route>
-          <Route path ="/signup" exact component={RegisterForm}></Route>
-          <Route path = "/customerDashBoard" exact component = {CustomerDashboard}></Route>
+          
           <Route path = "/about-us" exact component = {AboutUs}></Route>
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
-          <Route path = "/admin" exact component = {AdminDashboard}></Route>
+          <Route path ="/signup" exact component={RegisterForm}></Route>
+          <Route path = "/customerDashBoard" exact component = {CustomerDashboard}></Route>
+            <Route path = "/admin" exact component = {AdminDashboard}></Route>
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
           <Route path = "/booking" exact component = {BookingPage}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>

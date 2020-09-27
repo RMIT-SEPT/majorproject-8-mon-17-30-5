@@ -26,7 +26,7 @@ export default class EditWorker extends Component {
     return (
       <div>       
         <WorkerForm onSubmit={this.submitAddWorker} workerInfo={exampleWorker}/>
-      </div >
+      </div>
     );
   }
 }

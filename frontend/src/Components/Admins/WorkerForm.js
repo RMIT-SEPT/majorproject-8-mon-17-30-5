@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import history from '../../history';
+// import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class WorkerForm extends Component {
@@ -50,7 +50,7 @@ export default class WorkerForm extends Component {
             console.log("creating a worker");
             axios.post("http://localhost:8080/api/worker/create", person)
             .then(()=>{
-                history.push("/admin/workers");
+              //  history.push("/admin/workers");
                 window.location.reload();
             })
             .finally();
@@ -61,7 +61,7 @@ export default class WorkerForm extends Component {
     }
 
     backToWorkerPage(){
-        history.push("/admin/workers");
+      //  history.push("/admin/workers");
         window.location.reload();
     }
 
