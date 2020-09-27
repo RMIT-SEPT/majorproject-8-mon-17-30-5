@@ -15,8 +15,8 @@ function DisplayAService(props) {
         sessionStorage.setItem("booking-duration", props.service.duration);
     }
     return (
-        <div className="col-sm-3">
-            <div className="btn btn-info btn-block">
+        <div className="col-sm-3" >
+        {props.service.isFree=="true" && <div className="btn btn-info btn-block">
             <p>{props.service.description}</p>
             <ul>
                 <li>Worker Name: {props.service.workerName}</li>
@@ -24,15 +24,30 @@ function DisplayAService(props) {
                 <li>Start Time: {props.service.startTime}</li>
                 <li>End Time: {props.service.finishTime}</li>
                 <li>Date: {props.service.date}</li>
+                <li>isFree: {props.service.isFree}</li>
             </ul>
             <br></br>
             <LinkRouter to="/customer/makeBooking">
             <button onClick={handleClick}>Book</button>
             </LinkRouter>
             <br></br>
+        </div>}
+        {props.service.isFree=="false" && <div className="btn btn-secondary btn-block">
+        <p>{props.service.description}</p>
+        <ul>
+            <li>Worker Name: {props.service.workerName}</li>
+            <li>Duration: {props.service.duration} Hour</li>
+            <li>Start Time: {props.service.startTime}</li>
+            <li>End Time: {props.service.finishTime}</li>
+            <li>Date: {props.service.date}</li>
+            <li>isFree: {props.service.isFree}</li>
+        </ul>
+        <br></br>
+        
+        <button className="btn btn-danger">Not Available</button>
+        <br></br>
+        </div>}
         </div>
-        </div>
-
     );
 }
 

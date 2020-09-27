@@ -84,6 +84,7 @@ export default class CustomerDashboard extends Component {
         +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
         .then((response)=>{
             this.setState({display: response.data});
+            console.log(this.state.display);
         })
         .catch()
         .finally();

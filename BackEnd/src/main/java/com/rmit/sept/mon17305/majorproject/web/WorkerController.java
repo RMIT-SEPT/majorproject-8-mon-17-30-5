@@ -3,10 +3,10 @@ package com.rmit.sept.mon17305.majorproject.web;
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException;
-import com.rmit.sept.mon17305.majorproject.model.Admin;
+import com.rmit.sept.mon17305.majorproject.model.*;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
-import com.rmit.sept.mon17305.majorproject.model.Worker;
+import com.rmit.sept.mon17305.majorproject.service.BookingService;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +26,8 @@ public class WorkerController {
 
     @Autowired
     private WorkerService workerService;
+    @Autowired
+    private BookingService bookingService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
@@ -98,6 +100,7 @@ public class WorkerController {
             int[] timeFree = computeAvailableTime(worker.getStartTime(), worker.getFinishTime(), worker.getLunchBrTime()
                     , duration);
             HashMap[] ret = new HashMap[timeFree.length];
+           // List<HashMap> ret = null;
             int hrCount = 100 * duration;
             for (int i = 0; i < timeFree.length; i++) {
                 HashMap<String, Object> map = new HashMap<>();
@@ -109,6 +112,14 @@ public class WorkerController {
                 map.put("duration", duration);
                 map.put("startTime", timeFree[i]);
                 map.put("finishTime", timeFree[i] + hrCount);
+
+                List<Booking> found = bookingService.getBookingByDateAndWorkerIdAndTime(date, id, timeFree[i]);
+                if(found==null||found.size()==0){
+                    map.put("isFree", "true");
+
+                }else {
+                    map.put("isFree", "false");
+                }
                 ret[i] = map;
             }
             return new ResponseEntity<HashMap[]>(ret, HttpStatus.OK);

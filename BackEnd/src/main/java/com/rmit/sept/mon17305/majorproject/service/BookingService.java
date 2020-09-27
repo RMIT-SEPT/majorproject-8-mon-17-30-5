@@ -49,4 +49,8 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
+    public List<Booking> getBookingByDateAndWorkerIdAndTime(String date, Long id, int time){
+        return bookingRepository.findByDateAndWorkerIdAndStartTime(date, id,time);
+    }
+
 }
