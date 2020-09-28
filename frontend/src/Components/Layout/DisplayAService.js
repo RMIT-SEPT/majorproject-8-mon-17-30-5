@@ -16,7 +16,7 @@ function DisplayAService(props) {
     }
     return (
         <div className="col-sm-3" >
-        {props.service.isFree=="true" && <div className="btn btn-info btn-block">
+        {props.service.isFree==="true" && <div className="btn btn-info btn-block">
             <p>{props.service.description}</p>
             <ul>
                 <li>Worker Name: {props.service.workerName}</li>
@@ -32,7 +32,7 @@ function DisplayAService(props) {
             </LinkRouter>
             <br></br>
         </div>}
-        {props.service.isFree=="false" && <div className="btn btn-secondary btn-block">
+        {props.service.isFree==="false" && <div className="btn btn-secondary btn-block">
         <p>{props.service.description}</p>
         <ul>
             <li>Worker Name: {props.service.workerName}</li>

@@ -101,4 +101,5 @@ public class Booking {
     private void onUpdate() {
         this.updated_At = new Date();
     }
+
 }

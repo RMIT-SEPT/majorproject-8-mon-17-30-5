@@ -44,4 +44,7 @@ public class ServiceObjectService {
         serviceObjectRepository.deleteById(id);
     }
 
+    public String getServiceDescriptionById(Long id){
+        return serviceObjectRepository.findByIdEquals(id).getDescription();
+    }
 }

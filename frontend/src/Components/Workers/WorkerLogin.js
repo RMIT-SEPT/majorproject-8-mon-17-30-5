@@ -35,6 +35,9 @@ function WorkerLogin(props){
             sessionStorage.setItem("companyId", response.data.companyId);
             sessionStorage.setItem("password", response.data.password);
             sessionStorage.setItem("serviceId", response.data.serviceId);
+            sessionStorage.setItem("startTime", response.data.startTime);
+            sessionStorage.setItem("finishTime", response.data.finishTime);
+            sessionStorage.setItem("lunchTime", response.data.lunchBrTime);
             if(sessionStorage.getItem("username")!==null){
                 props.history.push("/workerDashboard");
             }

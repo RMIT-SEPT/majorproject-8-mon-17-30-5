@@ -2,6 +2,8 @@ package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.CustomerService;
+import com.rmit.sept.mon17305.majorproject.service.ServiceObjectService;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,6 +41,10 @@ public class WorkerControllerTest {
     public WorkerService workerService;
     @MockBean
     public BookingService bookingService;
+    @MockBean
+    private ServiceObjectService serviceObjectService;
+    @MockBean
+    private CustomerService customerService;
 
     public Worker annie = new Worker();
 
