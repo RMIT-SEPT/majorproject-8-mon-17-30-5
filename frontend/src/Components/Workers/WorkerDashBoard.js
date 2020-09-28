@@ -106,7 +106,7 @@ export default function WorkerDashboard() {
             <tbody>
                 {sessionStorage.getItem("startTime") === "08:00" &&
                 <tr>
-                    <td>0800 - 0900</td>
+                    <td>08:00 - 09:00</td>
                     <td>{userDetails.day1[800]}</td>
                     <td>{userDetails.day2[800]}</td>
                     <td>{userDetails.day3[800]}</td>
