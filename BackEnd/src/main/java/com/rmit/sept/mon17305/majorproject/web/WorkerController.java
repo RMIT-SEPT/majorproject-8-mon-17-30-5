@@ -108,7 +108,6 @@ public class WorkerController {
             int[] timeFree = computeAvailableTime(worker.getStartTime(), worker.getFinishTime(), worker.getLunchBrTime()
                     , duration);
             HashMap[] ret = new HashMap[timeFree.length];
-           // List<HashMap> ret = null;
             int hrCount = 100 * duration;
             for (int i = 0; i < timeFree.length; i++) {
                 HashMap<String, Object> map = new HashMap<>();
@@ -120,18 +119,27 @@ public class WorkerController {
                 map.put("duration", duration);
                 map.put("startTime", timeFree[i]);
                 map.put("finishTime", timeFree[i] + hrCount);
-
-                List<Booking> found = bookingService.getBookingByDateAndWorkerIdAndTime(date, id, timeFree[i]);
-                if(found==null||found.size()==0){
-                    map.put("isFree", "true");
-
-                }else {
-                    map.put("isFree", "false");
-                }
+                String isFree = getIsFree(date, id, timeFree[i], duration);
+                map.put("isFree", isFree);
                 ret[i] = map;
             }
             return new ResponseEntity<HashMap[]>(ret, HttpStatus.OK);
         }
+    }
+
+    private String getIsFree(String date, Long id, int time,int duration){
+        String ret = "true";
+        int timeCount = time;
+        for(int i = 1; i <= duration && ret=="true"; i++){
+            List<Booking> found = bookingService.getBookingByDateAndWorkerIdAndTime(date, id, timeCount);
+            if(found==null || found.size()==0){
+                ret = "true";
+            }else{
+                ret = "false";
+            }
+            timeCount = timeCount+100;
+        }
+        return ret;
     }
 
     @GetMapping("/workerId/{id}/date/{date}")
@@ -245,12 +253,6 @@ public class WorkerController {
                     str.append(" booked to ");
                     str.append(desc);
                     str.append(System.getProperty("line.separator"));
-//                    str.append("By ");
-//                    str.append(custName);
-//                    str.append(System.getProperty("line.separator"));
-//                    str.append("Service: ");
-//                    str.append(desc);
-//                    str.append(System.getProperty("line.separator"));
                     ret = str.toString();
                 }
             }

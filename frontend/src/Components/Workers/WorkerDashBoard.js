@@ -42,12 +42,12 @@ export default function WorkerDashboard() {
     }
 
     async function getWorkingHr(date, name){
+        //TODO add aws url
         axios.get("http://localhost:8080/api/worker/workerId/"+sessionStorage.getItem("id")+"/date/"+date)
         .then(function(response){
-            console.log("get working hr for " + name);
-            console.log(response.data);
+            // console.log("get working hr for " + name);
+            // console.log(response.data);
             handleChange(name, response.data);
-         //   console.log("userDetail 800 "+userDetails.day1[800]);
         })
         .catch()
         .finally();

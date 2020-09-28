@@ -12,7 +12,7 @@ import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
-import history from './history';
+//import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
 import MakeBooking from "./Components/Customers/MakeBooking";
