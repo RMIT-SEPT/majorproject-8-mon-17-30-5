@@ -7,6 +7,8 @@ import ContactUs from './Components/ContactUs';
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminDashboard from './Components/Admins/AdminDashboard';
 import WorkerPage from './Components/Admins/WorkerPage';
+import EditWorker from './Components/Admins/EditWorker';
+import ViewWorker from './Components/Admins/ViewWorker';
 import BookingPage from './Components/Admins/BookingPage';
 import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
@@ -31,6 +33,8 @@ function App() {
           <Route path = "/customerDashBoard" exact component = {CustomerDashboard}></Route>
             <Route path = "/admin" exact component = {AdminDashboard}></Route>
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
+          <Route path = "/admin/viewworkers" exact component = {ViewWorker}></Route>
+          <Route path = "/admin/editworkers" exact component = {EditWorker}></Route>
           <Route path = "/booking" exact component = {BookingPage}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>

@@ -7,7 +7,7 @@ export default class EditWorker extends Component {
     this.props.toggle();
   };
 
-  submitAddWorker = (workerInfo) => {
+  submitEditWorker = (workerInfo) => {
     console.log("edit worker form submitted");
     console.log(workerInfo)
   }
@@ -25,7 +25,7 @@ export default class EditWorker extends Component {
     }
     return (
       <div>       
-        <WorkerForm onSubmit={this.submitAddWorker} workerInfo={exampleWorker}/>
+        <WorkerForm onSubmit={this.submitEditWorker} workerInfo={exampleWorker}/>
       </div>
     );
   }

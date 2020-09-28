@@ -5,6 +5,7 @@ import ViewWorker from "./ViewWorker";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
+import {Link as LinkRouter} from "react-router-dom";
 
 export default class WorkerPage extends React.Component {
   state = {
@@ -57,6 +58,7 @@ export default class WorkerPage extends React.Component {
       <th>Start Time</th>
       <th>Finish Time</th>
       <th>Lunch Break</th>
+      <th>Option</th>
     </tr>
   </thead>
   <tbody>
@@ -69,11 +71,14 @@ export default class WorkerPage extends React.Component {
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
       <td>
-      <div onClick={() => this.formToggle("editWorkerToggle")}>Edit</div>
-        {this.state.editWorkerToggle ? <EditWorker /> : null}
-        <div onClick={() => this.formToggle("addWorkerToggle")}>View</div>
-        {this.state.addWorkerToggle ? <ViewWorker /> : null}
+      <LinkRouter to="/admin/editworkers">
+                <input id = "workderBtn" type="submit" value="Edit"></input>
+            </LinkRouter>
+            <LinkRouter to="/admin/viewworkers">
+                <input id = "workderBtn" type="submit" value="View"></input>
+            </LinkRouter>
       </td>
     </tr>
   </tbody>
