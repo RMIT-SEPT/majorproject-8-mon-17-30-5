@@ -1,7 +1,7 @@
 import React from "react";
 import AddWorker from "./AddWorker";
-import EditWorker from "./EditWorker";
-import ViewWorker from "./ViewWorker";
+// import EditWorker from "./EditWorker";
+// import ViewWorker from "./ViewWorker";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
