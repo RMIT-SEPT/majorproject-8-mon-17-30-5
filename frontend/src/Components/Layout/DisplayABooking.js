@@ -38,6 +38,33 @@ function DisplayABooking(props) {
         .finally();
     }
 
+    function getFormattedDate(num){
+        const today = new Date();
+        var date = new Date(today.getTime() + num * 24 * 60 * 60 * 1000);
+        const day = date.getDate();
+        let month = date.getMonth();
+        const year = date.getFullYear();
+        month++;
+        if(month < 10){
+            month = "0" + month;
+        }
+        return year + "-" + month +"-"+day; 
+    }
+
+    function canCancel(date){
+        const today = getFormattedDate(0);
+        const tomorrow = getFormattedDate(1);
+        if(date === today){
+            return false;
+        }
+        else if(date === tomorrow){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     return (
         <tr>
             <td>{props.booking.id}</td>
@@ -47,7 +74,9 @@ function DisplayABooking(props) {
             <td>{props.booking.startTime}</td>
             <td>{props.booking.finishTime}</td>
             <td>{props.booking.date}</td>
-            <td><button onClick={cancelBooking} className="btn btn-danger">cancel</button></td>
+            <td>{canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">cancel</button>}
+            {canCancel(props.booking.date)==false && "cannot cancel in less than 48 hrs"}
+            </td>
         </tr>
     )
 }
