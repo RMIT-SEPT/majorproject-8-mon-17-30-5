@@ -31,7 +31,9 @@ function DisplayABooking(props) {
 
     function cancelBooking(){
         axios.delete("http://localhost:8080/api/booking/"+ props.booking.id)
-        .then()
+        .then(()=>{
+            window.location.reload();
+        })
         .catch()
         .finally();
     }
