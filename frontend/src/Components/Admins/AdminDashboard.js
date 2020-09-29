@@ -6,12 +6,16 @@ export default function AdminDashboard() {
     return (
         <div className = "buttonholder">
             <NavigationBarAdminPage/>
+            <br></br>
+            <br></br>
+            <article className = "adminDash">
             <LinkRouter to="/admin/workers">
-                <input id = "workderBtn" type="submit" value="Worker"></input>
+                <input className = "workers" type="submit" value="Worker"></input>
             </LinkRouter>
             <LinkRouter to="/booking">
-                <input id = "bookingBtn" type="submit" value="Booking"></input>
+                <input className = "bookings" type="submit" value="Booking"></input>
             </LinkRouter>
+            </article>
             <br></br>
             <br></br>
             <form className = "adminDetails">
@@ -27,6 +31,8 @@ export default function AdminDashboard() {
             <label>Company ID: {sessionStorage.getItem("companyId")}</label>
             <br></br>
             </form>
+            <br></br>
+            <br></br>
         </div>
         
     )

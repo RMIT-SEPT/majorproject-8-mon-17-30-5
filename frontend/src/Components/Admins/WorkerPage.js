@@ -1,7 +1,5 @@
 import React from "react";
 import AddWorker from "./AddWorker";
-// import EditWorker from "./EditWorker";
-// import ViewWorker from "./ViewWorker";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
@@ -47,6 +45,9 @@ export default class WorkerPage extends React.Component {
       <div>
       <NavigationBarAdminPage/>
       <br></br>
+      <br></br>
+      <article className = "workerPage">
+      <h1>Worker Information</h1>
       <Table striped bordered hover>
   <thead>
     
@@ -58,7 +59,6 @@ export default class WorkerPage extends React.Component {
       <th>Start Time</th>
       <th>Finish Time</th>
       <th>Lunch Break</th>
-      <th>Option</th>
     </tr>
   </thead>
   <tbody>
@@ -72,19 +72,18 @@ export default class WorkerPage extends React.Component {
       <td></td>
       <td></td>
       <td></td>
-      <td>
-      <LinkRouter to="/admin/editworkers">
-                <input id = "workderBtn" type="submit" value="Edit"></input>
-            </LinkRouter>
-            <LinkRouter to="/admin/viewworkers">
-                <input id = "workderBtn" type="submit" value="View"></input>
-            </LinkRouter>
-      </td>
     </tr>
   </tbody>
 </Table>
-        <div onClick={() => this.formToggle("addWorkerToggle")}>Add</div>
+        <button class = "workerBtn" onClick={() => this.formToggle("addWorkerToggle")}>Add</button>
         {this.state.addWorkerToggle ? <AddWorker /> : null}
+        <LinkRouter to="/admin/editworkers">
+                <button class = "workerBtn" value="Edit">Edit</button>
+        </LinkRouter>
+        <LinkRouter to="/admin/viewworkers">
+            <button class = "workerBtn" value="View">View</button>
+        </LinkRouter>
+        </article>
       </div>
     );
   }

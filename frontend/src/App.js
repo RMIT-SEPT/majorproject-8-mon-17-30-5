@@ -14,6 +14,7 @@ import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
+import EditCustomer from './Components/Customers/EditCustomer';
 //import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
@@ -45,6 +46,7 @@ function App() {
           <Route path = "/admin/login" exact component={AdminLogin}></Route>
           <Route path = "/worker/login" exact component={WorkerLogin}></Route>
           <Route path = "/workerDetails" exact component = {WorkerPage}></Route>
+          <Route path = "/editCustomer" exact component = {EditCustomer}></Route>
           <Route path = "/" component = {ErrorPage}></Route>
         </Switch>
     </div>
