@@ -99,8 +99,7 @@ export default class CustomerDashboard extends Component {
             month++;
             month = "0" + month;
         }
-        return year + "-" + month +"-"+day;
-       
+        return year + "-" + month +"-"+day;       
     }
 
     render() {

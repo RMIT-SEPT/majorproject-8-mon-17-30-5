@@ -63,7 +63,7 @@ export default function WorkerDashboard() {
         if(month < 10){
             month = "0" + month;
         }
-        return year + "-" + month +"-"+day;   
+        return year + "-" + month +"-"+day; 
     }
 
    
