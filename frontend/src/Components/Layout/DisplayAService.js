@@ -1,6 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link as LinkRouter} from "react-router-dom";
+import axios from 'axios';
 
 
 function DisplayAService(props) {
@@ -13,6 +14,15 @@ function DisplayAService(props) {
         sessionStorage.setItem("booking-date", props.service.date);
         sessionStorage.setItem("booking-serviceDescription", props.service.description);
         sessionStorage.setItem("booking-duration", props.service.duration);
+       
+        axios.get("http://localhost:8080/api/worker/worker-company/" + sessionStorage.getItem("booking-workerId"))
+        .then((response)=>{
+            sessionStorage.setItem("booking-companyId", response.data);
+            console.log("companyID");
+            console.log(response.data);
+        })
+        .catch()
+        .finally();
     }
      
     return (

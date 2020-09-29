@@ -75,7 +75,7 @@ function DisplayABooking(props) {
             <td>{props.booking.finishTime}</td>
             <td>{props.booking.date}</td>
             <td>{canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">cancel</button>}
-            {canCancel(props.booking.date)==false && "cannot cancel in less than 48 hrs"}
+            {canCancel(props.booking.date)===false && "cannot cancel in less than 48 hrs"}
             </td>
         </tr>
     )
