@@ -29,7 +29,12 @@ function DisplayABooking(props) {
        getDescription();
     }, [props]);
 
-    const date = new Date();
+    function cancelBooking(){
+        axios.delete("http://localhost:8080/api/booking/"+ props.booking.id)
+        .then()
+        .catch()
+        .finally();
+    }
 
     return (
         <tr>
@@ -39,7 +44,8 @@ function DisplayABooking(props) {
             <td>{props.booking.workerName}</td>
             <td>{props.booking.startTime}</td>
             <td>{props.booking.finishTime}</td>
-            <td><button className = "cancelBooking">Cancel</button></td>
+            <td>{props.booking.date}</td>
+            <td><button onClick={cancelBooking} className="btn btn-danger">cancel</button></td>
         </tr>
     )
 }
