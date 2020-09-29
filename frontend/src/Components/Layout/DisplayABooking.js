@@ -38,7 +38,18 @@ function DisplayABooking(props) {
         .finally();
     }
 
+    function getDate(dateStr)
+    {
+        var dateParts = props.booking.date.split("-");
+        return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+
+    }
+
+    var currDate = new Date();
+    var checkDate = getDate(props.booking.date);
+
     return (
+        
         <tr>
             <td>{props.booking.id}</td>
             <td>{userDetails.description}</td>
@@ -47,7 +58,8 @@ function DisplayABooking(props) {
             <td>{props.booking.startTime}</td>
             <td>{props.booking.finishTime}</td>
             <td>{props.booking.date}</td>
-            <td><button onClick={cancelBooking} className="btn btn-danger">cancel</button></td>
+            <td>{currDate <= checkDate && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
+            {currDate > checkDate && "Booking Finished"}</td>
         </tr>
     )
 }
