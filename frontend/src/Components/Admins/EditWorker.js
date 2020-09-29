@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import WorkerForm from "./WorkerForm"
+import WorkerForm from "./WorkerForm";
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
 
 
 export default class EditWorker extends Component {
@@ -24,8 +25,13 @@ export default class EditWorker extends Component {
       workingdates: "Weekdays"
     }
     return (
-      <div>       
+      <div> 
+      <NavigationBarAdminPage/>
+      <br></br>
+      <br></br>      
         <WorkerForm onSubmit={this.submitEditWorker} workerInfo={exampleWorker}/>
+        <br></br>
+        <br></br>
       </div>
     );
   }

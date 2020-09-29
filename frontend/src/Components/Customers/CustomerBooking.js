@@ -18,6 +18,7 @@ export default class CustomerBooking extends Component {
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id"))
         .then((response)=>{
             this.setState({"bookingExist": true});
+            console.log("found booking");
             console.log(response.data);
             this.setState({"res": response.data});
             console.log(this.state.res);
@@ -34,7 +35,7 @@ export default class CustomerBooking extends Component {
             <div>
             <NavigationBarCustomerPage/>
             <br></br>
-            <form className = "custDash">
+            <article className = "custDash">
             <h1>Booking History</h1>
             <Table striped bordered hover>
             <thead>
@@ -45,13 +46,15 @@ export default class CustomerBooking extends Component {
                     <th>Worker Name</th>
                     <th>Start Time</th>
                     <th>Finish Time</th>
+                    <th>Date</th>
+                    <th>Manage</th>
             </tr>
             </thead>
             <tbody>
             {list}
             </tbody>
             </Table>
-            </form>            
+            </article>            
             </div>
         )
     }
