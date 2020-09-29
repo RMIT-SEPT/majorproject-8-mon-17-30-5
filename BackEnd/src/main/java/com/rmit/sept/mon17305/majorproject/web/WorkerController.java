@@ -83,6 +83,12 @@ public class WorkerController {
         return new ResponseEntity<Worker>(worker, HttpStatus.OK);
     }
 
+    @GetMapping("/worker-company/{id}")
+    public Long getCompanyOfWorker(@PathVariable Long id) {
+        Worker w = workerService.getWorkerByIdEquals(id);
+        return w.getCompanyId();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getWorker(@PathVariable Long id) {
         Optional<Worker> worker = workerService.getWorker(id);

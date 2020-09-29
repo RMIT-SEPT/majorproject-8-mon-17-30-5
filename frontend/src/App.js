@@ -36,7 +36,7 @@ function App() {
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
           <Route path = "/admin/viewworkers" exact component = {ViewWorker}></Route>
           <Route path = "/admin/editworkers" exact component = {EditWorker}></Route>
-          <Route path = "/booking" exact component = {BookingPage}></Route>
+          <Route path = "/admin/bookings" exact component = {BookingPage}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
