@@ -34,7 +34,7 @@ export default class CustomerBooking extends Component {
             <div>
             <NavigationBarCustomerPage/>
             <br></br>
-            <form className = "custDash">
+            <article className = "custDash">
             <h1>Booking History</h1>
             <Table striped bordered hover>
             <thead>
@@ -51,7 +51,7 @@ export default class CustomerBooking extends Component {
             {list}
             </tbody>
             </Table>
-            </form>            
+            </article>            
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 
 export default class ViewWorker extends Component {
 
@@ -64,43 +65,53 @@ export default class ViewWorker extends Component {
 
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h3>Worker Details</h3>
+            <NavigationBarAdminPage/>
+            <br></br>
+            <br></br>
+                <form class = "workerForm" onSubmit={this.handleSubmit}>
+                    <h1>Worker Details</h1>
                     <label>
                         First Name:
                     <input readOnly placeholder={this.state.firstName} name="firstName" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Last Name:
                     <input readOnly placeholder={this.state.lastName} name="lastName" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Occupation:
                     <input readOnly placeholder={this.state.occupation} name="occupation" onChange={this.handleChange} />
                             </label>
-
+                            <br></br>
                             <label>
                                 Email:
                     <input readOnly placeholder={this.state.email} name="email" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Username:
                     <input readOnly placeholder={this.state.username} name="username" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Password:
                     <input readOnly placeholder={this.state.password} name="password" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Working Hours:
                     <input readOnly placeholder={this.state.workinghours} name="workinghours" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Working Dates:
                     <input readOnly placeholder={this.state.workingdates} name="workingdates" onChange={this.handleChange} />
                             </label>
                 </form>
-                <button type="button" className="btn btn-secondary" onClick={this.backToWorkerPage}>Cancle / Close</button>
+                <br></br>
+                <br></br>
             </div>
         );
     }

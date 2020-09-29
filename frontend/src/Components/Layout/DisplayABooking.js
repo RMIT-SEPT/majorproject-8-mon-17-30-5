@@ -29,6 +29,8 @@ function DisplayABooking(props) {
        getDescription();
     }, [props]);
 
+    const date = new Date();
+
     return (
         <tr>
             <td>{props.booking.id}</td>
@@ -37,6 +39,7 @@ function DisplayABooking(props) {
             <td>{props.booking.workerName}</td>
             <td>{props.booking.startTime}</td>
             <td>{props.booking.finishTime}</td>
+            <td><button className = "cancelBooking">Cancel</button></td>
         </tr>
     )
 }

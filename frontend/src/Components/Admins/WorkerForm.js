@@ -69,40 +69,45 @@ export default class WorkerForm extends Component {
 
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <h3>Worker Details</h3>
+                <form class = "workerForm" onSubmit={this.handleSubmit}>
+                    <h1>Worker Details</h1>
                     <label>
                         First Name:
                     <input type="text" placeholder={this.state.firstName} name="firstName" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Last Name:
                     <input type="text" placeholder={this.state.lastName} name="lastName" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Username:
                     <input type="text" placeholder={this.state.username} name="username" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Password:
-                    <input type="text" placeholder={this.state.password} name="password" onChange={this.handleChange} />
+                    <input type="password" placeholder={this.state.password} name="password" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Start time:
                     <input type="text" placeholder={this.state.startTime} name="startTime" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Finish time:
                     <input type="text" placeholder={this.state.finishTime} name="finishTime" onChange={this.handleChange} />
                             </label>
+                            <br></br>
                             <label>
                                 Lunch break time:
                     <input type="text" placeholder={this.state.lunchBrTime} name="lunchBrTime" onChange={this.handleChange} />
                             </label>
                             <br />
-                            <input type="submit" value="Submit" />
+                            <input className = "workerButton" type="submit" value="Submit"/>
                 </form>
-                <button type="button" className="btn btn-secondary" onClick={this.backToWorkerPage}>Cancle / Close</button>
             </div>
         );
     }
