@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import history from '../../history';
+import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Link as LinkRouter} from "react-router-dom";
+
 
 export default class WorkerForm extends Component {
 
@@ -19,12 +19,7 @@ export default class WorkerForm extends Component {
             startTime: props.workerInfo ? props.workerInfo.startTime : 'enter start Time',
             finishTime: props.workerInfo ? props.workerInfo.finishTime : 'enter finish Time',
             lunchBrTime: props.workerInfo ? props.workerInfo.lunchBrTime : 'enter lunch break Time',
-            companyId: 1
-            // occupation: props.workerInfo ? props.workerInfo.occupation : 'enter occupation',
-            // email: props.workerInfo ? props.workerInfo.email : 'enter email',
-            
-            // ,workinghours: props.workerInfo ? props.workerInfo.workinghours : 'enter working hours'
-            // workingdates: props.workerInfo ? props.workerInfo.workingdates : 'enter working dates'
+            companyId: sessionStorage.getItem("companyId")
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,15 +67,16 @@ export default class WorkerForm extends Component {
     }
 
     backToWorkerPage(){
-      //  history.push("/admin/workers");
+        history.push("/admin/workers");
         window.location.reload();
     }
+
 
     render() {
 
         return (
             <div>
-                <form class = "workerForm" onSubmit={this.handleSubmit}>
+                <form className = "workerForm" onSubmit={this.handleSubmit}>
                     <h1>Worker Details</h1>
                     <label>
                         First Name:
@@ -121,9 +117,8 @@ export default class WorkerForm extends Component {
                 </form>
                 <br></br>
                 <br></br>
-                <LinkRouter to="/admin/workers">
-                <button className = "cancelBooking">Cancel</button>
-                </LinkRouter>
+                <button onClick={this.backToWorkerPage} className = "btn btn-danger" >Cancel</button>
+                <br></br>
             </div>
         );
     }
