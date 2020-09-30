@@ -19,23 +19,25 @@ export default class WorkerForm extends Component {
             startTime: props.workerInfo ? props.workerInfo.startTime : 'enter start Time',
             finishTime: props.workerInfo ? props.workerInfo.finishTime : 'enter finish Time',
             lunchBrTime: props.workerInfo ? props.workerInfo.lunchBrTime : 'enter lunch break Time',
-            companyId: 1
-            // occupation: props.workerInfo ? props.workerInfo.occupation : 'enter occupation',
-            // email: props.workerInfo ? props.workerInfo.email : 'enter email',
-            
-            // ,workinghours: props.workerInfo ? props.workerInfo.workinghours : 'enter working hours'
-            // workingdates: props.workerInfo ? props.workerInfo.workingdates : 'enter working dates'
+            companyId: 1,
+            hidden: true
+           
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.toggleShow = this.toggleShow.bind(this);
+    }
+  
+    toggleShow() {
+      this.setState({ hidden: !this.state.hidden });
     }
 
     handleSubmit(event) {
         event.preventDefault();
         let { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId} = this.state
         let workerInfo = { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId};
-       console.log(workerInfo);
+        console.log(workerInfo);
         this.createPerson(workerInfo);
     }
 
@@ -89,7 +91,8 @@ export default class WorkerForm extends Component {
                             <br></br>
                             <label>
                                 Password:
-                    <input type="password" placeholder={this.state.password} name="password" onChange={this.handleChange} />
+                    <input type={this.state.hidden ? "password" : "text"} value={this.state.password} placeholder={this.state.value} name="password" onChange={this.handleChange} />
+                    <button onClick={this.toggleShow}>Show / Hide</button>
                             </label>
                             <br></br>
                             <label>

@@ -19,12 +19,19 @@ export default class ViewWorker extends Component {
             username: props.workerInfo ? props.workerInfo.username : 'enter username',
             password: props.workerInfo ? props.workerInfo.password : 'enter password',
             workinghours: props.workerInfo ? props.workerInfo.workinghours : 'enter working hours',
-            workingdates: props.workerInfo ? props.workerInfo.workingdates : 'enter working dates'
+            workingdates: props.workerInfo ? props.workerInfo.workingdates : 'enter working dates',
+            companyId: 1,
+            hidden: true
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.toggleShow = this.toggleShow.bind(this);
     }
+
+    toggleShow() {
+        this.setState({ hidden: !this.state.hidden });
+      }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -97,7 +104,8 @@ export default class ViewWorker extends Component {
                             <br></br>
                             <label>
                                 Password:
-                    <input readOnly placeholder={this.state.password} name="password" onChange={this.handleChange} />
+                    <input readOnly type={this.state.hidden ? "password" : "text"} value={this.state.password} placeholder={this.state.value} name="password" onChange={this.handleChange} />
+                    <button onClick={this.toggleShow}>Show / Hide</button>
                             </label>
                             <br></br>
                             <label>
