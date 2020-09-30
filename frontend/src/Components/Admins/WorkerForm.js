@@ -33,6 +33,7 @@ export default class WorkerForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+
         let { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId} = this.state
         let workerInfo = { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId};
        console.log(workerInfo);
@@ -42,7 +43,16 @@ export default class WorkerForm extends Component {
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
-        })
+        });
+
+        if(event.target.name==="startTime"){
+            if(event.target.value==="08:00" || event.target.value==="09:00"){
+                document.getElementById("startTime").style.color = "black";
+            }else{
+                document.getElementById("startTime").style.color = "red";
+            }
+            
+        }
     }
 
     createPerson(person){
@@ -94,7 +104,7 @@ export default class WorkerForm extends Component {
                             <br></br>
                             <label>
                                 Start time:
-                    <input type="text" placeholder={this.state.startTime} name="startTime" onChange={this.handleChange} />
+                    <input type="text" id="startTime" placeholder={this.state.startTime} name="startTime" onChange={this.handleChange} />
                             </label>
                             <br></br>
                             <label>
