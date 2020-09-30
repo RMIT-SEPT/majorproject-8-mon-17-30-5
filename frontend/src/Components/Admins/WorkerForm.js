@@ -122,7 +122,7 @@ export default class WorkerForm extends Component {
                 <br></br>
                 <br></br>
                 <LinkRouter to="/admin/workers">
-                <button>Cancel</button>
+                <button className = "cancelBooking">Cancel</button>
                 </LinkRouter>
             </div>
         );

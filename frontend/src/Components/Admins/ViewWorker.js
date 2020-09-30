@@ -112,6 +112,9 @@ export default class ViewWorker extends Component {
                 </form>
                 <br></br>
                 <br></br>
+                <button className = "cancelBooking">Cancel</button>
+                <br></br>
+                <br></br>
             </div>
         );
     }
