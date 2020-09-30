@@ -28,17 +28,17 @@ function WorkerLogin(props){
         "/password/"+userDetails.password)
         .then(function(response){
             console.log(response.data);
-            sessionStorage.setItem("id", response.data.id);
-            sessionStorage.setItem("username", response.data.username);
-            sessionStorage.setItem("firstname", response.data.firstName);
-            sessionStorage.setItem("lastname", response.data.lastName);
-            sessionStorage.setItem("companyId", response.data.companyId);
-            sessionStorage.setItem("password", response.data.password);
-            sessionStorage.setItem("serviceId", response.data.serviceId);
-            sessionStorage.setItem("startTime", response.data.startTime);
-            sessionStorage.setItem("finishTime", response.data.finishTime);
-            sessionStorage.setItem("lunchTime", response.data.lunchBrTime);
-            if(sessionStorage.getItem("username")!==null){
+            sessionStorage.setItem("worker-id", response.data.id);
+            sessionStorage.setItem("worker-username", response.data.username);
+            sessionStorage.setItem("worker-firstname", response.data.firstName);
+            sessionStorage.setItem("worker-lastname", response.data.lastName);
+            sessionStorage.setItem("worker-companyId", response.data.companyId);
+            sessionStorage.setItem("worker-password", response.data.password);
+            sessionStorage.setItem("worker-serviceId", response.data.serviceId);
+            sessionStorage.setItem("worker-startTime", response.data.startTime);
+            sessionStorage.setItem("worker-finishTime", response.data.finishTime);
+            sessionStorage.setItem("worker-lunchTime", response.data.lunchBrTime);
+            if(sessionStorage.getItem("worker-username")!==null){
                 props.history.push("/workerDashboard");
             }
             else{

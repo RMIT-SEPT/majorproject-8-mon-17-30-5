@@ -4,6 +4,8 @@ import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
 import {Link as LinkRouter} from "react-router-dom";
+import history from '../../history';
+import DisplayAWorker from '../Layout/DisplayAWorker';
 
 export default class WorkerPage extends React.Component {
   state = {
@@ -30,17 +32,9 @@ export default class WorkerPage extends React.Component {
     });
   }
 
+  
   render() {
-    const workers = this.state.worker.map((w)=> 
-    <tr key={w.id}>
-      <td>{w.id}</td>
-      <td>{w.firstName}</td>
-      <td>{w.lastName}</td>
-      <td>{w.username}</td>
-      <td>{w.startTime}</td>
-      <td>{w.finishTime}</td>
-      <td>{w.lunchBrTime}</td>
-    </tr>);
+    const workers = this.state.worker.map((w)=> <DisplayAWorker key={w.id} worker={w}/>);
     return (
       <div>
       <NavigationBarAdminPage/>
@@ -52,18 +46,19 @@ export default class WorkerPage extends React.Component {
   <thead>
     
     <tr>
-      <th>#</th>
+      <th>ID</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Username</th>
       <th>Start Time</th>
       <th>Finish Time</th>
       <th>Lunch Break</th>
+      <th>Manage</th>
     </tr>
   </thead>
   <tbody>
   {workers}
-    {}
+  {}
     <tr>
       <td></td>
       <td></td>
@@ -75,14 +70,9 @@ export default class WorkerPage extends React.Component {
     </tr>
   </tbody>
 </Table>
-        <button class = "workerBtn" onClick={() => this.formToggle("addWorkerToggle")}>Add</button>
+        <button className = "workerBtn" onClick={() => this.formToggle("addWorkerToggle")}>Add</button>
         {this.state.addWorkerToggle ? <AddWorker /> : null}
-        <LinkRouter to="/admin/editworkers">
-                <button class = "workerBtn" value="Edit">Edit</button>
-        </LinkRouter>
-        <LinkRouter to="/admin/viewworkers">
-            <button class = "workerBtn" value="View">View</button>
-        </LinkRouter>
+      
         </article>
       </div>
     );

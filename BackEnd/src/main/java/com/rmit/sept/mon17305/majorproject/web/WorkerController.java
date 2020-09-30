@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.awt.print.Book;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -96,7 +97,7 @@ public class WorkerController {
             return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.FOUND);
+        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.OK);
     }
 
 
@@ -185,6 +186,12 @@ public class WorkerController {
                 .map(worker -> {
                     worker.setFirstName(newWorker.getFirstName());
                     worker.setLastName(newWorker.getFirstName());
+                    worker.setUsername(newWorker.getUsername());
+                    worker.setUpdated_At(new Date());
+                    worker.setStartTime(newWorker.getStartTime());
+                    worker.setFinishTime(newWorker.getFinishTime());
+                    worker.setLunchBrTime(newWorker.getLunchBrTime());
+                    worker.setPassword(newWorker.getPassword());
                     return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
                 })
                 .orElseGet(() -> {
