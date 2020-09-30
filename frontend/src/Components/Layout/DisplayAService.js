@@ -9,8 +9,8 @@ function DisplayAService(props) {
         sessionStorage.setItem("booking-serviceId",props.service.serviceId);
         sessionStorage.setItem("booking-workerId", props.service.workerId);
         sessionStorage.setItem("booking-workername", props.service.workerName);
-        sessionStorage.setItem("booking-startTime", props.service.startTime);
-        sessionStorage.setItem("booking-finishTime", props.service.finishTime);
+        sessionStorage.setItem("booking-startTime", start);
+        sessionStorage.setItem("booking-finishTime", finish);
         sessionStorage.setItem("booking-date", props.service.date);
         sessionStorage.setItem("booking-serviceDescription", props.service.description);
         sessionStorage.setItem("booking-duration", props.service.duration);
@@ -24,6 +24,29 @@ function DisplayAService(props) {
         .catch()
         .finally();
     }
+
+    function formatDate(dateStr)
+    {
+        var output;
+        if(dateStr.length === 4)
+        {
+            output = [dateStr.slice(0, 2), ':', dateStr.slice(2)].join('');
+            return output;
+        }
+
+        if(dateStr.length === 3)
+        {
+            output = [dateStr.slice(0, 1), ':', dateStr.slice(1)].join('');
+            return output;
+        }
+    }
+
+    var startString = (props.service.startTime).toString();
+    var finishString = (props.service.finishTime).toString();
+
+    var start = formatDate(startString);
+    var finish = formatDate(finishString);
+
      
     return (
         <div className="col-sm-3" >
@@ -32,8 +55,8 @@ function DisplayAService(props) {
             <ul>
                 <li>Worker Name: {props.service.workerName}</li>
                 <li>Duration: {props.service.duration} Hour</li>
-                <li>Start Time: {props.service.startTime}</li>
-                <li>End Time: {props.service.finishTime}</li>
+                <li>Start Time: {/*props.service.startTime*/start}</li>
+                <li>End Time: {/*props.service.finishTime*/finish}</li>
                 <li>Date: {props.service.date}</li>
                 <li hidden>isFree: {props.service.isFree}</li>
             </ul>
@@ -48,8 +71,8 @@ function DisplayAService(props) {
         <ul>
             <li>Worker Name: {props.service.workerName}</li>
             <li>Duration: {props.service.duration} Hour</li>
-            <li>Start Time: {props.service.startTime}</li>
-            <li>End Time: {props.service.finishTime}</li>
+            <li>Start Time: {/*props.service.startTime*/start}</li>
+            <li>End Time: {/*props.service.finishTime*/finish}</li>
             <li>Date: {props.service.date}</li>
             <li hidden>isFree: {props.service.isFree}</li>
         </ul>
