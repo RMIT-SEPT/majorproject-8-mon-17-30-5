@@ -9,8 +9,8 @@ function DisplayAService(props) {
         sessionStorage.setItem("booking-serviceId",props.service.serviceId);
         sessionStorage.setItem("booking-workerId", props.service.workerId);
         sessionStorage.setItem("booking-workername", props.service.workerName);
-        sessionStorage.setItem("booking-startTime", start);
-        sessionStorage.setItem("booking-finishTime", finish);
+        sessionStorage.setItem("booking-startTime", props.service.startTime);
+        sessionStorage.setItem("booking-finishTime", props.service.finishTime);
         sessionStorage.setItem("booking-date", props.service.date);
         sessionStorage.setItem("booking-serviceDescription", props.service.description);
         sessionStorage.setItem("booking-duration", props.service.duration);

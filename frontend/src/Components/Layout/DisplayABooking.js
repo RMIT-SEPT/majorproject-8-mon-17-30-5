@@ -76,12 +76,13 @@ function DisplayABooking(props) {
     {
         var dateParts = props.booking.date.split("-");
         return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-
     }
 
     function canCancel(date){
         const today = getFormattedDate(0);
         const tomorrow = getFormattedDate(1);
+        console.log(today);
+        console.log(tomorrow);
         if(date === today){
             return false;
         }
