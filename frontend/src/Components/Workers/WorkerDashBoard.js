@@ -1,5 +1,5 @@
   
-import React,{useState}  from 'react'
+import React from 'react'
 //import Table from 'react-bootstrap/Table';
 import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
 //import axios from 'axios';
@@ -15,6 +15,8 @@ export default function WorkerDashboard() {
             <br></br>
             <br></br>
             <WorkerInfoBoard></WorkerInfoBoard>
+            <br></br>
+            <br></br>
         </div>
         
     );

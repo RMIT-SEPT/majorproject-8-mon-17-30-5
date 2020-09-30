@@ -2,10 +2,9 @@ import React from "react";
 import AddWorker from "./AddWorker";
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
-import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
-import {Link as LinkRouter} from "react-router-dom";
-import history from '../../history';
+import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 import DisplayAWorker from '../Layout/DisplayAWorker';
+import {Link as LinkRouter} from "react-router-dom";
 
 export default class WorkerPage extends React.Component {
   state = {
@@ -40,6 +39,11 @@ export default class WorkerPage extends React.Component {
       <NavigationBarAdminPage/>
       <br></br>
       <br></br>
+      <LinkRouter to="/admin">
+        <button className = "workerBtn">back to dashboard</button>
+      </LinkRouter>
+      <br></br>
+      <br></br>
       <article className = "workerPage">
       <h1>Worker Information</h1>
       <Table striped bordered hover>
@@ -58,21 +62,10 @@ export default class WorkerPage extends React.Component {
   </thead>
   <tbody>
   {workers}
-  {}
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
   </tbody>
 </Table>
-        <button className = "workerBtn" onClick={() => this.formToggle("addWorkerToggle")}>Add</button>
+        <button className = "workerBtn" onClick={() => this.formToggle("addWorkerToggle")}>Add New Worker</button>
         {this.state.addWorkerToggle ? <AddWorker /> : null}
-      
         </article>
       </div>
     );

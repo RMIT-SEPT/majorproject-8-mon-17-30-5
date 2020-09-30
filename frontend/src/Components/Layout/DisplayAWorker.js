@@ -4,7 +4,7 @@ import {Link as LinkRouter} from "react-router-dom";
 
 
 export default function DisplayAWorker(props) {
-    function handleClickView(){
+    function handleClick(){
         sessionStorage.setItem("worker-id", props.worker.id);
         console.log("worker-id : " + sessionStorage.getItem("worker-id"));
         axios.get("http://localhost:8080/api/worker/"+sessionStorage.getItem("worker-id"))
@@ -19,6 +19,7 @@ export default function DisplayAWorker(props) {
             sessionStorage.setItem("worker-startTime", response.data.startTime);
             sessionStorage.setItem("worker-finishTime", response.data.finishTime);
             sessionStorage.setItem("worker-lunchTime", response.data.lunchBrTime);
+            window.location.reload();
         })
         .catch()
         .finally();
@@ -34,9 +35,11 @@ export default function DisplayAWorker(props) {
       <td>{props.worker.finishTime}</td>
       <td>{props.worker.lunchBrTime}</td>
       <td>
-      <button className = "workerBtn" value="Edit">Edit</button>
+      <LinkRouter to="/admin/editworkers">
+      <button onClick={handleClick} className = "workerBtn" value="Edit">Edit</button>
+      </LinkRouter>
       <LinkRouter to="/admin/viewworkers">
-      <button onClick={handleClickView} className = "workerBtn" value="View">View</button>
+      <button onClick={handleClick} className = "workerBtn" value="View">View</button>
       </LinkRouter>
       </td>
     </tr>

@@ -56,12 +56,15 @@ export default function WorkerInfoBoard() {
     function getFormattedDate(num){
         const today = new Date();
         var date = new Date(today.getTime() + num * 24 * 60 * 60 * 1000);
-        const day = date.getDate();
+        let day = date.getDate();
         let month = date.getMonth();
         const year = date.getFullYear();
         month++;
         if(month < 10){
             month = "0" + month;
+        }
+        if(day < 10){
+            day = "0" + day;
         }
         return year + "-" + month +"-"+day; 
     }
