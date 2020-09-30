@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import history from '../../history';
+import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link as LinkRouter } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export default class WorkerForm extends Component {
             startTime: props.workerInfo ? props.workerInfo.startTime : 'enter start Time',
             finishTime: props.workerInfo ? props.workerInfo.finishTime : 'enter finish Time',
             lunchBrTime: props.workerInfo ? props.workerInfo.lunchBrTime : 'enter lunch break Time',
-            companyId: 1,
+            companyId: sessionStorage.getItem("companyId"),
             hidden: true,
             errors: {
                 startTime: '',
@@ -51,9 +51,9 @@ export default class WorkerForm extends Component {
     }
 
     handleChange(event) {
-        // this.setState({
-        //     [event.target.name]: event.target.value
-        // })
+        this.setState({
+            [event.target.name]: event.target.value
+        })
         event.preventDefault();
         if (event.target.name === "startTime") {
             if (event.target.value === "08:00" || event.target.value === "09:00") {
@@ -124,16 +124,17 @@ export default class WorkerForm extends Component {
         }
     }
 
-    backToWorkerPage() {
-        //  history.push("/admin/workers");
+    backToWorkerPage(){
+        history.push("/admin/workers");
         window.location.reload();
     }
+
 
     render() {
         const { errors } = this.state;
         return (
             <div>
-                <form class="workerForm" onSubmit={this.handleSubmit}>
+                <form className = "workerForm" onSubmit={this.handleSubmit}>
                     <h1>Worker Details</h1>
                     <label>
                         First Name:
@@ -148,42 +149,34 @@ export default class WorkerForm extends Component {
                     <label>
                         Username:
                     <input type="text" placeholder={this.state.username} name="username" onChange={this.handleChange} />
-                    </label>
-                    <br></br>
-                    <label>
-                        Password:
-                    <input type={this.state.hidden ? "password" : "text"} value={this.state.password} placeholder={this.state.value} name="password" onChange={this.handleChange} />
-                        <button onClick={this.toggleShow}>Show / Hide</button>
-                    </label>
-                    <br></br>
-                    <label>
-                        Start time:
-                    <input id='startTime' type="text" placeholder={this.state.startTime} name="startTime" onChange={this.handleChange} noValidate />
-                        {errors.startTime.length > 0 &&
-                            <span>{errors.startTime}</span>}
-                    </label>
-                    <br></br>
-                    <label>
-                        Finish time:
-                    <input id='finishTime' type="text" placeholder={this.state.finishTime} name="finishTime" onChange={this.handleChange} noValidate />
-                        {errors.finishTime.length > 0 &&
-                            <span>{errors.finishTime}</span>}
-                    </label>
-                    <br></br>
-                    <label>
-                        Lunch break time:
-                    <input id='lunchBrTime' type="text" placeholder={this.state.lunchBrTime} name="lunchBrTime" onChange={this.handleChange} noValidate />
-                        {errors.lunchBrTime.length > 0 &&
-                            <span>{errors.lunchBrTime}</span>}
-                    </label>
-                    <br />
-                    <input className="workerButton" type="submit" value="Submit" />
+                            </label>
+                            <br></br>
+                            <label>
+                                Password:
+                    <input type="password" placeholder={this.state.password} name="password" onChange={this.handleChange} />
+                            </label>
+                            <br></br>
+                            <label>
+                                Start time:
+                    <input type="text" id="startTime" placeholder={this.state.startTime} name="startTime" onChange={this.handleChange} />
+                            </label>
+                            <br></br>
+                            <label>
+                                Finish time:
+                    <input type="text" placeholder={this.state.finishTime} name="finishTime" onChange={this.handleChange} />
+                            </label>
+                            <br></br>
+                            <label>
+                                Lunch break time:
+                    <input type="text" placeholder={this.state.lunchBrTime} name="lunchBrTime" onChange={this.handleChange} />
+                            </label>
+                            <br />
+                            <input className = "workerButton" type="submit" value="Submit"/>
                 </form>
                 <br></br>
                 <br></br>
-                <LinkRouter to="/admin/workers">
-                    <button>Cancel</button>
-                </LinkRouter>
+                <button onClick={this.backToWorkerPage} className = "btn btn-danger" >Cancel</button>
+                <br></br>
             </div>
         );
     }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.awt.print.Book;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -96,7 +97,7 @@ public class WorkerController {
             return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.FOUND);
+        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.OK);
     }
 
 
@@ -180,19 +181,22 @@ public class WorkerController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) {
-
-        workerService.getWorker(id)
-                .map(worker -> {
-                    worker.setFirstName(newWorker.getFirstName());
-                    worker.setLastName(newWorker.getFirstName());
-                    return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
-                })
-                .orElseGet(() -> {
-                    Worker worker1 = workerService.saveOrUpdateWorker(newWorker);
-                    return new ResponseEntity<Worker>(newWorker, HttpStatus.CREATED);
-                });
-
-        return new ResponseEntity<String>("Couldn't find Worker", HttpStatus.BAD_REQUEST);
+        System.out.println(newWorker.toString());
+        Worker worker = workerService.getWorkerByIdEquals(id);
+        if(worker !=null){
+            worker.setFirstName(newWorker.getFirstName());
+            worker.setLastName(newWorker.getLastName());
+            worker.setUsername(newWorker.getUsername());
+            worker.setUpdated_At(new Date());
+            worker.setStartTime(newWorker.getStartTime());
+            worker.setFinishTime(newWorker.getFinishTime());
+            worker.setLunchBrTime(newWorker.getLunchBrTime());
+            worker.setPassword(newWorker.getPassword());
+            return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
+        }
+        else{
+            return new ResponseEntity<String> ("invalid",HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{id}")

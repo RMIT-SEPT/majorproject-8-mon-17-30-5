@@ -24,6 +24,29 @@ function DisplayAService(props) {
         .catch()
         .finally();
     }
+
+    function formatDate(dateStr)
+    {
+        var output;
+        if(dateStr.length === 4)
+        {
+            output = [dateStr.slice(0, 2), ':', dateStr.slice(2)].join('');
+            return output;
+        }
+
+        if(dateStr.length === 3)
+        {
+            output = [dateStr.slice(0, 1), ':', dateStr.slice(1)].join('');
+            return output;
+        }
+    }
+
+    var startString = (props.service.startTime).toString();
+    var finishString = (props.service.finishTime).toString();
+
+    var start = formatDate(startString);
+    var finish = formatDate(finishString);
+
      
     return (
         <div className="col-sm-3" >
@@ -32,8 +55,8 @@ function DisplayAService(props) {
             <ul>
                 <li>Worker Name: {props.service.workerName}</li>
                 <li>Duration: {props.service.duration} Hour</li>
-                <li>Start Time: {props.service.startTime}</li>
-                <li>End Time: {props.service.finishTime}</li>
+                <li>Start Time: {/*props.service.startTime*/start}</li>
+                <li>End Time: {/*props.service.finishTime*/finish}</li>
                 <li>Date: {props.service.date}</li>
                 <li hidden>isFree: {props.service.isFree}</li>
             </ul>
@@ -48,8 +71,8 @@ function DisplayAService(props) {
         <ul>
             <li>Worker Name: {props.service.workerName}</li>
             <li>Duration: {props.service.duration} Hour</li>
-            <li>Start Time: {props.service.startTime}</li>
-            <li>End Time: {props.service.finishTime}</li>
+            <li>Start Time: {/*props.service.startTime*/start}</li>
+            <li>End Time: {/*props.service.finishTime*/finish}</li>
             <li>Date: {props.service.date}</li>
             <li hidden>isFree: {props.service.isFree}</li>
         </ul>

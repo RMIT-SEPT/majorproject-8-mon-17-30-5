@@ -42,7 +42,7 @@ componentDidMount(){
       <NavigationBarAdminPage/>
         <br></br>
         <LinkRouter to="/admin">
-        <button>back to dashboard</button>
+        <button className = "workerBtn">back to dashboard</button>
         </LinkRouter>
         <br></br>
         <h1>Booking History</h1>

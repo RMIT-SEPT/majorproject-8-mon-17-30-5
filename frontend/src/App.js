@@ -15,7 +15,6 @@ import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
 import EditCustomer from './Components/Customers/EditCustomer';
-//import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
 import MakeBooking from "./Components/Customers/MakeBooking";
