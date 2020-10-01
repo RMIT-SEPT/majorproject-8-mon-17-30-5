@@ -17,7 +17,13 @@ export default class EditWorker extends Component{
         startTime: sessionStorage.getItem("worker-startTime"),
         finishTime: sessionStorage.getItem("worker-finishTime"),
         lunchBrTime: sessionStorage.getItem("worker-lunchTime"),
-        companyId: sessionStorage.getItem("companyId")
+        companyId: sessionStorage.getItem("companyId"),
+        hidden: true,
+        errors: {
+            startTime: '',
+            finishTime: '',
+            lunchBrTime: '',
+        }
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,14 +40,57 @@ export default class EditWorker extends Component{
             document.getElementById("startTime").style.color = "black";
         }else{
             document.getElementById("startTime").style.color = "red";
-        }
-        
+        }   
     }
+
+    if (event.target.name === "finishTime") {
+      if (event.target.value === "16:00" || event.target.value === "17:00") {
+          document.getElementById("finishTime").style.color = "black";
+      } else {
+          document.getElementById("finishTime").style.color = "red";
+      }
+    }
+
+    if (event.target.name === "lunchBrTime") {
+        if (event.target.value === "11:00" || event.target.value === "12:00") {
+            document.getElementById("lunchBrTime").style.color = "black";
+        } else {
+            document.getElementById("lunchBrTime").style.color = "red";
+        }
+    }
+
+    const { name, value } = event.target;
+    let errors = this.state.errors;
+
+    switch (name) {
+        case 'startTime':
+            errors.startTime =
+                value !== '08:00' && value !== '09:00'
+                    ? 'Please enter start time either 08:00 or 09:00'
+                    : '';
+            break;
+        case 'finishTime':
+            errors.finishTime =
+                value !== '16:00' && value !== '17:00'
+                    ? 'Please enter finish time either 16:00 or 17:00'
+                    : '';
+            break;
+        case 'lunchBrTime':
+            errors.lunchBrTime =
+                value !== '11:00' && value !== '12:00'
+                    ? 'Please enter lunch break time either 11:00 or 12:00'
+                    : '';
+            break;
+        default:
+            break;
+    }
+
+    this.setState({ errors, [name]: value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-   // let { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId} = this.state
+    let { startTime, finishTime, lunchBrTime} = this.state;
     let workerInfo = { 
       id: sessionStorage.getItem("worker-id"),
       firstName: this.state.firstName, 
@@ -53,7 +102,12 @@ export default class EditWorker extends Component{
       lunchBrTime: this.state.lunchBrTime, 
       companyId: this.state.companyId};
     console.log(workerInfo);
-    this.updatePerson(workerInfo);
+    let matches;
+    let match1 = startTime === "08:00" || startTime === "09:00";
+    let match2 = finishTime === "16:00" || finishTime === "17:00";
+    let match3 = lunchBrTime === "11:00" || lunchBrTime === "12:00";
+    matches = match1 && match2 && match3;
+    matches ? this.updatePerson(workerInfo) : alert("Please enter correct time");
   }
 
   updatePerson(person){
@@ -107,12 +161,12 @@ export default class EditWorker extends Component{
                   <br></br>
                   <label>
                       Finish time:
-          <input type="text" placeholder={sessionStorage.getItem("worker-finishTime")} name="finishTime" onChange={this.handleChange} />
+          <input type="text" id="finishime" placeholder={sessionStorage.getItem("worker-finishTime")} name="finishTime" onChange={this.handleChange} />
                   </label>
                   <br></br>
                   <label>
                       Lunch break time:
-          <input type="text" placeholder={sessionStorage.getItem("worker-lunchTime")} name="lunchBrTime" onChange={this.handleChange} />
+          <input type="text" id="lunchBrTime" placeholder={sessionStorage.getItem("worker-lunchTime")} name="lunchBrTime" onChange={this.handleChange} />
                   </label>
                   <br />
                   <input className = "workerButton" type="submit" value="Submit"/>

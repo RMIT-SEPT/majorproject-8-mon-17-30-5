@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link as LinkRouter } from "react-router-dom";
+//import { Link as LinkRouter } from "react-router-dom";
 
 export default class WorkerForm extends Component {
 
@@ -43,10 +43,11 @@ export default class WorkerForm extends Component {
         let workerInfo = { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId };
 
         let matches;
-        matches = startTime === "08:00" || startTime === "09:00"
-        matches = finishTime === "16:00" || finishTime === "17:00"
-        matches = lunchBrTime === "11:00" || lunchBrTime === "12:00";
-        matches ? this.createPerson(workerInfo) : alert("Please enter correct time");
+        let match1 = startTime === "08:00" || startTime === "09:00";
+        let match2 = finishTime === "16:00" || finishTime === "17:00";
+        let match3 = lunchBrTime === "11:00" || lunchBrTime === "12:00";
+        matches = match1 && match2 && match3;
+        matches ? this.updatePerson(workerInfo) : alert("Please enter correct time");
 
     }
 
@@ -85,19 +86,19 @@ export default class WorkerForm extends Component {
         switch (name) {
             case 'startTime':
                 errors.startTime =
-                    value != '08:00' && value != '09:00'
+                    value !== '08:00' && value !== '09:00'
                         ? 'Please enter start time either 08:00 or 09:00'
                         : '';
                 break;
             case 'finishTime':
                 errors.finishTime =
-                    value != '16:00' && value != '17:00'
+                    value !== '16:00' && value !== '17:00'
                         ? 'Please enter finish time either 16:00 or 17:00'
                         : '';
                 break;
             case 'lunchBrTime':
                 errors.lunchBrTime =
-                    value != '11:00' && value != '12:00'
+                    value !== '11:00' && value !== '12:00'
                         ? 'Please enter lunch break time either 11:00 or 12:00'
                         : '';
                 break;
@@ -131,7 +132,7 @@ export default class WorkerForm extends Component {
 
 
     render() {
-        const { errors } = this.state;
+        // const { errors } = this.state;
         return (
             <div>
                 <form className = "workerForm" onSubmit={this.handleSubmit}>
@@ -163,12 +164,12 @@ export default class WorkerForm extends Component {
                             <br></br>
                             <label>
                                 Finish time:
-                    <input type="text" placeholder={this.state.finishTime} name="finishTime" onChange={this.handleChange} />
+                    <input type="text" id="finishTime" placeholder={this.state.finishTime} name="finishTime" onChange={this.handleChange} />
                             </label>
                             <br></br>
                             <label>
                                 Lunch break time:
-                    <input type="text" placeholder={this.state.lunchBrTime} name="lunchBrTime" onChange={this.handleChange} />
+                    <input type="text" id="lunchBrTime" placeholder={this.state.lunchBrTime} name="lunchBrTime" onChange={this.handleChange} />
                             </label>
                             <br />
                             <input className = "workerButton" type="submit" value="Submit"/>
