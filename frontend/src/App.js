@@ -31,7 +31,7 @@ function App() {
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
           <Route path ="/signup" exact component={RegisterForm}></Route>
           <Route path = "/customerDashBoard" exact component = {CustomerDashboard}></Route>
-            <Route path = "/admin" exact component = {AdminDashboard}></Route>
+          <Route path = "/admin" exact component = {AdminDashboard}></Route>
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
           <Route path = "/admin/viewworkers" exact component = {ViewWorker}></Route>
           <Route path = "/admin/editworkers" exact component = {EditWorker}></Route>

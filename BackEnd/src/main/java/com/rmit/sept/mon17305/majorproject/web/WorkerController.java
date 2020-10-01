@@ -181,7 +181,7 @@ public class WorkerController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) {
-        System.out.println(newWorker.toString());
+        //System.out.println(newWorker.toString());
         Worker worker = workerService.getWorkerByIdEquals(id);
         if(worker !=null){
             worker.setFirstName(newWorker.getFirstName());

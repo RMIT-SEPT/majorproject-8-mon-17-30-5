@@ -116,7 +116,7 @@ export default class EditWorker extends Component{
         console.log("updating a worker");
         axios.put("http://localhost:8080/api/worker/"+sessionStorage.getItem("worker-id"), person)
         .then(()=>{
-          alert("successfully edit worker information.\n Go back to worker page?");
+          alert("successfully edit worker information.\nGo back to worker page?");
           history.push("/admin/workers");
           window.location.reload();
         })
