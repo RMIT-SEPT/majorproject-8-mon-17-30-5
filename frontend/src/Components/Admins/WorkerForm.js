@@ -47,7 +47,7 @@ export default class WorkerForm extends Component {
         let match2 = finishTime === "16:00" || finishTime === "17:00";
         let match3 = lunchBrTime === "11:00" || lunchBrTime === "12:00";
         matches = match1 && match2 && match3;
-        matches ? this.updatePerson(workerInfo) : alert("Please enter correct time");
+        matches ? this.createPerson(workerInfo) : alert("Please enter correct time");
 
     }
 

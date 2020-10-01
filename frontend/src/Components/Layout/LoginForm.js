@@ -34,6 +34,7 @@ function LoginForm(props){
             sessionStorage.setItem("lastname", response.data.lastName);
             sessionStorage.setItem("billingAddress", response.data.billingAddress);
             sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
+            sessionStorage.setItem("password", response.data.password);
             props.history.push("/customerDashboard/");
         })
         .catch(function(){

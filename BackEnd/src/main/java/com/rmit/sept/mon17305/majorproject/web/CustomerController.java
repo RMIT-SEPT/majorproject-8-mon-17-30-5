@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 @CrossOrigin(origins="http://localhost:3000")
@@ -84,19 +85,34 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) {
-
-        customerService.getCustomer(id)
-                .map(customer -> {
-                    customer.setFirstName(newCustomer.getFirstName());
-                    customer.setLastName(newCustomer.getFirstName());
-                    return new ResponseEntity<Customer> (customerService.saveOrUpdateCustomer(customer),HttpStatus.ACCEPTED);
-                })
-                .orElseGet(() -> {
-                    Customer customer1 = customerService.saveOrUpdateCustomer(newCustomer);
-                    return new ResponseEntity<Customer>(newCustomer, HttpStatus.CREATED);
-                });
-
-        return new ResponseEntity<String>("Couldn't find Customer", HttpStatus.BAD_REQUEST);
+        System.out.println(newCustomer.toString());
+        Customer customer = customerService.getCustomerByIdEquals(id);
+        if(customer != null){
+            customer.setFirstName(newCustomer.getFirstName());
+            customer.setLastName(newCustomer.getLastName());
+            customer.setUsername(newCustomer.getUsername());
+            customer.setPassword(newCustomer.getPassword());
+            customer.setUpdated_At(new Date());
+            customer.setShippingAddress(newCustomer.getShippingAddress());
+            customer.setBillingAddress(newCustomer.getBillingAddress());
+            return new ResponseEntity<Customer>(customerService.saveOrUpdateCustomer(customer)
+            ,HttpStatus.ACCEPTED);
+        }
+        else{
+            return new ResponseEntity<String>("invalid", HttpStatus.BAD_REQUEST);
+        }
+//        customerService.getCustomer(id)
+//                .map(customer -> {
+//                    customer.setFirstName(newCustomer.getFirstName());
+//                    customer.setLastName(newCustomer.getFirstName());
+//                    return new ResponseEntity<Customer> (customerService.saveOrUpdateCustomer(customer),HttpStatus.ACCEPTED);
+//                })
+//                .orElseGet(() -> {
+//                    Customer customer1 = customerService.saveOrUpdateCustomer(newCustomer);
+//                    return new ResponseEntity<Customer>(newCustomer, HttpStatus.CREATED);
+//                });
+//
+//        return new ResponseEntity<String>("Couldn't find Customer", HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
