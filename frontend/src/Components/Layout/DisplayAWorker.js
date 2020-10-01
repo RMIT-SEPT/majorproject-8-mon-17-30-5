@@ -36,10 +36,12 @@ export default function DisplayAWorker(props) {
       <td>{props.worker.lunchBrTime}</td>
       <td>
       <LinkRouter to="/admin/editworkers">
-      <button onClick={handleClick} className = "workerBtn" value="Edit">Edit</button>
+      <button onClick={handleClick} className = "btn btn-warning" value="Edit">Edit {props.worker.firstName}</button>
       </LinkRouter>
+      <br></br>
+      <br></br>
       <LinkRouter to="/admin/viewworkers">
-      <button onClick={handleClick} className = "workerBtn" value="View">View</button>
+      <button onClick={handleClick} className = "btn btn-info" value="View">View {props.worker.firstName}'s information</button>
       </LinkRouter>
       </td>
     </tr>

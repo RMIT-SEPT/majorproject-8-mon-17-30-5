@@ -56,6 +56,7 @@ componentDidMount(){
                 <th>Start Time</th>
                 <th>Finish Time</th>
                 <th>Date</th>
+                <th>Status</th>
                 <th>Manage</th>
         </tr>
         </thead>

@@ -146,6 +146,15 @@ public class WorkerController {
             }
             timeCount = timeCount+100;
         }
+
+        if(ret.equals("true")){
+            List<Booking> allToday = bookingService.getBookingByDateAndWorkerId(date, id);
+            for(Booking b: allToday){
+                if(time>= b.getStartTime() && time<b.getFinishTime()){
+                    ret = "false";
+                }
+            }
+        }
         return ret;
     }
 

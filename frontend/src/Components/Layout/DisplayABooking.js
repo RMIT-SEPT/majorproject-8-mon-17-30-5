@@ -111,10 +111,13 @@ function DisplayABooking(props) {
             <td>{start}</td>
             <td>{finish}</td>
             <td>{props.booking.date}</td>
-            <td>{currDate <= checkDate && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
-            {currDate > checkDate && "Booking Finished"}
-            {canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
-            {canCancel(props.booking.date)===false && "Cannot cancel in less than 48 hrs"}
+            <td>{currDate <= checkDate && <button className="btn btn-success" readOnly>status : current</button>}
+            {currDate > checkDate && <button className="btn btn-secondary" readOnly>status : past</button>}
+            </td>
+            <td>
+            {currDate <= checkDate && canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
+            {currDate <= checkDate && canCancel(props.booking.date)===false && <button className="btn btn-secondary" readOnly>Cannot cancel in less than 48 hrs</button>}
+            {currDate > checkDate && <button className="btn btn-secondary" readOnly>Already Finished</button>}
             </td>
         </tr>
     )

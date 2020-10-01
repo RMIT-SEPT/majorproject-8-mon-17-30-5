@@ -19,6 +19,7 @@ public interface BookingRepository extends CrudRepository<Booking, Long> {
     List<Booking> findByDateAndWorkerIdAndStartTime(String date, Long id, int startTime);
     List<Booking> findByWorkerIdAndDate(Long id, String date);
     List<Booking> findByCompanyId(Long id);
+    List<Booking> findByDateAndWorkerId(String date, Long id);
     @Override
     void deleteById(Long id);
 }
