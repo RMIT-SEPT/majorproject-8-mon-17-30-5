@@ -3,6 +3,7 @@ import {Link as LinkRouter} from "react-router-dom";
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 
 export default function AdminDashboard() {
+
     return (
         <div className = "buttonholder">
             <NavigationBarAdminPage/>
@@ -12,7 +13,7 @@ export default function AdminDashboard() {
             <LinkRouter to="/admin/workers">
                 <input className = "workers" type="submit" value="Worker"></input>
             </LinkRouter>
-            <LinkRouter to="/booking">
+            <LinkRouter to="/admin/bookings">
                 <input className = "bookings" type="submit" value="Booking"></input>
             </LinkRouter>
             </article>

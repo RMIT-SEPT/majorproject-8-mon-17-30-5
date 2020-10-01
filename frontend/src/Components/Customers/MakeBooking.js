@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function MakeBooking(props){
 
     function handleSubmit(){
+        
         const booking = {
             "customerId": sessionStorage.getItem("id"),
             "workerId": sessionStorage.getItem("booking-workerId"),
@@ -13,7 +14,8 @@ function MakeBooking(props){
             "serviceId": sessionStorage.getItem("booking-serviceId"),
             "startTime": sessionStorage.getItem("booking-startTime"),
             "finishTime": sessionStorage.getItem("booking-finishTime"),
-            "date": sessionStorage.getItem("booking-date")
+            "date": sessionStorage.getItem("booking-date"),
+            "companyId": sessionStorage.getItem("booking-companyId")
         }
         axios.post("http://localhost:8080/api/booking/create/", booking)
         .then(()=>{
@@ -33,6 +35,7 @@ function MakeBooking(props){
         sessionStorage.removeItem("booking-date");
         sessionStorage.removeItem("booking-serviceDescription",);
         sessionStorage.removeItem("booking-duration");
+        sessionStorage.removeItem("booking-companyId");
         props.history.push("/customerDashBoard");
     }
 

@@ -15,7 +15,6 @@ import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
 import EditCustomer from './Components/Customers/EditCustomer';
-//import history from './history';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
 import MakeBooking from "./Components/Customers/MakeBooking";
@@ -36,7 +35,7 @@ function App() {
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
           <Route path = "/admin/viewworkers" exact component = {ViewWorker}></Route>
           <Route path = "/admin/editworkers" exact component = {EditWorker}></Route>
-          <Route path = "/booking" exact component = {BookingPage}></Route>
+          <Route path = "/admin/bookings" exact component = {BookingPage}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
