@@ -319,3 +319,8 @@ button.editCustomer:hover
   border: 2px solid white;
   box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
 }
+
+input.datePicker
+{
+  width: 150px;
+}

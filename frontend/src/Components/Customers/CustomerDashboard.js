@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import DisplayAService from "../Layout/DisplayAService";
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
@@ -123,7 +123,7 @@ export default class CustomerDashboard extends Component {
             <br></br>
             <form className = "searchDash">
             <div id="datePicker">
-                <input type="date" id="dateFilter" name="selectDate" min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} required></input>
+                <input type="date" className = "datePicker" id="dateFilter" name="selectDate" placeholder = "Select Date"  min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} required></input>
             </div>
             <br></br>
             <div>
