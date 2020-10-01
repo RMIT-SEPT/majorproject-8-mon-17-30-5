@@ -100,7 +100,7 @@ form.searchDash
   box-shadow: 0px 0px 18px 4px #696969; 
 }
 
-article.custDash, form.adminDetails, form.aboutUs, form.contactUs, form.workerDetails, article.confirmBook, form.workerForm, article.workerPage, article.adminDash
+article.custDash, form.adminDetails, form.aboutUs, form.contactUs, form.workerDetails, article.confirmBook, form.workerForm, article.workerPage, article.adminDash, form.editCustomer
 {
   background-color: white;
   display: inline-block;
@@ -134,7 +134,7 @@ h1.regoHead
   text-align: center;
 }
 
-.buttonholder #loginBtn, input.workerButton, input.workers, input.bookings
+.buttonholder #loginBtn, input.workerButton, input.workers, input.bookings, input.changeCustDetails
 {
   background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
   border: rgb(39, 141, 237);
@@ -147,7 +147,7 @@ h1.regoHead
   transition-duration: 0.4s;
 }
 
-.buttonholder #loginBtn:hover, input.workerButton:hover, input.workers:hover, input.bookings:hover
+.buttonholder #loginBtn:hover, input.workerButton:hover, input.workers:hover, input.bookings:hover, input.changeCustDetails:hover
 {
     color:rgb(39, 141, 237);
     background-image: none;

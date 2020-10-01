@@ -81,7 +81,10 @@ function DisplayABooking(props) {
         var dateParts = props.booking.date.split("-");
         return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
     }
-
+  
+    var currDate = new Date();
+    var checkDate = getDate(props.booking.date);
+  
     function canCancel(date){
         const today = getFormattedDate(0);
         const tomorrow = getFormattedDate(1);
@@ -99,6 +102,7 @@ function DisplayABooking(props) {
     }
 
     return (
+        
         <tr>
             <td>{props.booking.id}</td>
             <td>{userDetails.description}</td>
@@ -107,7 +111,9 @@ function DisplayABooking(props) {
             <td>{start}</td>
             <td>{finish}</td>
             <td>{props.booking.date}</td>
-            <td>{canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
+            <td>{currDate <= checkDate && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
+            {currDate > checkDate && "Booking Finished"}
+            {canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
             {canCancel(props.booking.date)===false && "Cannot cancel in less than 48 hrs"}
             </td>
         </tr>
