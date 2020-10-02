@@ -34,7 +34,7 @@ public class CompanyController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping("/All")
     public List<Company> getCompanies() {
 
         return companyService.getCompanies();

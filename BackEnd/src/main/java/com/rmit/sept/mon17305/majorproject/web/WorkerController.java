@@ -68,6 +68,11 @@ public class WorkerController {
 
         return workerService.getWorkers();
     }
+    @GetMapping("/companyId/{comId}")
+    public List<Worker> getWorkersByCompanyID(@PathVariable Long comId) {
+
+        return workerService.getWorkersByCompanyId(comId);
+    }
 
     @GetMapping("/username/{username}")
     public Worker getWorkerByUsername(@PathVariable String username) {

@@ -47,4 +47,8 @@ public class ServiceObjectService {
     public String getServiceDescriptionById(Long id){
         return serviceObjectRepository.findByIdEquals(id).getDescription();
     }
+
+    public List<ServiceObject> getServiceObjectsByCompanyId(Long id){
+        return serviceObjectRepository.findByCompanyIdEquals(id);
+    }
 }
