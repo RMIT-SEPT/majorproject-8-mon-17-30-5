@@ -84,7 +84,8 @@ function DisplayABooking(props) {
   
     var currDate = new Date();
     var checkDate = getDate(props.booking.date);
-  
+    console.log("curr: " + currDate);
+    console.log("checking: "+ checkDate);
     function canCancel(date){
         const today = getFormattedDate(0);
         const tomorrow = getFormattedDate(1);
