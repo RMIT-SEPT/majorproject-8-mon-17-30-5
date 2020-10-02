@@ -41,6 +41,12 @@ public class ServiceObjectController {
         return serviceObjectService.getServiceObjects();
     }
 
+    @GetMapping("/getAll/{comId}")
+    public List<ServiceObject> getServiceObjects(@PathVariable Long comId) {
+
+        return serviceObjectService.getServiceObjectsByCompanyId(comId);
+    }
+
     @GetMapping("/{id}/duration")
     public Optional<ServiceObject> getServiceObjectDuration(@PathVariable Long id) {
         return serviceObjectService.getServiceObjectDuration(id);

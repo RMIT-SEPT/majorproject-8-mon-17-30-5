@@ -17,7 +17,7 @@ public class ServiceObject {
     private String description;
 //    private Long workerId;
 //    private String workerName;
-    @NotBlank(message = "Service CompanyID is required")
+    @Min(1)
     private Long companyId;
     @Min(0)
     @Max(12)

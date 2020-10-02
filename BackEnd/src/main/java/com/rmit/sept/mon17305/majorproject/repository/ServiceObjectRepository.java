@@ -15,6 +15,7 @@ public interface ServiceObjectRepository extends CrudRepository<ServiceObject, L
     List<ServiceObject> findAll();
     Optional<ServiceObject> findById(Long id);
     ServiceObject findByIdEquals(Long id);
+    List<ServiceObject> findByCompanyIdEquals(Long id);
     @Override
     void deleteById(Long id);
 

@@ -24,6 +24,8 @@ public class MajorprojectApplication {
     private ServiceObjectRepository serviceObjectRepository;
     @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
+    private CompanyRepository companyRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(MajorprojectApplication.class, args);
@@ -55,6 +57,7 @@ public class MajorprojectApplication {
             Company business1 = new Company();
             business1.setId((long)1);
             business1.setCompanyName("Tim Car Wash");
+            companyRepository.save(business1);
 
             Worker john = new Worker();
             john.setFirstName("John");
@@ -119,6 +122,7 @@ public class MajorprojectApplication {
             Company business2 = new Company();
             business2.setId((long)2);
             business2.setCompanyName("Sandy Hair Dressor");
+            companyRepository.save(business2);
 
             Worker winnie = new Worker();
             winnie.setFirstName("Winnie");
@@ -154,7 +158,7 @@ public class MajorprojectApplication {
             ServiceObject hairWash = new ServiceObject();
             hairWash.setDescription("Hair Wash");
             hairWash.setDuration(1);
-            hairCut.setCompanyId(business2.getId());
+            hairWash.setCompanyId(business2.getId());
 
             ServiceObject colour = new ServiceObject();
             colour.setCompanyId(business2.getId());

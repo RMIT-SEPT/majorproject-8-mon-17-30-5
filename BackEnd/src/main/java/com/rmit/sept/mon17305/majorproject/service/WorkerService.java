@@ -61,4 +61,8 @@ public class WorkerService {
     public Worker getWorkerById(Long id){
         return workerRepository.findByIdEquals(id);
     }
+
+    public List<Worker> getWorkersByCompanyId(Long id){
+        return workerRepository.findByCompanyIdEquals(id);
+    }
 }

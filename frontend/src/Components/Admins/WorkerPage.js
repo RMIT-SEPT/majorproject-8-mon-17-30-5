@@ -15,7 +15,7 @@ export default class WorkerPage extends React.Component {
   };
 
   componentDidMount(){
-    axios.get("http://localhost:8080/api/worker/")
+    axios.get("http://localhost:8080/api/worker/companyId/"+sessionStorage.getItem("companyId"))
     .then((response)=>{
         this.setState({"worker":response.data});
         console.log("Workers");
