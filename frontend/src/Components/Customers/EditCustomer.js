@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import '../../App.css'
-//import {Link as LinkRouter} from "react-router-dom";
+import '../../App.css';
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
 import axios from 'axios';
 
@@ -15,6 +14,7 @@ function EditCustomer(props)
         lastname: sessionStorage.getItem("lastname"),
         billingAddress: sessionStorage.getItem("billingAddress"),
         shippingAddress: sessionStorage.getItem("shippingAddress"),
+        phone: sessionStorage.getItem("phone"),
         hasLoginFailed: false
     });
 
@@ -37,7 +37,8 @@ function EditCustomer(props)
             firstName: userDetails.firstname,
             lastName: userDetails.lastname,
             billingAddress: userDetails.billingAddress,
-            shippingAddress: userDetails.shippingAddress
+            shippingAddress: userDetails.shippingAddress,
+            phone: userDetails.phone
         }
         setSessionStorage();
         console.log("updating customer");
@@ -63,6 +64,7 @@ function EditCustomer(props)
         sessionStorage.setItem("billingAddress", userDetails.billingAddress);
         sessionStorage.setItem("shippingAddress", userDetails.shippingAddress);
         sessionStorage.setItem("password", userDetails.password);
+        sessionStorage.setItem("phone", userDetails.phone);
     }
 
 
@@ -85,6 +87,9 @@ function EditCustomer(props)
                 <br></br>
                 <label>Change Password</label>
                 <input type = "text" id = "changePassword" name="password"  placeholder={sessionStorage.getItem("password")} onChange = {handleChange}></input>
+                <br></br>
+                <label>Change Phone Number</label>
+                <input type = "text" id = "changePhone" name="phone"  placeholder={sessionStorage.getItem("phone")} onChange = {handleChange}></input>
                 <br></br>
                 <label>Change Billing Address</label>
                 <input type = "text" id = "changeBAddress" name="billingAddress" placeholder={sessionStorage.getItem("billingAddress")} onChange = {handleChange}></input>

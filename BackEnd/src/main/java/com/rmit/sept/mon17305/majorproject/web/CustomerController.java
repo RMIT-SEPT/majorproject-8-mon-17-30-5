@@ -95,6 +95,7 @@ public class CustomerController {
             customer.setUpdated_At(new Date());
             customer.setShippingAddress(newCustomer.getShippingAddress());
             customer.setBillingAddress(newCustomer.getBillingAddress());
+            customer.setPhone(newCustomer.getPhone());
             return new ResponseEntity<Customer>(customerService.saveOrUpdateCustomer(customer)
             ,HttpStatus.ACCEPTED);
         }

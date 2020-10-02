@@ -34,6 +34,7 @@ function AdminLogin(props){
             sessionStorage.setItem("lastname", response.data.lastName);
             sessionStorage.setItem("companyId", response.data.companyId);
             sessionStorage.setItem("password", response.data.password);
+            sessionStorage.setItem("phone", response.data.phone);
             props.history.push("/admin");
         })
         .catch(function(){

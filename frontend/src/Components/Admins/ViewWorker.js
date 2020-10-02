@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import axios from "axios";
-// import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 import WorkerInfoBoard from '../Workers/WorkerInfoBoard';

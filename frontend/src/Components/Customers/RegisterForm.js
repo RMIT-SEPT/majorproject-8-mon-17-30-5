@@ -12,7 +12,8 @@ function RegisterForm(props){
         lastName: "",
         password: "",
         billingAdd:"",
-        shipppingAdd:""
+        shipppingAdd:"",
+        phone:""
     });
 
     function handleChange(event){
@@ -45,7 +46,8 @@ function RegisterForm(props){
           lastName:userDetails.lastName,
           password:userDetails.password,
           billingAdd: userDetails.billingAdd,
-          shipppingAdd: userDetails.shipppingAdd
+          shipppingAdd: userDetails.shipppingAdd,
+          phone: userDetails.phone
         }
         createCustomer(person);
         console.log(person);
@@ -78,12 +80,16 @@ function RegisterForm(props){
             <input type = "text" id = "billingAddr" className = "loginInput" placeholder = "Enter Billing Address" required></input>
             <br></br>
             <br></br>
-            <label className = "regoLabel">User Address</label><br></br>
-            <input type = "text" id = "userAddr" className = "loginInput" placeholder = "Enter User Address" required></input>
+            <label className = "regoLabel">User Shipping Address</label><br></br>
+            <input type = "text" id = "userAddr" className = "loginInput" placeholder = "Enter User Shipping Address" required></input>
             <br></br>
             <br></br>
             <label className = "regoLabel">Password</label><br></br>
             <input type = "password" id = "password" onChange={handleChange} name="password" className = "loginInput" placeholder = "Enter Password" required></input>
+            <br></br>
+            <br></br>
+            <label className = "regoLabel">Phone Number</label><br></br>
+            <input type = "text" id = "phone" onChange={handleChange} name="phone" className = "loginInput" placeholder = "Enter Phone Number" required></input>
             <br></br>
             <br></br>
            

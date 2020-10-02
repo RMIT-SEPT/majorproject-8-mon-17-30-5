@@ -1,7 +1,6 @@
   
 import React,{useState}  from 'react'
 import Table from 'react-bootstrap/Table';
-//import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
 import axios from 'axios';
 
 export default function WorkerInfoBoard() {
@@ -45,8 +44,6 @@ export default function WorkerInfoBoard() {
         //TODO add aws url
         axios.get("http://localhost:8080/api/worker/workerId/"+sessionStorage.getItem("worker-id")+"/date/"+date)
         .then(function(response){
-            // console.log("get working hr for " + name);
-            // console.log(response.data);
             handleChange(name, response.data);
         })
         .catch()
@@ -82,6 +79,8 @@ export default function WorkerInfoBoard() {
             <label>First Name : {sessionStorage.getItem("worker-firstname")}</label>
             <br></br>
             <label>Last Name : {sessionStorage.getItem("worker-lastname")}</label>
+            <br></br>
+            <label>Phone Number : {sessionStorage.getItem("worker-phone")}</label>
             <br></br>
             <label>Company ID: {sessionStorage.getItem("worker-companyId")}</label>
             <br></br>

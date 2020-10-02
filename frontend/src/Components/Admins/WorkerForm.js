@@ -19,6 +19,7 @@ export default class WorkerForm extends Component {
             startTime: props.workerInfo ? props.workerInfo.startTime : 'enter start Time',
             finishTime: props.workerInfo ? props.workerInfo.finishTime : 'enter finish Time',
             lunchBrTime: props.workerInfo ? props.workerInfo.lunchBrTime : 'enter lunch break Time',
+            phone: props.workerInfo ? props.workerInfo.phone : 'enter phone number',
             companyId: sessionStorage.getItem("companyId"),
             hidden: true,
             errors: {
@@ -39,8 +40,8 @@ export default class WorkerForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId } = this.state
-        let workerInfo = { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId };
+        let { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId, phone } = this.state
+        let workerInfo = { firstName, lastName, username, password, startTime, finishTime, lunchBrTime, companyId, phone};
 
         let matches;
         let match1 = startTime === "08:00" || startTime === "09:00";
@@ -115,7 +116,6 @@ export default class WorkerForm extends Component {
             console.log("creating a worker");
             axios.post("http://localhost:8080/api/worker/create", person)
                 .then(() => {
-                    //  history.push("/admin/workers");
                     window.location.reload();
                 })
                 .finally();
@@ -132,7 +132,6 @@ export default class WorkerForm extends Component {
 
 
     render() {
-        // const { errors } = this.state;
         return (
             <div>
                 <form className = "workerForm" onSubmit={this.handleSubmit}>
@@ -157,6 +156,11 @@ export default class WorkerForm extends Component {
                     <input type="password" placeholder={this.state.password} name="password" onChange={this.handleChange} />
                             </label>
                             <br></br>
+                            <label>
+                            Phone number:
+                <input type="text" placeholder={this.state.phone} name="phone" onChange={this.handleChange} />
+                        </label>
+                        <br></br>
                             <label>
                                 Start time:
                     <input type="text" id="startTime" placeholder={this.state.startTime} name="startTime" onChange={this.handleChange} />

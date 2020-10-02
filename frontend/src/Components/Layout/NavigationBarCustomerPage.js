@@ -10,6 +10,7 @@ function NavigationBarCustomerPage(){
         sessionStorage.removeItem("lastname");
         sessionStorage.removeItem("billingAddress");
         sessionStorage.removeItem("shippingAddress");
+        sessionStorage.removeItem("phone")
     }
 
     return(

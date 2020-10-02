@@ -59,6 +59,7 @@ public class WorkerControllerTest {
         annie.setStartTime("08:00");
         annie.setFinishTime("16:00");
         annie.setLunchBrTime("11:00");
+        annie.setPhone("0456888888");
     }
 
     @Test
@@ -70,8 +71,8 @@ public class WorkerControllerTest {
                 .content("{\"id\":,\"username\":,\"firstName\":,\"lastName\":,\"created_At\":,\"updated_At\":,\"companyId\":,\"serviceId\":,\"startTime\":,\"finishTime\":,\"password\":,\"lunchBrTime\":,\"type\":,\"userId\":}");
 
         MvcResult result = mockMvc.perform(request).andReturn();
-        //found = 302
-        assertEquals(302, result.getResponse().getStatus());
+        //ok
+        assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
@@ -235,163 +236,4 @@ public class WorkerControllerTest {
         //400 is status bad request
         assertEquals(400, result.getResponse().getStatus());
     }
-
-
-
-//    @Test
-//    void createNewWorker_statusBadRequest_invalidStartTime() throws Exception {
-//        annie.setStartTime("3600");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test
-//    void createNewWorker_statusBadRequest_invalidFinishTime() throws Exception {
-//        annie.setFinishTime("3000");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test
-//    void createNewWorker_statusBadRequest_invalidBreakTime() throws Exception {
-//        annie.setLunchBrTime("0000");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test
-//    void createNewWorker_statusBadRequest_firstNameBlank() throws Exception {
-//        annie.setFirstName("");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test //when size is less than 3
-//    void createNewWorker_statusBadRequest_firstNameInvalidSizeLess() throws Exception {
-//        annie.setFirstName("An");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test // when size is more than 20
-//    void createNewWorker_statusBadRequest_firstNameInvalidSizeMore() throws Exception {
-//        annie.setFirstName("Anjkdhasjkhdkasjhdajsnxmansjdkasjdnxajskhjas");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test
-//    void createNewWorker_statusBadRequest_userNameBlank() throws Exception {
-//        annie.setUsername("");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test //when size is less than 3
-//    void createNewWorker_statusBadRequest_userNameInvalidSizeLess() throws Exception {
-//        annie.setUsername("An");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test // when size is more than 20
-//    void createNewWorker_statusBadRequest_usernameInvalidSizeMore() throws Exception {
-//        annie.setUsername("Ankhsdkuahsjdhkaushdjkasudhkjashdua");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test
-//    void createNewWorker_statusBadRequest_lastNameBlank() throws Exception {
-//        annie.setLastName("");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test //when size is less than 3
-//    void createNewWorker_statusBadRequest_lastNameInvalidSizeLess() throws Exception {
-//        annie.setLastName("An");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-//
-//    @Test // when size is more than 20
-//    void createNewWorker_statusBadRequest_lastNameInvalidSizeMore() throws Exception {
-//        annie.setLastName("Ankhsdkuahsjdhkaushdjkasudhkjashdua");
-//        RequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/api/worker/create")
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(annie.toString())
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        //400 for status bad request
-//        assertEquals(400, result.getResponse().getStatus());
-//    }
-
 }

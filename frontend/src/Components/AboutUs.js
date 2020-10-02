@@ -15,7 +15,7 @@ function AboutUs(){
             Process and Tools for Semester 2 of 2020.</label>
             <br></br>
             <h4>The team is as follows</h4>
-            <label>Cathy Ropkhop (s3781279)</label>
+            <label>Chiraporn Ropkhop (s3781279)</label>
             <br></br>
             <label>Ngoc Do (s3698200)</label>
             <br></br>

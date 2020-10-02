@@ -46,6 +46,7 @@ public class Admin{
     @NotNull(message = "Admins company Id is required")
     private Long companyId;
     private String password;
+    private String phone;
 
     public Admin(){onCreate();}
 
@@ -130,6 +131,14 @@ public class Admin{
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String toString(){
 
         String createAt = formatDate(this.created_At.toString());
@@ -142,6 +151,7 @@ public class Admin{
         str.append(",\"updated_At\":"+this.updated_At);
         str.append(",\"companyId\":"+this.companyId);
         str.append(",\"password\":"+"\""+this.password+"\"");
+        str.append(",\"phone\":"+"\"" + this.phone+"\"");
         str.append(",\"type\":"+"\""+getType()+"\"");
         str.append(",\"userId\":" + this.id+"}");
         return str.toString();

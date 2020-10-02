@@ -25,6 +25,8 @@ function CustomerPage(){
             <br></br>
             <label>Last Name : {sessionStorage.getItem("lastname")}</label>
             <br></br>
+            <label>Phone Number : {sessionStorage.getItem("phone")}</label>
+            <br></br>
             <label>Billing Address : {sessionStorage.getItem("billingAddress")}</label>
             <br></br>
             <label>Shipping Address : {sessionStorage.getItem("shippingAddress")}</label>

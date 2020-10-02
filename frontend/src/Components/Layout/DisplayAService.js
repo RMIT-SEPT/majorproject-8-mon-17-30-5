@@ -55,8 +55,8 @@ function DisplayAService(props) {
             <ul>
                 <li>Worker Name: {props.service.workerName}</li>
                 <li>Duration: {props.service.duration} Hour</li>
-                <li>Start Time: {/*props.service.startTime*/start}</li>
-                <li>End Time: {/*props.service.finishTime*/finish}</li>
+                <li>Start Time: {start}</li>
+                <li>End Time: {finish}</li>
                 <li>Date: {props.service.date}</li>
                 <li hidden>isFree: {props.service.isFree}</li>
             </ul>
@@ -71,8 +71,8 @@ function DisplayAService(props) {
         <ul>
             <li>Worker Name: {props.service.workerName}</li>
             <li>Duration: {props.service.duration} Hour</li>
-            <li>Start Time: {/*props.service.startTime*/start}</li>
-            <li>End Time: {/*props.service.finishTime*/finish}</li>
+            <li>Start Time: {start}</li>
+            <li>End Time: {finish}</li>
             <li>Date: {props.service.date}</li>
             <li hidden>isFree: {props.service.isFree}</li>
         </ul>
