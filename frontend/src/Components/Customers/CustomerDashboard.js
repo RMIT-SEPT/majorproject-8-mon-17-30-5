@@ -92,13 +92,18 @@ export default class CustomerDashboard extends Component {
 
     getFormattedDate(){
         const date = new Date();
-        const day = date.getDate();
+        let day = date.getDate();
         let month = date.getMonth();
         const year = date.getFullYear();
-        if(month < 10){
-            month++;
+        month++;
+        if(month <= 9){
             month = "0" + month;
         }
+
+        if(day < 10){
+            day = "0" + day;
+        }
+        console.log(year + "-" + month +"-"+day);
         return year + "-" + month +"-"+day;       
     }
 
