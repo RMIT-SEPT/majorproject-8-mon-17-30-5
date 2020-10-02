@@ -39,6 +39,28 @@ function MakeBooking(props){
         props.history.push("/customerDashBoard");
     }
 
+    function formatDate(dateStr)
+    {
+        var output;
+        if(dateStr.length === 4)
+        {
+            output = [dateStr.slice(0, 2), ':', dateStr.slice(2)].join('');
+            return output;
+        }
+
+        if(dateStr.length === 3)
+        {
+            output = [dateStr.slice(0, 1), ':', dateStr.slice(1)].join('');
+            return output;
+        }
+    }
+
+    var startString = sessionStorage.getItem("booking-startTime").toString();
+    var finishString = sessionStorage.getItem("booking-finishTime").toString();
+
+    var start = formatDate(startString);
+    var finish = formatDate(finishString);
+
 
 
     return (
@@ -54,9 +76,9 @@ function MakeBooking(props){
        <br></br>
        <label>Date: {sessionStorage.getItem("booking-date")}</label>
        <br></br>
-       <label>Start: {sessionStorage.getItem("booking-startTime")}</label>
+       <label>Start: {start}</label>
        <br></br>
-       <label>Finish: {sessionStorage.getItem("booking-finishTime")}</label>
+       <label>Finish: {finish}</label>
        <br></br>
        <label>Duration: {sessionStorage.getItem("booking-duration")} Hour</label>
        <br></br>

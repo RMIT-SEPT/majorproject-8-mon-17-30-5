@@ -69,7 +69,7 @@ function LoginForm(props){
             <br></br>
             <br></br>
             <label id = "passwordLabel">Password</label><br></br>
-            <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Enter Password" required></input>
+            <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Password" required></input>
             <br></br>
             <br></br>
             
