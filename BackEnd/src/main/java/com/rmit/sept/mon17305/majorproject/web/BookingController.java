@@ -77,6 +77,16 @@ public class BookingController {
         return bookingService.getBookingByCompanyId(comId);
     }
 
+    @GetMapping("/allBooking/{comId}/ASC")
+    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId){
+        return bookingService.getBookingByCompIdOrderByDateASC(comId);
+    }
+
+    @GetMapping("/allBooking/{comId}/DESC")
+    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId){
+        return bookingService.getBookingByCompIdOrderByDateDESC(comId);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceBooking(@RequestBody Booking newBooking, @PathVariable Long id) {
 

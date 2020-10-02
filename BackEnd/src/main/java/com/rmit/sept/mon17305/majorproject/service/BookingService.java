@@ -72,4 +72,13 @@ public class BookingService {
     public List<Booking> getBookingByCustomerIdOrderByDateDESC(Long id){
         return bookingRepository.findByCustomerIdOrderByDateDesc(id);
     }
+
+    public List<Booking> getBookingByCompIdOrderByDateASC(Long id){
+        return bookingRepository.findByCompanyIdOrderByDate(id);
+    }
+
+    public List<Booking> getBookingByCompIdOrderByDateDESC(Long id){
+        return bookingRepository.findByCompanyIdOrderByDateDesc(id);
+    }
+
 }
