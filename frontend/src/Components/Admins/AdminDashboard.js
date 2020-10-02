@@ -29,6 +29,8 @@ export default function AdminDashboard() {
             <br></br>
             <label>Last Name : {sessionStorage.getItem("lastname")}</label>
             <br></br>
+            <label>Phone number : {sessionStorage.getItem("phone")}</label>
+            <br></br>
             <label>Company ID: {sessionStorage.getItem("companyId")}</label>
             <br></br>
             </form>

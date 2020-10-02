@@ -201,6 +201,7 @@ public class WorkerController {
             worker.setFinishTime(newWorker.getFinishTime());
             worker.setLunchBrTime(newWorker.getLunchBrTime());
             worker.setPassword(newWorker.getPassword());
+            worker.setPhone(newWorker.getPhone());
             return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
         }
         else{

@@ -36,6 +36,7 @@ public class Worker{
     private String finishTime;
     private String password;
     private String lunchBrTime;
+    private String phone;
 
     public Worker(){ onCreate();}
 
@@ -137,6 +138,14 @@ public class Worker{
 
     public void setLunchBrTime(String lunchBrTime) {this.lunchBrTime = lunchBrTime;}
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String toString(){
 
         String createAt = formatDate(this.created_At.toString());
@@ -153,6 +162,7 @@ public class Worker{
         str.append(",\"finishTime\":"+"\""+this.finishTime+"\"");
         str.append(",\"password\":"+"\""+this.password+"\"");
         str.append(",\"lunchBrTime\":"+"\""+this.lunchBrTime+"\"");
+        str.append(",\"phone\":"+"\"" + this.phone+"\"");
         str.append(",\"type\":"+"\""+getType()+"\"");
         str.append(",\"userId\":" + this.id+"}");
         return str.toString();

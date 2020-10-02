@@ -5,7 +5,9 @@ function ErrorPage(){
 
 
 return (
- <article>Error Page Not Found
+ <article> <form className="custDetails">
+            <p>Error Page Not Found</p>
+            </form>
  </article>
 )
 }

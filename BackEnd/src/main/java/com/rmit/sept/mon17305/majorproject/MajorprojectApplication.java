@@ -38,6 +38,7 @@ public class MajorprojectApplication {
             austin.setShippingAddress("Address Shipping");
             austin.setUsername("Austin");
             austin.setPassword("Lay");
+            austin.setPhone("0401444787");
 
             customerRepository.save(austin);
 
@@ -50,6 +51,7 @@ public class MajorprojectApplication {
             john.setFinishTime("16:00");
             john.setLunchBrTime("11:00");
             john.setCompanyId((long)1);
+            john.setPhone("0488456777");
 
             workerRepository.save(john);
 
@@ -62,6 +64,7 @@ public class MajorprojectApplication {
             minta.setFinishTime("17:00");
             minta.setLunchBrTime("12:00");
             minta.setCompanyId((long)1);
+            minta.setPhone("0411232232");
 
             workerRepository.save(minta);
 
@@ -71,6 +74,7 @@ public class MajorprojectApplication {
             cathy.setUsername("cathy");
             cathy.setPassword("1234");
             cathy.setCompanyId((long)1);
+            cathy.setPhone("0490123456");
 
             adminRepository.save(cathy);
 

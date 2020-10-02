@@ -18,6 +18,7 @@ export default class EditWorker extends Component{
         finishTime: sessionStorage.getItem("worker-finishTime"),
         lunchBrTime: sessionStorage.getItem("worker-lunchTime"),
         companyId: sessionStorage.getItem("companyId"),
+        phone: sessionStorage.getItem("worker-phone"),
         hidden: true,
         errors: {
             startTime: '',
@@ -100,7 +101,8 @@ export default class EditWorker extends Component{
       startTime: this.state.startTime, 
       finishTime: this.state.finishTime, 
       lunchBrTime: this.state.lunchBrTime, 
-      companyId: this.state.companyId};
+      companyId: this.state.companyId,
+      phone: this.state.phone};
     console.log(workerInfo);
     let matches;
     let match1 = startTime === "08:00" || startTime === "09:00";
@@ -152,6 +154,11 @@ export default class EditWorker extends Component{
                   <label>
                       Password:
           <input type="password" placeholder={sessionStorage.getItem("worker-password")} name="password" onChange={this.handleChange} />
+                  </label>
+                  <br></br>
+                  <label>
+                      Phone Number:
+          <input type="text" placeholder={sessionStorage.getItem("worker-phone")} name="phone" onChange={this.handleChange} />
                   </label>
                   <br></br>
                   <label>

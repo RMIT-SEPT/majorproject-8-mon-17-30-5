@@ -57,6 +57,7 @@ export default class WorkerPage extends React.Component {
       <th>Start Time</th>
       <th>Finish Time</th>
       <th>Lunch Break</th>
+      <th>Phone Number</th>
       <th>Manage</th>
     </tr>
   </thead>

@@ -19,6 +19,7 @@ export default function DisplayAWorker(props) {
             sessionStorage.setItem("worker-startTime", response.data.startTime);
             sessionStorage.setItem("worker-finishTime", response.data.finishTime);
             sessionStorage.setItem("worker-lunchTime", response.data.lunchBrTime);
+            sessionStorage.setItem("worker-phone", response.data.phone);
             window.location.reload();
         })
         .catch()
@@ -34,6 +35,7 @@ export default function DisplayAWorker(props) {
       <td>{props.worker.startTime}</td>
       <td>{props.worker.finishTime}</td>
       <td>{props.worker.lunchBrTime}</td>
+      <td>{props.worker.phone}</td>
       <td>
       <LinkRouter to="/admin/editworkers">
       <button onClick={handleClick} className = "btn btn-warning" value="Edit">Edit {props.worker.firstName}</button>

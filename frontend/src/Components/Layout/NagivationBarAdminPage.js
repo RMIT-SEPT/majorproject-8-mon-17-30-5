@@ -22,6 +22,8 @@ function NavigationBarAdminPage(){
             sessionStorage.removeItem("worker-password")};
         if(sessionStorage.getItem("worker-serviceId") != null){
             sessionStorage.removeItem("worker-serviceId")};
+        if(sessionStorage.getItem("worker-phone") != null){
+            sessionStorage.removeItem("worker-phone")};
     }
 
     return(
