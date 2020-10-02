@@ -49,6 +49,18 @@ public class BookingController {
         return bookingService.getBookingsByCustomerId(id);
     }
 
+    @GetMapping("/customer/{id}/dateASC")
+    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) {
+
+        return bookingService.getBookingByCustomerIdOrderByDateASC(id);
+    }
+
+    @GetMapping("/customer/{id}/dateDESC")
+    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) {
+
+        return bookingService.getBookingByCustomerIdOrderByDateDESC(id);
+    }
+
     @GetMapping("/{id}")
     public Optional<Booking> getBooking(@PathVariable Long id) {
         return bookingService.getBooking(id);

@@ -64,4 +64,12 @@ public class BookingService {
     public List<Booking> getBookingByDateAndWorkerId(String date, Long id){
         return bookingRepository.findByWorkerIdAndDate(id, date);
     }
+
+    public List<Booking> getBookingByCustomerIdOrderByDateASC(Long id){
+        return bookingRepository.findByCustomerIdOrderByDate(id);
+    }
+
+    public List<Booking> getBookingByCustomerIdOrderByDateDESC(Long id){
+        return bookingRepository.findByCustomerIdOrderByDateDesc(id);
+    }
 }
