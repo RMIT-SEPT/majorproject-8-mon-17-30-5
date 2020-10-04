@@ -10,3 +10,4 @@ tmp/
 .idea/modules.xml
 .idea/vcs.xml
 .vscode/settings.json
+.idea/
