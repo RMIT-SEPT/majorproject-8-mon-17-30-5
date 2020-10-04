@@ -12,9 +12,9 @@ services:
     backend:
         image: backend
         build: 
-            context: ./Backend
+            context: ./BackEnd
             dockerfile: Dockerfile
         volumes: 
-            - /majorproject-8-mon-17-30-5/Backend
+            - /majorproject-8-mon-17-30-5/BackEnd
         ports:
             - "8080:8080"
