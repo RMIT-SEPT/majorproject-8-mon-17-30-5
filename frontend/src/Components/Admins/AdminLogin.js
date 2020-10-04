@@ -34,6 +34,7 @@ function AdminLogin(props){
             sessionStorage.setItem("lastname", response.data.lastName);
             sessionStorage.setItem("companyId", response.data.companyId);
             sessionStorage.setItem("password", response.data.password);
+            sessionStorage.setItem("phone", response.data.phone);
             props.history.push("/admin");
         })
         .catch(function(){
@@ -63,8 +64,8 @@ function AdminLogin(props){
             <label id = "enjoy">Login to manage a wide range of services!</label>
             <br></br>
             <br></br>
-            <label id = "emailLabel">Email/Username</label><br></br>
-            <input name="username" onChange = {handleChange} type = "text" id = "username" className = "loginInput" placeholder = "Email/Username" required></input>
+            <label id = "emailLabel">Username</label><br></br>
+            <input name="username" onChange = {handleChange} type = "text" id = "username" className = "loginInput" placeholder = "Username" required></input>
             <br></br>
             <br></br>
             <label id = "passwordLabel">Password</label><br></br>

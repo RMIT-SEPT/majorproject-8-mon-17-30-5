@@ -24,6 +24,7 @@ public class Booking {
     private String date;
     private Date created_At;
     private Date updated_At;
+    private Long companyId;
 
     public Booking() {
         onCreate();
@@ -102,4 +103,11 @@ public class Booking {
         this.updated_At = new Date();
     }
 
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
 }

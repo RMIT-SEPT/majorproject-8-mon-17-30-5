@@ -3,7 +3,9 @@ package com.rmit.sept.mon17305.majorproject.web;
 import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException;
 import com.rmit.sept.mon17305.majorproject.model.Booking;
 import com.rmit.sept.mon17305.majorproject.model.Booking;
+import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,18 @@ public class BookingController {
         return bookingService.getBookingsByCustomerId(id);
     }
 
+    @GetMapping("/customer/{id}/dateASC")
+    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) {
+
+        return bookingService.getBookingByCustomerIdOrderByDateASC(id);
+    }
+
+    @GetMapping("/customer/{id}/dateDESC")
+    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) {
+
+        return bookingService.getBookingByCustomerIdOrderByDateDESC(id);
+    }
+
     @GetMapping("/{id}")
     public Optional<Booking> getBooking(@PathVariable Long id) {
         return bookingService.getBooking(id);
@@ -56,6 +70,21 @@ public class BookingController {
     public List<Booking> getBookingsByDate(@PathVariable String date) {
 
         return bookingService.getBookingsByDate(date);
+    }
+
+    @GetMapping("/allBooking/{comId}")
+    public List<Booking> getBookingsForAdmin(@PathVariable Long comId){
+        return bookingService.getBookingByCompanyId(comId);
+    }
+
+    @GetMapping("/allBooking/{comId}/ASC")
+    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId){
+        return bookingService.getBookingByCompIdOrderByDateASC(comId);
+    }
+
+    @GetMapping("/allBooking/{comId}/DESC")
+    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId){
+        return bookingService.getBookingByCompIdOrderByDateDESC(comId);
     }
 
     @PutMapping("/{id}")

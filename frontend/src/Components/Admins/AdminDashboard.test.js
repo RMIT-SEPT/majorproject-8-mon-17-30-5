@@ -29,5 +29,5 @@ it("render admin dashboard correctly", () =>{
     renderer.render(<AdminDashboard/>);
     const result = renderer.getRenderOutput();
     expect(result.type).toBe('div');
-    expect(result.props.children).toHaveLength(6);
+    expect(result.props.children).toHaveLength(9);
 });

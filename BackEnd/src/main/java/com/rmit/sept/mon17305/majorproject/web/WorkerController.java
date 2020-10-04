@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.awt.print.Book;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -67,6 +68,11 @@ public class WorkerController {
 
         return workerService.getWorkers();
     }
+    @GetMapping("/companyId/{comId}")
+    public List<Worker> getWorkersByCompanyID(@PathVariable Long comId) {
+
+        return workerService.getWorkersByCompanyId(comId);
+    }
 
     @GetMapping("/username/{username}")
     public Worker getWorkerByUsername(@PathVariable String username) {
@@ -83,6 +89,12 @@ public class WorkerController {
         return new ResponseEntity<Worker>(worker, HttpStatus.OK);
     }
 
+    @GetMapping("/worker-company/{id}")
+    public Long getCompanyOfWorker(@PathVariable Long id) {
+        Worker w = workerService.getWorkerByIdEquals(id);
+        return w.getCompanyId();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getWorker(@PathVariable Long id) {
         Optional<Worker> worker = workerService.getWorker(id);
@@ -90,7 +102,7 @@ public class WorkerController {
             return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.FOUND);
+        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.OK);
     }
 
 
@@ -139,6 +151,15 @@ public class WorkerController {
             }
             timeCount = timeCount+100;
         }
+
+        if(ret.equals("true")){
+            List<Booking> allToday = bookingService.getBookingByDateAndWorkerId(date, id);
+            for(Booking b: allToday){
+                if(time>= b.getStartTime() && time<b.getFinishTime()){
+                    ret = "false";
+                }
+            }
+        }
         return ret;
     }
 
@@ -174,19 +195,23 @@ public class WorkerController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) {
-
-        workerService.getWorker(id)
-                .map(worker -> {
-                    worker.setFirstName(newWorker.getFirstName());
-                    worker.setLastName(newWorker.getFirstName());
-                    return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
-                })
-                .orElseGet(() -> {
-                    Worker worker1 = workerService.saveOrUpdateWorker(newWorker);
-                    return new ResponseEntity<Worker>(newWorker, HttpStatus.CREATED);
-                });
-
-        return new ResponseEntity<String>("Couldn't find Worker", HttpStatus.BAD_REQUEST);
+        //System.out.println(newWorker.toString());
+        Worker worker = workerService.getWorkerByIdEquals(id);
+        if(worker !=null){
+            worker.setFirstName(newWorker.getFirstName());
+            worker.setLastName(newWorker.getLastName());
+            worker.setUsername(newWorker.getUsername());
+            worker.setUpdated_At(new Date());
+            worker.setStartTime(newWorker.getStartTime());
+            worker.setFinishTime(newWorker.getFinishTime());
+            worker.setLunchBrTime(newWorker.getLunchBrTime());
+            worker.setPassword(newWorker.getPassword());
+            worker.setPhone(newWorker.getPhone());
+            return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
+        }
+        else{
+            return new ResponseEntity<String> ("invalid",HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{id}")

@@ -100,7 +100,7 @@ form.searchDash
   box-shadow: 0px 0px 18px 4px #696969; 
 }
 
-article.custDash, form.adminDetails, form.aboutUs, form.contactUs, form.workerDetails
+article.custDash, form.adminDetails, form.aboutUs, form.contactUs, form.workerDetails, article.confirmBook, form.workerForm, article.workerPage, article.adminDash, form.editCustomer
 {
   background-color: white;
   display: inline-block;
@@ -134,7 +134,7 @@ h1.regoHead
   text-align: center;
 }
 
-.buttonholder #loginBtn
+.buttonholder #loginBtn, input.workerButton, input.workers, input.bookings, input.changeCustDetails
 {
   background-image: linear-gradient(to right, rgb(39, 141, 237) , rgb(100, 60, 187));
   border: rgb(39, 141, 237);
@@ -147,7 +147,7 @@ h1.regoHead
   transition-duration: 0.4s;
 }
 
-.buttonholder #loginBtn:hover
+.buttonholder #loginBtn:hover, input.workerButton:hover, input.workers:hover, input.bookings:hover, input.changeCustDetails:hover
 {
     color:rgb(39, 141, 237);
     background-image: none;
@@ -267,7 +267,7 @@ button #booking,  #userDetails
   box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
 }
 
-button.booking
+button.booking, #confirmBook, #cancelBook, #book, button.workerBtn
 {
   background-color: orange;
   color:white;
@@ -276,11 +276,51 @@ button.booking
   box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
 }
 
-button #booking:hover, #userDetails:hover, button.booking:hover
+button #booking:hover, #userDetails:hover, button.booking:hover, #confirmBook:hover, #cancelBook:hover, #book:hover, button.workerBtn:hover
 {
   background-color: white;
   color:orange;
   transition-duration: 0.4s;
   border: 2px solid white;
   box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+button.cancelBooking
+{
+  background-color: red;
+  color:white;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+button.cancelBooking:hover{
+  background-color: white;
+  color:red;
+  transition-duration: 0.4s;
+  border: 2px solid white;
+  box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+button.editCustomer
+{
+  background-color: rgb(7, 192, 7);
+  color:white;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+button.editCustomer:hover
+{
+  background-color: white;
+  color:rgb(7, 192, 7);
+  transition-duration: 0.4s;
+  border: 2px solid white;
+  box-shadow: 0 12px 16px 0 #696969, 0 17px 50px 0 #696969;
+}
+
+input.datePicker
+{
+  width: 150px;
 }

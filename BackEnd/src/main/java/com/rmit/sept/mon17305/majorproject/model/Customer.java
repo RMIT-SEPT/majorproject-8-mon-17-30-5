@@ -33,6 +33,7 @@ public class Customer{
     private String billingAddress;
     private String shippingAddress;
     private String password;
+    private String phone;
 
     public Customer() {onCreate();}
 
@@ -122,6 +123,14 @@ public class Customer{
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String toStringJSON(){
 
         String createAt = formatDate(this.created_At.toString());
@@ -138,7 +147,9 @@ public class Customer{
         str.append(",\"shippingAddress\":"+"\""+this.shippingAddress+"\"");
         str.append(",\"password\":"+"\""+this.password+"\"");
         //str.append(",\"lunchBrTime\":"+"\""+this.lunchBrTime+"\"");
+        str.append(",\"phone\":"+"\"" + this.phone+"\"");
         str.append(",\"type\":"+"\""+getType()+"\"");
+
         str.append(",\"userId\":" + this.id+"}");
         return str.toString();
     }

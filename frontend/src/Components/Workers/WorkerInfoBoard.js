@@ -1,27 +1,91 @@
   
-import React from 'react'
-import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
-import WorkerInfoBoard from './WorkerInfoBoard';
+import React,{useState}  from 'react'
+import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 
-export default function WorkerDashboard() {
+export default function WorkerInfoBoard() {
+
+    const[userDetails, setUserDetails] = useState({
+        day1:[],
+        day2:[],
+        day3:[],
+        day4:[],
+        day5:[],
+        day6:[],
+        day7:[],
+        seeShift: false
+    });
+
+    function handleChange(name, value){
+        setUserDetails(prevValue => {
+            return {
+                ...prevValue,
+                [name] : value
+            }
+        });
+    }
+
+    function setUp(){
+       getAll7DaysShift();
+       handleChange("seeShift", true);
+    }
+
+    function getAll7DaysShift(){
+        getWorkingHr(getFormattedDate(0), "day1");
+        getWorkingHr(getFormattedDate(1), "day2");
+        getWorkingHr(getFormattedDate(2), "day3");
+        getWorkingHr(getFormattedDate(3), "day4");
+        getWorkingHr(getFormattedDate(4), "day5");
+        getWorkingHr(getFormattedDate(5), "day6");
+        getWorkingHr(getFormattedDate(6), "day7");
+    }
+
+    async function getWorkingHr(date, name){
+        //TODO add aws url
+        axios.get("http://localhost:8080/api/worker/workerId/"+sessionStorage.getItem("worker-id")+"/date/"+date)
+        .then(function(response){
+            handleChange(name, response.data);
+        })
+        .catch()
+        .finally();
+    }
+
+    function getFormattedDate(num){
+        const today = new Date();
+        var date = new Date(today.getTime() + num * 24 * 60 * 60 * 1000);
+        let day = date.getDate();
+        let month = date.getMonth();
+        const year = date.getFullYear();
+        month++;
+        if(month < 10){
+            month = "0" + month;
+        }
+        if(day < 10){
+            day = "0" + day;
+        }
+        return year + "-" + month +"-"+day; 
+    }
 
    
     return (
-        
-        <div className = "buttonholder">
-            <NavigationBarWorkerPage/>
+            <form className = "workerDetails">
+            <h1> Welcome {sessionStorage.getItem("worker-username")}!</h1>
             <br></br>
+            <h2>Employee Details</h2>
+            <label>Worker ID: {sessionStorage.getItem("worker-id")}</label>
             <br></br>
-            <WorkerInfoBoard></WorkerInfoBoard>
+            <label>Username : {sessionStorage.getItem("worker-username")}</label>
             <br></br>
+            <label>First Name : {sessionStorage.getItem("worker-firstname")}</label>
             <br></br>
-            <label>First Name : {sessionStorage.getItem("firstname")}</label>
+            <label>Last Name : {sessionStorage.getItem("worker-lastname")}</label>
             <br></br>
-            <label>Last Name : {sessionStorage.getItem("lastname")}</label>
+            <label>Phone Number : {sessionStorage.getItem("worker-phone")}</label>
             <br></br>
-            <label>Company ID: {sessionStorage.getItem("companyId")}</label>
+            <label>Company ID: {sessionStorage.getItem("worker-companyId")}</label>
             <br></br>
-            <button type="button" onClick={setUp}>View working time</button>
+            <button className = "workerBtn" type="button" onClick={setUp}>View working time</button>
+            <br></br>
             <br></br>
             {userDetails.seeShift && <h4>Schedule for the Coming Week</h4> &&
             <Table striped bordered hover>
@@ -38,7 +102,7 @@ export default function WorkerDashboard() {
                 </tr>
             </thead>
             <tbody>
-                {sessionStorage.getItem("startTime") === "08:00" &&
+                {sessionStorage.getItem("worker-startTime") === "08:00" &&
                 <tr>
                     <td>08:00 - 09:00</td>
                     <td>{userDetails.day1[800]}</td>
@@ -69,7 +133,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day6[1000]}</td>
                     <td>{userDetails.day7[1000]}</td>
                 </tr>
-                {sessionStorage.getItem("lunchTime") ==="11:00" &&
+                {sessionStorage.getItem("worker-lunchTime") ==="11:00" &&
                 <tr>
                     <td>11:00 - 12:00</td>
                     <td>LUNCH BREAK</td>
@@ -80,7 +144,7 @@ export default function WorkerDashboard() {
                     <td>LUNCH BREAK</td>
                     <td>LUNCH BREAK</td>
                 </tr>}
-                {sessionStorage.getItem("lunchTime") ==="11:00" && 
+                {sessionStorage.getItem("worker-lunchTime") ==="11:00" && 
                 <tr>
                     <td>12:00 - 13:00</td>
                     <td>{userDetails.day1[1200]}</td>
@@ -91,7 +155,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day6[1200]}</td>
                     <td>{userDetails.day7[1200]}</td>
                 </tr>}
-                {sessionStorage.getItem("lunchTime") ==="12:00" &&
+                {sessionStorage.getItem("worker-lunchTime") ==="12:00" &&
                 <tr>
                     <td>11:00 - 12:00</td>
                     <td>{userDetails.day1[1100]}</td>
@@ -102,7 +166,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day6[1100]}</td>
                     <td>{userDetails.day7[1100]}</td>
                 </tr>}
-                {sessionStorage.getItem("lunchTime") ==="12:00" && 
+                {sessionStorage.getItem("worker-lunchTime") ==="12:00" && 
                 <tr>
                     <td>12:00 - 13:00</td>
                     <td>LUNCH BREAK</td>
@@ -134,7 +198,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day6[1400]}</td>
                     <td>{userDetails.day7[1400]}</td>
                 </tr>
-                {sessionStorage.getItem("finishTime") === "16:00" &&
+                {sessionStorage.getItem("worker-finishTime") === "16:00" &&
                 <tr>
                     <td>15:00 - 16:00</td>
                     <td>{userDetails.day1[1500]}</td>
@@ -146,7 +210,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day7[1500]}</td>
                 </tr>
                 }
-                {sessionStorage.getItem("finishTime") === "17:00" &&
+                {sessionStorage.getItem("worker-finishTime") === "17:00" &&
                 <tr>
                     <td>16:00 - 17:00</td>
                     <td>{userDetails.day1[1600]}</td>
@@ -161,8 +225,6 @@ export default function WorkerDashboard() {
 
             </tbody>
             </Table>}
-            </form>
-        </div>
-        
+            </form>       
     );
 }

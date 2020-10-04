@@ -14,7 +14,7 @@ import RegisterForm from './Components/Customers/RegisterForm';
 import CustomerPage from './Components/Customers/CustomerPage';
 import CustomerBooking from './Components/Customers/CustomerBooking';
 import workerDashBoard from './Components/Workers/WorkerDashBoard';
-//import history from './history';
+import EditCustomer from './Components/Customers/EditCustomer';
 import AdminLogin from './Components/Admins/AdminLogin';
 import WorkerLogin from "./Components/Workers/WorkerLogin";
 import MakeBooking from "./Components/Customers/MakeBooking";
@@ -31,11 +31,11 @@ function App() {
           <Route path = "/contact-us" exact component = {ContactUs}></Route>
           <Route path ="/signup" exact component={RegisterForm}></Route>
           <Route path = "/customerDashBoard" exact component = {CustomerDashboard}></Route>
-            <Route path = "/admin" exact component = {AdminDashboard}></Route>
+          <Route path = "/admin" exact component = {AdminDashboard}></Route>
           <Route path = "/admin/workers" exact component = {WorkerPage}></Route>
           <Route path = "/admin/viewworkers" exact component = {ViewWorker}></Route>
           <Route path = "/admin/editworkers" exact component = {EditWorker}></Route>
-          <Route path = "/booking" exact component = {BookingPage}></Route>
+          <Route path = "/admin/bookings" exact component = {BookingPage}></Route>
           <Route path = "/signupform" exact component = {RegisterForm}></Route>
           <Route path = "/loginform" exact component = {LoginForm}></Route>
           <Route path = "/custDetails" exact component = {CustomerPage}></Route>
@@ -45,6 +45,7 @@ function App() {
           <Route path = "/admin/login" exact component={AdminLogin}></Route>
           <Route path = "/worker/login" exact component={WorkerLogin}></Route>
           <Route path = "/workerDetails" exact component = {WorkerPage}></Route>
+          <Route path = "/editCustomer" exact component = {EditCustomer}></Route>
           <Route path = "/" component = {ErrorPage}></Route>
         </Switch>
     </div>

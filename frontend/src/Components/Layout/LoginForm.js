@@ -34,6 +34,8 @@ function LoginForm(props){
             sessionStorage.setItem("lastname", response.data.lastName);
             sessionStorage.setItem("billingAddress", response.data.billingAddress);
             sessionStorage.setItem("shippingAddress", response.data.shippingAddress);
+            sessionStorage.setItem("password", response.data.password);
+            sessionStorage.setItem("phone", response.data.phone);
             props.history.push("/customerDashboard/");
         })
         .catch(function(){
@@ -62,12 +64,12 @@ function LoginForm(props){
             <label id = "enjoy">Login to enjoy a wide range of services!</label>
             <br></br>
             <br></br>
-            <label id = "emailLabel">Email/Username</label><br></br>
-            <input name="username" onChange = {handleChange} type = "text" id = "username" className = "loginInput" placeholder = "Email/Username" required></input>
+            <label id = "emailLabel">Username</label><br></br>
+            <input name="username" onChange = {handleChange} type = "text" id = "username" className = "loginInput" placeholder = "Username" required></input>
             <br></br>
             <br></br>
             <label id = "passwordLabel">Password</label><br></br>
-            <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Enter Password" required></input>
+            <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Password" required></input>
             <br></br>
             <br></br>
             
