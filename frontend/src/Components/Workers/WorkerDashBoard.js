@@ -116,7 +116,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day7[800]}</td>
                 </tr>}
                 <tr>
-                    <td>0900 - 1000</td>
+                    <td>09:00 - 10:00</td>
                     <td>{userDetails.day1[900]}</td>
                     <td>{userDetails.day2[900]}</td>
                     <td>{userDetails.day3[900]}</td>
@@ -126,7 +126,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day7[900]}</td>
                 </tr>
                 <tr>
-                    <td>1000 - 1100</td>
+                    <td>10:00 - 11:00</td>
                     <td>{userDetails.day1[1000]}</td>
                     <td>{userDetails.day2[1000]}</td>
                     <td>{userDetails.day3[1000]}</td>
@@ -137,7 +137,7 @@ export default function WorkerDashboard() {
                 </tr>
                 {sessionStorage.getItem("lunchTime") ==="11:00" &&
                 <tr>
-                    <td>1100 - 1200</td>
+                    <td>11:00 - 12:00</td>
                     <td>LUNCH BREAK</td>
                     <td>LUNCH BREAK</td>
                     <td>LUNCH BREAK</td>
@@ -148,7 +148,7 @@ export default function WorkerDashboard() {
                 </tr>}
                 {sessionStorage.getItem("lunchTime") ==="11:00" && 
                 <tr>
-                    <td>1200 - 1300</td>
+                    <td>12:00 - 13:00</td>
                     <td>{userDetails.day1[1200]}</td>
                     <td>{userDetails.day2[1200]}</td>
                     <td>{userDetails.day3[1200]}</td>
@@ -159,7 +159,7 @@ export default function WorkerDashboard() {
                 </tr>}
                 {sessionStorage.getItem("lunchTime") ==="12:00" &&
                 <tr>
-                    <td>1100 - 1200</td>
+                    <td>11:00 - 12:00</td>
                     <td>{userDetails.day1[1100]}</td>
                     <td>{userDetails.day2[1100]}</td>
                     <td>{userDetails.day3[1100]}</td>
@@ -170,7 +170,7 @@ export default function WorkerDashboard() {
                 </tr>}
                 {sessionStorage.getItem("lunchTime") ==="12:00" && 
                 <tr>
-                    <td>1200 - 1300</td>
+                    <td>12:00 - 13:00</td>
                     <td>LUNCH BREAK</td>
                     <td>LUNCH BREAK</td>
                     <td>LUNCH BREAK</td>
@@ -181,7 +181,7 @@ export default function WorkerDashboard() {
                 </tr>}
 
                 <tr>
-                    <td>1300 - 1400</td>
+                    <td>13:00 - 14:00</td>
                     <td>{userDetails.day1[1300]}</td>
                     <td>{userDetails.day2[1300]}</td>
                     <td>{userDetails.day3[1300]}</td>
@@ -191,7 +191,7 @@ export default function WorkerDashboard() {
                     <td>{userDetails.day7[1300]}</td>
                 </tr>
                 <tr>
-                    <td>1400 - 1500</td>
+                    <td>14:00 - 15:00</td>
                     <td>{userDetails.day1[1400]}</td>
                     <td>{userDetails.day2[1400]}</td>
                     <td>{userDetails.day3[1400]}</td>
@@ -202,7 +202,7 @@ export default function WorkerDashboard() {
                 </tr>
                 {sessionStorage.getItem("finishTime") === "16:00" &&
                 <tr>
-                    <td>1500 - 1600</td>
+                    <td>15:00 - 16:00</td>
                     <td>{userDetails.day1[1500]}</td>
                     <td>{userDetails.day2[1500]}</td>
                     <td>{userDetails.day3[1500]}</td>
@@ -214,7 +214,7 @@ export default function WorkerDashboard() {
                 }
                 {sessionStorage.getItem("finishTime") === "17:00" &&
                 <tr>
-                    <td>1600 - 1700</td>
+                    <td>16:00 - 17:00</td>
                     <td>{userDetails.day1[1600]}</td>
                     <td>{userDetails.day2[1600]}</td>
                     <td>{userDetails.day3[1600]}</td>
