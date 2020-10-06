@@ -79,7 +79,7 @@ function DisplayABooking(props) {
     function getDate(dateStr)
     {
         var dateParts = props.booking.date.split("-");
-        return new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+        return new Date(dateParts[0], dateParts[1] - 1, dateParts[2], props.booking.startTime/100);
     }
   
     var currDate = new Date();
