@@ -324,3 +324,8 @@ input.datePicker
 {
   width: 150px;
 }
+
+select.businessFilter{
+  margin-left: 350px;
+}
+

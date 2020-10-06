@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
 
 function DisplayABooking(props) {
     
@@ -28,6 +29,11 @@ function DisplayABooking(props) {
        };
        getDescription();
     }, [props]);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     function cancelBooking(){
         axios.delete("http://localhost:8080/api/booking/"+ props.booking.id)
@@ -112,11 +118,27 @@ function DisplayABooking(props) {
             <td>{start}</td>
             <td>{finish}</td>
             <td>{props.booking.date}</td>
-            <td>{currDate <= checkDate && <button className="btn btn-success" readOnly>status : current</button>}
-            {currDate > checkDate && <button className="btn btn-secondary" readOnly>status : past</button>}
+            <td>{currDate <= checkDate && <button className="btn btn-success" readOnly>Status : Current</button>}
+            {currDate > checkDate && <button className="btn btn-secondary" readOnly>Status : Past</button>}
             </td>
             <td>
-            {currDate <= checkDate && canCancel(props.booking.date) && <button onClick={cancelBooking} className="btn btn-danger">Cancel</button>}
+            {currDate <= checkDate && canCancel(props.booking.date) && <button onClick={handleShow} className="btn btn-danger">Cancel</button>}
+            <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}>
+                <Modal.Header closeButton>
+                <Modal.Title>Confirm Cancel</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Are you sure you want to cancel this booking?
+                </Modal.Body>
+                <Modal.Footer>
+                <button className = "btn btn-secondary" variant="secondary" onClick={handleClose}>Close</button>
+                <button className = "btn btn-danger" variant="secondary" onClick={cancelBooking}>Confirm Cancel</button>
+                </Modal.Footer>
+            </Modal>
             {currDate <= checkDate && canCancel(props.booking.date)===false && <button className="btn btn-secondary" readOnly>Cannot cancel in less than 48 hrs</button>}
             {currDate > checkDate && <button className="btn btn-secondary" readOnly>Already Finished</button>}
             </td>
