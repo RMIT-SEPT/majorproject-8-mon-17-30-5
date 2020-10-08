@@ -41,7 +41,6 @@ export default function WorkerInfoBoard() {
     }
 
     async function getWorkingHr(date, name){
-        //TODO add aws url
         axios.get("http://localhost:8080/api/worker/workerId/"+sessionStorage.getItem("worker-id")+"/date/"+date)
         .then(function(response){
             handleChange(name, response.data);

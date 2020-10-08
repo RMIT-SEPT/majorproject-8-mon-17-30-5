@@ -59,7 +59,6 @@ export default class CustomerDashboard extends Component {
             .catch()
             .finally();
             sessionStorage.setItem("companyIsSelected", true);
-            // window.location.reload();
         }else{
             sessionStorage.setItem("companyIsSelected", false);
             this.setState({"selectCompanyId":0});
@@ -118,8 +117,6 @@ export default class CustomerDashboard extends Component {
     }
 
     getAvailable(){
-        // console.log("workerId: " + this.state.selectWorkerId);
-        // console.log("serviceId: " + this.state.selectServiceId);
         axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
         +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
         .then((response)=>{

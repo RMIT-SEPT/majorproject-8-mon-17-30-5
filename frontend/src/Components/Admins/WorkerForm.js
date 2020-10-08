@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import history from '../../history';
 import "bootstrap/dist/css/bootstrap.min.css";
-//import { Link as LinkRouter } from "react-router-dom";
 
 export default class WorkerForm extends Component {
 

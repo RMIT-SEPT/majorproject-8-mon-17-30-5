@@ -92,14 +92,12 @@ function RegisterForm(props){
             <input type = "text" id = "phone" onChange={handleChange} name="phone" className = "loginInput" placeholder = "Enter Phone Number" required></input>
             <br></br>
             <br></br>
-           
             <div className = "buttonholder">
           
                 <button id = "registerBtn" type="submit" value="Sign Up">Sign up</button>
             </div>
             <br>
             </br>
-            
             <label className = "regoLabel">Already have an account? <LinkRouter to = "/loginform">Log In </LinkRouter> here!</label>
             <br></br>
             <br></br>

@@ -48,7 +48,6 @@ export default class WorkerPage extends React.Component {
       <h1>Worker Information</h1>
       <Table striped bordered hover>
   <thead>
-    
     <tr>
       <th>ID</th>
       <th>First Name</th>
