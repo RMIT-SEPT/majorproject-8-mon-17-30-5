@@ -28,9 +28,15 @@ public class CompanyService {
 
     }
 
-    public Optional<Company> getCompany(Long id){
-
-        return companyRepository.findById(id);
+    public Optional<Company> getCompany(Long id) throws Exception {
+        if(id < 1){
+            throw new Exception("id cannot be less than 1");
+        }
+        Optional<Company> ret = companyRepository.findById(id);
+        if(!ret.isPresent()){
+            throw new NullPointerException("id not found");
+        }
+        return ret;
     }
 
     public void deleteCompanyById(Long id){
