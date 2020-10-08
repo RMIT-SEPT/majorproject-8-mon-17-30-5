@@ -84,7 +84,7 @@ export default function WorkerInfoBoard() {
             <br></br>
             <label>Company ID: {sessionStorage.getItem("worker-companyId")}</label>
             <br></br>
-            <button className = "workerBtn" type="button" onClick={setUp}>View working time</button>
+            <button className = "workerBtn" type="button" onClick={setUp}>View Schedule</button>
             <br></br>
             <br></br>
             {userDetails.seeShift && <h4>Schedule for the Coming Week</h4> &&

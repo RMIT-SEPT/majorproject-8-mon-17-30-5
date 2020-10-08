@@ -16,7 +16,7 @@ export default class ViewWorker extends Component {
                 <br></br>
                 <br></br>
                 <LinkRouter to="/admin/workers">
-                <input className = "workerButton" value="Back" readOnly/>
+                <button className = "workerBtn">Back</button>
                 </LinkRouter>
             </div>
         );

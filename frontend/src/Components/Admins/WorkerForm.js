@@ -180,7 +180,7 @@ export default class WorkerForm extends Component {
                 </form>
                 <br></br>
                 <br></br>
-                <button onClick={this.backToWorkerPage} className = "btn btn-danger" >Cancel</button>
+                <button onClick={this.backToWorkerPage} className = "btn btn-secondary">Close</button>
                 <br></br>
             </div>
         );
