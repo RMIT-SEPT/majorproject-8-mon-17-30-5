@@ -51,7 +51,6 @@ function DisplayAService(props) {
         if(date === getFormattedDate(0)){
             const now = new Date();
             let hr = now.getHours();
-            //console.log("Hr from get Hours() : " + hr);
             let startHr = start/100;
             
             if(hr >= startHr){

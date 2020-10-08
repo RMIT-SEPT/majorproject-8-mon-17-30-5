@@ -39,16 +39,15 @@ export default class WorkerPage extends React.Component {
       <NavigationBarAdminPage/>
       <br></br>
       <br></br>
+      <article className = "workerPage">
       <LinkRouter to="/admin">
-        <button className = "workerBtn">back to dashboard</button>
+        <button className = "adminDash">Back to Dashboard</button>
       </LinkRouter>
       <br></br>
       <br></br>
-      <article className = "workerPage">
       <h1>Worker Information</h1>
       <Table striped bordered hover>
   <thead>
-    
     <tr>
       <th>ID</th>
       <th>First Name</th>

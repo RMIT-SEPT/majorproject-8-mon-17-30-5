@@ -96,21 +96,15 @@ public class MajorprojectApplication {
             adminRepository.save(cathy);
 
             ServiceObject service = new ServiceObject();
-//            service.setWorkerId(john.getId());
-//            service.setWorkerName(john.getFirstName());
             service.setDescription("Wash outside");
             service.setDuration(1);
             service.setCompanyId(business1.getId());
             ServiceObject service1 = new ServiceObject();
             service1.setDescription("Clean inside and outside");
-//            service1.setWorkerName(john.getFirstName());
-//            service1.setWorkerId(john.getId());
             service1.setDuration(2);
             service1.setCompanyId(business1.getId());
             ServiceObject service2 = new ServiceObject();
             service2.setDescription("Details inside and outside");
-//            service2.setWorkerId(john.getId());
-//            service2.setWorkerName(john.getFirstName());
             service2.setDuration(2);
             service2.setCompanyId(business1.getId());
 

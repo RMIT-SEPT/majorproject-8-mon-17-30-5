@@ -102,18 +102,6 @@ public class CustomerController {
         else{
             return new ResponseEntity<String>("invalid", HttpStatus.BAD_REQUEST);
         }
-//        customerService.getCustomer(id)
-//                .map(customer -> {
-//                    customer.setFirstName(newCustomer.getFirstName());
-//                    customer.setLastName(newCustomer.getFirstName());
-//                    return new ResponseEntity<Customer> (customerService.saveOrUpdateCustomer(customer),HttpStatus.ACCEPTED);
-//                })
-//                .orElseGet(() -> {
-//                    Customer customer1 = customerService.saveOrUpdateCustomer(newCustomer);
-//                    return new ResponseEntity<Customer>(newCustomer, HttpStatus.CREATED);
-//                });
-//
-//        return new ResponseEntity<String>("Couldn't find Customer", HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")

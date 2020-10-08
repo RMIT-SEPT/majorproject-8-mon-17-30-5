@@ -41,7 +41,6 @@ export default function WorkerInfoBoard() {
     }
 
     async function getWorkingHr(date, name){
-        //TODO add aws url
         axios.get("http://localhost:8080/api/worker/workerId/"+sessionStorage.getItem("worker-id")+"/date/"+date)
         .then(function(response){
             handleChange(name, response.data);
@@ -84,7 +83,7 @@ export default function WorkerInfoBoard() {
             <br></br>
             <label>Company ID: {sessionStorage.getItem("worker-companyId")}</label>
             <br></br>
-            <button className = "workerBtn" type="button" onClick={setUp}>View working time</button>
+            <button className = "workerBtn" type="button" onClick={setUp}>View Schedule</button>
             <br></br>
             <br></br>
             {userDetails.seeShift && <h4>Schedule for the Coming Week</h4> &&
