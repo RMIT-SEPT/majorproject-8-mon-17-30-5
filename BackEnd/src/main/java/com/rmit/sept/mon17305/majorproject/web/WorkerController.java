@@ -109,7 +109,7 @@ public class WorkerController {
     @GetMapping("/{id}/{serviceId}/{date}/{description}/{duration}/")
     public ResponseEntity<?> getWorkerAvailability(@PathVariable Long id,
                                          @PathVariable Long serviceId, @PathVariable String date,
-                                         @PathVariable String description, @PathVariable int duration) {
+                                         @PathVariable String description, @PathVariable int duration) throws Exception {
 
         if((id<1||id ==null)||(serviceId<1||serviceId==null)||(date.equals("null"))||
                 (description.equals("null"))||(duration<1||duration>5)){
@@ -139,7 +139,7 @@ public class WorkerController {
         }
     }
 
-    private String getIsFree(String date, Long id, int time,int duration){
+    private String getIsFree(String date, Long id, int time,int duration) throws Exception {
         String ret = "true";
         int timeCount = time;
         for(int i = 1; i <= duration && ret=="true"; i++){
