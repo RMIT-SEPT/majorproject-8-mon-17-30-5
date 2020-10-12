@@ -91,32 +91,93 @@ public class BookingService {
         return ret;
     }
 
-    public List<Booking> getBookingByWorkerIdAndDate(Long id, String date){
-        return bookingRepository.findByWorkerIdAndDate(id,date);
+    public List<Booking> getBookingByWorkerIdAndDate(Long id, String date) throws Exception {
+        if(id < 1){
+            throw new Exception("invalid id");
+        }else if(date==null||date.length()<10){
+            throw new Exception("invalid date");
+        }
+
+        List<Booking> ret = bookingRepository.findByWorkerIdAndDate(id,date);
+        if(ret == null){
+            throw new NullPointerException("no booking found");
+        }
+
+        return ret;
     }
 
-    public List<Booking> getBookingByCompanyId(Long id){
-        return bookingRepository.findByCompanyId(id);
+    public List<Booking> getBookingByCompanyId(Long id) throws Exception {
+        if(id<1){
+            throw new Exception("invalid id");
+        }
+        List<Booking> ret = bookingRepository.findByCompanyId(id);
+        if(ret==null){
+            throw new NullPointerException("Company booking not found");
+        }
+        return ret;
     }
 
-    public List<Booking> getBookingByDateAndWorkerId(String date, Long id){
-        return bookingRepository.findByWorkerIdAndDate(id, date);
+    public List<Booking> getBookingByDateAndWorkerId(String date, Long id) throws Exception {
+        if(date==null||date.length()<10){
+            throw new Exception("invalid date");
+        }else if(id < 1){
+            throw new Exception("invalid id");
+        }
+
+        List<Booking> ret = bookingRepository.findByWorkerIdAndDate(id, date);
+        if(ret == null){
+            throw new NullPointerException("no booking found");
+        }
+        return ret;
     }
 
-    public List<Booking> getBookingByCustomerIdOrderByDateASC(Long id){
-        return bookingRepository.findByCustomerIdOrderByDate(id);
+    public List<Booking> getBookingByCustomerIdOrderByDateASC(Long id) throws Exception {
+        if(id < 1){
+            throw new Exception("invalid id");
+        }
+
+        List<Booking> ret = bookingRepository.findByCustomerIdOrderByDate(id);
+        if(ret == null){
+            throw new NullPointerException("no booking found");
+        }
+        return ret;
     }
 
-    public List<Booking> getBookingByCustomerIdOrderByDateDESC(Long id){
-        return bookingRepository.findByCustomerIdOrderByDateDesc(id);
+    public List<Booking> getBookingByCustomerIdOrderByDateDESC(Long id) throws Exception {
+        if(id < 1){
+            throw new Exception("invalid id");
+        }
+
+        List<Booking> ret = bookingRepository.findByCustomerIdOrderByDateDesc(id);
+        if(ret == null){
+            throw new NullPointerException("no booking found");
+        }
+        return ret;
     }
 
-    public List<Booking> getBookingByCompIdOrderByDateASC(Long id){
-        return bookingRepository.findByCompanyIdOrderByDate(id);
+    public List<Booking> getBookingByCompIdOrderByDateASC(Long id) throws Exception {
+        if(id < 1){
+            throw new Exception("invalid id");
+        }
+
+        List<Booking> ret = bookingRepository.findByCompanyIdOrderByDate(id);
+        if(ret == null){
+            throw new NullPointerException("no booking found");
+        }
+        return ret;
     }
 
-    public List<Booking> getBookingByCompIdOrderByDateDESC(Long id){
-        return bookingRepository.findByCompanyIdOrderByDateDesc(id);
+    public List<Booking> getBookingByCompIdOrderByDateDESC(Long id) throws Exception {
+        if(id < 1){
+            throw new Exception("invalid id");
+        }
+
+        List<Booking> ret = bookingRepository.findByCompanyIdOrderByDateDesc(id);
+        if(ret == null){
+            throw new NullPointerException("no booking found");
+        }
+        return ret;
+
     }
 
 }

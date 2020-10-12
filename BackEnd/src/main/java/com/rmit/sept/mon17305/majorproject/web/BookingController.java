@@ -50,13 +50,13 @@ public class BookingController {
     }
 
     @GetMapping("/customer/{id}/dateASC")
-    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) {
+    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) throws Exception {
 
         return bookingService.getBookingByCustomerIdOrderByDateASC(id);
     }
 
     @GetMapping("/customer/{id}/dateDESC")
-    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) {
+    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) throws Exception {
 
         return bookingService.getBookingByCustomerIdOrderByDateDESC(id);
     }
@@ -73,17 +73,17 @@ public class BookingController {
     }
 
     @GetMapping("/allBooking/{comId}")
-    public List<Booking> getBookingsForAdmin(@PathVariable Long comId){
+    public List<Booking> getBookingsForAdmin(@PathVariable Long comId) throws Exception {
         return bookingService.getBookingByCompanyId(comId);
     }
 
     @GetMapping("/allBooking/{comId}/ASC")
-    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId){
+    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId) throws Exception {
         return bookingService.getBookingByCompIdOrderByDateASC(comId);
     }
 
     @GetMapping("/allBooking/{comId}/DESC")
-    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId){
+    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId) throws Exception {
         return bookingService.getBookingByCompIdOrderByDateDESC(comId);
     }
 

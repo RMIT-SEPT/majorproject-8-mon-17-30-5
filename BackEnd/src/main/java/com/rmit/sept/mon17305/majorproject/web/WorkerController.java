@@ -164,7 +164,7 @@ public class WorkerController {
     }
 
     @GetMapping("/workerId/{id}/date/{date}")
-    public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date){
+    public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date) throws Exception {
         List<Booking> booked = bookingService.getBookingByWorkerIdAndDate(id,date);
         Worker worker = workerService.getWorkerByIdEquals(id);
         String start = worker.getStartTime();
@@ -263,7 +263,7 @@ public class WorkerController {
         return array;
     }
 
-    private String checkPerHr(int time, List<Booking> booked) {
+    private String checkPerHr(int time, List<Booking> booked) throws Exception {
         String ret = "free";
         if (booked != null) {
             for (Booking booking : booked) {

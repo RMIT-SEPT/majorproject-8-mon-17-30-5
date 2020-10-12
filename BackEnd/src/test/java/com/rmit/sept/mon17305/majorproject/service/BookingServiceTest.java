@@ -214,8 +214,6 @@ public class BookingServiceTest {
 
     @Test
     void getBookingByDateAndWorkerIdAndTime_NullptrExcept_NoBookingExist(){
-        List<Booking> list = new ArrayList<Booking>();
-        list.add(0, booking);
         when(
                 bookingRepository.findByDateAndWorkerIdAndStartTime(
                         booking.getDate(), booking.getWorkerId(), booking.getStartTime())
@@ -224,5 +222,239 @@ public class BookingServiceTest {
             bookingService.getBookingByDateAndWorkerIdAndTime(
                     booking.getDate(), booking.getWorkerId(), booking.getStartTime());
         },"booking not found");
+    }
+
+    @Test
+    void getBookingByDateAndWorkerIdAndTime_bookingList_validInfo() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(
+                bookingRepository.findByDateAndWorkerIdAndStartTime(
+                        booking.getDate(), booking.getWorkerId(), booking.getStartTime())
+        ).thenReturn(list);
+        assertEquals(list,
+            bookingService.getBookingByDateAndWorkerIdAndTime(
+                    booking.getDate(), booking.getWorkerId(), booking.getStartTime()));
+    }
+
+    @Test
+    void getBookingByWorkerIdAndDate_bookingList_validInfo() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByWorkerIdAndDate(
+                        booking.getWorkerId(), booking.getDate()))
+                .thenReturn(list);
+        assertEquals(list,
+                bookingRepository.findByWorkerIdAndDate(
+                        booking.getWorkerId(), booking.getDate()));
+    }
+
+    @Test
+    void getBookingByWorkerIdAndDate_exceptThrown_invalidWorkerId(){
+        booking.setWorkerId((long)-1);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByWorkerIdAndDate(
+                    booking.getWorkerId(), booking.getDate());
+        }, "invalid id");
+    }
+    @Test
+    void getBookingByWorkerIdAndDate_exceptThrown_invalidDate(){
+        booking.setDate(null);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByWorkerIdAndDate(
+                    booking.getWorkerId(), booking.getDate());
+        }, "invalid date");
+    }
+
+    @Test
+    void getBookingByWorkerIdAndDate_NullptrExceptThrown_NoExistedBooking(){
+        booking.setDate(null);
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByWorkerIdAndDate(
+                booking.getWorkerId(), booking.getDate()))
+                .thenReturn(null);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByWorkerIdAndDate(
+                    booking.getWorkerId(), booking.getDate());
+        }, "no booking found");
+    }
+
+    @Test
+    void getBookingByCompanyId_booking_ValidId() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByCompanyId(booking.getCompanyId()))
+                .thenReturn(list);
+        assertEquals(list, bookingService.getBookingByCompanyId(booking.getCompanyId()));
+    }
+
+    @Test
+    void getBookingByCompanyId_exceptThrown_invalidComId(){
+        booking.setCompanyId((long)-1);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByCompanyId(booking.getCompanyId());
+        }, "invalid id");
+    }
+
+    @Test
+    void getBookingByCompanyId_NullptrExceptThrown_NoBookingExist(){
+        when(bookingRepository.findByCompanyId(booking.getCompanyId()))
+                .thenReturn(null);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByCompanyId(booking.getCompanyId());
+        }, "Company booking not found");
+    }
+
+    @Test
+    void getBookingByDateAndWorkerId_booking_ValidInfo() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByWorkerIdAndDate(booking.getWorkerId(),
+                booking.getDate()))
+                .thenReturn(list);
+        assertEquals(list,
+                bookingService.getBookingByDateAndWorkerId(booking.getDate(), booking.getWorkerId()));
+    }
+
+    @Test
+    void getBookingByDateAndWorkerId_ExceptThrown_InvalidDate(){
+        booking.setDate(null);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByDateAndWorkerId(booking.getDate(), booking.getWorkerId());
+        },"invalid date");
+    }
+    @Test
+    void getBookingByDateAndWorkerId_ExceptThrown_InvalidId(){
+        booking.setWorkerId((long)-1);
+        assertThrows(Exception.class, ()->{
+            bookingService.getBookingByDateAndWorkerId(booking.getDate(), booking.getWorkerId());
+        },"invalid id");
+    }
+
+    @Test
+    void getBookingByDateAndWorkerId_NullPtrExcpt_NoBookingExist(){
+        when(bookingRepository.findByWorkerIdAndDate(booking.getWorkerId(),
+                booking.getDate()))
+                .thenReturn(null);
+        assertThrows(NullPointerException.class, ()->{
+            bookingService.getBookingByDateAndWorkerId(booking.getDate(), booking.getWorkerId());
+        },"no booking found");
+    }
+
+    @Test
+    void getBookingByCustomerIdOrderByDateASC_booking_ValidId() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByCustomerIdOrderByDate(booking.getCustomerId()))
+                .thenReturn(list);
+        assertEquals(list, bookingService.getBookingByCustomerIdOrderByDateASC(
+                booking.getCustomerId()));
+    }
+    @Test
+    void getBookingByCustomerIdOrderByDateASC_exceptThrown_invalidId(){
+        booking.setCustomerId((long)-1);
+        assertThrows(Exception.class,()->{
+            bookingService.getBookingByCustomerIdOrderByDateASC(
+                    booking.getCustomerId());
+        }, "invalid id");
+    }
+
+    @Test
+    void getBookingByCustomerIdOrderByDateASC_NullPtrExceptThrown_NoBookingExist(){
+        when(bookingRepository.findByCustomerIdOrderByDate(booking.getCustomerId()))
+                .thenReturn(null);
+        assertThrows(NullPointerException.class,()->{
+            bookingService.getBookingByCustomerIdOrderByDateASC(
+                    booking.getCustomerId());
+        }, "no booking found");
+    }
+
+    @Test
+    void getBookingByCustomerIdOrderByDateDESC_booking_ValidId() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByCustomerIdOrderByDateDesc(booking.getCustomerId()))
+                .thenReturn(list);
+        assertEquals(list, bookingService.getBookingByCustomerIdOrderByDateDESC(
+                booking.getCustomerId()));
+    }
+    @Test
+    void getBookingByCustomerIdOrderByDateDESC_exceptThrown_invalidId(){
+        booking.setCustomerId((long)-1);
+        assertThrows(Exception.class,()->{
+            bookingService.getBookingByCustomerIdOrderByDateDESC(
+                    booking.getCustomerId());
+        }, "invalid id");
+    }
+
+    @Test
+    void getBookingByCustomerIdOrderByDateDESC_NullPtrExceptThrown_NoBookingExist(){
+        when(bookingRepository.findByCustomerIdOrderByDateDesc(booking.getCustomerId()))
+                .thenReturn(null);
+        assertThrows(NullPointerException.class,()->{
+            bookingService.getBookingByCustomerIdOrderByDateDESC(
+                    booking.getCustomerId());
+        }, "no booking found");
+    }
+
+    @Test
+    void getBookingByCompIdOrderByDateASC_booking_ValidId() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByCompanyIdOrderByDate(booking.getCompanyId()))
+                .thenReturn(list);
+        assertEquals(list, bookingService.getBookingByCompIdOrderByDateASC(
+                booking.getCompanyId()));
+    }
+    @Test
+    void getBookingByCompIdOrderByDateASC_exceptThrown_invalidId(){
+        booking.setCompanyId((long)-1);
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByCompanyIdOrderByDate(booking.getCustomerId()))
+                .thenReturn(list);
+        assertThrows(Exception.class,()->{
+            bookingService.getBookingByCompIdOrderByDateASC(
+                    booking.getCompanyId());
+        }, "invalid id");
+    }
+
+    @Test
+    void getBookingByCompIdOrderByDateASC_NullPtrExceptThrown_NoBookingExist(){
+        when(bookingRepository.findByCompanyIdOrderByDate(booking.getCompanyId()))
+                .thenReturn(null);
+        assertThrows(NullPointerException.class,()->{
+            bookingService.getBookingByCompIdOrderByDateASC(
+                    booking.getCompanyId());
+        }, "no booking found");
+    }
+
+    @Test
+    void getBookingByCompIdOrderByDateDESC_booking_ValidId() throws Exception {
+        List<Booking> list = new ArrayList<Booking>();
+        list.add(0, booking);
+        when(bookingRepository.findByCompanyIdOrderByDateDesc(booking.getCompanyId()))
+                .thenReturn(list);
+        assertEquals(list, bookingService.getBookingByCompIdOrderByDateDESC(
+                booking.getCompanyId()));
+    }
+    @Test
+    void getBookingByCompIdOrderByDateDESC_exceptThrown_invalidId(){
+        booking.setCompanyId((long)-1);
+        assertThrows(Exception.class,()->{
+            bookingService.getBookingByCompIdOrderByDateDESC(
+                    booking.getCompanyId());
+        }, "invalid id");
+    }
+
+    @Test
+    void getBookingByCompIdOrderByDateDESC_NullPtrExceptThrown_NoBookingExist(){
+        when(bookingRepository.findByCompanyIdOrderByDateDesc(booking.getCompanyId()))
+                .thenReturn(null);
+        assertThrows(NullPointerException.class,()->{
+            bookingService.getBookingByCompIdOrderByDateDESC(
+                    booking.getCompanyId());
+        }, "no booking found");
     }
 }
