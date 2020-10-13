@@ -139,7 +139,7 @@ public class WorkerController {
         }
     }
 
-    private String getIsFree(String date, Long id, int time,int duration){
+    private String getIsFree(String date, Long id, int time,int duration) throws Exception {
         String ret = "true";
         int timeCount = time;
         for(int i = 1; i <= duration && ret=="true"; i++){

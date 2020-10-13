@@ -24,7 +24,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping("/create/")
-    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result){
+    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result) throws Exception {
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
@@ -50,13 +50,13 @@ public class BookingController {
     }
 
     @GetMapping("/customer/{id}/dateASC")
-    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) {
+    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) throws Exception {
 
         return bookingService.getBookingByCustomerIdOrderByDateASC(id);
     }
 
     @GetMapping("/customer/{id}/dateDESC")
-    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) {
+    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) throws Exception {
 
         return bookingService.getBookingByCustomerIdOrderByDateDESC(id);
     }
@@ -73,17 +73,17 @@ public class BookingController {
     }
 
     @GetMapping("/allBooking/{comId}")
-    public List<Booking> getBookingsForAdmin(@PathVariable Long comId){
+    public List<Booking> getBookingsForAdmin(@PathVariable Long comId) throws Exception {
         return bookingService.getBookingByCompanyId(comId);
     }
 
     @GetMapping("/allBooking/{comId}/ASC")
-    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId){
+    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId) throws Exception {
         return bookingService.getBookingByCompIdOrderByDateASC(comId);
     }
 
     @GetMapping("/allBooking/{comId}/DESC")
-    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId){
+    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId) throws Exception {
         return bookingService.getBookingByCompIdOrderByDateDESC(comId);
     }
 
@@ -95,10 +95,19 @@ public class BookingController {
                     booking.setCustomerId(newBooking.getCustomerId());
                     booking.setServiceId(newBooking.getServiceId());
                     booking.setWorkerId(newBooking.getWorkerId());
-                    return new ResponseEntity<Booking> (bookingService.saveOrUpdateBooking(booking),HttpStatus.ACCEPTED);
+                    try {
+                        return new ResponseEntity<Booking> (bookingService.saveOrUpdateBooking(booking),HttpStatus.ACCEPTED);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return null;
                 })
                 .orElseGet(() -> {
-                    Booking booking1 = bookingService.saveOrUpdateBooking(newBooking);
+                    try {
+                        Booking booking1 = bookingService.saveOrUpdateBooking(newBooking);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     return new ResponseEntity<Booking>(newBooking, HttpStatus.CREATED);
                 });
 
