@@ -77,7 +77,7 @@ componentDidMount(){
       <form className="adminDetails">
       <br></br>
         <LinkRouter to="/admin">
-        <button className = "workerBtn">back to dashboard</button>
+        <button className = "adminDash">Back to Dashboard</button>
         </LinkRouter>
         <br></br>
         <br></br>

@@ -23,7 +23,6 @@ export default class CustomerBooking extends Component {
     sortByBookingId(){
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id"))
         .then((response)=>{
-           // this.setState({"bookingExist": true});
             console.log("found booking");
             console.log(response.data);
             this.setState({"res": response.data});
@@ -38,12 +37,10 @@ export default class CustomerBooking extends Component {
     sortFurtherest(){
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id")+"/dateASC")
         .then((response)=>{
-          //  this.setState({"bookingExist": true});
             console.log("found booking");
             console.log(response.data);
             this.setState({"res": response.data});
             console.log(this.state.res);
-            //window.location.reload();
         })
         .catch()
         .finally();
@@ -52,12 +49,10 @@ export default class CustomerBooking extends Component {
     sortClosest(){
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id")+"/dateDESC")
         .then((response)=>{
-          //  this.setState({"bookingExist": true});
             console.log("found booking");
             console.log(response.data);
             this.setState({"res": response.data});
             console.log(this.state.res);
-            //window.location.reload();
         })
         .catch()
         .finally();
@@ -80,10 +75,7 @@ export default class CustomerBooking extends Component {
             <button onClick={this.sortClosest.bind(this)} className = "btn btn-warning" type="button">Sort By Newest Date</button>
             <br></br>
             <br></br>
-            <Table 
-            striped 
-            bordered 
-            hover>
+            <Table striped bordered hover>
             <thead>
             <tr>
                     <th>Booking ID</th>

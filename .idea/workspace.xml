@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a068e4ae-260d-4475-b9e6-b41b5b6b8c31" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/majorproject-8-mon-17-30-5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/majorproject-8-mon-17-30-5.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -16,6 +21,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1frD7ZIh43opXGEL8uNIYg0KPPl" />
   <component name="ProjectViewState">
@@ -30,9 +42,10 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36018413" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunManager" selected="Application.MajorprojectApplication">
     <configuration name="MajorprojectApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -48,6 +61,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="maven-wrapper.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/BackEnd/.mvn/wrapper/maven-wrapper.jar" />
       <method v="2" />
@@ -59,10 +83,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value=",SHOW_NON_PUBLIC" />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -76,11 +97,14 @@
       <workItem from="1596967162164" duration="3113000" />
       <workItem from="1597061510615" duration="2537000" />
       <workItem from="1597066513116" duration="119000" />
+      <workItem from="1601739298900" duration="1100000" />
+      <workItem from="1601740444814" duration="11000" />
+      <workItem from="1601741016353" duration="268000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -95,9 +119,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="723" y="100" key="#Project_Structure" timestamp="1597063777485">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="466" y="93" key="#Project_Structure" timestamp="1601739532954">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
+    <state x="466" y="93" key="#Project_Structure/0.0.1504.963@0.0.1504.963" timestamp="1601739532954" />
     <state x="723" y="100" key="#Project_Structure/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597063777485" />
     <state x="2376" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597062162245">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -107,10 +132,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597066579434" />
-    <state x="595" y="141" key="FileChooserDialogImpl" timestamp="1600319970432">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="699" y="200" key="FileChooserDialogImpl" timestamp="1601741161405">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="595" y="141" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1600319970432" />
+    <state x="699" y="200" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1601741161405" />
     <state x="893" y="216" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597066629892" />
     <state x="893" y="216" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597064206566" />
     <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1600320264058">
@@ -137,15 +163,17 @@
     <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1600320264058" />
     <state width="670" height="251" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597064210269" />
     <state width="670" height="251" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1597063506580" />
-    <state x="244" y="0" key="SettingsEditor" timestamp="1600320205421">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="287" y="0" key="SettingsEditor" timestamp="1601740242707">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="244" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1600320205421" />
+    <state x="287" y="0" key="SettingsEditor/0.0.1504.963@0.0.1504.963" timestamp="1601740242707" />
     <state x="698" y="73" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597064061065" />
     <state x="2402" y="91" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1597062292586" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1600320259557">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="356" y="1" width="790" height="961" key="search.everywhere.popup" timestamp="1601740250030">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1600320259557" />
+    <state x="356" y="1" width="790" height="961" key="search.everywhere.popup/0.0.1504.963@0.0.1504.963" timestamp="1601740250030" />
   </component>
 </project>

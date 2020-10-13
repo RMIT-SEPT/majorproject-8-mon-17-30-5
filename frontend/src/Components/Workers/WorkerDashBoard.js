@@ -1,4 +1,3 @@
-  
 import React from 'react'
 import NavigationBarWorkerPage from '../Layout/NavigationBarWorkerPage';
 import WorkerInfoBoard from './WorkerInfoBoard';

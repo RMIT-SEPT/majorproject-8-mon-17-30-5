@@ -19,8 +19,6 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 // POSTMAN can now post to every object and it comes up in the database. All files for API now created.
-//public class Admin extends User {
-//public class Admin extends User {
 //API Post with validation, Get all and getbyid added to Admin, needs to cover the rest which i will do tomorrow.
 //Not Blank import added to Admin
 //POSTMAN can now post to every object and it comes up in the database. All files for API now created.

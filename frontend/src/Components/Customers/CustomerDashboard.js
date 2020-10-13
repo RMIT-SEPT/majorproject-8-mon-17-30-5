@@ -59,7 +59,6 @@ export default class CustomerDashboard extends Component {
             .catch()
             .finally();
             sessionStorage.setItem("companyIsSelected", true);
-            // window.location.reload();
         }else{
             sessionStorage.setItem("companyIsSelected", false);
             this.setState({"selectCompanyId":0});
@@ -118,8 +117,6 @@ export default class CustomerDashboard extends Component {
     }
 
     getAvailable(){
-        // console.log("workerId: " + this.state.selectWorkerId);
-        // console.log("serviceId: " + this.state.selectServiceId);
         axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
         +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
         .then((response)=>{
@@ -164,18 +161,15 @@ export default class CustomerDashboard extends Component {
             </div>
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
             <div>
                     <h1>Customer Dashboard</h1>
             </div>
-            <br></br>
             <br></br>
             <form className="searchDash" onSubmit={this.getSearchOptionsSetUp.bind(this)}>
             <br></br>
             <br></br>
             <div>
-                <select name="selectBusinessId" id="businessFilter" onChange={this.selectCompanyId.bind(this)} required>
+                <select name="selectBusinessId" id="businessFilter" class = "businessFilter" onChange={this.selectCompanyId.bind(this)} required>
                     <option defaultValue="0" value={0}>Select Business</option>
                     {businesses}
                 </select>
@@ -188,8 +182,6 @@ export default class CustomerDashboard extends Component {
             <br></br>
             <br></br>
             </form>
-            <br></br>
-            <br></br>
             <form className = "searchDash">
             <div id="datePicker">
                 <input type="date" className = "datePicker" id="dateFilter" name="selectDate" placeholder = "Select Date"  min={this.getFormattedDate()}  onChange={this.selectedDate.bind(this)} required></input>

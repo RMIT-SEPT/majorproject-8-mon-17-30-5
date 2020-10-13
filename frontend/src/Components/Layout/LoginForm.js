@@ -72,13 +72,10 @@ function LoginForm(props){
             <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Password" required></input>
             <br></br>
             <br></br>
-            
-        
             <div className = "buttonholder">
            
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
-           
             <p>Don't have an account yet? <LinkRouter to = "/signupform">Sign Up</LinkRouter> here!</p>
             <p>Or</p>
             <p>Log in as  <LinkRouter to = "/admin/login">Admin</LinkRouter> or <LinkRouter to="/worker/login">Employee</LinkRouter></p>

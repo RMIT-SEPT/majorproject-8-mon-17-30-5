@@ -30,8 +30,11 @@ public class WorkerService {
     }
 
     public Worker getWorkerByUsername(String username){
-
-        return workerRepository.findByUsername(username);
+        Worker worker = workerRepository.findByUsername(username);
+        if(worker==null){
+            throw new NullPointerException("username not found");
+        }
+        return worker;
     }
 
     public Worker getWorkerByUsernameAndPassword(String username, String password){

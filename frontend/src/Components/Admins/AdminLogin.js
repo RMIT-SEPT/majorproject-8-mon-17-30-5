@@ -46,12 +46,8 @@ function AdminLogin(props){
             });
         })
         .finally();
-
-        
-
         event.preventDefault();
     }
-   // console.log(sessionStorage.getItem("username"));
     return(
         <div>
             <NavigationBar/>
@@ -72,10 +68,7 @@ function AdminLogin(props){
             <input name ="password" onChange = {handleChange} type = "password" id = "password" className = "loginInput" placeholder = "Enter Password" required></input>
             <br></br>
             <br></br>
-            
-        
             <div className = "buttonholder">
-           
                 <input id = "loginBtn" type="submit" value="Log In"></input>
             </div>
             </form>

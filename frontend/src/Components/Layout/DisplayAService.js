@@ -47,7 +47,41 @@ function DisplayAService(props) {
     var start = formatDate(startString);
     var finish = formatDate(finishString);
 
-     
+    function ifTimePassed(start, date){
+        if(date === getFormattedDate(0)){
+            const now = new Date();
+            let hr = now.getHours();
+            let startHr = start/100;
+            
+            if(hr >= startHr){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+        
+    }
+
+    function getFormattedDate(num){
+        const today = new Date();
+        var date = new Date(today.getTime() + num * 24 * 60 * 60 * 1000);
+        let day = date.getDate();
+        let month = date.getMonth();
+        const year = date.getFullYear();
+        month++;
+        if(month < 10){
+            month = "0" + month;
+        }
+
+        if(day < 10){
+            day = "0" + day;
+        }
+        return year + "-" + month +"-"+day; 
+    }
+
     return (
         <div className="col-sm-3" >
         {props.service.isFree==="true" && <div className="btn btn-info btn-block">
@@ -61,9 +95,11 @@ function DisplayAService(props) {
                 <li hidden>isFree: {props.service.isFree}</li>
             </ul>
             <br></br>
-            <LinkRouter to="/customer/makeBooking">
-            <button id = "book" onClick={handleClick}>Book</button>
-            </LinkRouter>
+            
+            {ifTimePassed(props.service.startTime, props.service.date)===false && 
+            <LinkRouter to="/customer/makeBooking"><button id = "book" onClick={handleClick}>Book</button></LinkRouter>}
+            {ifTimePassed(props.service.startTime, props.service.date) && 
+                <button className="btn btn-danger" readOnly>Not Available</button>}
             <br></br>
         </div>}
         {props.service.isFree==="false" && <div className="btn btn-secondary btn-block">
@@ -78,7 +114,7 @@ function DisplayAService(props) {
         </ul>
         <br></br>
         
-        <button className="btn btn-danger">Not Available</button>
+        <button className="btn btn-danger" readOnly>Not Available</button>
         <br></br>
         </div>}
         <br></br>

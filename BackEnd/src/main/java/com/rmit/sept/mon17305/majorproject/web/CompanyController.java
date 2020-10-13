@@ -41,12 +41,12 @@ public class CompanyController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Company> getCompany(@PathVariable Long id) {
+    public Optional<Company> getCompany(@PathVariable Long id) throws Exception {
         return companyService.getCompany(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceCompany(@RequestBody Company newCompany, @PathVariable Long id) {
+    public ResponseEntity<?> replaceCompany(@RequestBody Company newCompany, @PathVariable Long id) throws Exception {
 
         companyService.getCompany(id)
                 .map(company -> {
