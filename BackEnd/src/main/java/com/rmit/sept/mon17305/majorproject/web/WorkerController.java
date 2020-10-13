@@ -69,7 +69,7 @@ public class WorkerController {
         return workerService.getWorkers();
     }
     @GetMapping("/companyId/{comId}")
-    public List<Worker> getWorkersByCompanyID(@PathVariable Long comId) {
+    public List<Worker> getWorkersByCompanyID(@PathVariable Long comId) throws Exception {
 
         return workerService.getWorkersByCompanyId(comId);
     }
@@ -90,13 +90,13 @@ public class WorkerController {
     }
 
     @GetMapping("/worker-company/{id}")
-    public Long getCompanyOfWorker(@PathVariable Long id) {
+    public Long getCompanyOfWorker(@PathVariable Long id) throws Exception {
         Worker w = workerService.getWorkerByIdEquals(id);
         return w.getCompanyId();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getWorker(@PathVariable Long id) {
+    public ResponseEntity<?> getWorker(@PathVariable Long id) throws Exception {
         Optional<Worker> worker = workerService.getWorker(id);
         if(worker==null){
             return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
@@ -109,7 +109,7 @@ public class WorkerController {
     @GetMapping("/{id}/{serviceId}/{date}/{description}/{duration}/")
     public ResponseEntity<?> getWorkerAvailability(@PathVariable Long id,
                                          @PathVariable Long serviceId, @PathVariable String date,
-                                         @PathVariable String description, @PathVariable int duration) {
+                                         @PathVariable String description, @PathVariable int duration) throws Exception {
 
         if((id<1||id ==null)||(serviceId<1||serviceId==null)||(date.equals("null"))||
                 (description.equals("null"))||(duration<1||duration>5)){
@@ -164,7 +164,7 @@ public class WorkerController {
     }
 
     @GetMapping("/workerId/{id}/date/{date}")
-    public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date){
+    public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date) throws Exception {
         List<Booking> booked = bookingService.getBookingByWorkerIdAndDate(id,date);
         Worker worker = workerService.getWorkerByIdEquals(id);
         String start = worker.getStartTime();
@@ -194,7 +194,7 @@ public class WorkerController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) {
+    public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) throws Exception {
         //System.out.println(newWorker.toString());
         Worker worker = workerService.getWorkerByIdEquals(id);
         if(worker !=null){
@@ -215,7 +215,7 @@ public class WorkerController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteWorker(@PathVariable Long id) {
+    void deleteWorker(@PathVariable Long id) throws Exception {
         workerService.deleteWorkerById(id);
     }
 
@@ -263,7 +263,7 @@ public class WorkerController {
         return array;
     }
 
-    private String checkPerHr(int time, List<Booking> booked) {
+    private String checkPerHr(int time, List<Booking> booked) throws Exception {
         String ret = "free";
         if (booked != null) {
             for (Booking booking : booked) {

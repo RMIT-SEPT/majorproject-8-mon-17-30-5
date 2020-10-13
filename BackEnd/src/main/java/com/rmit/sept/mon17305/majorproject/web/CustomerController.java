@@ -79,12 +79,12 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Customer> getCustomer(@PathVariable Long id) {
+    public Optional<Customer> getCustomer(@PathVariable Long id) throws Exception {
         return customerService.getCustomer(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) {
+    public ResponseEntity<?> replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) throws Exception {
         System.out.println(newCustomer.toString());
         Customer customer = customerService.getCustomerByIdEquals(id);
         if(customer != null){
@@ -105,7 +105,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteCustomer(@PathVariable Long id) {
+    void deleteCustomer(@PathVariable Long id) throws Exception {
         customerService.deleteCustomerById(id);
     }
 

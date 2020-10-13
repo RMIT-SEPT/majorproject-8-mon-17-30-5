@@ -57,4 +57,5 @@ public class CompanyServiceTest {
         when(companyRepository.findById(business1.getId())).thenReturn(java.util.Optional.ofNullable(business1));
         assertTrue(companyService.getCompany(business1.getId()).toString().contains(business1.toString()));
     }
+
 }
