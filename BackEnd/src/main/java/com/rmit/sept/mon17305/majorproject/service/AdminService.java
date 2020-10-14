@@ -27,6 +27,14 @@ public class AdminService {
 
     }
 
+    public Admin getAdminByUsername(String username){
+        Admin admin = adminRepository.findByUsername(username);
+        if(admin==null){
+            throw new NullPointerException("username not found");
+        }
+        return admin;
+    }
+
     public Optional<Admin> getAdmin(Long id){
 
         return adminRepository.findById(id);

@@ -58,4 +58,51 @@ public class CompanyServiceTest {
         assertTrue(companyService.getCompany(business1.getId()).toString().contains(business1.toString()));
     }
 
+    @Test
+    void saveOrUpdateCompany_throwNullExcep_invalidCompany()
+    {
+        when(companyRepository.save(business1)).thenReturn(null);
+        assertThrows(NullPointerException.class, ()-> {
+            companyService.saveOrUpdateCompany(null);
+        },"Empty company cannot be saved");
+    }
+
+    @Test
+    void saveOrUpdateCompany_business1_validCompany()
+    {
+        when(companyRepository.save(business1)).thenReturn(business1);
+        assertEquals(business1, companyService.saveOrUpdateCompany(business1));
+    }
+
+    @Test
+    void getCompanyByCompanyName_throwNullExcep_invalidCompanyName(){
+        when(companyRepository.findByCompanyName("Tim Car Wash")).thenReturn(null);
+        assertThrows(NullPointerException.class, () -> {
+            companyService.getCompanyByCompanyName("Tim Car Wash");
+        }, "Company name not found");
+    }
+
+    @Test
+    void getCompanyByCompanyName_TimCarWash_validCompanyName(){
+        when(companyRepository.findByCompanyName("Tim Car Wash")).thenReturn(business1);
+        assertEquals(business1, companyService.getCompanyByCompanyName("Tim Car Wash"));
+    }
+
+    @Test
+    void deleteCompany_throwNullExcep_invalidId() throws Exception {
+        when(companyRepository.findByIdEquals(business1.getId())).thenReturn(null);
+        assertThrows(NullPointerException.class, () -> {
+            companyService.deleteCompanyById(business1.getId());
+        }, "Company cannot be deleted. Id does not exist");
+    }
+
+    @Test
+    void deleteCompany_throwException_IdLessThanOne() throws Exception{
+        when(companyRepository.findById(business1.getId())).thenReturn(Optional.ofNullable(business1));
+        assertThrows(Exception.class, ()-> {
+            companyService.deleteCompanyById((long) 0);
+        }, "Id cannot be less than 1");
+    }
+
+
 }

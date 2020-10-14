@@ -172,6 +172,29 @@ public class MajorprojectApplication {
             nic.setPhone("0488000888");
 
             adminRepository.save(nic);
+
+            Booking booking1 = new Booking();
+            booking1.setCompanyId(business1.getId());
+            booking1.setStartTime(1400);
+            booking1.setWorkerId(john.getId());
+            booking1.setWorkerName(john.getFirstName());
+            booking1.setDate("2020-10-11");
+            booking1.setFinishTime(1500);
+            booking1.setServiceId(service.getId());
+            booking1.setCustomerId(austin.getId());
+            bookingRepository.save(booking1);
+
+            Booking booking2 = new Booking();
+            booking2.setCompanyId(business1.getId());
+            booking2.setStartTime(1400);
+            booking2.setWorkerId(john.getId());
+            booking2.setWorkerName(john.getFirstName());
+            booking2.setDate("2020-10-12");
+            booking2.setFinishTime(1500);
+            booking2.setServiceId(service.getId());
+            booking2.setCustomerId(austin.getId());
+            bookingRepository.save(booking2);
+
         };
     }
 
