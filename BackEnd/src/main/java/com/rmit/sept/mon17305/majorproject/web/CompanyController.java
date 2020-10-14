@@ -62,7 +62,7 @@ public class CompanyController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteCustomer(@PathVariable Long id) {
+    void deleteCustomer(@PathVariable Long id) throws Exception {
         companyService.deleteCompanyById(id);
     }
 
