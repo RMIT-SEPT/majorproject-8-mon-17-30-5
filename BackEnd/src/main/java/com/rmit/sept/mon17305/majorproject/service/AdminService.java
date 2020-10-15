@@ -34,16 +34,24 @@ public class AdminService {
 
     }
 
+    public Admin getAdminByUsername(String username){
+        Admin admin = adminRepository.findByUsername(username);
+        if(admin==null){
+            throw new NullPointerException("username not found");
+        }
+        return admin;
+    }
+
     public Optional<Admin> getAdmin(Long id) throws Exception {
-        if(id < 1)
-        {
-            throw new Exception("Id cannot be less than 1");
-        }
-        Optional<Admin> admin = adminRepository.findById(id);
-        if(!admin.isPresent())
-        {
-            throw new NullPointerException("Admin id not found");
-        }
+    if(id < 1)
+    {
+        throw new Exception("Id cannot be less than 1");
+    }
+    Optional<Admin> admin = adminRepository.findById(id);
+    if(!admin.isPresent())
+    {
+        throw new NullPointerException("Admin id not found");
+    }
         return adminRepository.findById(id);
     }
 

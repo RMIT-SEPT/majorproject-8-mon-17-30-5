@@ -68,4 +68,9 @@ public class ServiceObject {
     public void setCompanyId(Long companyId) {
         this.companyId = companyId;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

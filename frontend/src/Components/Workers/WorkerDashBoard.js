@@ -160,7 +160,7 @@ export default function WorkerDashboard() {
 
             </tbody>
             </Table>}
-            </form>
+           
         </div>
         
     );
