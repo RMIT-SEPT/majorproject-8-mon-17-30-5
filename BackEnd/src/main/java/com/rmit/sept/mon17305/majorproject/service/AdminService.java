@@ -55,16 +55,6 @@ public class AdminService {
         return adminRepository.findById(id);
     }
 
-    public Admin getAdminByUsername(String username){
-        Admin admin = adminRepository.findByUsername(username);
-        if(admin == null)
-        {
-            throw new NullPointerException("Admin username not found");
-        }
-
-        return adminRepository.findByUsername(username);
-    }
-
     public Admin getAdminByUsernameAndPassword(String username, String password){
         Admin admin = adminRepository.findByUsernameAndPassword(username, password);
         if(admin == null)
