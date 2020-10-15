@@ -17,14 +17,21 @@ public class WorkerService {
     private WorkerRepository workerRepository;
 
     public Worker saveOrUpdateWorker(Worker worker){
-
+        if(worker == null)
+        {
+            throw new NullPointerException("Empty worker cannot be saved");
+        }
         //business logic
         return workerRepository.save(worker);
 
     }
 
     public List<Worker> getWorkers(){
-
+        List<Worker> workers = workerRepository.findAll();
+        if(workers == null)
+        {
+            throw new NullPointerException("No workers exist");
+        }
         return workerRepository.findAll();
 
     }
@@ -38,34 +45,90 @@ public class WorkerService {
     }
 
     public Worker getWorkerByUsernameAndPassword(String username, String password){
-
+        Worker worker = workerRepository.findByUsernameAndPassword(username, password);
+        if(worker == null)
+        {
+            throw new NullPointerException("Username and password don't exist");
+        }
         return workerRepository.findByUsernameAndPassword(username, password);
     }
 
-    public Worker getWorkerByIdEquals(Long id){
-        return workerRepository.findByIdEquals(id);
+    public Worker getWorkerByIdEquals(Long id) throws Exception {
+        Worker worker = workerRepository.findByIdEquals(id);
+         if(id < 1)
+         {
+             throw new Exception("Id cannot be less than 1");
+         }
+
+         if(worker == null)
+         {
+             throw new NullPointerException("Id does not exist");
+         }
+
+         return workerRepository.findByIdEquals(id);
     }
 
 
-    public Optional<Worker> getWorker(Long id){
-
+    public Optional<Worker> getWorker(Long id) throws Exception {
+        if(id < 1)
+        {
+            throw new Exception("Id cannot be less than 1");
+        }
+        Optional<Worker> worker = workerRepository.findById(id);
+        if(!worker.isPresent())
+        {
+            throw new NullPointerException(("Id does not exist"));
+        }
         return workerRepository.findById(id);
     }
 
-    public void deleteWorkerById(Long id){
+    public void deleteWorkerById(Long id) throws Exception {
+        Worker worker = workerRepository.findByIdEquals(id);
+        if(id < 1)
+        {
+            throw new Exception("Id cannot be less than 1");
+        }
 
+        if(worker == null)
+        {
+            throw new NullPointerException("Id does not exist to delete");
+        }
         workerRepository.deleteById(id);
     }
 
     public void setWorkerRepository(WorkerRepository workerRepository) {
+        if(workerRepository == null)
+        {
+            throw new NullPointerException("Cannot set empty worker repository");
+        }
         this.workerRepository = workerRepository;
     }
 
-    public Worker getWorkerById(Long id){
+    public Worker getWorkerById(Long id) throws Exception {
+        if(id < 1)
+        {
+            throw new Exception("Id cannot be less than 1");
+        }
+        Worker worker = workerRepository.findByIdEquals(id);
+        if(worker == null)
+        {
+            throw new NullPointerException("Id does not exist");
+        }
         return workerRepository.findByIdEquals(id);
     }
 
-    public List<Worker> getWorkersByCompanyId(Long id){
+    public List<Worker> getWorkersByCompanyId(Long id) throws Exception {
+        if(id < 1)
+        {
+            throw new Exception("Company id cannot be less than 1");
+        }
+
+        List<Worker> workers = workerRepository.findByCompanyIdEquals(id);
+
+        if(workers == null)
+        {
+            throw new NullPointerException("No workers exist for company");
+        }
         return workerRepository.findByCompanyIdEquals(id);
     }
 }

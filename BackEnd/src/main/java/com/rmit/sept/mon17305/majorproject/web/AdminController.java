@@ -42,7 +42,7 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getAdmin(@PathVariable Long id) {
+    public ResponseEntity<?> getAdmin(@PathVariable Long id) throws Exception {
         Optional<Admin> admin = adminService.getAdmin(id);
         if(admin.isPresent()){
             return new ResponseEntity<Optional<Admin>>(admin, HttpStatus.FOUND);
@@ -62,7 +62,7 @@ public class AdminController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceAdmin(@RequestBody Admin newAdmin, @PathVariable Long id) {
+    public ResponseEntity<?> replaceAdmin(@RequestBody Admin newAdmin, @PathVariable Long id) throws Exception {
 
                 adminService.getAdmin(id)
                 .map(admin -> {
@@ -79,7 +79,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteAdmin(@PathVariable Long id) {
+    void deleteAdmin(@PathVariable Long id) throws Exception {
         adminService.deleteAdminById(id);
     }
 }

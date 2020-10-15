@@ -45,7 +45,7 @@ public class CustomerControllerTest {
     public Customer austin = new Customer();
 
     @BeforeEach
-    void setUp(){
+    void setUp() throws Exception {
         austin.setFirstName("Austin");
         austin.setLastName("Mctakish");
         austin.setBillingAddress("20 lala Land");

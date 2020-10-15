@@ -22,7 +22,7 @@ public class ServiceObjectController {
     private ServiceObjectService serviceObjectService;
 
     @PostMapping("")
-    public ResponseEntity<?> createNewServiceObject(@RequestBody ServiceObject serviceObject, BindingResult result){
+    public ResponseEntity<?> createNewServiceObject(@RequestBody ServiceObject serviceObject, BindingResult result) throws Exception {
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
@@ -42,7 +42,7 @@ public class ServiceObjectController {
     }
 
     @GetMapping("/getAll/{comId}")
-    public List<ServiceObject> getServiceObjects(@PathVariable Long comId) {
+    public List<ServiceObject> getServiceObjects(@PathVariable Long comId) throws Exception {
 
         return serviceObjectService.getServiceObjectsByCompanyId(comId);
     }
@@ -64,10 +64,19 @@ public class ServiceObjectController {
         serviceObjectService.getServiceObject(id)
                 .map(serviceObject -> {
                     serviceObject.setDescription(newServiceObject.getDescription());
-                    return new ResponseEntity<ServiceObject> (serviceObjectService.saveOrUpdateServiceObject(serviceObject),HttpStatus.ACCEPTED);
+                    try {
+                        return new ResponseEntity<ServiceObject> (serviceObjectService.saveOrUpdateServiceObject(serviceObject),HttpStatus.ACCEPTED);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return null;
                 })
                 .orElseGet(() -> {
-                    ServiceObject serviceObject1 = serviceObjectService.saveOrUpdateServiceObject(newServiceObject);
+                    try {
+                        ServiceObject serviceObject1 = serviceObjectService.saveOrUpdateServiceObject(newServiceObject);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     return new ResponseEntity<ServiceObject>(newServiceObject, HttpStatus.CREATED);
                 });
 
@@ -75,7 +84,7 @@ public class ServiceObjectController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteServiceObject(@PathVariable Long id) {
+    void deleteServiceObject(@PathVariable Long id) throws Exception {
         serviceObjectService.deleteServiceObjectById(id);
     }
 
