@@ -29,17 +29,29 @@ Then result as lists of workers in the current database
 * AWS S3: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/
 This is used for deploying frontend
 
+## Milestone 3
+* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5
+* ClickUp Workspace Sprint1 : https://share.clickup.com/b/h/6-5580224-2/fae3d3e616d4aea
+* AWS RDS Endpoint : 
+* AWS ECS backend : 
+to use this, is the beanstalk url then follow by "/api/{usertype}/" follow by query syntax.
+For example: 
+* AWS ECS front end : 
+* Application : 
+
 ## Code documentation
 
 [Quick Start](/docs/README.md) in `docs` folder
 
-To Start back end
-open intelliJ in folder Backend
-run majorprojectApplication
+* Back End
+AWS RDS for database
+AWS ECR for backend docker image
+AWS ECS for backend task
 
-To Start front end
-ensure to be in foler frontend
-npm start
+
+* Front end
+AWS ECR for front end docker image
+AWS ECS and Application Load balancer for front end task
 
 ## HOW TO SET UP
 
@@ -58,5 +70,8 @@ npm start
 React should open and run, this is good.
 
 After you have done this, copy our source code into the react folder. And you should be good to go.
+
+To set up the backend, install intelliJ.
+Create new SpringBoot project. And you are good to go.
 
 
