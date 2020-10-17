@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.ServiceObject;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/serviceObject")
 public class ServiceObjectController {
@@ -23,7 +22,7 @@ public class ServiceObjectController {
     private ServiceObjectService serviceObjectService;
 
     @PostMapping("")
-    public ResponseEntity<?> createNewServiceObject(@RequestBody ServiceObject serviceObject, BindingResult result){
+    public ResponseEntity<?> createNewServiceObject(@RequestBody ServiceObject serviceObject, BindingResult result) throws Exception {
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
@@ -40,6 +39,12 @@ public class ServiceObjectController {
     public List<ServiceObject> getServiceObjects() {
 
         return serviceObjectService.getServiceObjects();
+    }
+
+    @GetMapping("/getAll/{comId}")
+    public List<ServiceObject> getServiceObjects(@PathVariable Long comId) throws Exception {
+
+        return serviceObjectService.getServiceObjectsByCompanyId(comId);
     }
 
     @GetMapping("/{id}/duration")
@@ -59,10 +64,19 @@ public class ServiceObjectController {
         serviceObjectService.getServiceObject(id)
                 .map(serviceObject -> {
                     serviceObject.setDescription(newServiceObject.getDescription());
-                    return new ResponseEntity<ServiceObject> (serviceObjectService.saveOrUpdateServiceObject(serviceObject),HttpStatus.ACCEPTED);
+                    try {
+                        return new ResponseEntity<ServiceObject> (serviceObjectService.saveOrUpdateServiceObject(serviceObject),HttpStatus.ACCEPTED);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return null;
                 })
                 .orElseGet(() -> {
-                    ServiceObject serviceObject1 = serviceObjectService.saveOrUpdateServiceObject(newServiceObject);
+                    try {
+                        ServiceObject serviceObject1 = serviceObjectService.saveOrUpdateServiceObject(newServiceObject);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     return new ResponseEntity<ServiceObject>(newServiceObject, HttpStatus.CREATED);
                 });
 
@@ -70,7 +84,7 @@ public class ServiceObjectController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteServiceObject(@PathVariable Long id) {
+    void deleteServiceObject(@PathVariable Long id) throws Exception {
         serviceObjectService.deleteServiceObjectById(id);
     }
 

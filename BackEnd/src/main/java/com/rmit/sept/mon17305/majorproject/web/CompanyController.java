@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Company;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/company")
 public class CompanyController {
@@ -35,19 +34,19 @@ public class CompanyController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping("/All")
     public List<Company> getCompanies() {
 
         return companyService.getCompanies();
     }
 
     @GetMapping("/{id}")
-    public Optional<Company> getCompany(@PathVariable Long id) {
+    public Optional<Company> getCompany(@PathVariable Long id) throws Exception {
         return companyService.getCompany(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceCompany(@RequestBody Company newCompany, @PathVariable Long id) {
+    public ResponseEntity<?> replaceCompany(@RequestBody Company newCompany, @PathVariable Long id) throws Exception {
 
         companyService.getCompany(id)
                 .map(company -> {
@@ -63,7 +62,7 @@ public class CompanyController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteCustomer(@PathVariable Long id) {
+    void deleteCustomer(@PathVariable Long id) throws Exception {
         companyService.deleteCompanyById(id);
     }
 

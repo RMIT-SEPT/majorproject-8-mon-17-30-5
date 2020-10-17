@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.Entity;
@@ -34,6 +33,7 @@ public class Customer{
     private String billingAddress;
     private String shippingAddress;
     private String password;
+    private String phone;
 
     public Customer() {onCreate();}
 
@@ -123,6 +123,14 @@ public class Customer{
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String toStringJSON(){
 
         String createAt = formatDate(this.created_At.toString());
@@ -133,12 +141,12 @@ public class Customer{
         str.append(",\"lastName\":"+"\""+this.lastName+"\"");
         str.append(",\"created_At\":"+"\""+createAt+"\"");
         str.append(",\"updated_At\":"+this.updated_At);
- 
         str.append(",\"billingAddress\":"+"\""+this.billingAddress+"\"");
         str.append(",\"shippingAddress\":"+"\""+this.shippingAddress+"\"");
         str.append(",\"password\":"+"\""+this.password+"\"");
-
+        str.append(",\"phone\":"+"\"" + this.phone+"\"");
         str.append(",\"type\":"+"\""+getType()+"\"");
+
         str.append(",\"userId\":" + this.id+"}");
         return str.toString();
     }

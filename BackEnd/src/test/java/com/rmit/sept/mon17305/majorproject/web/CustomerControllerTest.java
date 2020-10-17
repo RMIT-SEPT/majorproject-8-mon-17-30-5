@@ -45,7 +45,7 @@ public class CustomerControllerTest {
     public Customer austin = new Customer();
 
     @BeforeEach
-    void setUp(){
+    void setUp() throws Exception {
         austin.setFirstName("Austin");
         austin.setLastName("Mctakish");
         austin.setBillingAddress("20 lala Land");
@@ -164,6 +164,7 @@ public class CustomerControllerTest {
                 .content(austin.toStringJSON())
                 .contentType(MediaType.APPLICATION_JSON);
 
+        //MvcResult result = mockMvc.perform(request).andReturn();
         //400 bad request
         Exception e = assertThrows(Exception.class,()->{
             MvcResult result = mockMvc.perform(request).andReturn();

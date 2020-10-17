@@ -1,10 +1,11 @@
-
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException;
 import com.rmit.sept.mon17305.majorproject.model.Booking;
 import com.rmit.sept.mon17305.majorproject.model.Booking;
+import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/booking")
 public class BookingController {
@@ -23,7 +24,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @PostMapping("/create/")
-    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result){
+    public ResponseEntity<?> createNewBooking(@RequestBody Booking booking, BindingResult result) throws Exception {
 
         if (result.hasErrors()){
             for(FieldError error: result.getFieldErrors()) {
@@ -48,6 +49,18 @@ public class BookingController {
         return bookingService.getBookingsByCustomerId(id);
     }
 
+    @GetMapping("/customer/{id}/dateASC")
+    public List<Booking> getBookingsByCustomerIdOrderDateASC(@PathVariable Long id) throws Exception {
+
+        return bookingService.getBookingByCustomerIdOrderByDateASC(id);
+    }
+
+    @GetMapping("/customer/{id}/dateDESC")
+    public List<Booking> getBookingsByCustomerIdOrderDateDESC(@PathVariable Long id) throws Exception {
+
+        return bookingService.getBookingByCustomerIdOrderByDateDESC(id);
+    }
+
     @GetMapping("/{id}")
     public Optional<Booking> getBooking(@PathVariable Long id) {
         return bookingService.getBooking(id);
@@ -59,6 +72,21 @@ public class BookingController {
         return bookingService.getBookingsByDate(date);
     }
 
+    @GetMapping("/allBooking/{comId}")
+    public List<Booking> getBookingsForAdmin(@PathVariable Long comId) throws Exception {
+        return bookingService.getBookingByCompanyId(comId);
+    }
+
+    @GetMapping("/allBooking/{comId}/ASC")
+    public List<Booking> getBookingsForAdminASC(@PathVariable Long comId) throws Exception {
+        return bookingService.getBookingByCompIdOrderByDateASC(comId);
+    }
+
+    @GetMapping("/allBooking/{comId}/DESC")
+    public List<Booking> getBookingsForAdminDESC(@PathVariable Long comId) throws Exception {
+        return bookingService.getBookingByCompIdOrderByDateDESC(comId);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> replaceBooking(@RequestBody Booking newBooking, @PathVariable Long id) {
 
@@ -67,10 +95,19 @@ public class BookingController {
                     booking.setCustomerId(newBooking.getCustomerId());
                     booking.setServiceId(newBooking.getServiceId());
                     booking.setWorkerId(newBooking.getWorkerId());
-                    return new ResponseEntity<Booking> (bookingService.saveOrUpdateBooking(booking),HttpStatus.ACCEPTED);
+                    try {
+                        return new ResponseEntity<Booking> (bookingService.saveOrUpdateBooking(booking),HttpStatus.ACCEPTED);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return null;
                 })
                 .orElseGet(() -> {
-                    Booking booking1 = bookingService.saveOrUpdateBooking(newBooking);
+                    try {
+                        Booking booking1 = bookingService.saveOrUpdateBooking(newBooking);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     return new ResponseEntity<Booking>(newBooking, HttpStatus.CREATED);
                 });
 

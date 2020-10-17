@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.model;
 
 import org.aspectj.weaver.ast.Not;
@@ -10,13 +9,19 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-
+//API Post with validation, Get all and getbyid added to Admin, needs to cover the rest which i will do tomorrow.
 import javax.validation.constraints.NotBlank;
+// Not Blank import added to Admin
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+// POSTMAN can now post to every object and it comes up in the database. All files for API now created.
+//API Post with validation, Get all and getbyid added to Admin, needs to cover the rest which i will do tomorrow.
+//Not Blank import added to Admin
+//POSTMAN can now post to every object and it comes up in the database. All files for API now created.
 @Entity
 public class Admin{
 
@@ -39,6 +44,7 @@ public class Admin{
     @NotNull(message = "Admins company Id is required")
     private Long companyId;
     private String password;
+    private String phone;
 
     public Admin(){onCreate();}
 
@@ -123,6 +129,14 @@ public class Admin{
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String toString(){
 
         String createAt = formatDate(this.created_At.toString());
@@ -135,6 +149,7 @@ public class Admin{
         str.append(",\"updated_At\":"+this.updated_At);
         str.append(",\"companyId\":"+this.companyId);
         str.append(",\"password\":"+"\""+this.password+"\"");
+        str.append(",\"phone\":"+"\"" + this.phone+"\"");
         str.append(",\"type\":"+"\""+getType()+"\"");
         str.append(",\"userId\":" + this.id+"}");
         return str.toString();

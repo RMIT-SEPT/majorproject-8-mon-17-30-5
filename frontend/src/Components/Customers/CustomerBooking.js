@@ -2,7 +2,8 @@ import React, { Component} from 'react';
 import axios from 'axios';
 import DisplayABooking from '../Layout/DisplayABooking';
 import Table from 'react-bootstrap/Table';
-import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
+import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
+import {API_URL} from '../../BackendLink';
 
 export default class CustomerBooking extends Component {
     constructor(){
@@ -11,13 +12,19 @@ export default class CustomerBooking extends Component {
             bookingExist: true,
             res: []
         }
-        
+        this.sortClosest.bind(this);
+        this.sortFurtherest.bind(this);
+        this.sortByBookingId.bind(this);
     }
 
     componentDidMount(){
-        axios.get("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/booking/customer/"+sessionStorage.getItem("id"))
+       this.sortByBookingId();
+    }
+
+    sortByBookingId(){
+        axios.get(API_URL+"/booking/customer/"+sessionStorage.getItem("id"))
         .then((response)=>{
-            this.setState({"bookingExist": true});
+            console.log("found booking");
             console.log(response.data);
             this.setState({"res": response.data});
             console.log(this.state.res);
@@ -28,14 +35,47 @@ export default class CustomerBooking extends Component {
         .finally();
     }
 
+    sortFurtherest(){
+        axios.get(API_URL+"/booking/customer/"+sessionStorage.getItem("id")+"/dateASC")
+        .then((response)=>{
+            console.log("found booking");
+            console.log(response.data);
+            this.setState({"res": response.data});
+            console.log(this.state.res);
+        })
+        .catch()
+        .finally();
+    }
+
+    sortClosest(){
+        axios.get(API_URL+"/booking/customer/"+sessionStorage.getItem("id")+"/dateDESC")
+        .then((response)=>{
+            console.log("found booking");
+            console.log(response.data);
+            this.setState({"res": response.data});
+            console.log(this.state.res);
+        })
+        .catch()
+        .finally();
+    }
+
     render() {
         const list = this.state.res.map((s)=> <DisplayABooking key={s.id} booking={s}/>);
         return (
             <div>
             <NavigationBarCustomerPage/>
             <br></br>
-            <form className = "custDash">
+            <article className = "custDash">
             <h1>Booking History</h1>
+            <br></br>
+            <br></br>
+            <button onClick={this.sortByBookingId.bind(this)} className = "btn btn-warning" type="button">Sort By Booking ID</button>
+            {"  "}
+            <button onClick={this.sortFurtherest.bind(this)} className = "btn btn-warning" type="button">Sort By Oldest Date</button>
+            {"  "}
+            <button onClick={this.sortClosest.bind(this)} className = "btn btn-warning" type="button">Sort By Newest Date</button>
+            <br></br>
+            <br></br>
             <Table striped bordered hover>
             <thead>
             <tr>
@@ -45,13 +85,16 @@ export default class CustomerBooking extends Component {
                     <th>Worker Name</th>
                     <th>Start Time</th>
                     <th>Finish Time</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Manage</th>
             </tr>
             </thead>
             <tbody>
             {list}
             </tbody>
             </Table>
-            </form>            
+            </article>            
             </div>
         )
     }

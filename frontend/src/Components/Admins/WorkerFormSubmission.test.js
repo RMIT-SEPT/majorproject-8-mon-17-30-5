@@ -14,5 +14,5 @@ it("render admin adding worker form correctly", () =>{
     renderer.render(<WorkerForm/>);
     const result = renderer.getRenderOutput();
     expect(result.type).toBe('div');
-    expect(result.props.children).toHaveLength(2);
+    expect(result.props.children).toHaveLength(5);
 });

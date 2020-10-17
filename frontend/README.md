@@ -1,81 +1,68 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# RMIT SEPT 2020 Major Project
+## Available Scripts
 
-# Group 05
+In the project directory, you can run:
 
-## Members
-* Baker, Allan (s3718362)
-* Ropkhop, Chiraporn (s3781279) - scrum master
-* Do, Ngoc (s3698200)
-* Abeysinghe, Kavin (s3756717)
+### `npm start`
 
-## Records
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/
-* ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
-* ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Milestone 2
-* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/tree/master
+### `npm test`
 
-This is the gitHub link for milestone2 submission
-* ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
-* ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-* All documentations is in OneDrive link: https://rmiteduau-my.sharepoint.com/:f:/g/personal/s3781279_student_rmit_edu_au/Ete0uNXkXq1Pl-Np2nC1214B8Av1Hq0msrDNRKcS1_YZRw?e=xnkNFM
+### `npm run build`
 
-Please access with RMIT account
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-* AWS S3: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-This is used for deploying frontend
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Note: click on this link of S3 will be able to see the deployed project, and this is linked to deployed backend
+### `npm run eject`
 
-* AWS RDS Endpoint: majorproject.cricml58bpuc.us-east-1.rds.amazonaws.com
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-This is using postgresql for the project tables
-* AWS Elastic Beanstalk: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-This is used for deploying backend
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-To use this, is the beanstalk url then follow by "/api/{usertype}/" follow by query syntax.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-For example: 
+## Learn More
 
-To look for all workers: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/worker/
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To look for all customers: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/customer/
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-To look for all admin: http://majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/admin/
+### Code Splitting
 
-Then result as lists of workers in the current database
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
+### Analyzing the Bundle Size
 
-## Code documentation
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-[Quick Start](/docs/README.md) in `docs` folder
+### Making a Progressive Web App
 
-To Start 
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-Clicl on this link: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/ to view our application
+### Advanced Configuration
 
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-## HOW TO SET UP
+### Deployment
 
-To set up the frontend, copy all the files in the frontend into another folder and delete frontend for the time being, 
-there needs to be no frontend folder in order to create the react application using vs-code.
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-Make sure you've downloaded nodejs and set up react according to tutorial, once you have done that go to the root folder in the code and run.
+### `npm run build` fails to minify
 
-npx create-react-app frontend
-
-this will create the frontend folder and app with nothing in it, once this has run, check it runs by running
-
-cd frontend
-npm start
-
-React should open and run, this is good.
-
-After you have done this, copy our source code into the react folder. And you should be good to go.
-
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

@@ -1,13 +1,15 @@
-
 package com.rmit.sept.mon17305.majorproject.web;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.rmit.sept.mon17305.majorproject.CustomedException.TimeFormatException;
-import com.rmit.sept.mon17305.majorproject.model.Admin;
+import com.rmit.sept.mon17305.majorproject.model.*;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
 import com.rmit.sept.mon17305.majorproject.model.Worker;
-import com.rmit.sept.mon17305.majorproject.model.Worker;
+import com.rmit.sept.mon17305.majorproject.repository.ServiceObjectRepository;
+import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.CustomerService;
+import com.rmit.sept.mon17305.majorproject.service.ServiceObjectService;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,16 +19,24 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.awt.print.Book;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/worker")
 public class WorkerController {
 
     @Autowired
     private WorkerService workerService;
+    @Autowired
+    private BookingService bookingService;
+    @Autowired
+    private ServiceObjectService serviceObjectService;
+    @Autowired
+    private CustomerService customerService;
 
     @PostMapping("/create")
     public ResponseEntity<?> createNewWorker(@RequestBody Worker worker, BindingResult result){
@@ -58,6 +68,11 @@ public class WorkerController {
 
         return workerService.getWorkers();
     }
+    @GetMapping("/companyId/{comId}")
+    public List<Worker> getWorkersByCompanyID(@PathVariable Long comId) throws Exception {
+
+        return workerService.getWorkersByCompanyId(comId);
+    }
 
     @GetMapping("/username/{username}")
     public Worker getWorkerByUsername(@PathVariable String username) {
@@ -74,21 +89,27 @@ public class WorkerController {
         return new ResponseEntity<Worker>(worker, HttpStatus.OK);
     }
 
+    @GetMapping("/worker-company/{id}")
+    public Long getCompanyOfWorker(@PathVariable Long id) throws Exception {
+        Worker w = workerService.getWorkerByIdEquals(id);
+        return w.getCompanyId();
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> getWorker(@PathVariable Long id) {
+    public ResponseEntity<?> getWorker(@PathVariable Long id) throws Exception {
         Optional<Worker> worker = workerService.getWorker(id);
         if(worker==null){
             return new ResponseEntity<String>("invalid id", HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.FOUND);
+        return new ResponseEntity<Optional<Worker>>(worker, HttpStatus.OK);
     }
 
 
     @GetMapping("/{id}/{serviceId}/{date}/{description}/{duration}/")
     public ResponseEntity<?> getWorkerAvailability(@PathVariable Long id,
                                          @PathVariable Long serviceId, @PathVariable String date,
-                                         @PathVariable String description, @PathVariable int duration) {
+                                         @PathVariable String description, @PathVariable int duration) throws Exception {
 
         if((id<1||id ==null)||(serviceId<1||serviceId==null)||(date.equals("null"))||
                 (description.equals("null"))||(duration<1||duration>5)){
@@ -110,31 +131,91 @@ public class WorkerController {
                 map.put("duration", duration);
                 map.put("startTime", timeFree[i]);
                 map.put("finishTime", timeFree[i] + hrCount);
+                String isFree = getIsFree(date, id, timeFree[i], duration);
+                map.put("isFree", isFree);
                 ret[i] = map;
             }
             return new ResponseEntity<HashMap[]>(ret, HttpStatus.OK);
         }
     }
 
+    private String getIsFree(String date, Long id, int time,int duration) throws Exception {
+        String ret = "true";
+        int timeCount = time;
+        for(int i = 1; i <= duration && ret=="true"; i++){
+            List<Booking> found = bookingService.getBookingByDateAndWorkerIdAndTime(date, id, timeCount);
+            if(found==null || found.size()==0){
+                ret = "true";
+            }else{
+                ret = "false";
+            }
+            timeCount = timeCount+100;
+        }
+
+        if(ret.equals("true")){
+            List<Booking> allToday = bookingService.getBookingByDateAndWorkerId(date, id);
+            for(Booking b: allToday){
+                if(time>= b.getStartTime() && time<b.getFinishTime()){
+                    ret = "false";
+                }
+            }
+        }
+        return ret;
+    }
+
+    @GetMapping("/workerId/{id}/date/{date}")
+    public ResponseEntity<?> getWorkerAvailabilityAtDate(@PathVariable Long id, @PathVariable String date) throws Exception {
+        List<Booking> booked = bookingService.getBookingByWorkerIdAndDate(id,date);
+        Worker worker = workerService.getWorkerByIdEquals(id);
+        String start = worker.getStartTime();
+        String finish = worker.getFinishTime();
+        String lunch = worker.getLunchBrTime();
+        HashMap<String, Object> map = new HashMap<>();
+        if(start.equals("08:00")){
+            map.put("800", checkPerHr(800,booked));
+        }
+        map.put("900", checkPerHr(900,booked));
+        map.put("1000", checkPerHr(1000,booked));
+        if(lunch.equals("12:00")){
+            map.put("1100", checkPerHr(1100,booked));
+        }
+        else if(lunch.equals("11:00")){
+            map.put("1200", checkPerHr(1200,booked));
+        }
+        map.put("1300", checkPerHr(1300,booked));
+        map.put("1400", checkPerHr(1400,booked));
+        map.put("1500", checkPerHr(1500,booked));
+        if(finish.equals("17:00")){
+            map.put("1600", checkPerHr(1600,booked));
+        }
+        return new ResponseEntity<HashMap<String, Object> >(map, HttpStatus.OK);
+    }
+
+
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) {
-
-        workerService.getWorker(id)
-                .map(worker -> {
-                    worker.setFirstName(newWorker.getFirstName());
-                    worker.setLastName(newWorker.getFirstName());
-                    return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
-                })
-                .orElseGet(() -> {
-                    Worker worker1 = workerService.saveOrUpdateWorker(newWorker);
-                    return new ResponseEntity<Worker>(newWorker, HttpStatus.CREATED);
-                });
-
-        return new ResponseEntity<String>("Couldn't find Worker", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> replaceWorker(@RequestBody Worker newWorker, @PathVariable Long id) throws Exception {
+        //System.out.println(newWorker.toString());
+        Worker worker = workerService.getWorkerByIdEquals(id);
+        if(worker !=null){
+            worker.setFirstName(newWorker.getFirstName());
+            worker.setLastName(newWorker.getLastName());
+            worker.setUsername(newWorker.getUsername());
+            worker.setUpdated_At(new Date());
+            worker.setStartTime(newWorker.getStartTime());
+            worker.setFinishTime(newWorker.getFinishTime());
+            worker.setLunchBrTime(newWorker.getLunchBrTime());
+            worker.setPassword(newWorker.getPassword());
+            worker.setPhone(newWorker.getPhone());
+            return new ResponseEntity<Worker> (workerService.saveOrUpdateWorker(worker),HttpStatus.ACCEPTED);
+        }
+        else{
+            return new ResponseEntity<String> ("invalid",HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{id}")
-    void deleteWorker(@PathVariable Long id) {
+    void deleteWorker(@PathVariable Long id) throws Exception {
         workerService.deleteWorkerById(id);
     }
 
@@ -180,5 +261,27 @@ public class WorkerController {
             }
         }
         return array;
+    }
+
+    private String checkPerHr(int time, List<Booking> booked) throws Exception {
+        String ret = "free";
+        if (booked != null) {
+            for (Booking booking : booked) {
+                if (time >= booking.getStartTime() && time < booking.getFinishTime() && ret == "free") {
+                    String custName = customerService.getCustomerByIdEquals(booking.getCustomerId()).getUsername();
+                    String desc = serviceObjectService.getServiceDescriptionById(booking.getServiceId());
+                    StringBuilder str = new StringBuilder();
+                    str.append("ID: ");
+                    str.append(booking.getId());
+                    str.append(", ");
+                    str.append(custName);
+                    str.append(" booked to ");
+                    str.append(desc);
+                    str.append(System.getProperty("line.separator"));
+                    ret = str.toString();
+                }
+            }
+        }
+        return ret;
     }
 }

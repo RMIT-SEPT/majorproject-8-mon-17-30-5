@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.CustomedException.CustomerException;
@@ -13,9 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {
@@ -79,29 +79,33 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Customer> getCustomer(@PathVariable Long id) {
+    public Optional<Customer> getCustomer(@PathVariable Long id) throws Exception {
         return customerService.getCustomer(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) {
-
-        customerService.getCustomer(id)
-                .map(customer -> {
-                    customer.setFirstName(newCustomer.getFirstName());
-                    customer.setLastName(newCustomer.getFirstName());
-                    return new ResponseEntity<Customer> (customerService.saveOrUpdateCustomer(customer),HttpStatus.ACCEPTED);
-                })
-                .orElseGet(() -> {
-                    Customer customer1 = customerService.saveOrUpdateCustomer(newCustomer);
-                    return new ResponseEntity<Customer>(newCustomer, HttpStatus.CREATED);
-                });
-
-        return new ResponseEntity<String>("Couldn't find Customer", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<?> replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) throws Exception {
+        System.out.println(newCustomer.toString());
+        Customer customer = customerService.getCustomerByIdEquals(id);
+        if(customer != null){
+            customer.setFirstName(newCustomer.getFirstName());
+            customer.setLastName(newCustomer.getLastName());
+            customer.setUsername(newCustomer.getUsername());
+            customer.setPassword(newCustomer.getPassword());
+            customer.setUpdated_At(new Date());
+            customer.setShippingAddress(newCustomer.getShippingAddress());
+            customer.setBillingAddress(newCustomer.getBillingAddress());
+            customer.setPhone(newCustomer.getPhone());
+            return new ResponseEntity<Customer>(customerService.saveOrUpdateCustomer(customer)
+            ,HttpStatus.ACCEPTED);
+        }
+        else{
+            return new ResponseEntity<String>("invalid", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{id}")
-    void deleteCustomer(@PathVariable Long id) {
+    void deleteCustomer(@PathVariable Long id) throws Exception {
         customerService.deleteCustomerById(id);
     }
 

@@ -37,6 +37,20 @@ public class AdminControllerTest {
     public AdminService adminService;
 
     public Admin cathy = new Admin();
+//    public String todayDate =  "";
+//
+//    @BeforeAll
+//    void setTodayDateFormat(){
+//        Date today = new Date();
+//        String year = today.toString().substring(25);
+//        String mon = today.toString().substring(4,7);
+//        String date = today.toString().substring(8,10);
+//        int offsetDate = Integer.parseInt(date)-1;
+//        System.out.println(year+"+"+mon+"+"+date);
+//        todayDate = year+"-"+getMonth(mon)+"-"+offsetDate;
+//    }
+
+
 
     @BeforeEach
     void setUp(){
@@ -143,4 +157,35 @@ public class AdminControllerTest {
         assertEquals(400, result.getResponse().getStatus());
     }
 
+
+//    public String getMonth(String str){
+//        String ret = "";
+//        if(str == "Jan"){
+//            ret =  "01";
+//        }else if(str == "Feb"){
+//            ret =  "02";
+//        }else if(str == "Mar"){
+//            ret =  "03";
+//        }else if(str == "Apr"){
+//            ret =  "04";
+//        }else if(str == "May"){
+//            ret = "05";
+//        }else if(str == "Jun"){
+//            ret = "06";
+//        }else if(str == "Jul"){
+//            ret = "07";
+//        }else if(str == "Aug"){
+//            ret = "08";
+//        }else if(str.equals("Sep")){
+//            ret =  "09";
+//        }else if(str == "Oct"){
+//            ret = "10";
+//        }else if(str == "Nov"){
+//            ret = "11";
+//        }else if(str == "Dec"){
+//            ret = "12";
+//        }
+//
+//        return ret;
+//    }
 }

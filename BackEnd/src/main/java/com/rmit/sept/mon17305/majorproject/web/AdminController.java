@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Admin;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://majorproject-sept.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -43,7 +42,7 @@ public class AdminController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getAdmin(@PathVariable Long id) {
+    public ResponseEntity<?> getAdmin(@PathVariable Long id) throws Exception {
         Optional<Admin> admin = adminService.getAdmin(id);
         if(admin.isPresent()){
             return new ResponseEntity<Optional<Admin>>(admin, HttpStatus.FOUND);
@@ -63,7 +62,7 @@ public class AdminController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceAdmin(@RequestBody Admin newAdmin, @PathVariable Long id) {
+    public ResponseEntity<?> replaceAdmin(@RequestBody Admin newAdmin, @PathVariable Long id) throws Exception {
 
                 adminService.getAdmin(id)
                 .map(admin -> {
@@ -80,7 +79,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteAdmin(@PathVariable Long id) {
+    void deleteAdmin(@PathVariable Long id) throws Exception {
         adminService.deleteAdminById(id);
     }
 }

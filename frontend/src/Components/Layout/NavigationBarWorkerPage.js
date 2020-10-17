@@ -4,13 +4,14 @@ import {Link as LinkRouter} from "react-router-dom";
 
 function NavigationBarWorkerPage(){
     function handleLogout(){
-        sessionStorage.removeItem("id");
-        sessionStorage.removeItem("username");
-        sessionStorage.removeItem("firstname");
-        sessionStorage.removeItem("lastname");
-        sessionStorage.removeItem("password");
-        sessionStorage.removeItem("companyId");
-        sessionStorage.removeItem("serviceId");
+        sessionStorage.removeItem("worker-id");
+        sessionStorage.removeItem("worker-username");
+        sessionStorage.removeItem("worker-firstname");
+        sessionStorage.removeItem("worker-lastname");
+        sessionStorage.removeItem("worker-password");
+        sessionStorage.removeItem("worker-companyId");
+        sessionStorage.removeItem("worker-serviceId");
+        sessionStorage.removeItem("worker-phone");
     }
 
     return(

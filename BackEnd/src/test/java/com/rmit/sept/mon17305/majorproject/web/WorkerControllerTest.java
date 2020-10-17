@@ -1,6 +1,9 @@
 package com.rmit.sept.mon17305.majorproject.web;
 
 import com.rmit.sept.mon17305.majorproject.model.Worker;
+import com.rmit.sept.mon17305.majorproject.service.BookingService;
+import com.rmit.sept.mon17305.majorproject.service.CustomerService;
+import com.rmit.sept.mon17305.majorproject.service.ServiceObjectService;
 import com.rmit.sept.mon17305.majorproject.service.WorkerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,6 +39,12 @@ public class WorkerControllerTest {
 
     @MockBean
     public WorkerService workerService;
+    @MockBean
+    public BookingService bookingService;
+    @MockBean
+    private ServiceObjectService serviceObjectService;
+    @MockBean
+    private CustomerService customerService;
 
     public Worker annie = new Worker();
 
@@ -50,6 +59,7 @@ public class WorkerControllerTest {
         annie.setStartTime("08:00");
         annie.setFinishTime("16:00");
         annie.setLunchBrTime("11:00");
+        annie.setPhone("0456888888");
     }
 
     @Test
@@ -61,8 +71,8 @@ public class WorkerControllerTest {
                 .content("{\"id\":,\"username\":,\"firstName\":,\"lastName\":,\"created_At\":,\"updated_At\":,\"companyId\":,\"serviceId\":,\"startTime\":,\"finishTime\":,\"password\":,\"lunchBrTime\":,\"type\":,\"userId\":}");
 
         MvcResult result = mockMvc.perform(request).andReturn();
-        //found = 302
-        assertEquals(302, result.getResponse().getStatus());
+        //ok
+        assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
@@ -226,6 +236,4 @@ public class WorkerControllerTest {
         //400 is status bad request
         assertEquals(400, result.getResponse().getStatus());
     }
-
-
 }

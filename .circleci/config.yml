@@ -1,42 +1,77 @@
 version: 2
+orbs:
+  aws-ecr: circleci/aws-ecr@6.12.2
+  aws-ecs: circleci/aws-ecs@1.3.0
+ 
 jobs:
   backend:
-    
     working_directory: ~/majorproject-8-mon-17-30-5/BackEnd
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: circleci/openjdk:8-jdk
+    environment:
+      ECR_REPOSITORY_NAME: majorproject-sept-milestone3
+      FULL_IMAGE_NAME: 615405359360.dkr.ecr.us-east-1.amazonaws.com/majorproject-sept-milestone3:backend
 
     steps:
-
       - checkout:
           path: ~/majorproject-8-mon-17-30-5
+      - setup_remote_docker
+      - run:
+          name: Setup common environment variables
+          command: |
+            echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+            echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/majorproject-sept-milestone3:backend"' >> $BASH_ENV
       - restore_cache:
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
-      
+    
       - run: mvn dependency:go-offline
-      
+    
       - save_cache:
           paths:
             - ~/.m2
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
-      
+    
       - run: mvn package
-      
+    
       - store_test_results:
           path: target/surefire-reports
-      
+    
       - store_artifacts:
           path: target/majorproject-0.0.1-SNAPSHOT.jar
-  
-  frontend:
 
+      - run:
+          name: Install dependencies for AWS
+          command: |
+            sudo apt-get update
+            sudo apt-get -y -qq install awscli
+            sudo apt-get install python3-pip
+            sudo pip3 install --upgrade awscli
+      - run:
+          name: Build image
+          command: |
+            docker build -t $FULL_IMAGE_NAME .
+      - run:
+          name: Push image
+          command: |
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 615405359360.dkr.ecr.us-east-1.amazonaws.com
+            docker push $FULL_IMAGE_NAME
+  frontend:
     working_directory: ~/majorproject-8-mon-17-30-5/frontend
     docker:
-      - image: cimg/node:14.8.0
-
+      - image: circleci/node:12
+    environment:
+      ECR_REPOSITORY_NAME: majorproject-sept-milestone3
+      FULL_IMAGE_NAME: 615405359360.dkr.ecr.us-east-1.amazonaws.com/majorproject-sept-milestone3:frontend
+  
     steps:
       - checkout:
           path: ~/majorproject-8-mon-17-30-5
+      - setup_remote_docker
+      - run:
+          name: Setup common environment variables
+          command: |
+            echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+            echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/majorproject-sept-milestone3:frontend"' >> $BASH_ENV
       - restore_cache:
           keys:
             - v1-dependencies- {{ checksum "package.json"}}
@@ -47,13 +82,32 @@ jobs:
             - node_modules
             - ~/.npm
             - ~/.cache
-
+  
           key: v1-dependencies- {{checksum "package.json"}}
       - run: npm test
+      - run:
+          name: Install dependencies for AWS
+          command: |
+            sudo apt-get update
+            sudo apt-get -y -qq install awscli
+            sudo apt-get install python3-pip
+            sudo pip3 install --upgrade awscli
+      - run:
+          name: Build image
+          command: |
+            docker build -t $FULL_IMAGE_NAME .
+      - run:
+          name: Push image
+          command: |
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 615405359360.dkr.ecr.us-east-1.amazonaws.com
+            docker push $FULL_IMAGE_NAME
 
+
+  
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - backend
       - frontend
+      - backend
+      

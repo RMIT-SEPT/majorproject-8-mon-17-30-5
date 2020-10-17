@@ -10,8 +10,8 @@ function ContactUs(){
         <br></br>
         <form className = "contactUs">
             <h1>Contact Us</h1>
-            <h4>Our Contact Details are as mentioned below.</h4>
-            <label>Scrum Master - Cathy Ropkhop - s3781279@student.rmit.edu.au</label>
+            <h4>Our Contact Details are as mentioned below:</h4>
+            <label>Chiraporn Ropkhop - s3781279@student.rmit.edu.au (Scrum Master)</label>
             <br></br>
             <label>Ngoc Do - s3698200@student.rmit.edu.au</label>
             <br></br>

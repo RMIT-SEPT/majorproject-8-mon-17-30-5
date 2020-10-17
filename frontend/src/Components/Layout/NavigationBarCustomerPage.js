@@ -10,6 +10,7 @@ function NavigationBarCustomerPage(){
         sessionStorage.removeItem("lastname");
         sessionStorage.removeItem("billingAddress");
         sessionStorage.removeItem("shippingAddress");
+        sessionStorage.removeItem("phone")
     }
 
     return(
@@ -18,7 +19,7 @@ function NavigationBarCustomerPage(){
                 <LinkRouter to="/customerDashBoard">
                 <li>Search for a service</li>
                 </LinkRouter>
-                <LinkRouter to="custDetails">
+                <LinkRouter to="/custDetails">
                 <li>My Account</li>
                 </LinkRouter>
                 <LinkRouter to="/booking-page">

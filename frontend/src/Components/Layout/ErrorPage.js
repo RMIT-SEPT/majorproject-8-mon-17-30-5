@@ -2,11 +2,12 @@ import React from 'react';
 
 
 function ErrorPage(){
-
-return (
- <article>Error Page Not Found
- </article>
-)
+    return (
+    <article> <form className="custDetails">
+                <p>Error Page Not Found</p>
+                </form>
+    </article>
+    )
 }
 
 export default ErrorPage;

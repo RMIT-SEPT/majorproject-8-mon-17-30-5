@@ -3,7 +3,7 @@ import NavigationBar from '../Layout/NavigationBar';
 import {Link as LinkRouter} from "react-router-dom";
 import axios from "axios";
 import '../../App.css';
-
+import {API_URL} from '../../BackendLink';
 
 function RegisterForm(props){
     const[userDetails, setUserDetails] = useState({
@@ -12,7 +12,8 @@ function RegisterForm(props){
         lastName: "",
         password: "",
         billingAdd:"",
-        shipppingAdd:""
+        shipppingAdd:"",
+        phone:""
     });
 
     function handleChange(event){
@@ -28,7 +29,7 @@ function RegisterForm(props){
     async function createCustomer(user){
         try {
             console.log("creating customer");
-        const res = await axios.post("http://Majorproject-env.eba-sdh23r2c.us-east-1.elasticbeanstalk.com/api/customer/create", user);
+        const res = await axios.post(API_URL+"/customer/create", user);
         console.log(res);
         props.history.push("/");
          } catch (err) {
@@ -45,7 +46,8 @@ function RegisterForm(props){
           lastName:userDetails.lastName,
           password:userDetails.password,
           billingAdd: userDetails.billingAdd,
-          shipppingAdd: userDetails.shipppingAdd
+          shipppingAdd: userDetails.shipppingAdd,
+          phone: userDetails.phone
         }
         createCustomer(person);
         console.log(person);
@@ -78,22 +80,24 @@ function RegisterForm(props){
             <input type = "text" id = "billingAddr" className = "loginInput" placeholder = "Enter Billing Address" required></input>
             <br></br>
             <br></br>
-            <label className = "regoLabel">User Address</label><br></br>
-            <input type = "text" id = "userAddr" className = "loginInput" placeholder = "Enter User Address" required></input>
+            <label className = "regoLabel">User Shipping Address</label><br></br>
+            <input type = "text" id = "userAddr" className = "loginInput" placeholder = "Enter User Shipping Address" required></input>
             <br></br>
             <br></br>
             <label className = "regoLabel">Password</label><br></br>
             <input type = "password" id = "password" onChange={handleChange} name="password" className = "loginInput" placeholder = "Enter Password" required></input>
             <br></br>
             <br></br>
-           
+            <label className = "regoLabel">Phone Number</label><br></br>
+            <input type = "text" id = "phone" onChange={handleChange} name="phone" className = "loginInput" placeholder = "Enter Phone Number" required></input>
+            <br></br>
+            <br></br>
             <div className = "buttonholder">
           
                 <button id = "registerBtn" type="submit" value="Sign Up">Sign up</button>
             </div>
             <br>
             </br>
-            
             <label className = "regoLabel">Already have an account? <LinkRouter to = "/loginform">Log In </LinkRouter> here!</label>
             <br></br>
             <br></br>

@@ -1,4 +1,3 @@
-
 package com.rmit.sept.mon17305.majorproject.model;
 
 import javax.persistence.*;
@@ -25,6 +24,7 @@ public class Booking {
     private String date;
     private Date created_At;
     private Date updated_At;
+    private Long companyId;
 
     public Booking() {
         onCreate();
@@ -101,5 +101,13 @@ public class Booking {
     @PreUpdate
     private void onUpdate() {
         this.updated_At = new Date();
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }
