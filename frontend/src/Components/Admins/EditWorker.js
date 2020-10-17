@@ -3,7 +3,10 @@ import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage'
 import axios from 'axios';
 import {Link as LinkRouter} from "react-router-dom";
 import history from '../../history';
+<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
+=======
+>>>>>>> m3-local
 
 export default class EditWorker extends Component{
 
@@ -117,7 +120,11 @@ export default class EditWorker extends Component{
         
     try {
         console.log("updating a worker");
+<<<<<<< HEAD
         axios.put(API_URL+"/worker/"+sessionStorage.getItem("worker-id"), person)
+=======
+        axios.put("http://localhost:8080/api/worker/"+sessionStorage.getItem("worker-id"), person)
+>>>>>>> m3-local
         .then(()=>{
           alert("successfully edit worker information.\nGo back to worker page?");
           history.push("/admin/workers");

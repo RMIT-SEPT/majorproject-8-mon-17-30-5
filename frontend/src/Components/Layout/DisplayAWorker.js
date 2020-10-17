@@ -1,14 +1,21 @@
 import React from 'react';
 import axios from 'axios';
 import {Link as LinkRouter} from "react-router-dom";
+<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
+=======
+>>>>>>> m3-local
 
 
 export default function DisplayAWorker(props) {
     function handleClick(){
         sessionStorage.setItem("worker-id", props.worker.id);
         console.log("worker-id : " + sessionStorage.getItem("worker-id"));
+<<<<<<< HEAD
         axios.get(API_URL+"/worker/"+sessionStorage.getItem("worker-id"))
+=======
+        axios.get("http://localhost:8080/api/worker/"+sessionStorage.getItem("worker-id"))
+>>>>>>> m3-local
         .then(function(response){
             console.log(response.data);
             sessionStorage.setItem("worker-username", response.data.username);

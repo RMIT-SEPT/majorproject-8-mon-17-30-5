@@ -2,7 +2,10 @@
 import React,{useState}  from 'react'
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
+<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
+=======
+>>>>>>> m3-local
 
 export default function WorkerInfoBoard() {
 
@@ -42,7 +45,11 @@ export default function WorkerInfoBoard() {
     }
 
     async function getWorkingHr(date, name){
+<<<<<<< HEAD
         axios.get(API_URL+"/worker/workerId/"+sessionStorage.getItem("worker-id")+"/date/"+date)
+=======
+        axios.get("http://localhost:8080/api/worker/workerId/"+sessionStorage.getItem("worker-id")+"/date/"+date)
+>>>>>>> m3-local
         .then(function(response){
             handleChange(name, response.data);
         })

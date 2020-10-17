@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FROM node:12-alpine
 
 # WORKDIR /majorproject-8-mon-17-30-5/frontend
@@ -28,3 +29,17 @@ COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+=======
+FROM node:12-alpine
+
+WORKDIR /majorproject-8-mon-17-30-5/frontend
+
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "start"]
+>>>>>>> m3-local
