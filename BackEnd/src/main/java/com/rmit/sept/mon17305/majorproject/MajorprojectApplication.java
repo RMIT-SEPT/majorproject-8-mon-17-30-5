@@ -36,8 +36,13 @@ public class MajorprojectApplication {
             Customer austin = new Customer();
             austin.setFirstName("Austin");
             austin.setLastName("Lay");
+<<<<<<< HEAD
+            austin.setBillingAddress("Austin Land");
+            austin.setShippingAddress("Austin Land");
+=======
             austin.setBillingAddress("Austin Billing Address");
             austin.setShippingAddress("Austin Shipping Address");
+>>>>>>> m3-local
             austin.setUsername("Austin");
             austin.setPassword("Lay");
             austin.setPhone("0401444787");
@@ -47,13 +52,51 @@ public class MajorprojectApplication {
             Customer ben = new Customer();
             ben.setFirstName("Ben");
             ben.setLastName("Hankins");
+<<<<<<< HEAD
+            ben.setBillingAddress("Ben Billing Land");
+            ben.setShippingAddress("Ben Shipping Land");
+=======
             ben.setBillingAddress("Ben Billing Address");
             ben.setShippingAddress("Ben Shipping Address");
+>>>>>>> m3-local
             ben.setUsername("Ben");
             ben.setPassword("password");
             ben.setPhone("0401444665");
             customerRepository.save(ben);
 
+<<<<<<< HEAD
+            Customer june = new Customer();
+            june.setFirstName("June");
+            june.setLastName("Sounsha");
+            june.setBillingAddress("Lala land");
+            june.setShippingAddress("Lala land");
+            june.setUsername("June");
+            june.setPassword("password");
+            june.setPhone("0401444660");
+            customerRepository.save(june);
+
+            Customer minnie = new Customer();
+            minnie.setFirstName("Minnie");
+            minnie.setLastName("Poach");
+            minnie.setBillingAddress("Wintermelon Bloom");
+            minnie.setShippingAddress("Wintermelon Bloom");
+            minnie.setUsername("Minnie");
+            minnie.setPassword("password");
+            minnie.setPhone("0401565778");
+            customerRepository.save(minnie);
+
+            Customer jack = new Customer();
+            jack.setFirstName("Jack");
+            jack.setLastName("Wonka");
+            jack.setBillingAddress("Lala land");
+            jack.setShippingAddress("Lala land");
+            jack.setUsername("Jack");
+            jack.setPassword("password");
+            jack.setPhone("0411629999");
+            customerRepository.save(jack);
+
+=======
+>>>>>>> m3-local
             Company business1 = new Company();
             business1.setId((long)1);
             business1.setCompanyName("Tim Car Wash");

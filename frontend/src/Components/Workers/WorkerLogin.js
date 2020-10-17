@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../../Style.css'
 import NavigationBar from '../Layout/NavigationBar';
 import axios from "axios";
+import {API_URL} from '../../BackendLink';
 
 function WorkerLogin(props){
 
@@ -24,7 +25,7 @@ function WorkerLogin(props){
 
     function handleSubmit(event){
         console.log(userDetails.username+", "+userDetails.password);
-        axios.get("http://localhost:8080/api/worker/username/"+userDetails.username+
+        axios.get(API_URL+"/worker/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
             console.log(response.data);

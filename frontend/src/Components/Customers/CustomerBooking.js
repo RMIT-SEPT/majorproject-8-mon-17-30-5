@@ -2,7 +2,8 @@ import React, { Component} from 'react';
 import axios from 'axios';
 import DisplayABooking from '../Layout/DisplayABooking';
 import Table from 'react-bootstrap/Table';
-import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
+import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
+import {API_URL} from '../../BackendLink';
 
 export default class CustomerBooking extends Component {
     constructor(){
@@ -21,7 +22,11 @@ export default class CustomerBooking extends Component {
     }
 
     sortByBookingId(){
+<<<<<<< HEAD
+        axios.get(API_URL+"/booking/customer/"+sessionStorage.getItem("id"))
+=======
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id"))
+>>>>>>> m3-local
         .then((response)=>{
             console.log("found booking");
             console.log(response.data);
@@ -35,7 +40,11 @@ export default class CustomerBooking extends Component {
     }
 
     sortFurtherest(){
+<<<<<<< HEAD
+        axios.get(API_URL+"/booking/customer/"+sessionStorage.getItem("id")+"/dateASC")
+=======
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id")+"/dateASC")
+>>>>>>> m3-local
         .then((response)=>{
             console.log("found booking");
             console.log(response.data);
@@ -47,7 +56,11 @@ export default class CustomerBooking extends Component {
     }
 
     sortClosest(){
+<<<<<<< HEAD
+        axios.get(API_URL+"/booking/customer/"+sessionStorage.getItem("id")+"/dateDESC")
+=======
         axios.get("http://localhost:8080/api/booking/customer/"+sessionStorage.getItem("id")+"/dateDESC")
+>>>>>>> m3-local
         .then((response)=>{
             console.log("found booking");
             console.log(response.data);

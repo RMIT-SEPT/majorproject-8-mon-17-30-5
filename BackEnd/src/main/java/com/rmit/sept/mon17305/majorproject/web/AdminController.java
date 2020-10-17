@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://frontend-lb-80-1957833221.us-east-1.elb.amazonaws.com")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {

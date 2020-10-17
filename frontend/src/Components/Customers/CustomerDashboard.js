@@ -2,11 +2,15 @@ import React, { Component} from 'react'
 // import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import DisplayAService from "../Layout/DisplayAService";
-import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage'
+import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
 import {Link as LinkRouter} from "react-router-dom";
 import WorkerOption from '../Layout/WorkerOption';
 import DisplayServiceOption from '../Layout/DisplayServiceOption';
 import DisplayACompanyOption from '../Layout/DisplayACompanyOption';
+<<<<<<< HEAD
+import {API_URL} from '../../BackendLink';
+=======
+>>>>>>> m3-local
 
 export default class CustomerDashboard extends Component {
     constructor(){
@@ -30,7 +34,11 @@ export default class CustomerDashboard extends Component {
     }
     componentDidMount(){
 
+<<<<<<< HEAD
+        axios.get(API_URL+"/company/All")
+=======
         axios.get("http://localhost:8080/api/company/All")
+>>>>>>> m3-local
         .then((response)=>{
             this.setState({"businesses": response.data});
         })
@@ -41,7 +49,11 @@ export default class CustomerDashboard extends Component {
     getSearchOptionsSetUp(event){
         event.preventDefault();
         if(this.state.selectCompanyId >= 1){
+<<<<<<< HEAD
+            axios.get(API_URL+"/serviceObject/getAll/"+this.state.selectCompanyId)
+=======
             axios.get("http://localhost:8080/api/serviceObject/getAll/"+this.state.selectCompanyId)
+>>>>>>> m3-local
             .then((response)=>{
                 this.setState({"serviceExist": true});
                 this.setState({"res": response.data});
@@ -50,7 +62,11 @@ export default class CustomerDashboard extends Component {
             .catch()
             .finally();
 
+<<<<<<< HEAD
+            axios.get(API_URL+"/worker/companyId/"+this.state.selectCompanyId)
+=======
             axios.get("http://localhost:8080/api/worker/companyId/"+this.state.selectCompanyId)
+>>>>>>> m3-local
             .then((response)=>{
                 this.setState({"workers":response.data});
                 console.log("Workers");
@@ -72,7 +88,7 @@ export default class CustomerDashboard extends Component {
         let duration1 = 0;
         let description1 ="";
 
-        axios.get("http://localhost:8080/api/serviceObject/"+this.state.selectServiceId)
+        axios.get(API_URL+"/serviceObject/"+this.state.selectServiceId)
         .then((response)=>{
            
             duration1 = response.data.duration;
@@ -117,7 +133,7 @@ export default class CustomerDashboard extends Component {
     }
 
     getAvailable(){
-        axios.get("http://localhost:8080/api/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
+        axios.get(API_URL+"/worker/" + this.state.selectWorkerId+"/"+this.state.selectServiceId
         +"/"+this.state.selectDate+"/"+this.state.description+"/"+this.state.duration+"/")
         .then((response)=>{
             this.setState({display: response.data});

@@ -4,6 +4,10 @@ import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 import DisplayABooking from '../Layout/DisplayABooking';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
+<<<<<<< HEAD
+import {API_URL} from '../../BackendLink';
+=======
+>>>>>>> m3-local
 
 
 export default class BookingPage extends React.Component {
@@ -30,7 +34,11 @@ componentDidMount(){
   }
 
   sortByBookingId(){
+<<<<<<< HEAD
+    axios.get(API_URL+"/booking/allBooking/"+sessionStorage.getItem("companyId"))
+=======
     axios.get("http://localhost:8080/api/booking/allBooking/"+sessionStorage.getItem("companyId"))
+>>>>>>> m3-local
   .then((response)=>{
       this.setState({"res": response.data});
       this.setState({"bookingExist": true});
@@ -42,7 +50,11 @@ componentDidMount(){
   }
 
   sortFurtherest(){
+<<<<<<< HEAD
+    axios.get(API_URL+"/booking/allBooking/"+sessionStorage.getItem("companyId")
+=======
     axios.get("http://localhost:8080/api/booking/allBooking/"+sessionStorage.getItem("companyId")
+>>>>>>> m3-local
     +"/ASC")
   .then((response)=>{
       this.setState({"res": response.data});
@@ -55,7 +67,11 @@ componentDidMount(){
   }
 
   sortClosest(){
+<<<<<<< HEAD
+    axios.get(API_URL+"/booking/allBooking/"+sessionStorage.getItem("companyId")
+=======
     axios.get("http://localhost:8080/api/booking/allBooking/"+sessionStorage.getItem("companyId")
+>>>>>>> m3-local
     +"/DESC")
   .then((response)=>{
       this.setState({"res": response.data});

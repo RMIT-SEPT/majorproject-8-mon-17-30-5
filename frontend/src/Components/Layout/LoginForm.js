@@ -3,6 +3,7 @@ import '../../Style.css'
 import NavigationBar from './NavigationBar';
 import {Link as LinkRouter} from "react-router-dom";
 import axios from "axios";
+import {API_URL} from '../../BackendLink';
 
 function LoginForm(props){
 
@@ -24,7 +25,7 @@ function LoginForm(props){
     }
 
     function handleSubmit(event){
-        axios.get("http://localhost:8080/api/customer/username/"+userDetails.username+
+        axios.get(API_URL+"/customer/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
             console.log(response.data);

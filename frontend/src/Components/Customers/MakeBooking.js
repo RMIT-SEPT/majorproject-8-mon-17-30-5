@@ -2,6 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
 import "bootstrap/dist/css/bootstrap.min.css";
+<<<<<<< HEAD
+import {API_URL} from '../../BackendLink';
+=======
+>>>>>>> m3-local
 
 function MakeBooking(props){
 
@@ -17,7 +21,7 @@ function MakeBooking(props){
             "date": sessionStorage.getItem("booking-date"),
             "companyId": sessionStorage.getItem("booking-companyId")
         }
-        axios.post("http://localhost:8080/api/booking/create/", booking)
+        axios.post(API_URL+"/booking/create/", booking)
         .then(()=>{
             clearBookingInfo();
             props.history.push("/customerDashBoard");

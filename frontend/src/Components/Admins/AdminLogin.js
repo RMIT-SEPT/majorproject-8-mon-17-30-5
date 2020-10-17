@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../../Style.css'
 import NavigationBar from '../Layout/NavigationBar';
 import axios from "axios";
+import {API_URL} from '../../BackendLink';
 
 function AdminLogin(props){
 
@@ -24,7 +25,7 @@ function AdminLogin(props){
 
     function handleSubmit(event){
         console.log(userDetails.username+", "+userDetails.password);
-        axios.get("http://localhost:8080/api/admin/username/"+userDetails.username+
+        axios.get(API_URL+"/admin/username/"+userDetails.username+
         "/password/"+userDetails.password)
         .then(function(response){
             console.log(response.data);

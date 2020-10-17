@@ -3,7 +3,7 @@ import NavigationBar from '../Layout/NavigationBar';
 import {Link as LinkRouter} from "react-router-dom";
 import axios from "axios";
 import '../../App.css';
-
+import {API_URL} from '../../BackendLink';
 
 function RegisterForm(props){
     const[userDetails, setUserDetails] = useState({
@@ -29,7 +29,7 @@ function RegisterForm(props){
     async function createCustomer(user){
         try {
             console.log("creating customer");
-        const res = await axios.post("http://localhost:8080/api/customer/create", user);
+        const res = await axios.post(API_URL+"/customer/create", user);
         console.log(res);
         props.history.push("/");
          } catch (err) {
