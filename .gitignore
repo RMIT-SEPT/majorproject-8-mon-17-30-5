@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 creds.sh
 creds2.sh
 .terraform*
@@ -11,18 +10,4 @@ tmp/
 .idea/modules.xml
 .idea/vcs.xml
 .vscode/settings.json
-=======
-creds.sh
-creds2.sh
-.terraform*
-terraform.tfstate
-terraform.tfstate.backup
-tmp/
-.idea/.gitignore
-.idea/Major Assessment.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.vscode/settings.json
->>>>>>> m3-local
 .idea/

@@ -36,13 +36,8 @@ public class MajorprojectApplication {
             Customer austin = new Customer();
             austin.setFirstName("Austin");
             austin.setLastName("Lay");
-<<<<<<< HEAD
             austin.setBillingAddress("Austin Land");
             austin.setShippingAddress("Austin Land");
-=======
-            austin.setBillingAddress("Austin Billing Address");
-            austin.setShippingAddress("Austin Shipping Address");
->>>>>>> m3-local
             austin.setUsername("Austin");
             austin.setPassword("Lay");
             austin.setPhone("0401444787");
@@ -52,19 +47,13 @@ public class MajorprojectApplication {
             Customer ben = new Customer();
             ben.setFirstName("Ben");
             ben.setLastName("Hankins");
-<<<<<<< HEAD
             ben.setBillingAddress("Ben Billing Land");
             ben.setShippingAddress("Ben Shipping Land");
-=======
-            ben.setBillingAddress("Ben Billing Address");
-            ben.setShippingAddress("Ben Shipping Address");
->>>>>>> m3-local
             ben.setUsername("Ben");
             ben.setPassword("password");
             ben.setPhone("0401444665");
             customerRepository.save(ben);
 
-<<<<<<< HEAD
             Customer june = new Customer();
             june.setFirstName("June");
             june.setLastName("Sounsha");
@@ -95,8 +84,6 @@ public class MajorprojectApplication {
             jack.setPhone("0411629999");
             customerRepository.save(jack);
 
-=======
->>>>>>> m3-local
             Company business1 = new Company();
             business1.setId((long)1);
             business1.setCompanyName("Tim Car Wash");

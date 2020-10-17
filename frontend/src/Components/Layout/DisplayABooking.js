@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
-<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
-=======
->>>>>>> m3-local
 
 function DisplayABooking(props) {
     
@@ -40,11 +37,7 @@ function DisplayABooking(props) {
     const handleShow = () => setShow(true);
 
     function cancelBooking(){
-<<<<<<< HEAD
         axios.delete(API_URL+"/booking/"+ props.booking.id)
-=======
-        axios.delete("http://localhost:8080/api/booking/"+ props.booking.id)
->>>>>>> m3-local
         .then(()=>{
             window.location.reload();
         })

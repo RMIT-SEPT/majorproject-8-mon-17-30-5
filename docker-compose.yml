@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 version: '3.8'
 services: 
     frontend:
@@ -18,25 +17,3 @@ services:
                 - /majorproject-8-mon-17-30-5/BackEnd
             ports:
                 - "8080:8080"
-=======
-# version: '3.8'
-# services: 
-#     frontend:
-#         image: frontend
-#         build: ./frontend
-#         volumes: 
-#             - /majorproject-8-mon-17-30-5/frontend
-#         ports: 
-#             - "3000:3000"
-#         stdin_open: true
-    
-#     backend:
-#         image: backend
-#         build: 
-#             context: ./BackEnd
-#             dockerfile: Dockerfile
-#         volumes: 
-#             - /majorproject-8-mon-17-30-5/BackEnd
-#         ports:
-#             - "8080:8080"
->>>>>>> m3-local

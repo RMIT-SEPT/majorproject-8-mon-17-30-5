@@ -7,10 +7,7 @@ import {Link as LinkRouter} from "react-router-dom";
 import WorkerOption from '../Layout/WorkerOption';
 import DisplayServiceOption from '../Layout/DisplayServiceOption';
 import DisplayACompanyOption from '../Layout/DisplayACompanyOption';
-<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
-=======
->>>>>>> m3-local
 
 export default class CustomerDashboard extends Component {
     constructor(){
@@ -34,11 +31,7 @@ export default class CustomerDashboard extends Component {
     }
     componentDidMount(){
 
-<<<<<<< HEAD
         axios.get(API_URL+"/company/All")
-=======
-        axios.get("http://localhost:8080/api/company/All")
->>>>>>> m3-local
         .then((response)=>{
             this.setState({"businesses": response.data});
         })
@@ -49,11 +42,7 @@ export default class CustomerDashboard extends Component {
     getSearchOptionsSetUp(event){
         event.preventDefault();
         if(this.state.selectCompanyId >= 1){
-<<<<<<< HEAD
             axios.get(API_URL+"/serviceObject/getAll/"+this.state.selectCompanyId)
-=======
-            axios.get("http://localhost:8080/api/serviceObject/getAll/"+this.state.selectCompanyId)
->>>>>>> m3-local
             .then((response)=>{
                 this.setState({"serviceExist": true});
                 this.setState({"res": response.data});
@@ -62,11 +51,7 @@ export default class CustomerDashboard extends Component {
             .catch()
             .finally();
 
-<<<<<<< HEAD
             axios.get(API_URL+"/worker/companyId/"+this.state.selectCompanyId)
-=======
-            axios.get("http://localhost:8080/api/worker/companyId/"+this.state.selectCompanyId)
->>>>>>> m3-local
             .then((response)=>{
                 this.setState({"workers":response.data});
                 console.log("Workers");

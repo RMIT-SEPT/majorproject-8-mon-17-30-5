@@ -2,10 +2,7 @@ import React, {useState} from 'react';
 import '../../App.css';
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
 import axios from 'axios';
-<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
-=======
->>>>>>> m3-local
 
 function EditCustomer(props)
 {
@@ -47,11 +44,7 @@ function EditCustomer(props)
         setSessionStorage();
         console.log("updating customer");
         console.log(person);
-<<<<<<< HEAD
         axios.put(API_URL+"/customer/"+sessionStorage.getItem("id"), person)
-=======
-        axios.put("http://localhost:8080/api/customer/"+sessionStorage.getItem("id"), person)
->>>>>>> m3-local
         .then(()=>{
           alert("Successfully edit your information.\nWe are now taking you back to dashboard");
           props.history.push("/customerDashBoard");

@@ -114,11 +114,7 @@ export default class WorkerForm extends Component {
 
         try {
             console.log("creating a worker");
-<<<<<<< HEAD
             axios.post(API_URL+"/worker/create", person)
-=======
-            axios.post("http://localhost:8080/api/worker/create", person)
->>>>>>> m3-local
                 .then(() => {
                     window.location.reload();
                 })

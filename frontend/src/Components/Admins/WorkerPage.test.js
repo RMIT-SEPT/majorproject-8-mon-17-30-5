@@ -10,9 +10,5 @@ it("render bookings page correctly", () =>{
     renderer.render(<WorkerPage/>);
     const result = renderer.getRenderOutput();
     expect(result.type).toBe('div');
-<<<<<<< HEAD
     expect(result.props.children).toHaveLength(4);
-=======
-    expect(result.props.children).toHaveLength(7);
->>>>>>> m3-local
 });

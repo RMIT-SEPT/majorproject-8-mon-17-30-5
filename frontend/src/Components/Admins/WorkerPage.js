@@ -5,10 +5,7 @@ import axios from 'axios';
 import NavigationBarAdminPage from '../Layout/NagivationBarAdminPage';
 import DisplayAWorker from '../Layout/DisplayAWorker';
 import {Link as LinkRouter} from "react-router-dom";
-<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
-=======
->>>>>>> m3-local
 
 export default class WorkerPage extends React.Component {
   state = {
@@ -19,11 +16,7 @@ export default class WorkerPage extends React.Component {
   };
 
   componentDidMount(){
-<<<<<<< HEAD
     axios.get(API_URL+"/worker/companyId/"+sessionStorage.getItem("companyId"))
-=======
-    axios.get("http://localhost:8080/api/worker/companyId/"+sessionStorage.getItem("companyId"))
->>>>>>> m3-local
     .then((response)=>{
         this.setState({"worker":response.data});
         console.log("Workers");

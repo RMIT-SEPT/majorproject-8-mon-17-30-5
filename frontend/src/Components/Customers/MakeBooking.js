@@ -2,10 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import NavigationBarCustomerPage from '../Layout/NavigationBarCustomerPage';
 import "bootstrap/dist/css/bootstrap.min.css";
-<<<<<<< HEAD
 import {API_URL} from '../../BackendLink';
-=======
->>>>>>> m3-local
 
 function MakeBooking(props){
 
