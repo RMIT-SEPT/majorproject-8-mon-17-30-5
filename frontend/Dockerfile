@@ -1,16 +1,3 @@
-# FROM node:12-alpine
-
-# WORKDIR /majorproject-8-mon-17-30-5/frontend
-
-# COPY package.json ./
-# COPY package-lock.json ./
-
-# RUN npm install
-
-# COPY . .
-
-# CMD ["npm", "start"]
-
 FROM node:13.12.0-alpine as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
