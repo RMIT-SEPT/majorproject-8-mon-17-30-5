@@ -1,6 +1,6 @@
 # All Documentation in Milestone 3 is in the OneDrive below
 
-link : https://rmiteduau-my.sharepoint.com/:f:/g/personal/s3756717_student_rmit_edu_au/EqMD3XZqK-xLtJ2zfbFCv6gByioioYZtw7wPFzNuqLgqPg?e=U9BpyE 
+link : https://rmiteduau-my.sharepoint.com/:f:/r/personal/s3756717_student_rmit_edu_au/Documents/DocsM3?csf=1&web=1&e=zJWQ8P
 
 Please access with RMIT account
 
