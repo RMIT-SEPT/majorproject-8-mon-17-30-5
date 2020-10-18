@@ -9,11 +9,11 @@ services:
             - "3000:3000"
         stdin_open: true
     backend:
-            image: backend
-            build: 
-                context: ./BackEnd
-                dockerfile: Dockerfile
-            volumes: 
-                - /majorproject-8-mon-17-30-5/BackEnd
-            ports:
-                - "8080:8080"
+        image: backend
+        build: 
+            context: ./BackEnd
+            dockerfile: Dockerfile
+        volumes: 
+            - /majorproject-8-mon-17-30-5/BackEnd
+        ports:
+            - "8080:8080"
