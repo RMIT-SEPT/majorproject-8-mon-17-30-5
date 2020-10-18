@@ -13,6 +13,7 @@
 * Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/
 * ClickUp Workspace Sprint1: https://share.clickup.com/l/h/6k1rj-135/cfa825028cbc3ff
 * ClickUp Workspace Sprint2: https://share.clickup.com/l/h/6-13306024-1/f0c937eeffefefa
+* ClickUp Workspace Sprint3 : https://share.clickup.com/b/h/6-5580224-2/fae3d3e616d4aea
 
 ## Milestone 2
 * Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5/tree/m2-circle-ci
@@ -29,17 +30,29 @@ Then result as lists of workers in the current database
 * AWS S3: http://majorproject-sept.s3-website-us-east-1.amazonaws.com/
 This is used for deploying frontend
 
+## Milestone 3
+* Final version of Application : http://frontend-alb-1569250992.us-east-1.elb.amazonaws.com/
+* Github repository : https://github.com/RMIT-SEPT/majorproject-8-mon-17-30-5
+* ClickUp Workspace Sprint3 : https://share.clickup.com/b/h/6-5580224-2/fae3d3e616d4aea
+* AWS RDS Endpoint : majorproject1.c2laus6x7lde.us-east-1.rds.amazonaws.com
+This is using postgresql for the project tables
+* AWS ECS backend public IP: 54.175.86.151:5000
+to use this, is the ECS backend public IP then follow by "/api/{usertype}/" follow by query syntax.
+For example: http://54.175.86.151:5000/api/worker/
+* AWS ECS frontend : http://frontend-alb-1569250992.us-east-1.elb.amazonaws.com/
+
 ## Code documentation
 
 [Quick Start](/docs/README.md) in `docs` folder
 
-To Start back end
-open intelliJ in folder Backend
-run majorprojectApplication
+* Back End
+AWS RDS for database
+AWS ECR for backend docker image
+AWS ECS for backend task
 
-To Start front end
-ensure to be in foler frontend
-npm start
+* Front end
+AWS ECR for front end docker image
+AWS ECS and Application Load balancer for front end task
 
 ## HOW TO SET UP
 
@@ -58,5 +71,8 @@ npm start
 React should open and run, this is good.
 
 After you have done this, copy our source code into the react folder. And you should be good to go.
+
+To set up the backend, install intelliJ.
+Create new SpringBoot project. And you are good to go.
 
 
